@@ -1,12 +1,19 @@
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template: `
-        <h1>Angular 2 Boilerplate</h1>
-        <p>Hello World!</p>
-    `,
+  moduleId: module.id,
+  selector: 'my-app',
+  styleUrls: [ '../css/app.component.css' ],
+  template:`
+    <h1>{{title}}</h1>
+    <nav>
+     <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+     <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+   </nav>
+    <router-outlet>
+  `
 })
-export class AppComponent {
 
+export class AppComponent {
+  title = 'Heroes App';
 }

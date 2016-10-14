@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "system",
+    "target": "ES6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -23,7 +23,15 @@
     "rewriteTsconfig": true
   },
   "files": [
+    "./src/js/app-routing.module.ts",
     "./src/js/app.component.ts",
-    "./src/js/boot.ts"
+    "./src/js/app.module.ts",
+    "./src/js/dashboard.component.ts",
+    "./src/js/hero-detail.component.ts",
+    "./src/js/hero.service.ts",
+    "./src/js/hero.ts",
+    "./src/js/heroes.component.ts",
+    "./src/js/main.ts",
+    "./src/js/mock-heroes.ts"
   ]
 }
