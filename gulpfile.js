@@ -1,43 +1,43 @@
-import gulp from 'gulp';
+var gulp = require('gulp');
 
-const dev = 'src/app/';
-const prod = 'dist/app/';
+var dev = 'src/app/';
+var prod = 'dist/app/';
 
-const thirdSassPaths = [
+var thirdSassPaths = [
   'node_modules/foundation/scss/**/*.scss',
   'node_modules/motion-ui/dist/**/*.css'
 ];
 /* Mixed */
-import ext_replace from 'gulp-ext-replace';
+var ext_replace = require('gulp-ext-replace');
 // import concat from 'gulp-concat';
-import runSequence from 'run-sequence';
+var runSequence = require('run-sequence');
 
 /* CSS */
-import postcss from 'gulp-postcss';
-import sourcemaps from 'gulp-sourcemaps';
-import autoprefixer from 'autoprefixer';
-import precss from 'precss';
-import cssnano from 'cssnano';
-import clean from 'gulp-clean';
-import sass from 'gulp-sass';
+var postcss = require('gulp-postcss');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('autoprefixer');
+var precss = require('precss');
+var cssnano = require('cssnano');
+var clean = require('gulp-clean');
+var sass = require('gulp-sass');
 
 /* JS & TS */
-// import jsuglify from 'gulp-uglify';
-import typescript from 'gulp-typescript';
+var jsuglify = require('gulp-uglify');
+var typescript = require('gulp-typescript');
 
 /* Images */
-import imagemin from 'gulp-imagemin';
+var imagemin = require('gulp-imagemin');
 
-const tsProject = typescript.createProject('tsconfig.json',
+var tsProject = typescript.createProject('tsconfig.json',
 { experimentalDecorators: true });
 
-gulp.task('build-third-css', () => {
+gulp.task('build-third-css', function () {
   return gulp.src(thirdSassPaths)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(prod + 'css/third'));
 });
 
-gulp.task('build-css', () => {
+gulp.task('build-css', function () {
   return gulp.src(dev + '**/*.scss')
       .pipe(sourcemaps.init())
       .pipe(postcss([precss, autoprefixer, cssnano]))
@@ -45,15 +45,16 @@ gulp.task('build-css', () => {
       .pipe(ext_replace('.css'));
 });
 
-gulp.task('build-ts', () => {
+gulp.task('build-ts', function () {
   return gulp.src([dev + '**/*.ts', 'typings/tsd.d.ts'])
       .pipe(sourcemaps.init())
       .pipe(typescript(tsProject))
       .pipe(sourcemaps.write())
+      .pipe(jsuglify())
       .pipe(gulp.dest(prod));
 });
 
-gulp.task('build-img', () => {
+gulp.task('build-img', function () {
   return gulp.src(dev + 'img/**/*')
       .pipe(imagemin({
         progressive: true
@@ -61,25 +62,27 @@ gulp.task('build-img', () => {
       .pipe(gulp.dest(prod + 'img/'));
 });
 
-gulp.task('build-html', () => {
+gulp.task('build-html', function () {
   return gulp.src(dev + '**/*.html')
     .pipe(gulp.dest(prod));
 });
 
-gulp.task('watch', () => {
+gulp.task('watch', function () {
   gulp.watch([dev + '**/*.ts',
               dev + '**/*.scss',
               dev + '**/*.html',
               dev + 'img/*'], ['develop']);
 });
 
-gulp.task('clean', () => {
+gulp.task('clean', function () {
   return gulp.src('dist', {read: false})
       .pipe(clean());
 });
 
 gulp.task('start', (done) => {
-  runSequence('develop', 'build-third-css', () => done());
+  runSequence('develop', 'build-third-css', function () {
+    done();
+  });
 });
 
 gulp.task('develop', (done) => {
