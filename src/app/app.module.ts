@@ -4,13 +4,13 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
 // ADMIN
-import { HeroDetailComponent } from './admin/components/hero/hero-detail.component';
-import { HeroesComponent } from './admin/components/heroes/heroes.component';
+import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
+import { PlacesComponent } from './admin/components/places/places.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component'
-import { HeroSearchComponent } from './admin/components/hero-search/hero-search.component';
+import { PlaceSearchComponent } from './admin/components/place-search/place-search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 
-import { HeroService } from './admin/services/hero.service';
+import { PlaceService } from './admin/services/place.service';
 
 // WEB
 
@@ -37,14 +37,14 @@ import './rxjs-extensions';
  ],
   declarations: [
     AppComponent,
-    HeroDetailComponent,
-    HeroesComponent,
+    PlaceDetailComponent,
+    PlacesComponent,
     DashboardComponent,
-    HeroSearchComponent,
+    PlaceSearchComponent,
     MainAdminComponent,
     WebHomeComponent
   ],
-  providers: [ HeroService ],
+  providers: [ PlaceService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

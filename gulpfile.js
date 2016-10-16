@@ -71,7 +71,12 @@ gulp.task('watch', function () {
   gulp.watch([dev + '**/*.ts',
               dev + '**/*.scss',
               dev + '**/*.html',
-              dev + 'img/*'], ['develop']);
+              dev + 'img/*'], [
+                'build-ts',
+                'uild-css',
+                'build-html',
+                'build-img'
+              ]);
 });
 
 gulp.task('clean', function () {

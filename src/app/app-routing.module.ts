@@ -1,8 +1,8 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent }   from './admin/components/dashboard/dashboard.component';
-import { HeroesComponent }      from './admin/components/heroes/heroes.component';
-import { HeroDetailComponent }  from './admin/components/hero/hero-detail.component';
+import { PlacesComponent }      from './admin/components/places/places.component';
+import { PlaceDetailComponent }  from './admin/components/place/place-detail.component';
 import { MainAdminComponent } from './admin/components/main/admin-main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
 
@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'home',  component: WebHomeComponent },
   { path: 'admin',  component: MainAdminComponent },
   { path: 'dashboard',  component: DashboardComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes',     component: HeroesComponent }
+  { path: 'detail/:id', component: PlaceDetailComponent },
+  { path: 'places',     component: PlacesComponent }
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

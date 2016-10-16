@@ -3,12 +3,12 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Hero } from '../components/hero/hero';
+import { Place } from '../components/place/place';
 
 @Injectable()
-export class HeroService {
+export class PlaceService {
 
-  private heroesUrl = 'app/heroes';
+  private placesUrl = 'app/places';
 
   constructor(private http: Http) {}
 
@@ -19,24 +19,24 @@ export class HeroService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  update(hero: Hero): Promise<Hero> {
-    const url = `${this.heroesUrl}/${hero.id}`;
+  update(place: Place): Promise<Place> {
+    const url = `${this.placesUrl}/${place.id}`;
     return this.http
-      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .put(url, JSON.stringify(place), {headers: this.headers})
       .toPromise()
-      .then(() => hero)
+      .then(() => place)
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Hero> {
+  create(name: string): Promise<Place> {
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.placesUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
   }
   delete(id: number): Promise<void> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.placesUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
@@ -44,24 +44,17 @@ export class HeroService {
   }
 
 
-  getHeroes(): Promise<Hero[]> {
-    return this.http.get(this.heroesUrl)
+  getPlaces(): Promise<Place[]> {
+    return this.http.get(this.placesUrl)
             .toPromise()
             .then(response => {
               console.log(response);
-              return response.json().data as Hero[]})
+              return response.json().data as Place[]})
             .catch(this.handleError);
   }
 
-  getHero(id: number): Promise<Hero> {
-    return this.getHeroes()
-               .then(heroes => heroes.find(hero => hero.id === id));
+  getPlace(id: number): Promise<Place> {
+    return this.getPlaces()
+               .then(places => places.find(place => place.id === id));
   }
-
-  getHeroesSlowly(): Promise<Hero[]> {
-    return new Promise<Hero[]>(resolve =>
-      setTimeout(resolve, 2000)) // delay 2 seconds
-      .then(() => this.getHeroes());
-  }
-
 }
