@@ -1,37 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": true,
+    "sourceMap": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false,
-    "outDir": "./dist"
-  },
-  "filesGlob": [
-    "./src/**/*.ts",
-    "!./node_modules/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  },
-  "files": [
-    "./src/js/app-routing.module.ts",
-    "./src/js/app.component.ts",
-    "./src/js/app.module.ts",
-    "./src/js/dashboard.component.ts",
-    "./src/js/hero-detail.component.ts",
-    "./src/js/hero.service.ts",
-    "./src/js/hero.ts",
-    "./src/js/heroes.component.ts",
-    "./src/js/main.ts",
-    "./src/js/mock-heroes.ts"
-  ]
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "outDir": "dist"
+  }
 }

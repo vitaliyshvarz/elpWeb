@@ -9,3 +9,9 @@ npm install
 ```
 npm start
 ```
+
+Architecture todo:
+- Deployment tasks
+- Translations
+- Unit tests
+- E2E Tests

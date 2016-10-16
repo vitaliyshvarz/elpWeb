@@ -3,17 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   moduleId: module.id,
   selector: 'my-app',
-  styleUrls: [ '../css/app.component.css' ],
   template:`
     <h1>{{title}}</h1>
     <nav>
-     <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-     <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+     <a routerLink="/admin" routerLinkActive="active">Admin Panel</a>
    </nav>
     <router-outlet>
   `
 })
 
 export class AppComponent {
-  title = 'Heroes App';
+  title = 'EatLikePro App';
 }

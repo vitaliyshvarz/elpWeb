@@ -1,6 +1,5 @@
 /**
- * System configuration for Angular samples
- * Adjust as necessary for your application needs.
+ * System configuration for EatLikePro App
  */
 (function (global) {
   System.config({
@@ -26,12 +25,12 @@
 
       // other libraries
       'rxjs': 'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './js/main.js',
+        main: './app/main.js',
         defaultExtension: 'js'
       },
       rxjs: {
