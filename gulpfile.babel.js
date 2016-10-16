@@ -31,22 +31,21 @@ import imagemin from 'gulp-imagemin';
 const tsProject = typescript.createProject('tsconfig.json',
 { experimentalDecorators: true });
 
-gulp.task('build-third-css', function () {
+gulp.task('build-third-css', () => {
   return gulp.src(thirdSassPaths)
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(prod + '/css/third'));
+    .pipe(gulp.dest(prod + 'css/third'));
 });
 
-gulp.task('build-css', (done) => {
+gulp.task('build-css', () => {
   return gulp.src(dev + '**/*.scss')
       .pipe(sourcemaps.init())
       .pipe(postcss([precss, autoprefixer, cssnano]))
       .pipe(sourcemaps.write())
-      .pipe(ext_replace('.css'))
-      .pipe(gulp.dest(prod));
+      .pipe(ext_replace('.css'));
 });
 
-gulp.task('build-ts', (done) => {
+gulp.task('build-ts', () => {
   return gulp.src([dev + '**/*.ts', 'typings/tsd.d.ts'])
       .pipe(sourcemaps.init())
       .pipe(typescript(tsProject))
@@ -54,7 +53,7 @@ gulp.task('build-ts', (done) => {
       .pipe(gulp.dest(prod));
 });
 
-gulp.task('build-img', (done) => {
+gulp.task('build-img', () => {
   return gulp.src(dev + 'img/**/*')
       .pipe(imagemin({
         progressive: true
@@ -62,7 +61,7 @@ gulp.task('build-img', (done) => {
       .pipe(gulp.dest(prod + 'img/'));
 });
 
-gulp.task('build-html', (done) => {
+gulp.task('build-html', () => {
   return gulp.src(dev + '**/*.html')
     .pipe(gulp.dest(prod));
 });
@@ -74,9 +73,13 @@ gulp.task('watch', () => {
               dev + 'img/*'], ['develop']);
 });
 
-gulp.task('clean', (done) => {
+gulp.task('clean', () => {
   return gulp.src('dist', {read: false})
       .pipe(clean());
+});
+
+gulp.task('start', (done) => {
+  runSequence('develop', 'build-third-css', () => done());
 });
 
 gulp.task('develop', (done) => {
@@ -89,7 +92,5 @@ gulp.task('develop', (done) => {
 });
 
 gulp.task('default', [
-  'develop',
-  'build-third-css',
-  'watch'
+  'start'
 ]);
