@@ -13,11 +13,12 @@ import { MainAdminComponent }  from './admin/components/main/admin-main.componen
 import { PlaceService } from './admin/services/place.service';
 
 // WEB
-
 import { AppComponent }  from './web/components/main/main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
 
+// Shared Modules
 import { AppRoutingModule }     from './app-routing.module';
+import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './translate/index';
 
 
 // Imports for loading & configuring the in-memory web api
@@ -42,9 +43,10 @@ import './rxjs-extensions';
     DashboardComponent,
     PlaceSearchComponent,
     MainAdminComponent,
-    WebHomeComponent
+    WebHomeComponent,
+    TranslatePipe
   ],
-  providers: [ PlaceService ],
+  providers: [ PlaceService, TRANSLATION_PROVIDERS, TranslateService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
