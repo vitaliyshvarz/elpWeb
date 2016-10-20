@@ -26,7 +26,7 @@ export class PlacesComponent implements OnInit {
   }
 
   getPlaces(): void {
-    this.placeService.getPlaces().then(places => this.places = places);
+    this.placeService.getPlaces().then((places: Place[]) => this.places = places);
   }
 
   onSelect(place: Place): void {
@@ -41,7 +41,7 @@ export class PlacesComponent implements OnInit {
     name = name.trim();
     if (!name) { return; }
     this.placeService.create(name)
-      .then(place => {
+      .then((place: Place) => {
         this.places.push(place);
         this.selectedPlace = null;
       });

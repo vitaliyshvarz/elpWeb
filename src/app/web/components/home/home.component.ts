@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '../../../translate/index';
+declare var $:JQueryStatic;
 
 @Component({
   moduleId: module.id,
@@ -10,45 +10,12 @@ import { TranslateService } from '../../../translate/index';
 
 export class WebHomeComponent implements OnInit {
 
-
-
-  public translatedText: string;
-  public supportedLangs: any[];
-  public selectedLang: string;
-
-  constructor(private _translate: TranslateService) { }
-
   ngOnInit() {
-    // standing data
-    this.supportedLangs = [
-      { display: 'English', value: 'en' },
-      { display: 'Deutsch', value: 'de' }
-    ];
-
-    // set current langage
-    this.selectLang('en');
-    this.selectedLang = this._translate.currentLang;
-
-
+    /* tslint:disable */
     $(document).foundation();
     // hide white background from foundation for video
     $('.off-canvas-content').css('background', 'transparent');
+    /* tslint:enable */
   }
 
-  isCurrentLang(lang: string) {
-    // check if the selected lang is current lang
-    return lang === this._translate.currentLang;
-  }
-
-  selectLang(lang: string) {
-      // set current lang;
-      this._translate.use(lang);
-      this.refreshText();
-      this.selectedLang = this._translate.currentLang;
-  }
-
-  refreshText() {
-      // refresh translation when language change
-      this.translatedText = this._translate.instant('hello world');
-  }
 }

@@ -15,6 +15,8 @@ import { PlaceService } from './admin/services/place.service';
 // WEB
 import { AppComponent }  from './web/components/main/main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
+import { TopMenuComponent } from './web/components/top-menu/top-menu.component';
+import { TranslationsListComponent } from './web/components/translations-list/translations-list.component'
 
 // Shared Modules
 import { AppRoutingModule }     from './app-routing.module';
@@ -44,6 +46,8 @@ import './rxjs-extensions';
     PlaceSearchComponent,
     MainAdminComponent,
     WebHomeComponent,
+    TopMenuComponent,
+    TranslationsListComponent,
     TranslatePipe
   ],
   providers: [ PlaceService, TRANSLATION_PROVIDERS, TranslateService ],

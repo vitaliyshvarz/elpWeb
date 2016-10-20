@@ -1,62 +1,35 @@
 <div class="off-canvas-wrapper">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 
-      <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
-      </div>
-
-      <div class="off-canvas-content" data-off-canvas-content>
-
-
-        <div id="page">
-          <div class="top-bar-container" data-sticky-container>
-            <div class="sticky" data-sticky style="width: 100%;"data-options="anchor: page; marginTop: 0; stickyOn: small;">
-              <div class="top-bar">
-                <div class="row column">
-                  <div class="top-bar-left">
-                    <ul class="dropdown menu" data-dropdown-menu>
-                      <li class="menu-text">{{ 'APP_NAME' | translate }}</li>
-
-                      <li class="has-dropdown">
-                        <a href="javascript:;"
-                            data-dropdown="lang_choose"
-                            aria-controls="lang_choose"
-                            aria-expanded="false"
-                            class="">{{ selectedLang }}</a>
-                        <ul id="lang_choose" class="submenu menu vertical">
-                          <li *ngFor="let lang of supportedLangs"
-                          (click)="selectLang(lang.value)" [class.active]="isCurrentLang(lang.value)">
-                          <a href="javascript:;">{{ lang.display }}</a>
-                          </li>
-                        </ul>
-                      </li>
-
-                    </ul>
-                  </div>
-                  <div class="top-bar-right">
-                    <ul class="menu">
-                      <li><a href="javascript:;">{{'ABOUT_US' | translate }}</a></li>
-                      <li><a href="javascript:;">{{'ABOUT_APP' | translate }}</a></li>
-                      <li><a href="javascript:;">{{'SUBMIT_APP' | translate }}</a></li>
-                      <li>
-                        <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div>
-          <video autoplay  poster="./dist/app/web/assets/img/food_main.jpg" id="bgvid" muted loop>
-            <source src="./dist/app/web/assets/vid/food_main.webm" type="video/webm">
-            <source src="./dist/app/web/assets/vid/food_main.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
+      <button class="close-button" aria-label="Close menu" type="button" data-close="">
+        <span aria-hidden="true">×</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+        <li><a href="javascript:;">{{'ABOUT_US' | translate }}</a></li>
+        <li><a href="javascript:;">{{'ABOUT_APP' | translate }}</a></li>
+        <li><a href="javascript:;">{{'SUBMIT_APP' | translate }}</a></li>
+      </ul>
+      <translations-list
+        [ul-class]="'small expanded button-group mob-lang-menu'"
+        [li-class]="'button expanded hollow warning'">
+      </translations-list>
 
     </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+
+      <div class="top-bar-container" data-sticky-container>
+        <top-menu></top-menu>
+      </div>
+
+      <div>
+        <video autoplay  poster="./dist/app/web/assets/img/food_main.jpg" id="bgvid" muted loop>
+          <source src="./dist/app/web/assets/vid/food_main.webm" type="video/webm">
+          <source src="./dist/app/web/assets/vid/food_main.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
   </div>
+</div>
