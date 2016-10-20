@@ -1,11 +1,10 @@
 var gulp = require('gulp');
+var concat = require('gulp-concat');
 
 var dev = 'src/app/';
 var prod = 'dist/app/';
 
 var thirdSassPaths = [
-  'node_modules/foundation/scss/**/*.scss',
-  'node_modules/motion-ui/dist/**/*.css'
 ];
 /* Mixed */
 var ext_replace = require('gulp-ext-replace');
@@ -31,10 +30,17 @@ var imagemin = require('gulp-imagemin');
 var tsProject = typescript.createProject('tsconfig.json',
 { experimentalDecorators: true });
 
+gulp.task('build-third-js', function () {
+  return gulp.src(['node_modules/foundation-sites/dist/**/*.js'])
+          .pipe(concat('third.js'))
+          .pipe(gulp.dest(prod + 'assets/js'));
+});
+
 gulp.task('build-third-css', function () {
   return gulp.src(thirdSassPaths)
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(prod + 'css/third'));
+    .pipe(concat('third.css'))
+    .pipe(gulp.dest(prod + 'assets/css'));
 });
 
 gulp.task('build-css', function () {
@@ -42,7 +48,8 @@ gulp.task('build-css', function () {
       .pipe(sourcemaps.init())
       .pipe(postcss([precss, autoprefixer, cssnano]))
       .pipe(sourcemaps.write())
-      .pipe(ext_replace('.css'));
+      .pipe(ext_replace('.css'))
+      .pipe(gulp.dest(prod));
 });
 
 gulp.task('build-ts', function () {
@@ -54,12 +61,17 @@ gulp.task('build-ts', function () {
       .pipe(gulp.dest(prod));
 });
 
+gulp.task('copy-vid', function () {
+  return gulp.src([dev + '**/*.mp4', dev + '**/*.webm'])
+      .pipe(gulp.dest(prod));
+});
+
 gulp.task('build-img', function () {
-  return gulp.src(dev + 'img/**/*')
+  return gulp.src([dev + '**/*.jpg', dev + '**/*.png'])
       .pipe(imagemin({
         progressive: true
       }))
-      .pipe(gulp.dest(prod + 'img/'));
+      .pipe(gulp.dest(prod));
 });
 
 gulp.task('build-html', function () {
@@ -73,7 +85,7 @@ gulp.task('watch', function () {
               dev + '**/*.html',
               dev + 'img/*'], [
                 'build-ts',
-                'uild-css',
+                'build-css',
                 'build-html',
                 'build-img'
               ]);
@@ -85,9 +97,13 @@ gulp.task('clean', function () {
 });
 
 gulp.task('start', (done) => {
-  runSequence('develop', 'build-third-css', function () {
-    done();
-  });
+  runSequence('develop',
+              'build-third-css',
+              'build-third-js',
+              'copy-vid',
+              'watch', function () {
+                done();
+              });
 });
 
 gulp.task('develop', (done) => {

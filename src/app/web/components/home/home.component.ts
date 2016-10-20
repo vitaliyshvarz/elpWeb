@@ -4,13 +4,17 @@ import { TranslateService } from '../../../translate/index';
 @Component({
   moduleId: module.id,
   selector: 'web-home',
-  templateUrl:'home.component.html'
+  templateUrl:'home.component.html',
+  styleUrls: ['home.component.css']
 })
 
 export class WebHomeComponent implements OnInit {
 
+
+
   public translatedText: string;
   public supportedLangs: any[];
+  public selectedLang: string;
 
   constructor(private _translate: TranslateService) { }
 
@@ -22,7 +26,13 @@ export class WebHomeComponent implements OnInit {
     ];
 
     // set current langage
-    this.selectLang('es');
+    this.selectLang('en');
+    this.selectedLang = this._translate.currentLang;
+
+
+    $(document).foundation();
+    // hide white background from foundation for video
+    $('.off-canvas-content').css('background', 'transparent');
   }
 
   isCurrentLang(lang: string) {
@@ -34,6 +44,7 @@ export class WebHomeComponent implements OnInit {
       // set current lang;
       this._translate.use(lang);
       this.refreshText();
+      this.selectedLang = this._translate.currentLang;
   }
 
   refreshText() {
