@@ -1,0 +1,9 @@
+<h3>Top Places</h3>
+<div>
+  <div *ngFor="let place of places" (click)="gotoDetail(place)">
+    <div>
+      <h4>{{place.name}}</h4>
+    </div>
+  </div>
+</div>
+<place-search></place-search>
