@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
-import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
+import { Component, OnInit }  from '@angular/core';
+import { Router }             from '@angular/router';
+import { Observable }         from 'rxjs/Observable';
+import { Subject }            from 'rxjs/Subject';
 import { PlaceSearchService } from '../../services/place-search.service';
-import { Place } from '../place/place';
+import { Place }              from '../place/place';
 
 @Component({
   moduleId: module.id,
@@ -13,15 +13,18 @@ import { Place } from '../place/place';
 })
 
 export class PlaceSearchComponent implements OnInit {
-  places: Observable<Place[]>;
+  places: Observable<{}>;
   private searchTerms = new Subject<string>();
+
   constructor(
     private placeSearchService: PlaceSearchService,
     private router: Router) {}
+
   // Push a search term into the observable stream.
   search(term: string): void {
     this.searchTerms.next(term);
   }
+
   ngOnInit(): void {
     this.places = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
@@ -37,6 +40,7 @@ export class PlaceSearchComponent implements OnInit {
         return Observable.of<Place[]>([]);
       });
   }
+
   gotoDetail(place: Place): void {
     let link = ['/detail', place.id];
     this.router.navigate(link);

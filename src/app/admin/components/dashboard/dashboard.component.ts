@@ -10,6 +10,7 @@ import { PlaceService } from '../../services/place.service';
   templateUrl: 'dashboard.component.html',
 
 })
+
 export class DashboardComponent implements OnInit{
   places: Place[] = [];
 
@@ -17,11 +18,16 @@ export class DashboardComponent implements OnInit{
     private router: Router,
     private placeService: PlaceService) {
   }
+  // initially get places
   ngOnInit():void {
     this.placeService.getPlaces()
-      .then(places => this.places = places.slice(1,5))
+      .then((places: Place[]) => this.places = places);
   }
 
+  /*
+  * Go to place detail page
+  * @param place 
+  */
   gotoDetail(place: Place): void {
     let link = ['/detail', place.id];
     this.router.navigate(link);

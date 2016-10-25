@@ -4,11 +4,8 @@ var concat = require('gulp-concat');
 var dev = 'src/app/';
 var prod = 'dist/app/';
 
-var thirdSassPaths = [
-];
 /* Mixed */
 var ext_replace = require('gulp-ext-replace');
-// import concat from 'gulp-concat';
 var runSequence = require('run-sequence');
 
 /* CSS */
@@ -18,7 +15,6 @@ var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 var cssnano = require('cssnano');
 var clean = require('gulp-clean');
-var sass = require('gulp-sass');
 
 /* JS & TS */
 var jsuglify = require('gulp-uglify');
@@ -34,13 +30,6 @@ gulp.task('build-third-js', function () {
   return gulp.src(['node_modules/foundation-sites/dist/**/*.js'])
           .pipe(concat('third.js'))
           .pipe(gulp.dest(prod + 'assets/js'));
-});
-
-gulp.task('build-third-css', function () {
-  return gulp.src(thirdSassPaths)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(concat('third.css'))
-    .pipe(gulp.dest(prod + 'assets/css'));
 });
 
 gulp.task('build-css', function () {
@@ -96,9 +85,8 @@ gulp.task('clean', function () {
       .pipe(clean());
 });
 
-gulp.task('start', (done) => {
+gulp.task('start', function (done) {
   runSequence('develop',
-              'build-third-css',
               'build-third-js',
               'copy-vid',
               'watch', function () {
@@ -106,13 +94,15 @@ gulp.task('start', (done) => {
               });
 });
 
-gulp.task('develop', (done) => {
+gulp.task('develop', function (done) {
   runSequence(
   'clean',
   'build-ts',
   'build-css',
   'build-html',
-  'build-img', () => done());
+  'build-img', function () {
+    done();
+  });
 });
 
 gulp.task('default', [

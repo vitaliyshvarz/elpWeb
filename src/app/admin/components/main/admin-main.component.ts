@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class MainAdminComponent {
-  title = 'Admin  EatLikePro';
+  title = 'Admin Panel EatLikePro';
 }

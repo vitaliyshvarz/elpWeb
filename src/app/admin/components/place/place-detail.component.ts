@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
-import { Place } from './place';
+import { Place }                    from './place';
 
 import { PlaceService } from '../../services/place.service';
 
@@ -23,7 +23,7 @@ export class PlaceDetailComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       this.placeService.getPlace(id)
-        .then(place => this.place = place);
+        .then((place: Place) => this.place = place);
     });
   }
   goBack(): void {

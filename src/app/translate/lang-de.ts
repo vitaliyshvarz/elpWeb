@@ -2,7 +2,10 @@ export const LANG_ES_NAME = 'de';
 
 export const LANG_ES_TRANS = {
     'APP_NAME': 'EatLikePro',
-    'ABOUT_US': 'Über uns',
-    'ABOUT_APP': 'Über App',
-    'SUBMIT_APP': 'Ort eintragen',
+    'THE_APP': 'Application',
+    'CONTUCT_US': 'Kontakt',
+    'LOGIN_SIGNUP': 'Einloggen / Anmelden',
+    'JOIN_US': 'Schließ dich uns an',
+    'SUBMIT_AND_GET': 'Senden Sie Ihren Restaurant und erhalten Sie mehr Kunden',
+    'LEARN_MORE': 'Mehr lernen'
 };

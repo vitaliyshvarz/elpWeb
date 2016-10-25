@@ -25,3 +25,76 @@ video {
       padding-bottom: 0;
     }
 }
+
+.store-bnt {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    color: transparent;
+    background-position: center;
+    &.apple {
+      background-image: url(dist/app/web/assets/img/appStoreLogo.png);
+    }
+    &.google {
+      background-image: url(dist/app/web/assets/img/playStoreLogo.png);
+    }
+}
+
+.home-center-block {
+    position: relative;
+    padding: 2.5rem 0 4.5rem;
+    text-align: center;
+    overflow: visible;
+    &.sites-large {
+      background-size: cover;
+      padding-top: 180px;
+    }
+    &.main-header {
+      font-size: 2.875rem;
+      text-align: center;
+      color: #fefefe;
+      margin: 0;
+    }
+    h1, h3, h4 {
+      color: #fff;
+    }
+    h1 {
+      font-size: 3em;
+      line-height: 1.0;
+      font-weight: 500;
+    }
+    .subheader {
+      position: relative;
+        color: #fefefe;
+        font-size: 1.3125rem;
+        font-weight: 200;
+    }
+    #stargazers a,  #twitter a {
+        color: #fefefe;
+        font-size: .8125rem;
+        font-weight: 200;
+    }
+    .learn-more {
+      width: 65%;
+      border-radius: 2pt;
+    }
+
+}
+
+.social-icons {
+  color: transparent;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 45px;
+  &.facebook {
+    background-image: url(dist/app/web/assets/img/webicon-facebook.png);
+  }
+  &.instagram {
+    background-image: url(dist/app/web/assets/img/webicon-instagram.png);
+  }
+  &.twitter {
+    background-image: url(dist/app/web/assets/img/webicon-twitter.png);
+  }
+}

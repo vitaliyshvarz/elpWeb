@@ -1,12 +1,12 @@
-<div class="sticky" style="width: 100%;" data-options="anchor: page; marginTop: 0; stickyOn: small;">
+<div style="width: 100%;" data-options="anchor: page; marginTop: 0; stickyOn: small;">
   <div class="top-bar">
-    <div class="row column">
+    <nav class="row column">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
           <li class="menu-text">{{ 'APP_NAME' | translate }}</li>
 
           <li class="has-dropdown">
-            <a class="show-for-medium small hollow warning dropdown button"
+            <a class="show-for-medium small hollow dropdown button"
                 type="button" data-toggle="lang_drop_down">
               {{ selectedLang }}
             </a>
@@ -23,9 +23,10 @@
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <li class="show-for-medium"><a href="javascript:;">{{'ABOUT_US' | translate }}</a></li>
-          <li class="show-for-medium"><a href="javascript:;">{{'ABOUT_APP' | translate }}</a></li>
-          <li class="show-for-medium"><a href="javascript:;">{{'SUBMIT_APP' | translate }}</a></li>
+          <li class="show-for-medium"><a href="javascript:;">{{'THE_APP' | translate }}</a></li>
+          <li class="show-for-medium"><a href="javascript:;">{{'CONTUCT_US' | translate }}</a></li>
+          <li class="show-for-medium"><a href="javascript:;">{{'LOGIN_SIGNUP' | translate }}</a></li>
+          <li class="show-for-medium"><a class="button" href="javascript:;">{{'JOIN_US' | translate }}</a></li>
           <li class="title-bar" class="hide-for-medium" data-hide-for="medium">
             <a>
               <button class="menu-icon" type="button" data-toggle data-open="offCanvasLeft"></button>
@@ -38,6 +39,6 @@
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
   </div>
 </div>
