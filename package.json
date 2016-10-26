@@ -17,11 +17,7 @@
     "type": "git",
     "url": "git+https://vitaliychorniy@bitbucket.org/ifbbpros/elpweb.git"
   },
-  "keywords": [
-    "eat"
-  ],
   "author": "",
-  "license": "ISC",
   "homepage": "https://bitbucket.org/ifbbpros/elpweb#readme",
   "dependencies": {
     "@angular/common": "~2.0.2",

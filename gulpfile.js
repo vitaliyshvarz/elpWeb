@@ -45,8 +45,8 @@ gulp.task('build-ts', function () {
   return gulp.src([dev + '**/*.ts', 'typings/tsd.d.ts'])
       .pipe(sourcemaps.init())
       .pipe(typescript(tsProject))
-      .pipe(sourcemaps.write())
       .pipe(jsuglify())
+      .pipe(sourcemaps.write('../../' + prod))
       .pipe(gulp.dest(prod));
 });
 
