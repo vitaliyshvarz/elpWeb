@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Place } from '@core/models/place';
+import { Place } from '@core';
 import { PlaceService } from '../../services/place.service';
 
-import { User } from '@core/models/user';
-import { UserService } from '@core/services/user.service';
+import { User } from '@core';
+import { UserService } from '@core';
 
 @Component({
   moduleId: module.id,

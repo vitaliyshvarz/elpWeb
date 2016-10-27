@@ -7,7 +7,7 @@ import { MainAdminComponent }    from './admin/components/main/admin-main.compon
 import { WebHomeComponent }      from './web/components/home/home.component';
 import { WebLoginComponent }     from './web/components/login/login.component';
 import { WebRegisterComponent }  from './web/components/register/register.component';
-import { AuthGuard }             from  '@core/guards/auth.guard';
+import { AuthGuard }             from  '@core';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -18,6 +18,7 @@
       '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
       '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+      '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
@@ -26,7 +27,7 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       'ng2-translate/ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.js',
 
-      '@core': 'src/app/core'
+      '@core': 'dist/app/core/core.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

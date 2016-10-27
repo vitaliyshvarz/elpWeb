@@ -1,7 +1,7 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs';
-import { Place }          from '@core/models/place';
+import { Place }          from '@core';
 @Injectable()
 export class PlaceSearchService {
   constructor(private http: Http) {}

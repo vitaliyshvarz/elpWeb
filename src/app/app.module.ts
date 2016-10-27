@@ -11,9 +11,9 @@ import { PlaceSearchComponent } from './admin/components/place-search/place-sear
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 
 import { PlaceService } from './admin/services/place.service';
-import { UserService } from './core/services/user.service';
+import { UserService } from '@core';
 import { AlertService } from './web/services/alert.service';
-import { AuthenticationService } from '@core/services/authentication.service';
+import { AuthenticationService } from '@core';
 
 // WEB
 import { AppComponent }  from './web/components/main/main.component';
@@ -22,6 +22,7 @@ import { TopMenuComponent } from './web/components/top-menu/top-menu.component';
 import { TranslationsListComponent } from './web/components/translations-list/translations-list.component';
 import { WebLoginComponent } from './web/components/login/login.component';
 import { WebRegisterComponent } from './web/components/register/register.component';
+import { AlertComponent } from './web/components/alert/alert.component'
 
 // Shared Modules
 import { AppRoutingModule }     from './app-routing.module';
@@ -32,10 +33,10 @@ import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './core
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 import { InMemoryDataService }  from './in-memory-data.service';
 
-import { AuthGuard } from '@core/guards/auth.guards';
+import { AuthGuard } from '@core';
 
 // used to create fake backend
-import { fakeBackendProvider } from '@core/helpers/fake.backend';
+import { fakeBackendProvider } from '@core';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
@@ -62,7 +63,8 @@ import './rxjs-extensions';
     MainAdminComponent,
     WebHomeComponent,
     WebLoginComponent,
-    WebRegisterComponent
+    WebRegisterComponent,
+    AlertComponent
   ],
   providers: [
     AuthGuard,
