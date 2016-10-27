@@ -1,0 +1,26 @@
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
+      <button class="close-button" aria-label="Close menu" type="button" data-close="">
+        <span aria-hidden="true">×</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+        <li><a href="javascript:;">{{'THE_APP' | translate }}</a></li>
+        <li><a href="javascript:;">{{'CONTUCT_US' | translate }}</a></li>
+        <li><a href="javascript:;">{{'LOGIN_SIGNUP' | translate }}</a></li>
+        <li><a href="javascript:;">{{'JOIN_US' | translate }}</a></li>
+      </ul>
+      <translations-list
+        [ul-class]="'small expanded button-group mob-lang-menu'"
+        [li-class]="'button expanded hollow'">
+      </translations-list>
+
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <router-outlet>
+    </div>
+
+  </div>
+</div>

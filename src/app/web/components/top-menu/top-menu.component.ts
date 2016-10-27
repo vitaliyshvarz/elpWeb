@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '../../../translate/index';
+import { TranslateService } from '@core/translate/index';
 
-import { User } from '../../models/user';
+import { User } from '@core/models/user';
 
 @Component({
   moduleId: module.id,

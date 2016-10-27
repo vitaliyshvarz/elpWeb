@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Place } from '../place/place';
+import { Place } from '@core/models/place/place';
 import { PlaceService } from '../../services/place.service';
 
 @Component({

@@ -3,7 +3,7 @@ import { Router }             from '@angular/router';
 import { Observable }         from 'rxjs/Observable';
 import { Subject }            from 'rxjs/Subject';
 import { PlaceSearchService } from '../../services/place-search.service';
-import { Place }              from '../place/place';
+import { Place }              from '@core/models/place';
 
 @Component({
   moduleId: module.id,

@@ -11,7 +11,6 @@
     map: {
       // our app is within the app folder
       app: 'dist',
-
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -22,11 +21,12 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
-
       // other libraries
       'rxjs': 'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-      'ng2-translate/ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.js'
+      'ng2-translate/ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.js',
+
+      '@core': 'src/app/core'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

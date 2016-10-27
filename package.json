@@ -1,7 +1,7 @@
 {
   "name": "eatlikeprosite",
   "version": "1.0.0",
-  "description": "",
+  "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.js",
   "scripts": {
     "lite": "lite-server",
@@ -67,5 +67,6 @@
     "tslint": "^3.15.1",
     "typescript": "^2.0.3",
     "typings": "^1.4.0"
-  }
+  },
+  "license": "ISC"
 }

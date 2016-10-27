@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Place } from '../components/place/place';
+import { Place } from '@core/models/place';
 
 @Injectable()
 export class PlaceService {

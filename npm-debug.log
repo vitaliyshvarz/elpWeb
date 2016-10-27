@@ -1,45 +1,2170 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'gulp' ]
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i' ]
 2 info using npm@3.10.8
-3 info using node@v4.6.0
-4 verbose run-script [ 'pregulp', 'gulp', 'postgulp' ]
-5 info lifecycle eatlikeprosite@1.0.0~pregulp: eatlikeprosite@1.0.0
-6 silly lifecycle eatlikeprosite@1.0.0~pregulp: no script for pregulp, continuing
-7 info lifecycle eatlikeprosite@1.0.0~gulp: eatlikeprosite@1.0.0
-8 verbose lifecycle eatlikeprosite@1.0.0~gulp: unsafe-perm in lifecycle true
-9 verbose lifecycle eatlikeprosite@1.0.0~gulp: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/vitaliychorniy/Development/elpweb/node_modules/.bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/vitaliychorniy/Development/elpweb/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-10 verbose lifecycle eatlikeprosite@1.0.0~gulp: CWD: /Users/vitaliychorniy/Development/elpweb
-11 silly lifecycle eatlikeprosite@1.0.0~gulp: Args: [ '-c', 'gulp' ]
-12 silly lifecycle eatlikeprosite@1.0.0~gulp: Returned: code: 1  signal: null
-13 info lifecycle eatlikeprosite@1.0.0~gulp: Failed to exec gulp script
-14 verbose stack Error: eatlikeprosite@1.0.0 gulp: `gulp`
-14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
-14 verbose stack     at emitTwo (events.js:87:13)
-14 verbose stack     at EventEmitter.emit (events.js:172:7)
-14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
-14 verbose stack     at emitTwo (events.js:87:13)
-14 verbose stack     at ChildProcess.emit (events.js:172:7)
-14 verbose stack     at maybeClose (internal/child_process.js:829:16)
-14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
-15 verbose pkgid eatlikeprosite@1.0.0
-16 verbose cwd /Users/vitaliychorniy/Development/elpweb
-17 error Darwin 15.6.0
-18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "gulp"
-19 error node v4.6.0
-20 error npm  v3.10.8
-21 error code ELIFECYCLE
-22 error eatlikeprosite@1.0.0 gulp: `gulp`
-22 error Exit status 1
-23 error Failed at the eatlikeprosite@1.0.0 gulp script 'gulp'.
-23 error Make sure you have the latest version of node.js and npm installed.
-23 error If you do, this is most likely a problem with the eatlikeprosite package,
-23 error not with npm itself.
-23 error Tell the author that this fails on your system:
-23 error     gulp
-23 error You can get information on how to open an issue for this project with:
-23 error     npm bugs eatlikeprosite
-23 error Or if that isn't available, you can get their info via:
-23 error     npm owner ls eatlikeprosite
-23 error There is likely additional logging output above.
-24 verbose exit [ 1, true ]
+3 info using node@v4.4.4
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData @angular/common
+20 silly mapToRegistry name @angular/common
+21 silly mapToRegistry scope (from package name) @angular
+22 verbose mapToRegistry no registry URL found in name for scope @angular
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+25 silly mapToRegistry data Result {
+25 silly mapToRegistry   raw: '@angular/common',
+25 silly mapToRegistry   scope: '@angular',
+25 silly mapToRegistry   escapedName: '@angular%2fcommon',
+25 silly mapToRegistry   name: '@angular/common',
+25 silly mapToRegistry   rawSpec: '',
+25 silly mapToRegistry   spec: 'latest',
+25 silly mapToRegistry   type: 'tag' }
+26 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcommon
+27 silly fetchNamedPackageData @angular/compiler
+28 silly mapToRegistry name @angular/compiler
+29 silly mapToRegistry scope (from package name) @angular
+30 verbose mapToRegistry no registry URL found in name for scope @angular
+31 silly mapToRegistry using default registry
+32 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+33 silly mapToRegistry data Result {
+33 silly mapToRegistry   raw: '@angular/compiler',
+33 silly mapToRegistry   scope: '@angular',
+33 silly mapToRegistry   escapedName: '@angular%2fcompiler',
+33 silly mapToRegistry   name: '@angular/compiler',
+33 silly mapToRegistry   rawSpec: '',
+33 silly mapToRegistry   spec: 'latest',
+33 silly mapToRegistry   type: 'tag' }
+34 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcompiler
+35 silly fetchNamedPackageData @angular/core
+36 silly mapToRegistry name @angular/core
+37 silly mapToRegistry scope (from package name) @angular
+38 verbose mapToRegistry no registry URL found in name for scope @angular
+39 silly mapToRegistry using default registry
+40 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+41 silly mapToRegistry data Result {
+41 silly mapToRegistry   raw: '@angular/core',
+41 silly mapToRegistry   scope: '@angular',
+41 silly mapToRegistry   escapedName: '@angular%2fcore',
+41 silly mapToRegistry   name: '@angular/core',
+41 silly mapToRegistry   rawSpec: '',
+41 silly mapToRegistry   spec: 'latest',
+41 silly mapToRegistry   type: 'tag' }
+42 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcore
+43 silly fetchNamedPackageData @angular/forms
+44 silly mapToRegistry name @angular/forms
+45 silly mapToRegistry scope (from package name) @angular
+46 verbose mapToRegistry no registry URL found in name for scope @angular
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+49 silly mapToRegistry data Result {
+49 silly mapToRegistry   raw: '@angular/forms',
+49 silly mapToRegistry   scope: '@angular',
+49 silly mapToRegistry   escapedName: '@angular%2fforms',
+49 silly mapToRegistry   name: '@angular/forms',
+49 silly mapToRegistry   rawSpec: '',
+49 silly mapToRegistry   spec: 'latest',
+49 silly mapToRegistry   type: 'tag' }
+50 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fforms
+51 silly fetchNamedPackageData @angular/http
+52 silly mapToRegistry name @angular/http
+53 silly mapToRegistry scope (from package name) @angular
+54 verbose mapToRegistry no registry URL found in name for scope @angular
+55 silly mapToRegistry using default registry
+56 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+57 silly mapToRegistry data Result {
+57 silly mapToRegistry   raw: '@angular/http',
+57 silly mapToRegistry   scope: '@angular',
+57 silly mapToRegistry   escapedName: '@angular%2fhttp',
+57 silly mapToRegistry   name: '@angular/http',
+57 silly mapToRegistry   rawSpec: '',
+57 silly mapToRegistry   spec: 'latest',
+57 silly mapToRegistry   type: 'tag' }
+58 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fhttp
+59 silly fetchNamedPackageData @angular/platform-browser
+60 silly mapToRegistry name @angular/platform-browser
+61 silly mapToRegistry scope (from package name) @angular
+62 verbose mapToRegistry no registry URL found in name for scope @angular
+63 silly mapToRegistry using default registry
+64 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+65 silly mapToRegistry data Result {
+65 silly mapToRegistry   raw: '@angular/platform-browser',
+65 silly mapToRegistry   scope: '@angular',
+65 silly mapToRegistry   escapedName: '@angular%2fplatform-browser',
+65 silly mapToRegistry   name: '@angular/platform-browser',
+65 silly mapToRegistry   rawSpec: '',
+65 silly mapToRegistry   spec: 'latest',
+65 silly mapToRegistry   type: 'tag' }
+66 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser
+67 silly fetchNamedPackageData @angular/platform-browser-dynamic
+68 silly mapToRegistry name @angular/platform-browser-dynamic
+69 silly mapToRegistry scope (from package name) @angular
+70 verbose mapToRegistry no registry URL found in name for scope @angular
+71 silly mapToRegistry using default registry
+72 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+73 silly mapToRegistry data Result {
+73 silly mapToRegistry   raw: '@angular/platform-browser-dynamic',
+73 silly mapToRegistry   scope: '@angular',
+73 silly mapToRegistry   escapedName: '@angular%2fplatform-browser-dynamic',
+73 silly mapToRegistry   name: '@angular/platform-browser-dynamic',
+73 silly mapToRegistry   rawSpec: '',
+73 silly mapToRegistry   spec: 'latest',
+73 silly mapToRegistry   type: 'tag' }
+74 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser-dynamic
+75 silly fetchNamedPackageData @angular/router
+76 silly mapToRegistry name @angular/router
+77 silly mapToRegistry scope (from package name) @angular
+78 verbose mapToRegistry no registry URL found in name for scope @angular
+79 silly mapToRegistry using default registry
+80 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+81 silly mapToRegistry data Result {
+81 silly mapToRegistry   raw: '@angular/router',
+81 silly mapToRegistry   scope: '@angular',
+81 silly mapToRegistry   escapedName: '@angular%2frouter',
+81 silly mapToRegistry   name: '@angular/router',
+81 silly mapToRegistry   rawSpec: '',
+81 silly mapToRegistry   spec: 'latest',
+81 silly mapToRegistry   type: 'tag' }
+82 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2frouter
+83 silly fetchNamedPackageData @angular/upgrade
+84 silly mapToRegistry name @angular/upgrade
+85 silly mapToRegistry scope (from package name) @angular
+86 verbose mapToRegistry no registry URL found in name for scope @angular
+87 silly mapToRegistry using default registry
+88 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+89 silly mapToRegistry data Result {
+89 silly mapToRegistry   raw: '@angular/upgrade',
+89 silly mapToRegistry   scope: '@angular',
+89 silly mapToRegistry   escapedName: '@angular%2fupgrade',
+89 silly mapToRegistry   name: '@angular/upgrade',
+89 silly mapToRegistry   rawSpec: '',
+89 silly mapToRegistry   spec: 'latest',
+89 silly mapToRegistry   type: 'tag' }
+90 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fupgrade
+91 silly fetchNamedPackageData @types/node
+92 silly mapToRegistry name @types/node
+93 silly mapToRegistry scope (from package name) @types
+94 verbose mapToRegistry no registry URL found in name for scope @types
+95 silly mapToRegistry using default registry
+96 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+97 silly mapToRegistry data Result {
+97 silly mapToRegistry   raw: '@types/node',
+97 silly mapToRegistry   scope: '@types',
+97 silly mapToRegistry   escapedName: '@types%2fnode',
+97 silly mapToRegistry   name: '@types/node',
+97 silly mapToRegistry   rawSpec: '',
+97 silly mapToRegistry   spec: 'latest',
+97 silly mapToRegistry   type: 'tag' }
+98 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/@types%2fnode
+99 silly fetchNamedPackageData angular-in-memory-web-api
+100 silly mapToRegistry name angular-in-memory-web-api
+101 silly mapToRegistry using default registry
+102 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+103 silly mapToRegistry data Result {
+103 silly mapToRegistry   raw: 'angular-in-memory-web-api',
+103 silly mapToRegistry   scope: null,
+103 silly mapToRegistry   escapedName: 'angular-in-memory-web-api',
+103 silly mapToRegistry   name: 'angular-in-memory-web-api',
+103 silly mapToRegistry   rawSpec: '',
+103 silly mapToRegistry   spec: 'latest',
+103 silly mapToRegistry   type: 'tag' }
+104 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/angular-in-memory-web-api
+105 silly fetchNamedPackageData bootstrap
+106 silly mapToRegistry name bootstrap
+107 silly mapToRegistry using default registry
+108 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+109 silly mapToRegistry data Result {
+109 silly mapToRegistry   raw: 'bootstrap',
+109 silly mapToRegistry   scope: null,
+109 silly mapToRegistry   escapedName: 'bootstrap',
+109 silly mapToRegistry   name: 'bootstrap',
+109 silly mapToRegistry   rawSpec: '',
+109 silly mapToRegistry   spec: 'latest',
+109 silly mapToRegistry   type: 'tag' }
+110 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/bootstrap
+111 silly fetchNamedPackageData core-js
+112 silly mapToRegistry name core-js
+113 silly mapToRegistry using default registry
+114 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+115 silly mapToRegistry data Result {
+115 silly mapToRegistry   raw: 'core-js',
+115 silly mapToRegistry   scope: null,
+115 silly mapToRegistry   escapedName: 'core-js',
+115 silly mapToRegistry   name: 'core-js',
+115 silly mapToRegistry   rawSpec: '',
+115 silly mapToRegistry   spec: 'latest',
+115 silly mapToRegistry   type: 'tag' }
+116 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/core-js
+117 silly fetchNamedPackageData es6-shim
+118 silly mapToRegistry name es6-shim
+119 silly mapToRegistry using default registry
+120 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+121 silly mapToRegistry data Result {
+121 silly mapToRegistry   raw: 'es6-shim',
+121 silly mapToRegistry   scope: null,
+121 silly mapToRegistry   escapedName: 'es6-shim',
+121 silly mapToRegistry   name: 'es6-shim',
+121 silly mapToRegistry   rawSpec: '',
+121 silly mapToRegistry   spec: 'latest',
+121 silly mapToRegistry   type: 'tag' }
+122 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/es6-shim
+123 silly fetchNamedPackageData fastclick
+124 silly mapToRegistry name fastclick
+125 silly mapToRegistry using default registry
+126 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+127 silly mapToRegistry data Result {
+127 silly mapToRegistry   raw: 'fastclick',
+127 silly mapToRegistry   scope: null,
+127 silly mapToRegistry   escapedName: 'fastclick',
+127 silly mapToRegistry   name: 'fastclick',
+127 silly mapToRegistry   rawSpec: '',
+127 silly mapToRegistry   spec: 'latest',
+127 silly mapToRegistry   type: 'tag' }
+128 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/fastclick
+129 silly fetchNamedPackageData foundation-sites
+130 silly mapToRegistry name foundation-sites
+131 silly mapToRegistry using default registry
+132 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+133 silly mapToRegistry data Result {
+133 silly mapToRegistry   raw: 'foundation-sites',
+133 silly mapToRegistry   scope: null,
+133 silly mapToRegistry   escapedName: 'foundation-sites',
+133 silly mapToRegistry   name: 'foundation-sites',
+133 silly mapToRegistry   rawSpec: '',
+133 silly mapToRegistry   spec: 'latest',
+133 silly mapToRegistry   type: 'tag' }
+134 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/foundation-sites
+135 silly fetchNamedPackageData jquery
+136 silly mapToRegistry name jquery
+137 silly mapToRegistry using default registry
+138 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+139 silly mapToRegistry data Result {
+139 silly mapToRegistry   raw: 'jquery',
+139 silly mapToRegistry   scope: null,
+139 silly mapToRegistry   escapedName: 'jquery',
+139 silly mapToRegistry   name: 'jquery',
+139 silly mapToRegistry   rawSpec: '',
+139 silly mapToRegistry   spec: 'latest',
+139 silly mapToRegistry   type: 'tag' }
+140 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/jquery
+141 silly fetchNamedPackageData modernizr
+142 silly mapToRegistry name modernizr
+143 silly mapToRegistry using default registry
+144 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+145 silly mapToRegistry data Result {
+145 silly mapToRegistry   raw: 'modernizr',
+145 silly mapToRegistry   scope: null,
+145 silly mapToRegistry   escapedName: 'modernizr',
+145 silly mapToRegistry   name: 'modernizr',
+145 silly mapToRegistry   rawSpec: '',
+145 silly mapToRegistry   spec: 'latest',
+145 silly mapToRegistry   type: 'tag' }
+146 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/modernizr
+147 silly fetchNamedPackageData reflect-metadata
+148 silly mapToRegistry name reflect-metadata
+149 silly mapToRegistry using default registry
+150 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+151 silly mapToRegistry data Result {
+151 silly mapToRegistry   raw: 'reflect-metadata',
+151 silly mapToRegistry   scope: null,
+151 silly mapToRegistry   escapedName: 'reflect-metadata',
+151 silly mapToRegistry   name: 'reflect-metadata',
+151 silly mapToRegistry   rawSpec: '',
+151 silly mapToRegistry   spec: 'latest',
+151 silly mapToRegistry   type: 'tag' }
+152 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/reflect-metadata
+153 silly fetchNamedPackageData rxjs
+154 silly mapToRegistry name rxjs
+155 silly mapToRegistry using default registry
+156 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+157 silly mapToRegistry data Result {
+157 silly mapToRegistry   raw: 'rxjs',
+157 silly mapToRegistry   scope: null,
+157 silly mapToRegistry   escapedName: 'rxjs',
+157 silly mapToRegistry   name: 'rxjs',
+157 silly mapToRegistry   rawSpec: '',
+157 silly mapToRegistry   spec: 'latest',
+157 silly mapToRegistry   type: 'tag' }
+158 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/rxjs
+159 silly fetchNamedPackageData systemjs
+160 silly mapToRegistry name systemjs
+161 silly mapToRegistry using default registry
+162 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+163 silly mapToRegistry data Result {
+163 silly mapToRegistry   raw: 'systemjs',
+163 silly mapToRegistry   scope: null,
+163 silly mapToRegistry   escapedName: 'systemjs',
+163 silly mapToRegistry   name: 'systemjs',
+163 silly mapToRegistry   rawSpec: '',
+163 silly mapToRegistry   spec: 'latest',
+163 silly mapToRegistry   type: 'tag' }
+164 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/systemjs
+165 silly fetchNamedPackageData zone.js
+166 silly mapToRegistry name zone.js
+167 silly mapToRegistry using default registry
+168 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+169 silly mapToRegistry data Result {
+169 silly mapToRegistry   raw: 'zone.js',
+169 silly mapToRegistry   scope: null,
+169 silly mapToRegistry   escapedName: 'zone.js',
+169 silly mapToRegistry   name: 'zone.js',
+169 silly mapToRegistry   rawSpec: '',
+169 silly mapToRegistry   spec: 'latest',
+169 silly mapToRegistry   type: 'tag' }
+170 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/zone.js
+171 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcommon
+172 verbose request no auth needed
+173 info attempt registry request try #1 at 15:27:10
+174 verbose request id fe1180cc74883090
+175 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcommon
+176 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcompiler
+177 verbose request no auth needed
+178 info attempt registry request try #1 at 15:27:10
+179 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcompiler
+180 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcore
+181 verbose request no auth needed
+182 info attempt registry request try #1 at 15:27:10
+183 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcore
+184 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fforms
+185 verbose request no auth needed
+186 info attempt registry request try #1 at 15:27:10
+187 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fforms
+188 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fhttp
+189 verbose request no auth needed
+190 info attempt registry request try #1 at 15:27:10
+191 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fhttp
+192 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser
+193 verbose request no auth needed
+194 info attempt registry request try #1 at 15:27:10
+195 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser
+196 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser-dynamic
+197 verbose request no auth needed
+198 info attempt registry request try #1 at 15:27:10
+199 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser-dynamic
+200 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2frouter
+201 verbose request no auth needed
+202 info attempt registry request try #1 at 15:27:10
+203 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2frouter
+204 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fupgrade
+205 verbose request no auth needed
+206 info attempt registry request try #1 at 15:27:10
+207 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fupgrade
+208 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/@types%2fnode
+209 verbose request no auth needed
+210 info attempt registry request try #1 at 15:27:10
+211 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/@types%2fnode
+212 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/angular-in-memory-web-api
+213 verbose request no auth needed
+214 info attempt registry request try #1 at 15:27:10
+215 verbose lastModified Thu, 27 Oct 2016 13:25:34 GMT
+216 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/angular-in-memory-web-api
+217 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/bootstrap
+218 verbose request no auth needed
+219 info attempt registry request try #1 at 15:27:10
+220 verbose lastModified Thu, 27 Oct 2016 13:25:34 GMT
+221 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/bootstrap
+222 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/fastclick
+223 verbose request no auth needed
+224 info attempt registry request try #1 at 15:27:10
+225 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+226 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/fastclick
+227 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/jquery
+228 verbose request no auth needed
+229 info attempt registry request try #1 at 15:27:10
+230 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+231 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/jquery
+232 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/modernizr
+233 verbose request no auth needed
+234 info attempt registry request try #1 at 15:27:10
+235 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+236 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/modernizr
+237 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/reflect-metadata
+238 verbose request no auth needed
+239 info attempt registry request try #1 at 15:27:10
+240 verbose lastModified Thu, 27 Oct 2016 13:25:34 GMT
+241 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/reflect-metadata
+242 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/core-js
+243 verbose request no auth needed
+244 info attempt registry request try #1 at 15:27:10
+245 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+246 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/core-js
+247 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/es6-shim
+248 verbose request no auth needed
+249 info attempt registry request try #1 at 15:27:10
+250 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+251 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/es6-shim
+252 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/foundation-sites
+253 verbose request no auth needed
+254 info attempt registry request try #1 at 15:27:10
+255 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+256 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/foundation-sites
+257 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/rxjs
+258 verbose request no auth needed
+259 info attempt registry request try #1 at 15:27:10
+260 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+261 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/rxjs
+262 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/systemjs
+263 verbose request no auth needed
+264 info attempt registry request try #1 at 15:27:10
+265 verbose lastModified Thu, 27 Oct 2016 13:25:35 GMT
+266 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/systemjs
+267 verbose request uri http://repo.mobisys.org/nexus/content/groups/npm-all/zone.js
+268 verbose request no auth needed
+269 info attempt registry request try #1 at 15:27:10
+270 verbose lastModified Thu, 27 Oct 2016 13:25:34 GMT
+271 http request GET http://repo.mobisys.org/nexus/content/groups/npm-all/zone.js
+272 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@types%2fnode
+273 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+273 verbose bad json <html><head>
+273 verbose bad json <title>404 Not Found</title>
+273 verbose bad json </head><body>
+273 verbose bad json <h1>Not Found</h1>
+273 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@types/node was not found on this server.</p>
+273 verbose bad json <hr>
+273 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+273 verbose bad json </body></html>
+274 error registry error parsing json
+275 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+275 verbose headers   server: 'Apache/2.2.22 (Debian)',
+275 verbose headers   vary: 'Accept-Encoding',
+275 verbose headers   'content-encoding': 'gzip',
+275 verbose headers   'content-length': '260',
+275 verbose headers   'keep-alive': 'timeout=5, max=100',
+275 verbose headers   connection: 'Keep-Alive',
+275 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+276 silly get cb [ 404,
+276 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+276 silly get     server: 'Apache/2.2.22 (Debian)',
+276 silly get     vary: 'Accept-Encoding',
+276 silly get     'content-encoding': 'gzip',
+276 silly get     'content-length': '260',
+276 silly get     'keep-alive': 'timeout=5, max=100',
+276 silly get     connection: 'Keep-Alive',
+276 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+277 silly fetchPackageMetaData SyntaxError: Unexpected token <
+277 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+277 silly fetchPackageMetaData <html><head>
+277 silly fetchPackageMetaData <title>404 Not Found</title>
+277 silly fetchPackageMetaData </head><body>
+277 silly fetchPackageMetaData <h1>Not Found</h1>
+277 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@types/node was not found on this server.</p>
+277 silly fetchPackageMetaData <hr>
+277 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+277 silly fetchPackageMetaData </body></html>
+277 silly fetchPackageMetaData
+277 silly fetchPackageMetaData     at Object.parse (native)
+277 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+277 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+277 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+277 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+277 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+277 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+277 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+277 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+277 silly fetchPackageMetaData  error for @types/node@^6.0.45 [SyntaxError: Unexpected token <
+277 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+277 silly fetchPackageMetaData <html><head>
+277 silly fetchPackageMetaData <title>404 Not Found</title>
+277 silly fetchPackageMetaData </head><body>
+277 silly fetchPackageMetaData <h1>Not Found</h1>
+277 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@types/node was not found on this server.</p>
+277 silly fetchPackageMetaData <hr>
+277 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+277 silly fetchPackageMetaData </body></html>
+277 silly fetchPackageMetaData ]
+278 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcommon
+279 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+279 verbose bad json <html><head>
+279 verbose bad json <title>404 Not Found</title>
+279 verbose bad json </head><body>
+279 verbose bad json <h1>Not Found</h1>
+279 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/common was not found on this server.</p>
+279 verbose bad json <hr>
+279 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+279 verbose bad json </body></html>
+280 error registry error parsing json
+281 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+281 verbose headers   server: 'Apache/2.2.22 (Debian)',
+281 verbose headers   vary: 'Accept-Encoding',
+281 verbose headers   'content-encoding': 'gzip',
+281 verbose headers   'content-length': '263',
+281 verbose headers   'keep-alive': 'timeout=5, max=100',
+281 verbose headers   connection: 'Keep-Alive',
+281 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+282 silly get cb [ 404,
+282 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+282 silly get     server: 'Apache/2.2.22 (Debian)',
+282 silly get     vary: 'Accept-Encoding',
+282 silly get     'content-encoding': 'gzip',
+282 silly get     'content-length': '263',
+282 silly get     'keep-alive': 'timeout=5, max=100',
+282 silly get     connection: 'Keep-Alive',
+282 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+283 silly fetchPackageMetaData SyntaxError: Unexpected token <
+283 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+283 silly fetchPackageMetaData <html><head>
+283 silly fetchPackageMetaData <title>404 Not Found</title>
+283 silly fetchPackageMetaData </head><body>
+283 silly fetchPackageMetaData <h1>Not Found</h1>
+283 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/common was not found on this server.</p>
+283 silly fetchPackageMetaData <hr>
+283 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+283 silly fetchPackageMetaData </body></html>
+283 silly fetchPackageMetaData
+283 silly fetchPackageMetaData     at Object.parse (native)
+283 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+283 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+283 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+283 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+283 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+283 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+283 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+283 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+283 silly fetchPackageMetaData  error for @angular/common@~2.0.2 [SyntaxError: Unexpected token <
+283 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+283 silly fetchPackageMetaData <html><head>
+283 silly fetchPackageMetaData <title>404 Not Found</title>
+283 silly fetchPackageMetaData </head><body>
+283 silly fetchPackageMetaData <h1>Not Found</h1>
+283 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/common was not found on this server.</p>
+283 silly fetchPackageMetaData <hr>
+283 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+283 silly fetchPackageMetaData </body></html>
+283 silly fetchPackageMetaData ]
+284 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcompiler
+285 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+285 verbose bad json <html><head>
+285 verbose bad json <title>404 Not Found</title>
+285 verbose bad json </head><body>
+285 verbose bad json <h1>Not Found</h1>
+285 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/compiler was not found on this server.</p>
+285 verbose bad json <hr>
+285 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+285 verbose bad json </body></html>
+286 error registry error parsing json
+287 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+287 verbose headers   server: 'Apache/2.2.22 (Debian)',
+287 verbose headers   vary: 'Accept-Encoding',
+287 verbose headers   'content-encoding': 'gzip',
+287 verbose headers   'content-length': '265',
+287 verbose headers   'keep-alive': 'timeout=5, max=100',
+287 verbose headers   connection: 'Keep-Alive',
+287 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+288 silly get cb [ 404,
+288 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+288 silly get     server: 'Apache/2.2.22 (Debian)',
+288 silly get     vary: 'Accept-Encoding',
+288 silly get     'content-encoding': 'gzip',
+288 silly get     'content-length': '265',
+288 silly get     'keep-alive': 'timeout=5, max=100',
+288 silly get     connection: 'Keep-Alive',
+288 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+289 silly fetchPackageMetaData SyntaxError: Unexpected token <
+289 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+289 silly fetchPackageMetaData <html><head>
+289 silly fetchPackageMetaData <title>404 Not Found</title>
+289 silly fetchPackageMetaData </head><body>
+289 silly fetchPackageMetaData <h1>Not Found</h1>
+289 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/compiler was not found on this server.</p>
+289 silly fetchPackageMetaData <hr>
+289 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+289 silly fetchPackageMetaData </body></html>
+289 silly fetchPackageMetaData
+289 silly fetchPackageMetaData     at Object.parse (native)
+289 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+289 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+289 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+289 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+289 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+289 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+289 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+289 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+289 silly fetchPackageMetaData  error for @angular/compiler@~2.0.2 [SyntaxError: Unexpected token <
+289 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+289 silly fetchPackageMetaData <html><head>
+289 silly fetchPackageMetaData <title>404 Not Found</title>
+289 silly fetchPackageMetaData </head><body>
+289 silly fetchPackageMetaData <h1>Not Found</h1>
+289 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/compiler was not found on this server.</p>
+289 silly fetchPackageMetaData <hr>
+289 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+289 silly fetchPackageMetaData </body></html>
+289 silly fetchPackageMetaData ]
+290 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fcore
+291 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+291 verbose bad json <html><head>
+291 verbose bad json <title>404 Not Found</title>
+291 verbose bad json </head><body>
+291 verbose bad json <h1>Not Found</h1>
+291 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/core was not found on this server.</p>
+291 verbose bad json <hr>
+291 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+291 verbose bad json </body></html>
+292 error registry error parsing json
+293 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+293 verbose headers   server: 'Apache/2.2.22 (Debian)',
+293 verbose headers   vary: 'Accept-Encoding',
+293 verbose headers   'content-encoding': 'gzip',
+293 verbose headers   'content-length': '262',
+293 verbose headers   'keep-alive': 'timeout=5, max=100',
+293 verbose headers   connection: 'Keep-Alive',
+293 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+294 silly get cb [ 404,
+294 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+294 silly get     server: 'Apache/2.2.22 (Debian)',
+294 silly get     vary: 'Accept-Encoding',
+294 silly get     'content-encoding': 'gzip',
+294 silly get     'content-length': '262',
+294 silly get     'keep-alive': 'timeout=5, max=100',
+294 silly get     connection: 'Keep-Alive',
+294 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+295 silly fetchPackageMetaData SyntaxError: Unexpected token <
+295 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+295 silly fetchPackageMetaData <html><head>
+295 silly fetchPackageMetaData <title>404 Not Found</title>
+295 silly fetchPackageMetaData </head><body>
+295 silly fetchPackageMetaData <h1>Not Found</h1>
+295 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/core was not found on this server.</p>
+295 silly fetchPackageMetaData <hr>
+295 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+295 silly fetchPackageMetaData </body></html>
+295 silly fetchPackageMetaData
+295 silly fetchPackageMetaData     at Object.parse (native)
+295 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+295 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+295 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+295 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+295 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+295 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+295 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+295 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+295 silly fetchPackageMetaData  error for @angular/core@~2.0.2 [SyntaxError: Unexpected token <
+295 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+295 silly fetchPackageMetaData <html><head>
+295 silly fetchPackageMetaData <title>404 Not Found</title>
+295 silly fetchPackageMetaData </head><body>
+295 silly fetchPackageMetaData <h1>Not Found</h1>
+295 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/core was not found on this server.</p>
+295 silly fetchPackageMetaData <hr>
+295 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+295 silly fetchPackageMetaData </body></html>
+295 silly fetchPackageMetaData ]
+296 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fforms
+297 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+297 verbose bad json <html><head>
+297 verbose bad json <title>404 Not Found</title>
+297 verbose bad json </head><body>
+297 verbose bad json <h1>Not Found</h1>
+297 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/forms was not found on this server.</p>
+297 verbose bad json <hr>
+297 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+297 verbose bad json </body></html>
+298 error registry error parsing json
+299 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+299 verbose headers   server: 'Apache/2.2.22 (Debian)',
+299 verbose headers   vary: 'Accept-Encoding',
+299 verbose headers   'content-encoding': 'gzip',
+299 verbose headers   'content-length': '264',
+299 verbose headers   'keep-alive': 'timeout=5, max=100',
+299 verbose headers   connection: 'Keep-Alive',
+299 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+300 silly get cb [ 404,
+300 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+300 silly get     server: 'Apache/2.2.22 (Debian)',
+300 silly get     vary: 'Accept-Encoding',
+300 silly get     'content-encoding': 'gzip',
+300 silly get     'content-length': '264',
+300 silly get     'keep-alive': 'timeout=5, max=100',
+300 silly get     connection: 'Keep-Alive',
+300 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+301 silly fetchPackageMetaData SyntaxError: Unexpected token <
+301 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+301 silly fetchPackageMetaData <html><head>
+301 silly fetchPackageMetaData <title>404 Not Found</title>
+301 silly fetchPackageMetaData </head><body>
+301 silly fetchPackageMetaData <h1>Not Found</h1>
+301 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/forms was not found on this server.</p>
+301 silly fetchPackageMetaData <hr>
+301 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+301 silly fetchPackageMetaData </body></html>
+301 silly fetchPackageMetaData
+301 silly fetchPackageMetaData     at Object.parse (native)
+301 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+301 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+301 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+301 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+301 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+301 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+301 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+301 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+301 silly fetchPackageMetaData  error for @angular/forms@~2.0.2 [SyntaxError: Unexpected token <
+301 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+301 silly fetchPackageMetaData <html><head>
+301 silly fetchPackageMetaData <title>404 Not Found</title>
+301 silly fetchPackageMetaData </head><body>
+301 silly fetchPackageMetaData <h1>Not Found</h1>
+301 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/forms was not found on this server.</p>
+301 silly fetchPackageMetaData <hr>
+301 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+301 silly fetchPackageMetaData </body></html>
+301 silly fetchPackageMetaData ]
+302 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fhttp
+303 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+303 verbose bad json <html><head>
+303 verbose bad json <title>404 Not Found</title>
+303 verbose bad json </head><body>
+303 verbose bad json <h1>Not Found</h1>
+303 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/http was not found on this server.</p>
+303 verbose bad json <hr>
+303 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+303 verbose bad json </body></html>
+304 error registry error parsing json
+305 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+305 verbose headers   server: 'Apache/2.2.22 (Debian)',
+305 verbose headers   vary: 'Accept-Encoding',
+305 verbose headers   'content-encoding': 'gzip',
+305 verbose headers   'content-length': '262',
+305 verbose headers   'keep-alive': 'timeout=5, max=100',
+305 verbose headers   connection: 'Keep-Alive',
+305 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+306 silly get cb [ 404,
+306 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+306 silly get     server: 'Apache/2.2.22 (Debian)',
+306 silly get     vary: 'Accept-Encoding',
+306 silly get     'content-encoding': 'gzip',
+306 silly get     'content-length': '262',
+306 silly get     'keep-alive': 'timeout=5, max=100',
+306 silly get     connection: 'Keep-Alive',
+306 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+307 silly fetchPackageMetaData SyntaxError: Unexpected token <
+307 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+307 silly fetchPackageMetaData <html><head>
+307 silly fetchPackageMetaData <title>404 Not Found</title>
+307 silly fetchPackageMetaData </head><body>
+307 silly fetchPackageMetaData <h1>Not Found</h1>
+307 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/http was not found on this server.</p>
+307 silly fetchPackageMetaData <hr>
+307 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+307 silly fetchPackageMetaData </body></html>
+307 silly fetchPackageMetaData
+307 silly fetchPackageMetaData     at Object.parse (native)
+307 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+307 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+307 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+307 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+307 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+307 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+307 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+307 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+307 silly fetchPackageMetaData  error for @angular/http@~2.0.2 [SyntaxError: Unexpected token <
+307 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+307 silly fetchPackageMetaData <html><head>
+307 silly fetchPackageMetaData <title>404 Not Found</title>
+307 silly fetchPackageMetaData </head><body>
+307 silly fetchPackageMetaData <h1>Not Found</h1>
+307 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/http was not found on this server.</p>
+307 silly fetchPackageMetaData <hr>
+307 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+307 silly fetchPackageMetaData </body></html>
+307 silly fetchPackageMetaData ]
+308 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser-dynamic
+309 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+309 verbose bad json <html><head>
+309 verbose bad json <title>404 Not Found</title>
+309 verbose bad json </head><body>
+309 verbose bad json <h1>Not Found</h1>
+309 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/platform-browser-dynamic was not found on this server.</p>
+309 verbose bad json <hr>
+309 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+309 verbose bad json </body></html>
+310 error registry error parsing json
+311 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+311 verbose headers   server: 'Apache/2.2.22 (Debian)',
+311 verbose headers   vary: 'Accept-Encoding',
+311 verbose headers   'content-encoding': 'gzip',
+311 verbose headers   'content-length': '277',
+311 verbose headers   'keep-alive': 'timeout=5, max=100',
+311 verbose headers   connection: 'Keep-Alive',
+311 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+312 silly get cb [ 404,
+312 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+312 silly get     server: 'Apache/2.2.22 (Debian)',
+312 silly get     vary: 'Accept-Encoding',
+312 silly get     'content-encoding': 'gzip',
+312 silly get     'content-length': '277',
+312 silly get     'keep-alive': 'timeout=5, max=100',
+312 silly get     connection: 'Keep-Alive',
+312 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+313 silly fetchPackageMetaData SyntaxError: Unexpected token <
+313 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+313 silly fetchPackageMetaData <html><head>
+313 silly fetchPackageMetaData <title>404 Not Found</title>
+313 silly fetchPackageMetaData </head><body>
+313 silly fetchPackageMetaData <h1>Not Found</h1>
+313 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/platform-browser-dynamic was not found on this server.</p>
+313 silly fetchPackageMetaData <hr>
+313 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+313 silly fetchPackageMetaData </body></html>
+313 silly fetchPackageMetaData
+313 silly fetchPackageMetaData     at Object.parse (native)
+313 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+313 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+313 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+313 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+313 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+313 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+313 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+313 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+313 silly fetchPackageMetaData  error for @angular/platform-browser-dynamic@~2.0.2 [SyntaxError: Unexpected token <
+313 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+313 silly fetchPackageMetaData <html><head>
+313 silly fetchPackageMetaData <title>404 Not Found</title>
+313 silly fetchPackageMetaData </head><body>
+313 silly fetchPackageMetaData <h1>Not Found</h1>
+313 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/platform-browser-dynamic was not found on this server.</p>
+313 silly fetchPackageMetaData <hr>
+313 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+313 silly fetchPackageMetaData </body></html>
+313 silly fetchPackageMetaData ]
+314 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fplatform-browser
+315 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+315 verbose bad json <html><head>
+315 verbose bad json <title>404 Not Found</title>
+315 verbose bad json </head><body>
+315 verbose bad json <h1>Not Found</h1>
+315 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/platform-browser was not found on this server.</p>
+315 verbose bad json <hr>
+315 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+315 verbose bad json </body></html>
+316 error registry error parsing json
+317 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+317 verbose headers   server: 'Apache/2.2.22 (Debian)',
+317 verbose headers   vary: 'Accept-Encoding',
+317 verbose headers   'content-encoding': 'gzip',
+317 verbose headers   'content-length': '271',
+317 verbose headers   'keep-alive': 'timeout=5, max=100',
+317 verbose headers   connection: 'Keep-Alive',
+317 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+318 silly get cb [ 404,
+318 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+318 silly get     server: 'Apache/2.2.22 (Debian)',
+318 silly get     vary: 'Accept-Encoding',
+318 silly get     'content-encoding': 'gzip',
+318 silly get     'content-length': '271',
+318 silly get     'keep-alive': 'timeout=5, max=100',
+318 silly get     connection: 'Keep-Alive',
+318 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+319 silly fetchPackageMetaData SyntaxError: Unexpected token <
+319 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+319 silly fetchPackageMetaData <html><head>
+319 silly fetchPackageMetaData <title>404 Not Found</title>
+319 silly fetchPackageMetaData </head><body>
+319 silly fetchPackageMetaData <h1>Not Found</h1>
+319 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/platform-browser was not found on this server.</p>
+319 silly fetchPackageMetaData <hr>
+319 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+319 silly fetchPackageMetaData </body></html>
+319 silly fetchPackageMetaData
+319 silly fetchPackageMetaData     at Object.parse (native)
+319 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+319 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+319 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+319 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+319 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+319 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+319 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+319 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+319 silly fetchPackageMetaData  error for @angular/platform-browser@~2.0.2 [SyntaxError: Unexpected token <
+319 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+319 silly fetchPackageMetaData <html><head>
+319 silly fetchPackageMetaData <title>404 Not Found</title>
+319 silly fetchPackageMetaData </head><body>
+319 silly fetchPackageMetaData <h1>Not Found</h1>
+319 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/platform-browser was not found on this server.</p>
+319 silly fetchPackageMetaData <hr>
+319 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+319 silly fetchPackageMetaData </body></html>
+319 silly fetchPackageMetaData ]
+320 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2frouter
+321 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+321 verbose bad json <html><head>
+321 verbose bad json <title>404 Not Found</title>
+321 verbose bad json </head><body>
+321 verbose bad json <h1>Not Found</h1>
+321 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/router was not found on this server.</p>
+321 verbose bad json <hr>
+321 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+321 verbose bad json </body></html>
+322 error registry error parsing json
+323 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+323 verbose headers   server: 'Apache/2.2.22 (Debian)',
+323 verbose headers   vary: 'Accept-Encoding',
+323 verbose headers   'content-encoding': 'gzip',
+323 verbose headers   'content-length': '263',
+323 verbose headers   'keep-alive': 'timeout=5, max=100',
+323 verbose headers   connection: 'Keep-Alive',
+323 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+324 silly get cb [ 404,
+324 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+324 silly get     server: 'Apache/2.2.22 (Debian)',
+324 silly get     vary: 'Accept-Encoding',
+324 silly get     'content-encoding': 'gzip',
+324 silly get     'content-length': '263',
+324 silly get     'keep-alive': 'timeout=5, max=100',
+324 silly get     connection: 'Keep-Alive',
+324 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+325 silly fetchPackageMetaData SyntaxError: Unexpected token <
+325 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+325 silly fetchPackageMetaData <html><head>
+325 silly fetchPackageMetaData <title>404 Not Found</title>
+325 silly fetchPackageMetaData </head><body>
+325 silly fetchPackageMetaData <h1>Not Found</h1>
+325 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/router was not found on this server.</p>
+325 silly fetchPackageMetaData <hr>
+325 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+325 silly fetchPackageMetaData </body></html>
+325 silly fetchPackageMetaData
+325 silly fetchPackageMetaData     at Object.parse (native)
+325 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+325 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+325 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+325 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+325 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+325 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+325 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+325 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+325 silly fetchPackageMetaData  error for @angular/router@~3.0.2 [SyntaxError: Unexpected token <
+325 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+325 silly fetchPackageMetaData <html><head>
+325 silly fetchPackageMetaData <title>404 Not Found</title>
+325 silly fetchPackageMetaData </head><body>
+325 silly fetchPackageMetaData <h1>Not Found</h1>
+325 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/router was not found on this server.</p>
+325 silly fetchPackageMetaData <hr>
+325 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+325 silly fetchPackageMetaData </body></html>
+325 silly fetchPackageMetaData ]
+326 http 404 http://repo.mobisys.org/nexus/content/groups/npm-all/@angular%2fupgrade
+327 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+327 verbose bad json <html><head>
+327 verbose bad json <title>404 Not Found</title>
+327 verbose bad json </head><body>
+327 verbose bad json <h1>Not Found</h1>
+327 verbose bad json <p>The requested URL /nexus/content/groups/npm-all/@angular/upgrade was not found on this server.</p>
+327 verbose bad json <hr>
+327 verbose bad json <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+327 verbose bad json </body></html>
+328 error registry error parsing json
+329 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+329 verbose headers   server: 'Apache/2.2.22 (Debian)',
+329 verbose headers   vary: 'Accept-Encoding',
+329 verbose headers   'content-encoding': 'gzip',
+329 verbose headers   'content-length': '264',
+329 verbose headers   'keep-alive': 'timeout=5, max=100',
+329 verbose headers   connection: 'Keep-Alive',
+329 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+330 silly get cb [ 404,
+330 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+330 silly get     server: 'Apache/2.2.22 (Debian)',
+330 silly get     vary: 'Accept-Encoding',
+330 silly get     'content-encoding': 'gzip',
+330 silly get     'content-length': '264',
+330 silly get     'keep-alive': 'timeout=5, max=100',
+330 silly get     connection: 'Keep-Alive',
+330 silly get     'content-type': 'text/html; charset=iso-8859-1' } ]
+331 silly fetchPackageMetaData SyntaxError: Unexpected token <
+331 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+331 silly fetchPackageMetaData <html><head>
+331 silly fetchPackageMetaData <title>404 Not Found</title>
+331 silly fetchPackageMetaData </head><body>
+331 silly fetchPackageMetaData <h1>Not Found</h1>
+331 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/upgrade was not found on this server.</p>
+331 silly fetchPackageMetaData <hr>
+331 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+331 silly fetchPackageMetaData </body></html>
+331 silly fetchPackageMetaData
+331 silly fetchPackageMetaData     at Object.parse (native)
+331 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+331 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+331 silly fetchPackageMetaData     at Gunzip.onEnd (zlib.js:227:5)
+331 silly fetchPackageMetaData     at emitNone (events.js:72:20)
+331 silly fetchPackageMetaData     at Gunzip.emit (events.js:166:7)
+331 silly fetchPackageMetaData     at endReadableNT (_stream_readable.js:913:12)
+331 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:442:9)
+331 silly fetchPackageMetaData     at process._tickCallback (node.js:356:17)
+331 silly fetchPackageMetaData  error for @angular/upgrade@~2.0.2 [SyntaxError: Unexpected token <
+331 silly fetchPackageMetaData <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+331 silly fetchPackageMetaData <html><head>
+331 silly fetchPackageMetaData <title>404 Not Found</title>
+331 silly fetchPackageMetaData </head><body>
+331 silly fetchPackageMetaData <h1>Not Found</h1>
+331 silly fetchPackageMetaData <p>The requested URL /nexus/content/groups/npm-all/@angular/upgrade was not found on this server.</p>
+331 silly fetchPackageMetaData <hr>
+331 silly fetchPackageMetaData <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+331 silly fetchPackageMetaData </body></html>
+331 silly fetchPackageMetaData ]
+332 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/bootstrap
+333 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+333 verbose headers   server: 'Nexus/2.11.3-01',
+333 verbose headers   'x-frame-options': 'SAMEORIGIN',
+333 verbose headers   'x-content-type-options': 'nosniff',
+333 verbose headers   'accept-ranges': 'bytes',
+333 verbose headers   'content-type': 'application/json',
+333 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+333 verbose headers   'content-length': '45719',
+333 verbose headers   'keep-alive': 'timeout=5, max=100',
+333 verbose headers   connection: 'Keep-Alive' }
+334 silly get cb [ 200,
+334 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+334 silly get     server: 'Nexus/2.11.3-01',
+334 silly get     'x-frame-options': 'SAMEORIGIN',
+334 silly get     'x-content-type-options': 'nosniff',
+334 silly get     'accept-ranges': 'bytes',
+334 silly get     'content-type': 'application/json',
+334 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+334 silly get     'content-length': '45719',
+334 silly get     'keep-alive': 'timeout=5, max=100',
+334 silly get     connection: 'Keep-Alive' } ]
+335 verbose get saving bootstrap to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\bootstrap\.cache.json
+336 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+337 silly resolveWithNewModule bootstrap@3.3.7 checking installable status
+338 silly cache add args [ 'bootstrap@^3.3.7', null ]
+339 verbose cache add spec bootstrap@^3.3.7
+340 silly cache add parsed spec Result {
+340 silly cache add   raw: 'bootstrap@^3.3.7',
+340 silly cache add   scope: null,
+340 silly cache add   escapedName: 'bootstrap',
+340 silly cache add   name: 'bootstrap',
+340 silly cache add   rawSpec: '^3.3.7',
+340 silly cache add   spec: '>=3.3.7 <4.0.0',
+340 silly cache add   type: 'range' }
+341 silly addNamed bootstrap@>=3.3.7 <4.0.0
+342 verbose addNamed ">=3.3.7 <4.0.0" is a valid semver range for bootstrap
+343 silly addNameRange { name: 'bootstrap', range: '>=3.3.7 <4.0.0', hasData: false }
+344 silly mapToRegistry name bootstrap
+345 silly mapToRegistry using default registry
+346 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+347 silly mapToRegistry data Result {
+347 silly mapToRegistry   raw: 'bootstrap',
+347 silly mapToRegistry   scope: null,
+347 silly mapToRegistry   escapedName: 'bootstrap',
+347 silly mapToRegistry   name: 'bootstrap',
+347 silly mapToRegistry   rawSpec: '',
+347 silly mapToRegistry   spec: 'latest',
+347 silly mapToRegistry   type: 'tag' }
+348 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/bootstrap
+349 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/bootstrap not in flight; fetching
+350 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/bootstrap not expired, no request
+351 silly addNameRange number 2 { name: 'bootstrap', range: '>=3.3.7 <4.0.0', hasData: true }
+352 silly addNameRange versions [ 'bootstrap',
+352 silly addNameRange   [ '0.0.1',
+352 silly addNameRange     '0.0.2',
+352 silly addNameRange     '3.1.1',
+352 silly addNameRange     '3.2.0',
+352 silly addNameRange     '3.3.0',
+352 silly addNameRange     '3.3.1',
+352 silly addNameRange     '3.3.2',
+352 silly addNameRange     '3.3.4',
+352 silly addNameRange     '3.3.5',
+352 silly addNameRange     '3.3.6',
+352 silly addNameRange     '4.0.0-alpha.2',
+352 silly addNameRange     '3.3.7',
+352 silly addNameRange     '4.0.0-alpha.3',
+352 silly addNameRange     '4.0.0-alpha.4',
+352 silly addNameRange     '4.0.0-alpha.5' ] ]
+353 silly addNamed bootstrap@3.3.7
+354 verbose addNamed "3.3.7" is a plain semver version for bootstrap
+355 silly cache afterAdd bootstrap@3.3.7
+356 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\bootstrap\3.3.7\package\package.json not in flight; writing
+357 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+358 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\bootstrap\3.3.7\package\package.json written
+359 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/angular-in-memory-web-api
+360 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+360 verbose headers   server: 'Nexus/2.11.3-01',
+360 verbose headers   'x-frame-options': 'SAMEORIGIN',
+360 verbose headers   'x-content-type-options': 'nosniff',
+360 verbose headers   'accept-ranges': 'bytes',
+360 verbose headers   'content-type': 'application/json',
+360 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+360 verbose headers   'content-length': '44855',
+360 verbose headers   'keep-alive': 'timeout=5, max=100',
+360 verbose headers   connection: 'Keep-Alive' }
+361 silly get cb [ 200,
+361 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+361 silly get     server: 'Nexus/2.11.3-01',
+361 silly get     'x-frame-options': 'SAMEORIGIN',
+361 silly get     'x-content-type-options': 'nosniff',
+361 silly get     'accept-ranges': 'bytes',
+361 silly get     'content-type': 'application/json',
+361 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+361 silly get     'content-length': '44855',
+361 silly get     'keep-alive': 'timeout=5, max=100',
+361 silly get     connection: 'Keep-Alive' } ]
+362 verbose get saving angular-in-memory-web-api to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\angular-in-memory-web-api\.cache.json
+363 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+364 silly resolveWithNewModule angular-in-memory-web-api@0.1.13 checking installable status
+365 silly cache add args [ 'angular-in-memory-web-api@~0.1.5', null ]
+366 verbose cache add spec angular-in-memory-web-api@~0.1.5
+367 silly cache add parsed spec Result {
+367 silly cache add   raw: 'angular-in-memory-web-api@~0.1.5',
+367 silly cache add   scope: null,
+367 silly cache add   escapedName: 'angular-in-memory-web-api',
+367 silly cache add   name: 'angular-in-memory-web-api',
+367 silly cache add   rawSpec: '~0.1.5',
+367 silly cache add   spec: '>=0.1.5 <0.2.0',
+367 silly cache add   type: 'range' }
+368 silly addNamed angular-in-memory-web-api@>=0.1.5 <0.2.0
+369 verbose addNamed ">=0.1.5 <0.2.0" is a valid semver range for angular-in-memory-web-api
+370 silly addNameRange { name: 'angular-in-memory-web-api',
+370 silly addNameRange   range: '>=0.1.5 <0.2.0',
+370 silly addNameRange   hasData: false }
+371 silly mapToRegistry name angular-in-memory-web-api
+372 silly mapToRegistry using default registry
+373 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+374 silly mapToRegistry data Result {
+374 silly mapToRegistry   raw: 'angular-in-memory-web-api',
+374 silly mapToRegistry   scope: null,
+374 silly mapToRegistry   escapedName: 'angular-in-memory-web-api',
+374 silly mapToRegistry   name: 'angular-in-memory-web-api',
+374 silly mapToRegistry   rawSpec: '',
+374 silly mapToRegistry   spec: 'latest',
+374 silly mapToRegistry   type: 'tag' }
+375 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/angular-in-memory-web-api
+376 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/angular-in-memory-web-api not in flight; fetching
+377 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/angular-in-memory-web-api not expired, no request
+378 silly addNameRange number 2 { name: 'angular-in-memory-web-api',
+378 silly addNameRange   range: '>=0.1.5 <0.2.0',
+378 silly addNameRange   hasData: true }
+379 silly addNameRange versions [ 'angular-in-memory-web-api',
+379 silly addNameRange   [ '0.1.0',
+379 silly addNameRange     '0.1.1',
+379 silly addNameRange     '0.1.2',
+379 silly addNameRange     '0.1.3',
+379 silly addNameRange     '0.1.4',
+379 silly addNameRange     '0.1.5',
+379 silly addNameRange     '0.1.6',
+379 silly addNameRange     '0.1.7',
+379 silly addNameRange     '0.1.8',
+379 silly addNameRange     '0.1.9',
+379 silly addNameRange     '0.1.10',
+379 silly addNameRange     '0.1.11',
+379 silly addNameRange     '0.1.12',
+379 silly addNameRange     '0.1.13' ] ]
+380 silly addNamed angular-in-memory-web-api@0.1.13
+381 verbose addNamed "0.1.13" is a plain semver version for angular-in-memory-web-api
+382 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/jquery
+383 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+383 verbose headers   server: 'Nexus/2.11.3-01',
+383 verbose headers   'x-frame-options': 'SAMEORIGIN',
+383 verbose headers   'x-content-type-options': 'nosniff',
+383 verbose headers   'accept-ranges': 'bytes',
+383 verbose headers   'content-type': 'application/json',
+383 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+383 verbose headers   'content-length': '84808',
+383 verbose headers   'keep-alive': 'timeout=5, max=100',
+383 verbose headers   connection: 'Keep-Alive' }
+384 silly get cb [ 200,
+384 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+384 silly get     server: 'Nexus/2.11.3-01',
+384 silly get     'x-frame-options': 'SAMEORIGIN',
+384 silly get     'x-content-type-options': 'nosniff',
+384 silly get     'accept-ranges': 'bytes',
+384 silly get     'content-type': 'application/json',
+384 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+384 silly get     'content-length': '84808',
+384 silly get     'keep-alive': 'timeout=5, max=100',
+384 silly get     connection: 'Keep-Alive' } ]
+385 verbose get saving jquery to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\jquery\.cache.json
+386 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+387 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/modernizr
+388 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+388 verbose headers   server: 'Nexus/2.11.3-01',
+388 verbose headers   'x-frame-options': 'SAMEORIGIN',
+388 verbose headers   'x-content-type-options': 'nosniff',
+388 verbose headers   'accept-ranges': 'bytes',
+388 verbose headers   'content-type': 'application/json',
+388 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+388 verbose headers   'content-length': '28333',
+388 verbose headers   'keep-alive': 'timeout=5, max=100',
+388 verbose headers   connection: 'Keep-Alive' }
+389 silly get cb [ 200,
+389 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+389 silly get     server: 'Nexus/2.11.3-01',
+389 silly get     'x-frame-options': 'SAMEORIGIN',
+389 silly get     'x-content-type-options': 'nosniff',
+389 silly get     'accept-ranges': 'bytes',
+389 silly get     'content-type': 'application/json',
+389 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+389 silly get     'content-length': '28333',
+389 silly get     'keep-alive': 'timeout=5, max=100',
+389 silly get     connection: 'Keep-Alive' } ]
+390 verbose get saving modernizr to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\modernizr\.cache.json
+391 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+392 silly cache afterAdd angular-in-memory-web-api@0.1.13
+393 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\angular-in-memory-web-api\0.1.13\package\package.json not in flight; writing
+394 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+395 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/reflect-metadata
+396 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+396 verbose headers   server: 'Nexus/2.11.3-01',
+396 verbose headers   'x-frame-options': 'SAMEORIGIN',
+396 verbose headers   'x-content-type-options': 'nosniff',
+396 verbose headers   'accept-ranges': 'bytes',
+396 verbose headers   'content-type': 'application/json',
+396 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+396 verbose headers   'content-length': '25598',
+396 verbose headers   'keep-alive': 'timeout=5, max=100',
+396 verbose headers   connection: 'Keep-Alive' }
+397 silly get cb [ 200,
+397 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+397 silly get     server: 'Nexus/2.11.3-01',
+397 silly get     'x-frame-options': 'SAMEORIGIN',
+397 silly get     'x-content-type-options': 'nosniff',
+397 silly get     'accept-ranges': 'bytes',
+397 silly get     'content-type': 'application/json',
+397 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+397 silly get     'content-length': '25598',
+397 silly get     'keep-alive': 'timeout=5, max=100',
+397 silly get     connection: 'Keep-Alive' } ]
+398 verbose get saving reflect-metadata to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\reflect-metadata\.cache.json
+399 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+400 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\angular-in-memory-web-api\0.1.13\package\package.json written
+401 silly resolveWithNewModule modernizr@3.3.1 checking installable status
+402 silly cache add args [ 'modernizr@^3.3.1', null ]
+403 verbose cache add spec modernizr@^3.3.1
+404 silly cache add parsed spec Result {
+404 silly cache add   raw: 'modernizr@^3.3.1',
+404 silly cache add   scope: null,
+404 silly cache add   escapedName: 'modernizr',
+404 silly cache add   name: 'modernizr',
+404 silly cache add   rawSpec: '^3.3.1',
+404 silly cache add   spec: '>=3.3.1 <4.0.0',
+404 silly cache add   type: 'range' }
+405 silly addNamed modernizr@>=3.3.1 <4.0.0
+406 verbose addNamed ">=3.3.1 <4.0.0" is a valid semver range for modernizr
+407 silly addNameRange { name: 'modernizr', range: '>=3.3.1 <4.0.0', hasData: false }
+408 silly mapToRegistry name modernizr
+409 silly mapToRegistry using default registry
+410 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+411 silly mapToRegistry data Result {
+411 silly mapToRegistry   raw: 'modernizr',
+411 silly mapToRegistry   scope: null,
+411 silly mapToRegistry   escapedName: 'modernizr',
+411 silly mapToRegistry   name: 'modernizr',
+411 silly mapToRegistry   rawSpec: '',
+411 silly mapToRegistry   spec: 'latest',
+411 silly mapToRegistry   type: 'tag' }
+412 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/modernizr
+413 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/modernizr not in flight; fetching
+414 silly resolveWithNewModule jquery@3.1.1 checking installable status
+415 silly cache add args [ 'jquery@^3.1.1', null ]
+416 verbose cache add spec jquery@^3.1.1
+417 silly cache add parsed spec Result {
+417 silly cache add   raw: 'jquery@^3.1.1',
+417 silly cache add   scope: null,
+417 silly cache add   escapedName: 'jquery',
+417 silly cache add   name: 'jquery',
+417 silly cache add   rawSpec: '^3.1.1',
+417 silly cache add   spec: '>=3.1.1 <4.0.0',
+417 silly cache add   type: 'range' }
+418 silly addNamed jquery@>=3.1.1 <4.0.0
+419 verbose addNamed ">=3.1.1 <4.0.0" is a valid semver range for jquery
+420 silly addNameRange { name: 'jquery', range: '>=3.1.1 <4.0.0', hasData: false }
+421 silly mapToRegistry name jquery
+422 silly mapToRegistry using default registry
+423 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+424 silly mapToRegistry data Result {
+424 silly mapToRegistry   raw: 'jquery',
+424 silly mapToRegistry   scope: null,
+424 silly mapToRegistry   escapedName: 'jquery',
+424 silly mapToRegistry   name: 'jquery',
+424 silly mapToRegistry   rawSpec: '',
+424 silly mapToRegistry   spec: 'latest',
+424 silly mapToRegistry   type: 'tag' }
+425 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/jquery
+426 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/jquery not in flight; fetching
+427 silly resolveWithNewModule reflect-metadata@0.1.8 checking installable status
+428 silly cache add args [ 'reflect-metadata@^0.1.8', null ]
+429 verbose cache add spec reflect-metadata@^0.1.8
+430 silly cache add parsed spec Result {
+430 silly cache add   raw: 'reflect-metadata@^0.1.8',
+430 silly cache add   scope: null,
+430 silly cache add   escapedName: 'reflect-metadata',
+430 silly cache add   name: 'reflect-metadata',
+430 silly cache add   rawSpec: '^0.1.8',
+430 silly cache add   spec: '>=0.1.8 <0.2.0',
+430 silly cache add   type: 'range' }
+431 silly addNamed reflect-metadata@>=0.1.8 <0.2.0
+432 verbose addNamed ">=0.1.8 <0.2.0" is a valid semver range for reflect-metadata
+433 silly addNameRange { name: 'reflect-metadata',
+433 silly addNameRange   range: '>=0.1.8 <0.2.0',
+433 silly addNameRange   hasData: false }
+434 silly mapToRegistry name reflect-metadata
+435 silly mapToRegistry using default registry
+436 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+437 silly mapToRegistry data Result {
+437 silly mapToRegistry   raw: 'reflect-metadata',
+437 silly mapToRegistry   scope: null,
+437 silly mapToRegistry   escapedName: 'reflect-metadata',
+437 silly mapToRegistry   name: 'reflect-metadata',
+437 silly mapToRegistry   rawSpec: '',
+437 silly mapToRegistry   spec: 'latest',
+437 silly mapToRegistry   type: 'tag' }
+438 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/reflect-metadata
+439 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/reflect-metadata not in flight; fetching
+440 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/fastclick
+441 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+441 verbose headers   server: 'Nexus/2.11.3-01',
+441 verbose headers   'x-frame-options': 'SAMEORIGIN',
+441 verbose headers   'x-content-type-options': 'nosniff',
+441 verbose headers   'accept-ranges': 'bytes',
+441 verbose headers   'content-type': 'application/json',
+441 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+441 verbose headers   'content-length': '38402',
+441 verbose headers   'keep-alive': 'timeout=5, max=100',
+441 verbose headers   connection: 'Keep-Alive' }
+442 silly get cb [ 200,
+442 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+442 silly get     server: 'Nexus/2.11.3-01',
+442 silly get     'x-frame-options': 'SAMEORIGIN',
+442 silly get     'x-content-type-options': 'nosniff',
+442 silly get     'accept-ranges': 'bytes',
+442 silly get     'content-type': 'application/json',
+442 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+442 silly get     'content-length': '38402',
+442 silly get     'keep-alive': 'timeout=5, max=100',
+442 silly get     connection: 'Keep-Alive' } ]
+443 verbose get saving fastclick to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\fastclick\.cache.json
+444 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+445 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/foundation-sites
+446 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+446 verbose headers   server: 'Nexus/2.11.3-01',
+446 verbose headers   'x-frame-options': 'SAMEORIGIN',
+446 verbose headers   'x-content-type-options': 'nosniff',
+446 verbose headers   'accept-ranges': 'bytes',
+446 verbose headers   'content-type': 'application/json',
+446 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+446 verbose headers   'content-length': '72360',
+446 verbose headers   'keep-alive': 'timeout=5, max=100',
+446 verbose headers   connection: 'Keep-Alive' }
+447 silly get cb [ 200,
+447 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+447 silly get     server: 'Nexus/2.11.3-01',
+447 silly get     'x-frame-options': 'SAMEORIGIN',
+447 silly get     'x-content-type-options': 'nosniff',
+447 silly get     'accept-ranges': 'bytes',
+447 silly get     'content-type': 'application/json',
+447 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+447 silly get     'content-length': '72360',
+447 silly get     'keep-alive': 'timeout=5, max=100',
+447 silly get     connection: 'Keep-Alive' } ]
+448 verbose get saving foundation-sites to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\foundation-sites\.cache.json
+449 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+450 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/systemjs
+451 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+451 verbose headers   server: 'Nexus/2.11.3-01',
+451 verbose headers   'x-frame-options': 'SAMEORIGIN',
+451 verbose headers   'x-content-type-options': 'nosniff',
+451 verbose headers   'accept-ranges': 'bytes',
+451 verbose headers   'content-type': 'application/json',
+451 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+451 verbose headers   'content-length': '152433',
+451 verbose headers   'keep-alive': 'timeout=5, max=100',
+451 verbose headers   connection: 'Keep-Alive' }
+452 silly get cb [ 200,
+452 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+452 silly get     server: 'Nexus/2.11.3-01',
+452 silly get     'x-frame-options': 'SAMEORIGIN',
+452 silly get     'x-content-type-options': 'nosniff',
+452 silly get     'accept-ranges': 'bytes',
+452 silly get     'content-type': 'application/json',
+452 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+452 silly get     'content-length': '152433',
+452 silly get     'keep-alive': 'timeout=5, max=100',
+452 silly get     connection: 'Keep-Alive' } ]
+453 verbose get saving systemjs to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\systemjs\.cache.json
+454 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+455 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/rxjs
+456 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+456 verbose headers   server: 'Nexus/2.11.3-01',
+456 verbose headers   'x-frame-options': 'SAMEORIGIN',
+456 verbose headers   'x-content-type-options': 'nosniff',
+456 verbose headers   'accept-ranges': 'bytes',
+456 verbose headers   'content-type': 'application/json',
+456 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+456 verbose headers   'content-length': '84422',
+456 verbose headers   'keep-alive': 'timeout=5, max=100',
+456 verbose headers   connection: 'Keep-Alive' }
+457 silly get cb [ 200,
+457 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+457 silly get     server: 'Nexus/2.11.3-01',
+457 silly get     'x-frame-options': 'SAMEORIGIN',
+457 silly get     'x-content-type-options': 'nosniff',
+457 silly get     'accept-ranges': 'bytes',
+457 silly get     'content-type': 'application/json',
+457 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+457 silly get     'content-length': '84422',
+457 silly get     'keep-alive': 'timeout=5, max=100',
+457 silly get     connection: 'Keep-Alive' } ]
+458 verbose get saving rxjs to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\rxjs\.cache.json
+459 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+460 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/es6-shim
+461 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+461 verbose headers   server: 'Nexus/2.11.3-01',
+461 verbose headers   'x-frame-options': 'SAMEORIGIN',
+461 verbose headers   'x-content-type-options': 'nosniff',
+461 verbose headers   'accept-ranges': 'bytes',
+461 verbose headers   'content-type': 'application/json',
+461 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+461 verbose headers   'content-length': '207754',
+461 verbose headers   'keep-alive': 'timeout=5, max=100',
+461 verbose headers   connection: 'Keep-Alive' }
+462 silly get cb [ 200,
+462 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+462 silly get     server: 'Nexus/2.11.3-01',
+462 silly get     'x-frame-options': 'SAMEORIGIN',
+462 silly get     'x-content-type-options': 'nosniff',
+462 silly get     'accept-ranges': 'bytes',
+462 silly get     'content-type': 'application/json',
+462 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+462 silly get     'content-length': '207754',
+462 silly get     'keep-alive': 'timeout=5, max=100',
+462 silly get     connection: 'Keep-Alive' } ]
+463 verbose get saving es6-shim to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\es6-shim\.cache.json
+464 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+465 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/core-js
+466 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+466 verbose headers   server: 'Nexus/2.11.3-01',
+466 verbose headers   'x-frame-options': 'SAMEORIGIN',
+466 verbose headers   'x-content-type-options': 'nosniff',
+466 verbose headers   'accept-ranges': 'bytes',
+466 verbose headers   'content-type': 'application/json',
+466 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+466 verbose headers   'content-length': '233817',
+466 verbose headers   'keep-alive': 'timeout=5, max=100',
+466 verbose headers   connection: 'Keep-Alive' }
+467 silly get cb [ 200,
+467 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+467 silly get     server: 'Nexus/2.11.3-01',
+467 silly get     'x-frame-options': 'SAMEORIGIN',
+467 silly get     'x-content-type-options': 'nosniff',
+467 silly get     'accept-ranges': 'bytes',
+467 silly get     'content-type': 'application/json',
+467 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+467 silly get     'content-length': '233817',
+467 silly get     'keep-alive': 'timeout=5, max=100',
+467 silly get     connection: 'Keep-Alive' } ]
+468 verbose get saving core-js to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\core-js\.cache.json
+469 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+470 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/modernizr not expired, no request
+471 silly addNameRange number 2 { name: 'modernizr', range: '>=3.3.1 <4.0.0', hasData: true }
+472 silly addNameRange versions [ 'modernizr',
+472 silly addNameRange   [ '3.0.0-pre',
+472 silly addNameRange     '3.0.0-alpha',
+472 silly addNameRange     '3.0.0-alpha.2',
+472 silly addNameRange     '3.0.0-alpha.3',
+472 silly addNameRange     '3.0.0-alpha.4',
+472 silly addNameRange     '3.0.0',
+472 silly addNameRange     '3.1.0',
+472 silly addNameRange     '3.2.0',
+472 silly addNameRange     '3.3.0',
+472 silly addNameRange     '3.3.1' ] ]
+473 silly addNamed modernizr@3.3.1
+474 verbose addNamed "3.3.1" is a plain semver version for modernizr
+475 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/jquery not expired, no request
+476 silly addNameRange number 2 { name: 'jquery', range: '>=3.1.1 <4.0.0', hasData: true }
+477 silly addNameRange versions [ 'jquery',
+477 silly addNameRange   [ '1.5.1',
+477 silly addNameRange     '1.6.2',
+477 silly addNameRange     '1.6.3',
+477 silly addNameRange     '1.7.2',
+477 silly addNameRange     '1.7.3',
+477 silly addNameRange     '1.8.2',
+477 silly addNameRange     '1.8.3',
+477 silly addNameRange     '2.1.0-beta2',
+477 silly addNameRange     '2.1.0-beta3',
+477 silly addNameRange     '1.11.0-beta3',
+477 silly addNameRange     '1.11.0-rc1',
+477 silly addNameRange     '2.1.0-rc1',
+477 silly addNameRange     '1.11.0',
+477 silly addNameRange     '2.1.0',
+477 silly addNameRange     '2.1.1-beta1',
+477 silly addNameRange     '1.11.1-beta1',
+477 silly addNameRange     '2.1.1-rc1',
+477 silly addNameRange     '1.11.1-rc1',
+477 silly addNameRange     '2.1.1-rc2',
+477 silly addNameRange     '1.11.1-rc2',
+477 silly addNameRange     '2.1.1',
+477 silly addNameRange     '1.11.1',
+477 silly addNameRange     '1.9.1',
+477 silly addNameRange     '2.1.2',
+477 silly addNameRange     '1.11.2',
+477 silly addNameRange     '2.1.3',
+477 silly addNameRange     '2.1.4',
+477 silly addNameRange     '1.11.3',
+477 silly addNameRange     '3.0.0-alpha1',
+477 silly addNameRange     '1.12.0',
+477 silly addNameRange     '2.2.0',
+477 silly addNameRange     '3.0.0-beta1',
+477 silly addNameRange     '1.12.1',
+477 silly addNameRange     '2.2.1',
+477 silly addNameRange     '1.12.2',
+477 silly addNameRange     '2.2.2',
+477 silly addNameRange     '1.12.3',
+477 silly addNameRange     '2.2.3',
+477 silly addNameRange     '1.12.4',
+477 silly addNameRange     '2.2.4',
+477 silly addNameRange     '3.0.0-rc1',
+477 silly addNameRange     '3.0.0',
+477 silly addNameRange     '3.1.0',
+477 silly addNameRange     '3.1.1' ] ]
+478 silly addNamed jquery@3.1.1
+479 verbose addNamed "3.1.1" is a plain semver version for jquery
+480 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/reflect-metadata not expired, no request
+481 silly addNameRange number 2 { name: 'reflect-metadata',
+481 silly addNameRange   range: '>=0.1.8 <0.2.0',
+481 silly addNameRange   hasData: true }
+482 silly addNameRange versions [ 'reflect-metadata',
+482 silly addNameRange   [ '0.0.2',
+482 silly addNameRange     '0.0.3',
+482 silly addNameRange     '0.1.0',
+482 silly addNameRange     '0.1.1',
+482 silly addNameRange     '0.1.2',
+482 silly addNameRange     '0.1.3',
+482 silly addNameRange     '0.1.4',
+482 silly addNameRange     '0.1.5',
+482 silly addNameRange     '0.1.6',
+482 silly addNameRange     '0.1.7',
+482 silly addNameRange     '0.1.8' ] ]
+483 silly addNamed reflect-metadata@0.1.8
+484 verbose addNamed "0.1.8" is a plain semver version for reflect-metadata
+485 http 200 http://repo.mobisys.org/nexus/content/groups/npm-all/zone.js
+486 verbose headers { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+486 verbose headers   server: 'Nexus/2.11.3-01',
+486 verbose headers   'x-frame-options': 'SAMEORIGIN',
+486 verbose headers   'x-content-type-options': 'nosniff',
+486 verbose headers   'accept-ranges': 'bytes',
+486 verbose headers   'content-type': 'application/json',
+486 verbose headers   'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+486 verbose headers   vary: 'Accept-Encoding',
+486 verbose headers   'content-encoding': 'gzip',
+486 verbose headers   'keep-alive': 'timeout=5, max=100',
+486 verbose headers   connection: 'Keep-Alive',
+486 verbose headers   'transfer-encoding': 'chunked' }
+487 silly get cb [ 200,
+487 silly get   { date: 'Thu, 27 Oct 2016 13:27:10 GMT',
+487 silly get     server: 'Nexus/2.11.3-01',
+487 silly get     'x-frame-options': 'SAMEORIGIN',
+487 silly get     'x-content-type-options': 'nosniff',
+487 silly get     'accept-ranges': 'bytes',
+487 silly get     'content-type': 'application/json',
+487 silly get     'last-modified': 'Thu, 27 Oct 2016 13:27:10 GMT',
+487 silly get     vary: 'Accept-Encoding',
+487 silly get     'content-encoding': 'gzip',
+487 silly get     'keep-alive': 'timeout=5, max=100',
+487 silly get     connection: 'Keep-Alive',
+487 silly get     'transfer-encoding': 'chunked' } ]
+488 verbose get saving zone.js to C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\repo.mobisys.org\nexus\content\groups\npm-all\zone.js\.cache.json
+489 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+490 silly cache afterAdd jquery@3.1.1
+491 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\jquery\3.1.1\package\package.json not in flight; writing
+492 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+493 silly cache afterAdd modernizr@3.3.1
+494 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\modernizr\3.3.1\package\package.json not in flight; writing
+495 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+496 silly cache afterAdd reflect-metadata@0.1.8
+497 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\reflect-metadata\0.1.8\package\package.json not in flight; writing
+498 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+499 silly resolveWithNewModule fastclick@1.0.6 checking installable status
+500 silly cache add args [ 'fastclick@^1.0.6', null ]
+501 verbose cache add spec fastclick@^1.0.6
+502 silly cache add parsed spec Result {
+502 silly cache add   raw: 'fastclick@^1.0.6',
+502 silly cache add   scope: null,
+502 silly cache add   escapedName: 'fastclick',
+502 silly cache add   name: 'fastclick',
+502 silly cache add   rawSpec: '^1.0.6',
+502 silly cache add   spec: '>=1.0.6 <2.0.0',
+502 silly cache add   type: 'range' }
+503 silly addNamed fastclick@>=1.0.6 <2.0.0
+504 verbose addNamed ">=1.0.6 <2.0.0" is a valid semver range for fastclick
+505 silly addNameRange { name: 'fastclick', range: '>=1.0.6 <2.0.0', hasData: false }
+506 silly mapToRegistry name fastclick
+507 silly mapToRegistry using default registry
+508 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+509 silly mapToRegistry data Result {
+509 silly mapToRegistry   raw: 'fastclick',
+509 silly mapToRegistry   scope: null,
+509 silly mapToRegistry   escapedName: 'fastclick',
+509 silly mapToRegistry   name: 'fastclick',
+509 silly mapToRegistry   rawSpec: '',
+509 silly mapToRegistry   spec: 'latest',
+509 silly mapToRegistry   type: 'tag' }
+510 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/fastclick
+511 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/fastclick not in flight; fetching
+512 silly resolveWithNewModule rxjs@5.0.0-beta.12 checking installable status
+513 silly cache add args [ 'rxjs@5.0.0-beta.12', null ]
+514 verbose cache add spec rxjs@5.0.0-beta.12
+515 silly cache add parsed spec Result {
+515 silly cache add   raw: 'rxjs@5.0.0-beta.12',
+515 silly cache add   scope: null,
+515 silly cache add   escapedName: 'rxjs',
+515 silly cache add   name: 'rxjs',
+515 silly cache add   rawSpec: '5.0.0-beta.12',
+515 silly cache add   spec: '5.0.0-beta.12',
+515 silly cache add   type: 'version' }
+516 silly addNamed rxjs@5.0.0-beta.12
+517 verbose addNamed "5.0.0-beta.12" is a plain semver version for rxjs
+518 silly mapToRegistry name rxjs
+519 silly mapToRegistry using default registry
+520 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+521 silly mapToRegistry data Result {
+521 silly mapToRegistry   raw: 'rxjs',
+521 silly mapToRegistry   scope: null,
+521 silly mapToRegistry   escapedName: 'rxjs',
+521 silly mapToRegistry   name: 'rxjs',
+521 silly mapToRegistry   rawSpec: '',
+521 silly mapToRegistry   spec: 'latest',
+521 silly mapToRegistry   type: 'tag' }
+522 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/rxjs
+523 verbose addNameVersion registry:http://repo.mobisys.org/nexus/content/groups/npm-all/rxjs not in flight; fetching
+524 silly resolveWithNewModule systemjs@0.19.39 checking installable status
+525 silly cache add args [ 'systemjs@0.19.39', null ]
+526 verbose cache add spec systemjs@0.19.39
+527 silly cache add parsed spec Result {
+527 silly cache add   raw: 'systemjs@0.19.39',
+527 silly cache add   scope: null,
+527 silly cache add   escapedName: 'systemjs',
+527 silly cache add   name: 'systemjs',
+527 silly cache add   rawSpec: '0.19.39',
+527 silly cache add   spec: '0.19.39',
+527 silly cache add   type: 'version' }
+528 silly addNamed systemjs@0.19.39
+529 verbose addNamed "0.19.39" is a plain semver version for systemjs
+530 silly mapToRegistry name systemjs
+531 silly mapToRegistry using default registry
+532 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+533 silly mapToRegistry data Result {
+533 silly mapToRegistry   raw: 'systemjs',
+533 silly mapToRegistry   scope: null,
+533 silly mapToRegistry   escapedName: 'systemjs',
+533 silly mapToRegistry   name: 'systemjs',
+533 silly mapToRegistry   rawSpec: '',
+533 silly mapToRegistry   spec: 'latest',
+533 silly mapToRegistry   type: 'tag' }
+534 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/systemjs
+535 verbose addNameVersion registry:http://repo.mobisys.org/nexus/content/groups/npm-all/systemjs not in flight; fetching
+536 silly resolveWithNewModule foundation-sites@6.2.4 checking installable status
+537 silly cache add args [ 'foundation-sites@^6.2.4-rc2', null ]
+538 verbose cache add spec foundation-sites@^6.2.4-rc2
+539 silly cache add parsed spec Result {
+539 silly cache add   raw: 'foundation-sites@^6.2.4-rc2',
+539 silly cache add   scope: null,
+539 silly cache add   escapedName: 'foundation-sites',
+539 silly cache add   name: 'foundation-sites',
+539 silly cache add   rawSpec: '^6.2.4-rc2',
+539 silly cache add   spec: '>=6.2.4-rc2 <7.0.0',
+539 silly cache add   type: 'range' }
+540 silly addNamed foundation-sites@>=6.2.4-rc2 <7.0.0
+541 verbose addNamed ">=6.2.4-rc2 <7.0.0" is a valid semver range for foundation-sites
+542 silly addNameRange { name: 'foundation-sites',
+542 silly addNameRange   range: '>=6.2.4-rc2 <7.0.0',
+542 silly addNameRange   hasData: false }
+543 silly mapToRegistry name foundation-sites
+544 silly mapToRegistry using default registry
+545 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+546 silly mapToRegistry data Result {
+546 silly mapToRegistry   raw: 'foundation-sites',
+546 silly mapToRegistry   scope: null,
+546 silly mapToRegistry   escapedName: 'foundation-sites',
+546 silly mapToRegistry   name: 'foundation-sites',
+546 silly mapToRegistry   rawSpec: '',
+546 silly mapToRegistry   spec: 'latest',
+546 silly mapToRegistry   type: 'tag' }
+547 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/foundation-sites
+548 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/foundation-sites not in flight; fetching
+549 silly resolveWithNewModule es6-shim@0.35.1 checking installable status
+550 silly cache add args [ 'es6-shim@^0.35.0', null ]
+551 verbose cache add spec es6-shim@^0.35.0
+552 silly cache add parsed spec Result {
+552 silly cache add   raw: 'es6-shim@^0.35.0',
+552 silly cache add   scope: null,
+552 silly cache add   escapedName: 'es6-shim',
+552 silly cache add   name: 'es6-shim',
+552 silly cache add   rawSpec: '^0.35.0',
+552 silly cache add   spec: '>=0.35.0 <0.36.0',
+552 silly cache add   type: 'range' }
+553 silly addNamed es6-shim@>=0.35.0 <0.36.0
+554 verbose addNamed ">=0.35.0 <0.36.0" is a valid semver range for es6-shim
+555 silly addNameRange { name: 'es6-shim', range: '>=0.35.0 <0.36.0', hasData: false }
+556 silly mapToRegistry name es6-shim
+557 silly mapToRegistry using default registry
+558 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+559 silly mapToRegistry data Result {
+559 silly mapToRegistry   raw: 'es6-shim',
+559 silly mapToRegistry   scope: null,
+559 silly mapToRegistry   escapedName: 'es6-shim',
+559 silly mapToRegistry   name: 'es6-shim',
+559 silly mapToRegistry   rawSpec: '',
+559 silly mapToRegistry   spec: 'latest',
+559 silly mapToRegistry   type: 'tag' }
+560 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/es6-shim
+561 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/es6-shim not in flight; fetching
+562 silly resolveWithNewModule core-js@2.4.1 checking installable status
+563 silly cache add args [ 'core-js@^2.4.1', null ]
+564 verbose cache add spec core-js@^2.4.1
+565 silly cache add parsed spec Result {
+565 silly cache add   raw: 'core-js@^2.4.1',
+565 silly cache add   scope: null,
+565 silly cache add   escapedName: 'core-js',
+565 silly cache add   name: 'core-js',
+565 silly cache add   rawSpec: '^2.4.1',
+565 silly cache add   spec: '>=2.4.1 <3.0.0',
+565 silly cache add   type: 'range' }
+566 silly addNamed core-js@>=2.4.1 <3.0.0
+567 verbose addNamed ">=2.4.1 <3.0.0" is a valid semver range for core-js
+568 silly addNameRange { name: 'core-js', range: '>=2.4.1 <3.0.0', hasData: false }
+569 silly mapToRegistry name core-js
+570 silly mapToRegistry using default registry
+571 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+572 silly mapToRegistry data Result {
+572 silly mapToRegistry   raw: 'core-js',
+572 silly mapToRegistry   scope: null,
+572 silly mapToRegistry   escapedName: 'core-js',
+572 silly mapToRegistry   name: 'core-js',
+572 silly mapToRegistry   rawSpec: '',
+572 silly mapToRegistry   spec: 'latest',
+572 silly mapToRegistry   type: 'tag' }
+573 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/core-js
+574 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/core-js not in flight; fetching
+575 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/fastclick not expired, no request
+576 silly addNameRange number 2 { name: 'fastclick', range: '>=1.0.6 <2.0.0', hasData: true }
+577 silly addNameRange versions [ 'fastclick',
+577 silly addNameRange   [ '0.1.0',
+577 silly addNameRange     '0.3.2',
+577 silly addNameRange     '0.3.3',
+577 silly addNameRange     '0.3.5',
+577 silly addNameRange     '0.4.1',
+577 silly addNameRange     '0.4.2',
+577 silly addNameRange     '0.4.5',
+577 silly addNameRange     '0.4.7',
+577 silly addNameRange     '0.5.1',
+577 silly addNameRange     '0.5.2',
+577 silly addNameRange     '0.5.3',
+577 silly addNameRange     '0.5.4',
+577 silly addNameRange     '0.5.6',
+577 silly addNameRange     '0.6.0',
+577 silly addNameRange     '0.6.1',
+577 silly addNameRange     '0.6.4',
+577 silly addNameRange     '0.6.7',
+577 silly addNameRange     '0.6.9',
+577 silly addNameRange     '0.6.10',
+577 silly addNameRange     '0.6.11',
+577 silly addNameRange     '0.6.12',
+577 silly addNameRange     '1.0.0',
+577 silly addNameRange     '1.0.1',
+577 silly addNameRange     '1.0.2',
+577 silly addNameRange     '1.0.3',
+577 silly addNameRange     '1.0.4',
+577 silly addNameRange     '1.0.5',
+577 silly addNameRange     '1.0.6' ] ]
+578 silly addNamed fastclick@1.0.6
+579 verbose addNamed "1.0.6" is a plain semver version for fastclick
+580 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/rxjs not expired, no request
+581 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/foundation-sites not expired, no request
+582 silly addNameRange number 2 { name: 'foundation-sites',
+582 silly addNameRange   range: '>=6.2.4-rc2 <7.0.0',
+582 silly addNameRange   hasData: true }
+583 silly addNameRange versions [ 'foundation-sites',
+583 silly addNameRange   [ '5.5.2',
+583 silly addNameRange     '5.5.3',
+583 silly addNameRange     '6.0.0-alpha.1',
+583 silly addNameRange     '6.0.0-alpha.2',
+583 silly addNameRange     '6.0.0',
+583 silly addNameRange     '6.0.1',
+583 silly addNameRange     '6.0.2',
+583 silly addNameRange     '6.0.3',
+583 silly addNameRange     '6.0.4',
+583 silly addNameRange     '6.0.5',
+583 silly addNameRange     '6.0.6',
+583 silly addNameRange     '6.1.0',
+583 silly addNameRange     '6.1.1',
+583 silly addNameRange     '6.1.2',
+583 silly addNameRange     '6.2.0-rc.1',
+583 silly addNameRange     '6.2.0',
+583 silly addNameRange     '6.2.1',
+583 silly addNameRange     '6.2.2-rc1',
+583 silly addNameRange     '6.2.2-rc2',
+583 silly addNameRange     '6.2.2-0',
+583 silly addNameRange     '6.2.3',
+583 silly addNameRange     '6.2.4-rc1',
+583 silly addNameRange     '6.2.4-rc2',
+583 silly addNameRange     '6.2.4' ] ]
+584 silly addNamed foundation-sites@6.2.4
+585 verbose addNamed "6.2.4" is a plain semver version for foundation-sites
+586 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/systemjs not expired, no request
+587 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\jquery\3.1.1\package\package.json written
+588 silly resolveWithNewModule zone.js@0.6.26 checking installable status
+589 silly cache add args [ 'zone.js@^0.6.25', null ]
+590 verbose cache add spec zone.js@^0.6.25
+591 silly cache add parsed spec Result {
+591 silly cache add   raw: 'zone.js@^0.6.25',
+591 silly cache add   scope: null,
+591 silly cache add   escapedName: 'zone.js',
+591 silly cache add   name: 'zone.js',
+591 silly cache add   rawSpec: '^0.6.25',
+591 silly cache add   spec: '>=0.6.25 <0.7.0',
+591 silly cache add   type: 'range' }
+592 silly addNamed zone.js@>=0.6.25 <0.7.0
+593 verbose addNamed ">=0.6.25 <0.7.0" is a valid semver range for zone.js
+594 silly addNameRange { name: 'zone.js', range: '>=0.6.25 <0.7.0', hasData: false }
+595 silly mapToRegistry name zone.js
+596 silly mapToRegistry using default registry
+597 silly mapToRegistry registry http://repo.mobisys.org/nexus/content/groups/npm-all/
+598 silly mapToRegistry data Result {
+598 silly mapToRegistry   raw: 'zone.js',
+598 silly mapToRegistry   scope: null,
+598 silly mapToRegistry   escapedName: 'zone.js',
+598 silly mapToRegistry   name: 'zone.js',
+598 silly mapToRegistry   rawSpec: '',
+598 silly mapToRegistry   spec: 'latest',
+598 silly mapToRegistry   type: 'tag' }
+599 silly mapToRegistry uri http://repo.mobisys.org/nexus/content/groups/npm-all/zone.js
+600 verbose addNameRange registry:http://repo.mobisys.org/nexus/content/groups/npm-all/zone.js not in flight; fetching
+601 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/es6-shim not expired, no request
+602 silly addNameRange number 2 { name: 'es6-shim', range: '>=0.35.0 <0.36.0', hasData: true }
+603 silly addNameRange versions [ 'es6-shim',
+603 silly addNameRange   [ '0.1.0',
+603 silly addNameRange     '0.2.0',
+603 silly addNameRange     '0.2.1',
+603 silly addNameRange     '0.3.0',
+603 silly addNameRange     '0.3.1',
+603 silly addNameRange     '0.4.0',
+603 silly addNameRange     '0.4.1',
+603 silly addNameRange     '0.5.0',
+603 silly addNameRange     '0.5.1',
+603 silly addNameRange     '0.5.2',
+603 silly addNameRange     '0.5.3',
+603 silly addNameRange     '0.6.0',
+603 silly addNameRange     '0.7.0',
+603 silly addNameRange     '0.8.0',
+603 silly addNameRange     '0.9.0',
+603 silly addNameRange     '0.9.1',
+603 silly addNameRange     '0.9.2',
+603 silly addNameRange     '0.9.3',
+603 silly addNameRange     '0.10.0',
+603 silly addNameRange     '0.10.1',
+603 silly addNameRange     '0.11.0',
+603 silly addNameRange     '0.11.1',
+603 silly addNameRange     '0.12.0',
+603 silly addNameRange     '0.13.0',
+603 silly addNameRange     '0.14.0',
+603 silly addNameRange     '0.15.0',
+603 silly addNameRange     '0.15.1',
+603 silly addNameRange     '0.16.0',
+603 silly addNameRange     '0.17.0',
+603 silly addNameRange     '0.18.0',
+603 silly addNameRange     '0.19.0',
+603 silly addNameRange     '0.19.1',
+603 silly addNameRange     '0.19.2',
+603 silly addNameRange     '0.20.0',
+603 silly addNameRange     '0.20.1',
+603 silly addNameRange     '0.20.2',
+603 silly addNameRange     '0.20.3',
+603 silly addNameRange     '0.20.4',
+603 silly addNameRange     '0.21.0',
+603 silly addNameRange     '0.21.1',
+603 silly addNameRange     '0.22.0',
+603 silly addNameRange     '0.22.1',
+603 silly addNameRange     '0.22.2',
+603 silly addNameRange     '0.23.0',
+603 silly addNameRange     '0.24.0',
+603 silly addNameRange     '0.25.0',
+603 silly addNameRange     '0.25.1',
+603 silly addNameRange     '0.25.2',
+603 silly addNameRange     '0.25.3',
+603 silly addNameRange     '0.26.0',
+603 silly addNameRange     '0.26.1',
+603 silly addNameRange     '0.27.1',
+603 silly addNameRange     '0.28.1',
+603 silly addNameRange     '0.29.0',
+603 silly addNameRange     '0.30.0',
+603 silly addNameRange     '0.31.0',
+603 silly addNameRange     '0.31.1',
+603 silly addNameRange     '0.31.2',
+603 silly addNameRange     '0.31.3',
+603 silly addNameRange     '0.32.0',
+603 silly addNameRange     '0.32.1',
+603 silly addNameRange     '0.32.2',
+603 silly addNameRange     '0.33.0',
+603 silly addNameRange     '0.33.1',
+603 silly addNameRange     '0.33.2',
+603 silly addNameRange     '0.33.3',
+603 silly addNameRange     '0.33.4',
+603 silly addNameRange     '0.33.5',
+603 silly addNameRange     '0.33.6',
+603 silly addNameRange     '0.33.7',
+603 silly addNameRange     '0.33.8',
+603 silly addNameRange     '0.33.9',
+603 silly addNameRange     '0.33.10',
+603 silly addNameRange     '0.33.11',
+603 silly addNameRange     '0.33.12',
+603 silly addNameRange     '0.33.13',
+603 silly addNameRange     '0.34.0',
+603 silly addNameRange     '0.34.1',
+603 silly addNameRange     '0.34.2',
+603 silly addNameRange     '0.34.3',
+603 silly addNameRange     '0.34.4',
+603 silly addNameRange     '0.35.0',
+603 silly addNameRange     '0.35.1' ] ]
+604 silly addNamed es6-shim@0.35.1
+605 verbose addNamed "0.35.1" is a plain semver version for es6-shim
+606 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\modernizr\3.3.1\package\package.json written
+607 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\reflect-metadata\0.1.8\package\package.json written
+608 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/core-js not expired, no request
+609 silly addNameRange number 2 { name: 'core-js', range: '>=2.4.1 <3.0.0', hasData: true }
+610 silly addNameRange versions [ 'core-js',
+610 silly addNameRange   [ '0.0.3',
+610 silly addNameRange     '0.0.4',
+610 silly addNameRange     '0.0.5',
+610 silly addNameRange     '0.0.7',
+610 silly addNameRange     '0.0.8',
+610 silly addNameRange     '0.0.9',
+610 silly addNameRange     '0.1.1',
+610 silly addNameRange     '0.1.2',
+610 silly addNameRange     '0.1.3',
+610 silly addNameRange     '0.1.4',
+610 silly addNameRange     '0.1.5',
+610 silly addNameRange     '0.2.0',
+610 silly addNameRange     '0.2.1',
+610 silly addNameRange     '0.2.2',
+610 silly addNameRange     '0.2.3',
+610 silly addNameRange     '0.2.4',
+610 silly addNameRange     '0.2.5',
+610 silly addNameRange     '0.3.0',
+610 silly addNameRange     '0.3.1',
+610 silly addNameRange     '0.3.2',
+610 silly addNameRange     '0.3.3',
+610 silly addNameRange     '0.4.0',
+610 silly addNameRange     '0.4.1',
+610 silly addNameRange     '0.4.2',
+610 silly addNameRange     '0.4.3',
+610 silly addNameRange     '0.4.4',
+610 silly addNameRange     '0.4.5',
+610 silly addNameRange     '0.4.6',
+610 silly addNameRange     '0.4.7',
+610 silly addNameRange     '0.4.8',
+610 silly addNameRange     '0.4.9',
+610 silly addNameRange     '0.4.10',
+610 silly addNameRange     '0.5.0',
+610 silly addNameRange     '0.5.1',
+610 silly addNameRange     '0.5.2',
+610 silly addNameRange     '0.5.3',
+610 silly addNameRange     '0.5.4',
+610 silly addNameRange     '0.6.0',
+610 silly addNameRange     '0.6.1',
+610 silly addNameRange     '0.7.0',
+610 silly addNameRange     '0.7.1',
+610 silly addNameRange     '0.7.2',
+610 silly addNameRange     '0.8.0',
+610 silly addNameRange     '0.8.1',
+610 silly addNameRange     '0.8.2',
+610 silly addNameRange     '0.8.3',
+610 silly addNameRange     '0.8.4',
+610 silly addNameRange     '0.9.0',
+610 silly addNameRange     '0.9.1',
+610 silly addNameRange     '0.9.2',
+610 silly addNameRange     '0.9.3',
+610 silly addNameRange     '0.9.4',
+610 silly addNameRange     '0.9.5',
+610 silly addNameRange     '0.9.6',
+610 silly addNameRange     '0.9.7',
+610 silly addNameRange     '0.9.8',
+610 silly addNameRange     '0.9.9',
+610 silly addNameRange     '0.9.10',
+610 silly addNameRange     '0.9.11',
+610 silly addNameRange     '0.9.12',
+610 silly addNameRange     '0.9.13',
+610 silly addNameRange     '0.9.14',
+610 silly addNameRange     '0.9.15',
+610 silly addNameRange     '0.9.16',
+610 silly addNameRange     '0.9.17',
+610 silly addNameRange     '0.9.18',
+610 silly addNameRange     '1.0.0',
+610 silly addNameRange     '1.0.1',
+610 silly addNameRange     '1.1.0',
+610 silly addNameRange     '1.1.1',
+610 silly addNameRange     '1.1.2',
+610 silly addNameRange     '1.1.3',
+610 silly addNameRange     '1.1.4',
+610 silly addNameRange     '1.2.0',
+610 silly addNameRange     '1.2.1',
+610 silly addNameRange     '1.2.2',
+610 silly addNameRange     '1.2.3',
+610 silly addNameRange     '1.2.4',
+610 silly addNameRange     '1.2.5',
+610 silly addNameRange     '1.2.6',
+610 silly addNameRange     '2.0.0-alpha',
+610 silly addNameRange     '2.0.0-beta',
+610 silly addNameRange     '2.0.0-beta.2',
+610 silly addNameRange     '2.0.0',
+610 silly addNameRange     '2.0.1',
+610 silly addNameRange     '2.0.2',
+610 silly addNameRange     '2.0.3',
+610 silly addNameRange     '2.1.0',
+610 silly addNameRange     '2.1.1',
+610 silly addNameRange     '2.1.2',
+610 silly addNameRange     '2.1.3',
+610 silly addNameRange     '2.1.4',
+610 silly addNameRange     '2.1.5',
+610 silly addNameRange     '2.2.0',
+610 silly addNameRange     '2.2.1',
+610 silly addNameRange     '2.2.2',
+610 silly addNameRange     '2.3.0',
+610 silly addNameRange     '2.4.0',
+610 silly addNameRange     '1.2.7',
+610 silly addNameRange     '2.4.1' ] ]
+611 silly addNamed core-js@2.4.1
+612 verbose addNamed "2.4.1" is a plain semver version for core-js
+613 silly cache afterAdd fastclick@1.0.6
+614 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\fastclick\1.0.6\package\package.json not in flight; writing
+615 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+616 silly cache afterAdd rxjs@5.0.0-beta.12
+617 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\rxjs\5.0.0-beta.12\package\package.json not in flight; writing
+618 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+619 silly cache afterAdd foundation-sites@6.2.4
+620 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\foundation-sites\6.2.4\package\package.json not in flight; writing
+621 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+622 silly cache afterAdd systemjs@0.19.39
+623 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\systemjs\0.19.39\package\package.json not in flight; writing
+624 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+625 verbose get http://repo.mobisys.org/nexus/content/groups/npm-all/zone.js not expired, no request
+626 silly addNameRange number 2 { name: 'zone.js', range: '>=0.6.25 <0.7.0', hasData: true }
+627 silly addNameRange versions [ 'zone.js',
+627 silly addNameRange   [ '0.1.0',
+627 silly addNameRange     '0.1.1',
+627 silly addNameRange     '0.2.0',
+627 silly addNameRange     '0.2.1',
+627 silly addNameRange     '0.2.3',
+627 silly addNameRange     '0.2.2',
+627 silly addNameRange     '0.2.4',
+627 silly addNameRange     '0.3.0',
+627 silly addNameRange     '0.4.0',
+627 silly addNameRange     '0.4.1',
+627 silly addNameRange     '0.4.2',
+627 silly addNameRange     '0.4.3',
+627 silly addNameRange     '0.4.4',
+627 silly addNameRange     '0.5.0',
+627 silly addNameRange     '0.5.1',
+627 silly addNameRange     '0.5.2',
+627 silly addNameRange     '0.5.3',
+627 silly addNameRange     '0.5.4',
+627 silly addNameRange     '0.5.5',
+627 silly addNameRange     '0.5.6',
+627 silly addNameRange     '0.5.7',
+627 silly addNameRange     '0.5.8',
+627 silly addNameRange     '0.5.9',
+627 silly addNameRange     '0.5.10',
+627 silly addNameRange     '0.5.11',
+627 silly addNameRange     '0.5.12',
+627 silly addNameRange     '0.5.13',
+627 silly addNameRange     '0.5.14',
+627 silly addNameRange     '0.5.15',
+627 silly addNameRange     '0.6.0',
+627 silly addNameRange     '0.6.1',
+627 silly addNameRange     '0.6.2',
+627 silly addNameRange     '0.6.3',
+627 silly addNameRange     '0.6.4',
+627 silly addNameRange     '0.6.5',
+627 silly addNameRange     '0.6.6',
+627 silly addNameRange     '0.6.8',
+627 silly addNameRange     '0.6.9',
+627 silly addNameRange     '0.6.10',
+627 silly addNameRange     '0.6.11',
+627 silly addNameRange     '0.6.12',
+627 silly addNameRange     '0.6.13',
+627 silly addNameRange     '0.6.14',
+627 silly addNameRange     '0.6.15',
+627 silly addNameRange     '0.6.16',
+627 silly addNameRange     '0.6.17',
+627 silly addNameRange     '0.6.18',
+627 silly addNameRange     '0.6.19',
+627 silly addNameRange     '0.6.20',
+627 silly addNameRange     '0.6.21',
+627 silly addNameRange     '0.6.22',
+627 silly addNameRange     '0.6.23',
+627 silly addNameRange     '0.6.24',
+627 silly addNameRange     '0.6.25',
+627 silly addNameRange     '0.6.26' ] ]
+628 silly addNamed zone.js@0.6.26
+629 verbose addNamed "0.6.26" is a plain semver version for zone.js
+630 silly cache afterAdd es6-shim@0.35.1
+631 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\es6-shim\0.35.1\package\package.json not in flight; writing
+632 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+633 silly cache afterAdd core-js@2.4.1
+634 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\core-js\2.4.1\package\package.json not in flight; writing
+635 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+636 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\rxjs\5.0.0-beta.12\package\package.json written
+637 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\fastclick\1.0.6\package\package.json written
+638 silly cache afterAdd zone.js@0.6.26
+639 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\zone.js\0.6.26\package\package.json not in flight; writing
+640 verbose correctMkdir C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+641 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\systemjs\0.19.39\package\package.json written
+642 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\foundation-sites\6.2.4\package\package.json written
+643 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\es6-shim\0.35.1\package\package.json written
+644 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\core-js\2.4.1\package\package.json written
+645 verbose afterAdd C:\Users\Vitaliy.Chorniy\AppData\Roaming\npm-cache\zone.js\0.6.26\package\package.json written
+646 silly rollbackFailedOptional Starting
+647 silly rollbackFailedOptional Finishing
+648 silly runTopLevelLifecycles Finishing
+649 silly install printInstalled
+650 verbose stack SyntaxError: Unexpected token <
+650 verbose stack <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+650 verbose stack <html><head>
+650 verbose stack <title>404 Not Found</title>
+650 verbose stack </head><body>
+650 verbose stack <h1>Not Found</h1>
+650 verbose stack <p>The requested URL /nexus/content/groups/npm-all/@types/node was not found on this server.</p>
+650 verbose stack <hr>
+650 verbose stack <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+650 verbose stack </body></html>
+650 verbose stack
+650 verbose stack     at Object.parse (native)
+650 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:23)
+650 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:216:7
+650 verbose stack     at Gunzip.onEnd (zlib.js:227:5)
+650 verbose stack     at emitNone (events.js:72:20)
+650 verbose stack     at Gunzip.emit (events.js:166:7)
+650 verbose stack     at endReadableNT (_stream_readable.js:913:12)
+650 verbose stack     at nextTickCallbackWith2Args (node.js:442:9)
+650 verbose stack     at process._tickCallback (node.js:356:17)
+651 verbose cwd C:\Users\Vitaliy.Chorniy\Development\test\elpweb
+652 error Windows_NT 10.0.10586
+653 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "i"
+654 error node v4.4.4
+655 error npm  v3.10.8
+656 error Unexpected token <
+656 error <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+656 error <html><head>
+656 error <title>404 Not Found</title>
+656 error </head><body>
+656 error <h1>Not Found</h1>
+656 error <p>The requested URL /nexus/content/groups/npm-all/@types/node was not found on this server.</p>
+656 error <hr>
+656 error <address>Apache/2.2.22 (Debian) Server at repo.mobisys.org Port 80</address>
+656 error </body></html>
+657 error If you need help, you may report this error at:
+657 error     <https://github.com/npm/npm/issues>
+658 verbose exit [ 1, true ]
