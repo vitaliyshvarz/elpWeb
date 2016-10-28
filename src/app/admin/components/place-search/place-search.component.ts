@@ -2,7 +2,7 @@ import { Component, OnInit }  from '@angular/core';
 import { Router }             from '@angular/router';
 import { Observable }         from 'rxjs/Observable';
 import { Subject }            from 'rxjs/Subject';
-import { PlaceSearchService } from '../../services/place-search.service';
+import { PlaceSearchService } from '@core';
 import { Place }              from '@core';
 
 @Component({

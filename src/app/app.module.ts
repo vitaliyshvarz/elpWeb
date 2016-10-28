@@ -10,11 +10,6 @@ import { DashboardComponent } from './admin/components/dashboard/dashboard.compo
 import { PlaceSearchComponent } from './admin/components/place-search/place-search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 
-import { PlaceService } from './admin/services/place.service';
-import { UserService } from '@core';
-import { AlertService } from './web/services/alert.service';
-import { AuthenticationService } from '@core';
-
 // WEB
 import { AppComponent }  from './web/components/main/main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
@@ -24,14 +19,19 @@ import { WebLoginComponent } from './web/components/login/login.component';
 import { WebRegisterComponent } from './web/components/register/register.component';
 import { AlertComponent } from './web/components/alert/alert.component'
 
+import { AlertService } from './web/services/alert.service';
+
 // Shared Modules
+import { AuthenticationService } from '@core';
+import { PlaceService } from '@core';
+import { UserService } from '@core';
+import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from '@core';
 import { AppRoutingModule }     from './app-routing.module';
-import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './core/translate/index';
 
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService }  from '@core';
 
 import { AuthGuard } from '@core';
 

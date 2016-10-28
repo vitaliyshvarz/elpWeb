@@ -7,5 +7,10 @@ export const LANG_EN_TRANS = {
     'LOGIN_SIGNUP': 'Login / Sign up',
     'JOIN_US': 'Join us',
     'SUBMIT_AND_GET': 'Join us and get more customers',
-    'LEARN_MORE': 'Learn more'
+    'LEARN_MORE': 'Learn more',
+    'LOGIN': 'Login',
+    'USERNAME': 'Username',
+    'USERNAME_REQUIRED': 'Username required',
+    'PASSWORD': 'Password',
+    'PASSWORD_REQUIRED' : 'Password required'
 };

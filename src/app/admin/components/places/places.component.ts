@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Place } from '@core';
-import { PlaceService } from '../../services/place.service';
+import { PlaceService } from '@core';
 
 @Component({
     moduleId: module.id,

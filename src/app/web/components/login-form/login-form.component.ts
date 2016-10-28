@@ -6,10 +6,11 @@ import { AuthenticationService } from '@core';
 
 @Component({
   moduleId: module.id,
+  selector: 'login-form',
   templateUrl: 'login.component.html'
 })
 
-export class WebLoginComponent implements OnInit {
+export class WebLoginFormComponent implements OnInit {
   model: any = {};
   loading = false;
 

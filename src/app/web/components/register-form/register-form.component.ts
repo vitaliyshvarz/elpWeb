@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertService } from '../../services/alert.service'
 import { UserService } from '@core';
+import { AlertService } from '../../services/alert.service'
+
 
 @Component({
   moduleId: module.id,
+  selector: 'register-form',
   templateUrl: 'register.component.html'
 })
 
-export class WebRegisterComponent {
+export class WebRegisterFormComponent {
   model: any = {};
   loading = false;
 
