@@ -6,7 +6,12 @@ export let fakeBackendProvider = {
     provide: Http,
     useFactory: (backend, options) => {
         // array in local storage for registered users
-        let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
+        try {
+          let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
+        } catch (err) {
+          let users: any[] = [];
+          console.log('no users');
+        }
 
         // configure fake backend
         backend.connections.subscribe((connection: MockConnection) => {
@@ -18,9 +23,11 @@ export let fakeBackendProvider = {
                     // get parameters from post request
                     let params = JSON.parse(connection.request.getBody());
 
+                    console.log(params.email)
+                    console.log(params.password)
                     // find if any user matches login credentials
                     let filteredUsers = users.filter(user => {
-                        return user.username === params.username && user.password === params.password;
+                        return user.email === params.email && user.password === params.password;
                     });
 
                     if (filteredUsers.length) {
@@ -75,11 +82,13 @@ export let fakeBackendProvider = {
                 if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Post) {
                     // get new user object from post body
                     let newUser = JSON.parse(connection.request.getBody());
-
+                    console.log(newUser);
                     // validation
-                    let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
+                    let duplicateUser = users.filter(user => {
+                      return user.email === newUser.email;
+                    }).length;
                     if (duplicateUser) {
-                        return connection.mockError(new Error('Username "' + newUser.username + '" is already taken'));
+                        return connection.mockError(new Error('User with email "' + newUser.email + '" is already taken'));
                     }
 
                     // save new user

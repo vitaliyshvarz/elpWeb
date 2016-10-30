@@ -17,6 +17,11 @@ $font-color: #fff;
   .site-name-mob {
     color: white;
   }
+  .menu-text {
+    a {
+      padding:0;
+    }
+  }
 
   ul {
     background: $menu-background;

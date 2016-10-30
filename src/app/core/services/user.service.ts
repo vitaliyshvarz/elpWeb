@@ -5,23 +5,23 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 export class UserService {
   constructor(private http: Http) { }
 
-  getAll() {
+  public getAll() {
     return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
   }
 
-  getById(id) {
+  public getById(id) {
     return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
   }
 
-  create(user) {
+  public create(user) {
     return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
   }
 
-  update(user) {
+  public update(user) {
     return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
   }
 
-  delete(id) {
+  public elete(id) {
     return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
   }
 

@@ -1,15 +1,25 @@
 <top-menu></top-menu>
 <header class="header">
-  <h1 class="headline">{{'JOIN_US' | translate }}<small>{{ 'APP_NAME' | translate }}</small></h1>
+  <h1 class="headline">{{'JOIN_US' | translate }}<small> {{ 'APP_NAME' | translate }}</small></h1>
   <ul class="header-subnav">
-    <li><a href="#" (click)="login=true; register=false">{{'LOGIN': translate}}</a></li>
-    <li><a href="#" (click)="login=false; register=true" class="is-active">{{'REGISTER': translate}}</a></li>
+    <li><a href="javascript:;"
+          (click)="login=true; register=false"
+          [ngClass]="{ 'is-active': login }">
+          {{'LOGIN'| translate}}
+        </a>
+    </li>
+    <li><a href="javascript:;"
+          (click)="login=false; register=true"
+          [ngClass]="{ 'is-active': register }">
+          {{'REGISTER'| translate}}
+        </a>
+    </li>
   </ul>
 </header>
 <alert></alert>
 
 <div class="row">
-  <div class="small-6 large-centered columns">
+  <div class="medium-6 large-6 medium-centered columns">
     <login-form *ngIf="login && !register"></login-form>
     <register-form *ngIf="register && !login"></register-form>
   </div>

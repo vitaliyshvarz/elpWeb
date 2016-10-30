@@ -12,7 +12,6 @@ export class WebHomeComponent implements OnInit {
 
   ngOnInit() {
     /* tslint:disable */
-    $(document).foundation();
     // hide white background from foundation for video
     $('.off-canvas-content').css('background', 'transparent');
     /* tslint:enable */

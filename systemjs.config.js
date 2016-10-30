@@ -24,7 +24,7 @@
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       // other libraries
       'rxjs': 'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       'ng2-translate/ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.js',
 
       '@core': 'dist/app/core/core.js'
@@ -39,7 +39,6 @@
         defaultExtension: 'js'
       },
       'angular-in-memory-web-api': {
-        main: './index.js',
         defaultExtension: 'js'
       }
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ngOnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['main.component.css']
 })
 
-export class AppComponent {}
+export class AppComponent implements ngOnInit{
+
+  ngOnInit() {
+    /* tslint:disable */
+    $(document).foundation();
+    /* tslint:enable */
+  }
+}

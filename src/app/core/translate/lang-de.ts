@@ -10,7 +10,16 @@ export const LANG_ES_TRANS = {
     'LEARN_MORE': 'Mehr lernen',
     'LOGIN': 'Einloggen',
     'USERNAME': 'Benutzername',
-    'USERNAME_REQUIRED': 'Benutzername erforderlich',
+    'EMAIL': 'Email',
+    'EMAIL_REQUIRED': 'Email erforderlich',
     'PASSWORD': 'Kennwort',
-    'PASSWORD_REQUIRED': 'Kennwort erforderlich'
+    'PASSWORD_REQUIRED': 'Kennwort erforderlich',
+    'PASSWORD_MATCH_REQUIRED': 'Passwörter übereinstimmen',
+    'REGISTER': 'Anmeldung',
+    'FIRST_NAME': 'Vorname',
+    'FIRSTNAME_REQUIRED': 'Vorname erforderlich',
+    'LAST_NAME': 'NachName',
+    'LASTNAME_REQUIRED': 'NachName erforderlich',
+    'CANCEL': 'stornieren',
+    'REPEAT': 'wiederholen'
 };

@@ -19,6 +19,9 @@ export class TopMenuComponent implements OnInit{
   }
 
   ngOnInit() {
+    /* tslint:disable */
+    $(document).foundation();
+    /* tslint:enable */
     this.selectedLang = this._translate.currentLang;
   }
 }

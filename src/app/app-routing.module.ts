@@ -7,11 +7,12 @@ import { MainAdminComponent }         from './admin/components/main/admin-main.c
 import { WebHomeComponent }           from './web/components/home/home.component';
 import { WebLoginFormComponent }      from './web/components/login-form/login-form.component';
 import { WebRegisterFormComponent }   from './web/components/register-form/register-form.component';
-import { WebLoginRegisterComponent }  from './web/components/register-form/register-form.component';
+import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
 import { AuthGuard }                  from  '@core';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: WebHomeComponent },
   { path: 'login-register', component: WebLoginRegisterComponent},
   { path: 'admin',  component: MainAdminComponent, canActivate: [AuthGuard] },
   { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGuard] },

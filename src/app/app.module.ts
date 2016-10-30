@@ -15,8 +15,9 @@ import { AppComponent }  from './web/components/main/main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
 import { TopMenuComponent } from './web/components/top-menu/top-menu.component';
 import { TranslationsListComponent } from './web/components/translations-list/translations-list.component';
-import { WebLoginComponent } from './web/components/login/login.component';
-import { WebRegisterComponent } from './web/components/register/register.component';
+import { WebLoginFormComponent } from './web/components/login-form/login-form.component';
+import { WebRegisterFormComponent } from './web/components/register-form/register-form.component';
+import { WebLoginRegisterComponent } from './web/components/login-register/login-register.component';
 import { AlertComponent } from './web/components/alert/alert.component'
 
 import { AlertService } from './web/services/alert.service';
@@ -30,7 +31,7 @@ import { AppRoutingModule }     from './app-routing.module';
 
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from '@core';
 
 import { AuthGuard } from '@core';
@@ -62,8 +63,9 @@ import './rxjs-extensions';
     PlaceSearchComponent,
     MainAdminComponent,
     WebHomeComponent,
-    WebLoginComponent,
-    WebRegisterComponent,
+    WebLoginFormComponent,
+    WebRegisterFormComponent,
+    WebLoginRegisterComponent,
     AlertComponent
   ],
   providers: [
