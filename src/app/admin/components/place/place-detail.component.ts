@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
-import { Place }                    from './place';
-
-import { PlaceService } from '../../services/place.service';
+import { Place }                    from '@core';
+import { PlaceService }             from '@core';
 
 @Component({
   moduleId: module.id,

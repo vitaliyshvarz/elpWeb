@@ -10,22 +10,36 @@ import { DashboardComponent } from './admin/components/dashboard/dashboard.compo
 import { PlaceSearchComponent } from './admin/components/place-search/place-search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 
-import { PlaceService } from './admin/services/place.service';
-
 // WEB
 import { AppComponent }  from './web/components/main/main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
 import { TopMenuComponent } from './web/components/top-menu/top-menu.component';
-import { TranslationsListComponent } from './web/components/translations-list/translations-list.component'
+import { TranslationsListComponent } from './web/components/translations-list/translations-list.component';
+import { WebLoginFormComponent } from './web/components/login-form/login-form.component';
+import { WebRegisterFormComponent } from './web/components/register-form/register-form.component';
+import { WebLoginRegisterComponent } from './web/components/login-register/login-register.component';
+import { AlertComponent } from './web/components/alert/alert.component'
+
+import { AlertService } from './web/services/alert.service';
 
 // Shared Modules
+import { AuthenticationService } from '@core';
+import { PlaceService } from '@core';
+import { UserService } from '@core';
+import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from '@core';
 import { AppRoutingModule }     from './app-routing.module';
-import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './translate/index';
 
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService }  from '@core';
+
+import { AuthGuard } from '@core';
+
+// used to create fake backend
+import { fakeBackendProvider } from '@core';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
 
 import './rxjs-extensions';
 
@@ -39,6 +53,9 @@ import './rxjs-extensions';
     InMemoryWebApiModule.forRoot(InMemoryDataService)
  ],
   declarations: [
+    TopMenuComponent,
+    TranslationsListComponent,
+    TranslatePipe,
     AppComponent,
     PlaceDetailComponent,
     PlacesComponent,
@@ -46,11 +63,24 @@ import './rxjs-extensions';
     PlaceSearchComponent,
     MainAdminComponent,
     WebHomeComponent,
-    TopMenuComponent,
-    TranslationsListComponent,
-    TranslatePipe
+    WebLoginFormComponent,
+    WebRegisterFormComponent,
+    WebLoginRegisterComponent,
+    AlertComponent
   ],
-  providers: [ PlaceService, TRANSLATION_PROVIDERS, TranslateService ],
+  providers: [
+    AuthGuard,
+    PlaceService,
+    TRANSLATION_PROVIDERS,
+    TranslateService,
+    UserService,
+    AlertService,
+    AuthenticationService,
+    // providers used to create fake backend
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
+  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

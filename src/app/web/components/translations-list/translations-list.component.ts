@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TranslateService } from '../../../translate/index';
+import { TranslateService } from '@core';
 
 @Component({
   moduleId: module.id,
