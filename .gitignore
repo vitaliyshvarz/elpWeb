@@ -15,3 +15,10 @@ npm-debug.log*
 /typings
 npm-debug.log
 **/*.DS_Store
+
+
+# MSVS project files
+/bin
+/obj
+*.csproj
+*.user
