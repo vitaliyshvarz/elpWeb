@@ -80,10 +80,12 @@
         "variable-declaration": "nospace"
       }
     ],
-    "variable-name": {
-      "enabled": true,
-      "ignore": ["Promise"],
-    },
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
     "whitespace": [
       true,
       "check-branch",

@@ -1,5 +1,5 @@
 /// <reference path="../../typings/index.d.ts" />
-/// <reference path="../../typings/jquery/jquery.d.ts" />
+/// <reference path="../../typings/globals/jquery/index.d.ts" />
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

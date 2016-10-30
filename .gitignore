@@ -2,3 +2,8 @@
 /dist
 /typings
 npm-debug.log
+# msvs project files
+/bin
+/obj
+*.csproj
+*.user
