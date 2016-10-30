@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '../../../translate/index';
+import { TranslateService } from '@core';
+
+import { User } from '@core';
 
 @Component({
   moduleId: module.id,
@@ -10,10 +12,16 @@ import { TranslateService } from '../../../translate/index';
 
 export class TopMenuComponent implements OnInit{
   public selectedLang: string;
+  currentUser: User;
 
-  constructor(private _translate: TranslateService) { }
+  constructor(private _translate: TranslateService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
+    /* tslint:disable */
+    $(document).foundation();
+    /* tslint:enable */
     this.selectedLang = this._translate.currentLang;
   }
 }

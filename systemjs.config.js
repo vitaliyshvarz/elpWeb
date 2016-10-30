@@ -11,7 +11,6 @@
     map: {
       // our app is within the app folder
       app: 'dist',
-
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -19,14 +18,16 @@
       '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
       '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+      '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
-
       // other libraries
       'rxjs': 'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-      'ng2-translate/ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      'ng2-translate/ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.js',
+
+      '@core': 'dist/app/core/core.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -38,7 +39,6 @@
         defaultExtension: 'js'
       },
       'angular-in-memory-web-api': {
-        main: './index.js',
         defaultExtension: 'js'
       }
     }

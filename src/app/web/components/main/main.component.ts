@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ngOnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'my-app',
-  template:`
-    <router-outlet>
-  `
+  templateUrl: 'main.component.html',
+  styleUrls: ['main.component.css']
 })
 
-export class AppComponent {}
+export class AppComponent implements ngOnInit{
+
+  ngOnInit() {
+    /* tslint:disable */
+    $(document).foundation();
+    /* tslint:enable */
+  }
+}

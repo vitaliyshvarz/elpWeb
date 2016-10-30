@@ -1,7 +1,7 @@
 {
   "name": "eatlikeprosite",
   "version": "1.0.0",
-  "description": "",
+  "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.js",
   "scripts": {
     "lite": "lite-server",
@@ -44,7 +44,6 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
-    "angular-in-memory-web-api": "^0.1.7",
     "autoprefixer": "^6.3.5",
     "concurrently": "^2.0.0",
     "cssnano": "^3.4.0",

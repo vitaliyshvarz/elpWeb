@@ -72,7 +72,8 @@ gulp.task('watch', function () {
   gulp.watch([dev + '**/*.ts',
               dev + '**/*.scss',
               dev + '**/*.html',
-              dev + 'img/*'], [
+              dev + '**/*.png',
+              dev + '**/*.jpg'], [
                 'build-ts',
                 'build-css',
                 'build-html',
@@ -85,13 +86,11 @@ gulp.task('clean', function () {
       .pipe(clean());
 });
 
-gulp.task('start', function (done) {
+gulp.task('start', function () {
   runSequence('develop',
               'build-third-js',
               'copy-vid',
-              'watch', function () {
-                done();
-              });
+              'watch');
 });
 
 gulp.task('develop', function (done) {
