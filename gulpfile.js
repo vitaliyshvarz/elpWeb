@@ -71,7 +71,9 @@ gulp.task('build-html', function () {
 gulp.task('watch', function () {
   gulp.watch([dev + '**/*.ts',
               dev + '**/*.scss',
-              dev + '**/*.html'], [
+              dev + '**/*.html',
+              dev + '**/*.png',
+              dev + '**/*.jpg'], [
                 'build-ts',
                 'build-css',
                 'build-html',
