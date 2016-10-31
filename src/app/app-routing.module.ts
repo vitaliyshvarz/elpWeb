@@ -5,8 +5,6 @@ import { PlacesComponent }            from './admin/components/places/places.com
 import { PlaceDetailComponent }       from './admin/components/place/place-detail.component';
 import { MainAdminComponent }         from './admin/components/main/admin-main.component';
 import { WebHomeComponent }           from './web/components/home/home.component';
-import { WebLoginFormComponent }      from './web/components/login-form/login-form.component';
-import { WebRegisterFormComponent }   from './web/components/register-form/register-form.component';
 import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
 import { AuthGuard }                  from  '@core';
 

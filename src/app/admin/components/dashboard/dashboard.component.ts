@@ -26,9 +26,9 @@ export class DashboardComponent implements OnInit {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.loadAllUsers();
-    this.loadAllPlaces()
+    this.loadAllPlaces();
   }
 
   // initially get places
@@ -45,7 +45,9 @@ export class DashboardComponent implements OnInit {
   // delete user by id
   deleteUser(id: string) {
     this.userService.delete(id)
-      .subscribe(() => { this.loadAllUsers() });
+      .subscribe(() => {
+        this.loadAllUsers();
+      });
   }
 
   /*

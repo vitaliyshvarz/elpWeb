@@ -1,6 +1,7 @@
 /// <binding ProjectOpened='default' />
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var tslint = require('gulp-tslint');
 
 var dev = 'src/app/';
 var prod = 'dist/app/';
@@ -104,6 +105,14 @@ gulp.task('develop', function (done) {
     done();
   });
 });
+
+gulp.task('tslint', () =>
+    gulp.src(dev + '**/*.ts')
+      .pipe(tslint({
+        formatter: 'verbose'
+      }))
+      .pipe(tslint.report())
+);
 
 gulp.task('default', [
   'start'

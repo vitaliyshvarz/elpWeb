@@ -9,6 +9,7 @@ import { Place } from '../models/place';
 export class PlaceService {
 
   private placesUrl = 'app/places';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {}
 
@@ -17,7 +18,6 @@ export class PlaceService {
     return Promise.reject(error.message || error);
   }
 
-  private headers = new Headers({'Content-Type': 'application/json'});
 
   update(place: Place): Promise<Place> {
     const url = `${this.placesUrl}/${place.id}`;
@@ -49,7 +49,8 @@ export class PlaceService {
             .toPromise()
             .then(response => {
               console.log(response);
-              return response.json().data as Place[]})
+              return response.json().data as Place[];
+            })
             .catch(this.handleError);
   }
 

@@ -5,7 +5,7 @@ export * from './guards/auth.guard';
 export * from './models/place';
 export * from './models/user';
 
-//Services
+// Services
 export * from './services/authentication.service';
 export * from './services/user.service';
 export * from './services/place.service';

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { Place }                    from '@core';
@@ -10,13 +10,13 @@ import { PlaceService }             from '@core';
   templateUrl: 'place-detail.component.html',
 })
 export class PlaceDetailComponent implements OnInit {
+  place: Place;
+
   constructor(
     private placeService: PlaceService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
-
-  place: Place;
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {

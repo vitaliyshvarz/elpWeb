@@ -9,19 +9,19 @@ export class UserService {
     return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
   }
 
-  public getById(id) {
+  public getById(id: any) {
     return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
   }
 
-  public create(user) {
+  public create(user: any) {
     return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
   }
 
-  public update(user) {
+  public update(user: any) {
     return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
   }
 
-  public elete(id) {
+  public delete(id: any) {
     return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
   }
 

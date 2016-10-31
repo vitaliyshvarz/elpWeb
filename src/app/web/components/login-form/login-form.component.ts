@@ -12,7 +12,7 @@ import { AuthenticationService } from '@core';
 
 export class WebLoginFormComponent implements OnInit {
   model: any = {};
-  loading = false
+  loading = false;
 
   constructor(
     private router: Router,

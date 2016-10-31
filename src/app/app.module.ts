@@ -6,7 +6,7 @@ import { HttpModule }    from '@angular/http';
 // ADMIN
 import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
 import { PlacesComponent } from './admin/components/places/places.component';
-import { DashboardComponent } from './admin/components/dashboard/dashboard.component'
+import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { PlaceSearchComponent } from './admin/components/place-search/place-search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 
@@ -18,7 +18,7 @@ import { TranslationsListComponent } from './web/components/translations-list/tr
 import { WebLoginFormComponent } from './web/components/login-form/login-form.component';
 import { WebRegisterFormComponent } from './web/components/register-form/register-form.component';
 import { WebLoginRegisterComponent } from './web/components/login-register/login-register.component';
-import { AlertComponent } from './web/components/alert/alert.component'
+import { AlertComponent } from './web/components/alert/alert.component';
 
 import { AlertService } from './web/services/alert.service';
 
@@ -38,7 +38,7 @@ import { AuthGuard } from '@core';
 
 // used to create fake backend
 import { fakeBackendProvider } from '@core';
-import { MockBackend, MockConnection } from '@angular/http/testing';
+import { MockBackend } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
 import './rxjs-extensions';

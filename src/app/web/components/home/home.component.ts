@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-declare var $:JQueryStatic;
+declare var $: JQueryStatic;
 
 @Component({
   moduleId: module.id,
   selector: 'web-home',
-  templateUrl:'home.component.html',
+  templateUrl: 'home.component.html',
   styleUrls: ['home.component.css']
 })
 
