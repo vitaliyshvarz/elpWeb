@@ -29,11 +29,6 @@ import { UserService } from '@core';
 import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from '@core';
 import { AppRoutingModule }     from './app-routing.module';
 
-
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from '@core';
-
 import { AuthGuard } from '@core';
 
 // used to create fake backend
@@ -49,8 +44,7 @@ import './rxjs-extensions';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpModule
  ],
   declarations: [
     TopMenuComponent,

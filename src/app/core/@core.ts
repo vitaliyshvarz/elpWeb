@@ -16,4 +16,3 @@ export * from './translate/index';
 
 // TODO: remove this when real back end
 export * from './helpers/fake-backend';
-export * from './helpers/in-memory-data.service';

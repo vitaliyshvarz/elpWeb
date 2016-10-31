@@ -33,8 +33,8 @@ export class DashboardComponent implements OnInit {
 
   // initially get places
   private loadAllPlaces() {
-    this.placeService.getPlaces()
-      .then((places: Place[]) => this.places = places);
+    this.placeService.getAll()
+      .subscribe((places: Place[]) => this.places = places);
   }
   // initially get users
   private loadAllUsers() {

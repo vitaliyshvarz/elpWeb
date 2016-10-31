@@ -26,7 +26,8 @@ export class PlacesComponent implements OnInit {
   }
 
   getPlaces(): void {
-    this.placeService.getPlaces().then((places: Place[]) => this.places = places);
+    this.placeService.getAll()
+    .subscribe((places: Place[]) => this.places = places);
   }
 
   onSelect(place: Place): void {
@@ -41,7 +42,7 @@ export class PlacesComponent implements OnInit {
     name = name.trim();
     if (!name) { return; }
     this.placeService.create(name)
-      .then((place: Place) => {
+      .subscribe((place: Place) => {
         this.places.push(place);
         this.selectedPlace = null;
       });
@@ -49,7 +50,7 @@ export class PlacesComponent implements OnInit {
   delete(place: Place): void {
     this.placeService
         .delete(place.id)
-        .then(() => {
+        .subscribe(() => {
           this.places = this.places.filter(h => h !== place);
           if (this.selectedPlace === place) { this.selectedPlace = null; }
         });

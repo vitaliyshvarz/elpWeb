@@ -1,61 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
-
-import { Place } from '../models/place';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 @Injectable()
 export class PlaceService {
+  constructor(private http: Http) { }
 
-  private placesUrl = 'app/places';
-  private headers = new Headers({'Content-Type': 'application/json'});
-
-  constructor(private http: Http) {}
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  public getAll() {
+    return this.http.get('/api/places', this.jwt())
+            .map((response: Response) => response.json());
   }
 
-
-  update(place: Place): Promise<Place> {
-    const url = `${this.placesUrl}/${place.id}`;
-    return this.http
-      .put(url, JSON.stringify(place), {headers: this.headers})
-      .toPromise()
-      .then(() => place)
-      .catch(this.handleError);
+  public getById(id: any) {
+    return this.http.get('/api/places/' + id, this.jwt())
+            .map((response: Response) => response.json());
   }
 
-  create(name: string): Promise<Place> {
-    return this.http
-      .post(this.placesUrl, JSON.stringify({name: name}), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json().data)
-      .catch(this.handleError);
-  }
-  delete(id: number): Promise<void> {
-    const url = `${this.placesUrl}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => null)
-      .catch(this.handleError);
+  public create(user: any) {
+    return this.http.post('/api/places', user, this.jwt())
+            .map((response: Response) => response.json());
   }
 
-
-  getPlaces(): Promise<Place[]> {
-    return this.http.get(this.placesUrl)
-            .toPromise()
-            .then(response => {
-              console.log(response);
-              return response.json().data as Place[];
-            })
-            .catch(this.handleError);
+  public update(user: any) {
+    return this.http.put('/api/places/' + user.id, user, this.jwt())
+            .map((response: Response) => response.json());
   }
 
-  getPlace(id: number): Promise<Place> {
-    return this.getPlaces()
-               .then(places => places.find(place => place.id === id));
+  public delete(id: any) {
+    return this.http.delete('/api/places/' + id, this.jwt())
+            .map((response: Response) => response.json());
+  }
+
+  // private helper methods
+
+  private jwt() {
+    // create authorization header with jwt token
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.token) {
+      let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      return new RequestOptions({ headers: headers });
+    }
   }
 }

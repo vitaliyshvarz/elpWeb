@@ -21,8 +21,8 @@ export class PlaceDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
-      this.placeService.getPlace(id)
-        .then((place: Place) => this.place = place);
+      this.placeService.getById(id)
+        .subscribe((place: Place) => this.place = place);
     });
   }
   goBack(): void {
@@ -31,7 +31,7 @@ export class PlaceDetailComponent implements OnInit {
 
   save(): void {
     this.placeService.update(this.place)
-      .then(() => this.goBack());
+      .subscribe(() => this.goBack());
   }
 
 }
