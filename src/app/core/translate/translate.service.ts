@@ -10,14 +10,13 @@ export class TranslateService {
     }
 
     // inject our translations
-    constructor(@Inject(TRANSLATIONS) private _translations: any) {
+    constructor( @Inject(TRANSLATIONS) private _translations: any) {
     }
 
     public use(lang: string): void {
         // set current language
         this._currentLang = lang;
     }
-    
 
     private translate(key: string): string {
         // private perform translation

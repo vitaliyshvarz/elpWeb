@@ -1,4 +1,3 @@
-
 # Logs
 logs
 *.log
@@ -15,7 +14,6 @@ npm-debug.log*
 /typings
 npm-debug.log
 **/*.DS_Store
-
 
 # MSVS project files
 /bin

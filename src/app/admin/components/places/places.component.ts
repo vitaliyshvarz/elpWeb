@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Place } from '@core';
-import { PlaceService } from '@core';
+import { Place } from '../../../core/@core';
+import { PlaceService } from '../../../core/@core';
 
 @Component({
     moduleId: module.id,
@@ -13,47 +13,48 @@ import { PlaceService } from '@core';
 })
 
 export class PlacesComponent implements OnInit {
-  places: Place[];
-  selectedPlace: Place;
+    places: Place[];
+    selectedPlace: Place;
 
-  constructor(
-    private placeService: PlaceService,
-    private router: Router
-  ) { }
+    constructor(
+        private placeService: PlaceService,
+        private router: Router
+    ) { }
 
-  ngOnInit(): void {
-    this.getPlaces();
-  }
+    ngOnInit(): void {
+        this.getPlaces();
+    }
 
-  getPlaces(): void {
-    this.placeService.getPlaces().then((places: Place[]) => this.places = places);
-  }
+    getPlaces(): void {
+        this.placeService.getAll()
+            .subscribe((places: Place[]) => this.places = places);
+    }
 
-  onSelect(place: Place): void {
-    this.selectedPlace = place;
-  }
+    onSelect(place: Place): void {
+        this.selectedPlace = place;
+    }
 
-  gotoDetail(place: Place): void {
-    let link = ['/detail', place.id];
-    this.router.navigate(link);
-  }
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.placeService.create(name)
-      .then((place: Place) => {
-        this.places.push(place);
-        this.selectedPlace = null;
-      });
-  }
-  delete(place: Place): void {
-    this.placeService
-        .delete(place.id)
-        .then(() => {
-          this.places = this.places.filter(h => h !== place);
-          if (this.selectedPlace === place) { this.selectedPlace = null; }
-        });
-  }
+    gotoDetail(place: Place): void {
+        let link = ['/detail', place.id];
+        this.router.navigate(link);
+    }
+    add(name: string): void {
+        name = name.trim();
+        if (!name) { return; }
+        this.placeService.create(name)
+            .subscribe((place: Place) => {
+                this.places.push(place);
+                this.selectedPlace = null;
+            });
+    }
+    delete(place: Place): void {
+        this.placeService
+            .delete(place.id)
+            .subscribe(() => {
+                this.places = this.places.filter(h => h !== place);
+                if (this.selectedPlace === place) { this.selectedPlace = null; }
+            });
+    }
 
 
 }
