@@ -6,31 +6,31 @@ export class TranslateService {
     private _currentLang: string;
 
     public get currentLang() {
-      return this._currentLang;
+        return this._currentLang;
     }
 
     // inject our translations
-    constructor(@Inject(TRANSLATIONS) private _translations: any) {
+    constructor( @Inject(TRANSLATIONS) private _translations: any) {
     }
 
     public use(lang: string): void {
-      // set current language
-      this._currentLang = lang;
+        // set current language
+        this._currentLang = lang;
     }
 
     private translate(key: string): string {
-      // private perform translation
-      let translation = key;
+        // private perform translation
+        let translation = key;
 
-      if (this._translations[this.currentLang] && this._translations[this.currentLang][key]) {
-        return this._translations[this.currentLang][key];
-      }
+        if (this._translations[this.currentLang] && this._translations[this.currentLang][key]) {
+            return this._translations[this.currentLang][key];
+        }
 
-      return translation;
+        return translation;
     }
 
     public instant(key: string) {
-      // call translation
-      return this.translate(key);
+        // call translation
+        return this.translate(key);
     }
 }

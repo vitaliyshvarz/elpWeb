@@ -40,41 +40,41 @@ import './rxjs-extensions';
 
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpModule
- ],
-  declarations: [
-    TopMenuComponent,
-    TranslationsListComponent,
-    TranslatePipe,
-    AppComponent,
-    PlaceDetailComponent,
-    PlacesComponent,
-    DashboardComponent,
-    PlaceSearchComponent,
-    MainAdminComponent,
-    WebHomeComponent,
-    WebLoginFormComponent,
-    WebRegisterFormComponent,
-    WebLoginRegisterComponent,
-    AlertComponent
-  ],
-  providers: [
-    AuthGuard,
-    PlaceService,
-    TRANSLATION_PROVIDERS,
-    TranslateService,
-    UserService,
-    AlertService,
-    AuthenticationService,
-    // providers used to create fake backend
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions
-  ],
-  bootstrap:    [ AppComponent ]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpModule
+    ],
+    declarations: [
+        TopMenuComponent,
+        TranslationsListComponent,
+        TranslatePipe,
+        AppComponent,
+        PlaceDetailComponent,
+        PlacesComponent,
+        DashboardComponent,
+        PlaceSearchComponent,
+        MainAdminComponent,
+        WebHomeComponent,
+        WebLoginFormComponent,
+        WebRegisterFormComponent,
+        WebLoginRegisterComponent,
+        AlertComponent
+    ],
+    providers: [
+        AuthGuard,
+        PlaceService,
+        TRANSLATION_PROVIDERS,
+        TranslateService,
+        UserService,
+        AlertService,
+        AuthenticationService,
+        // providers used to create fake backend
+        fakeBackendProvider,
+        MockBackend,
+        BaseRequestOptions
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

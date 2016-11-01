@@ -13,7 +13,7 @@ export const LANG_EN_TRANS = {
     'EMAIL': 'Email',
     'EMAIL_REQUIRED': 'Email required',
     'PASSWORD': 'Password',
-    'PASSWORD_REQUIRED' : 'Password required',
+    'PASSWORD_REQUIRED': 'Password required',
     'PASSWORD_MATCH_REQUIRED': 'Password match required',
     'REGISTER': 'Registration',
     'FIRST_NAME': 'First name',

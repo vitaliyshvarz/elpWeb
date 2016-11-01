@@ -9,20 +9,20 @@ import { WebLoginRegisterComponent }  from './web/components/login-register/logi
 import { AuthGuard }                  from './core/@core';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: WebHomeComponent },
-  { path: 'login-register', component: WebLoginRegisterComponent},
-  { path: 'admin',  component: MainAdminComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
-  { path: 'places',     component: PlacesComponent, canActivate: [AuthGuard] },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: WebHomeComponent },
+    { path: 'login-register', component: WebLoginRegisterComponent },
+    { path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
+    { path: 'places', component: PlacesComponent, canActivate: [AuthGuard] },
 
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' }
 ];
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule { }
