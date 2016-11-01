@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TranslateService } from '@core';
+import { TranslateService } from '../../../core/@core';
 
 @Component({
   moduleId: module.id,
   selector: 'translations-list',
-  templateUrl:'translations-list.component.html',
+  templateUrl: 'translations-list.component.html',
   styleUrls: ['translations-list.component.css']
 })
 

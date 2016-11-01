@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['main.component.css']
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   ngOnInit() {
     $(document).foundation();

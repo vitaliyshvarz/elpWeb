@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['login-register.component.css']
 })
 
-export class WebLoginRegisterComponent implements OnInit{
+export class WebLoginRegisterComponent implements OnInit {
   login: boolean;
   ngOnInit() {
     this.login = true;

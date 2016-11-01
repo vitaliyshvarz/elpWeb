@@ -106,13 +106,14 @@ gulp.task('develop', function (done) {
   });
 });
 
-gulp.task('tslint', () =>
-    gulp.src(dev + '**/*.ts')
-      .pipe(tslint({
-        formatter: 'verbose'
-      }))
-      .pipe(tslint.report())
-);
+gulp.task('tslint', function () {
+  gulp.src([dev + '**/*.ts'])
+    .pipe(tslint({
+      formatter: 'verbose'
+    }))
+    .pipe(tslint.report())
+    .pipe(typescript(tsProject));
+});
 
 gulp.task('default', [
   'start'

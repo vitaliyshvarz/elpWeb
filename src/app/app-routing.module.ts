@@ -6,7 +6,7 @@ import { PlaceDetailComponent }       from './admin/components/place/place-detai
 import { MainAdminComponent }         from './admin/components/main/admin-main.component';
 import { WebHomeComponent }           from './web/components/home/home.component';
 import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
-import { AuthGuard }                  from  '@core';
+import { AuthGuard }                  from './core/@core';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

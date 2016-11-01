@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '@core';
-import { AlertService } from '../../services/alert.service'
+import { UserService } from '../../../core/@core';
+import { AlertService } from '../../services/alert.service';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class WebRegisterFormComponent implements OnInit {
   ngOnInit() {
     /* tslint:disable */
     const context = this;
-    new Foundation.Abide($('form'), {});
+    new (<any>Foundation.Abide)($('form'), {});
 
     $('form').on('formvalid.zf.abide', function() {
       context.register();
@@ -32,7 +32,6 @@ export class WebRegisterFormComponent implements OnInit {
 
   register() {
     this.loading = true;
-    console.log(this.model)
     this.userService.create(this.model)
       .subscribe(
         (data: any) => {

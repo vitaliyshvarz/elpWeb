@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@core';
+import { TranslateService } from '../../../core/@core';
 
-import { User } from '@core';
+import { User } from '../../../core/@core';
 
 @Component({
   moduleId: module.id,
   selector: 'top-menu',
-  templateUrl:'top-menu.component.html',
+  templateUrl: 'top-menu.component.html',
   styleUrls: ['top-menu.component.css']
 })
 
-export class TopMenuComponent implements OnInit{
+export class TopMenuComponent implements OnInit {
   public selectedLang: string;
   currentUser: User;
 

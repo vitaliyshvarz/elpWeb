@@ -23,16 +23,16 @@ import { AlertComponent } from './web/components/alert/alert.component';
 import { AlertService } from './web/services/alert.service';
 
 // Shared Modules
-import { AuthenticationService } from '@core';
-import { PlaceService } from '@core';
-import { UserService } from '@core';
-import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from '@core';
+import { AuthenticationService } from './core/@core';
+import { PlaceService } from './core/@core';
+import { UserService } from './core/@core';
+import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './core/@core';
 import { AppRoutingModule }     from './app-routing.module';
 
-import { AuthGuard } from '@core';
+import { AuthGuard } from './core/@core';
 
 // used to create fake backend
-import { fakeBackendProvider } from '@core';
+import { fakeBackendProvider } from './core/@core';
 import { MockBackend } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
