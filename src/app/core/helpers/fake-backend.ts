@@ -37,7 +37,11 @@ export let fakeBackendProvider = {
                     // get parameters from post request
                     let params = JSON.parse(connection.request.getBody());
                     // find if any user matches login credentials
+
                     let filteredUsers = users.filter(user => {
+                        console.log(user.email, params.email)
+                        console.log(user.password, params.password)
+
                         return user.email === params.email && user.password === params.password;
                     });
 

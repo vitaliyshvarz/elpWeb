@@ -21,5 +21,7 @@ export const LANG_EN_TRANS = {
     'LAST_NAME': 'Last name',
     'LASTNAME_REQUIRED': 'Last name required',
     'CANCEL': 'Cancel',
-    'REPEAT': 'repeat'
+    'REPEAT': 'repeat',
+    'ADMIN': 'Admin',
+    'HOME': 'Home'
 };

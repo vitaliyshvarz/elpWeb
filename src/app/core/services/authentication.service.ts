@@ -1,10 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { EventEmitter }   from '@angular/core';
+
 import 'rxjs/add/operator/map';
+
+declare const FB: any;
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: Http) { }
+    constructor(
+        private http: Http,
+        public broadcaster: Broadcaster
+    ) { }
 
     login(email: string, password: string) {
         return this.http.post('/api/authenticate', JSON.stringify({
@@ -23,5 +30,17 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        try {
+            FB.logout((response: any) => {
+                window.location.reload()
+            });
+        } catch (err) {
+            console.warn('FB logout not available');
+        }
+        this.broadCastLogut();
+    }
+
+    broadCastLogut() {
+
     }
 }

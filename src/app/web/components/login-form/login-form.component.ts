@@ -20,9 +20,6 @@ export class WebLoginFormComponent implements OnInit {
         private alertService: AlertService) { }
 
     ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();
-
         const context = this;
         new (<any>Foundation.Abide)($('form'), {});
 
