@@ -1,6 +1,5 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { EventEmitter }   from '@angular/core';
 import { Logged }         from '../definitions/logged';
 import { LoggedService }  from '../services/logged.service';
 
@@ -10,7 +9,7 @@ declare const FB: any;
 
 @Injectable()
 export class AuthenticationService {
-    private logged: Logged = { email: '' }
+    private logged: Logged;
     constructor(
         private http: Http,
         private loggedService: LoggedService
@@ -27,7 +26,10 @@ export class AuthenticationService {
                 // store user details and jwt token in local storage
                 // to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                this.logged.email = user.email;
+                this.logged = {
+                    email: user.email,
+                    firstName: user.firstName
+                };
                 this.loggedService.setLogged(this.logged);
             }
         });
@@ -37,9 +39,7 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         try {
-            FB.logout((response: any) => {
-                window.location.reload()
-            });
+            FB.logout();
         } catch (err) {
             console.warn('FB logout not available');
         }

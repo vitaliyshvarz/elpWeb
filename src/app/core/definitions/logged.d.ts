@@ -1,4 +1,5 @@
 export interface Logged {
-  email: string;
-  password?: string;
+    email: string;
+    firstName: string;
+    password?: string;
 }

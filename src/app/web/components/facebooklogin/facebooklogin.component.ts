@@ -1,7 +1,6 @@
-import { Component, OnInit }     from '@angular/core';
-import { Router }                from "@angular/router";
+import { Component }             from '@angular/core';
 import { AuthenticationService } from '../../../core/@core';
-import { UserService } from '../../../core/@core';
+import { UserService }           from '../../../core/@core';
 import { AlertService }          from '../../services/alert.service';
 
 declare const FB: any;
@@ -13,15 +12,14 @@ declare const FB: any;
     styleUrls: ['facebooklogin.component.css']
 })
 
-export class FacebookLoginComponent implements OnInit {
+export class FacebookLoginComponent {
     private showSelf: boolean;
     loading = false;
 
     constructor(
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        private userService: UserService,
-
+        private userService: UserService
     ) {
         try {
             FB.init({
@@ -81,8 +79,7 @@ export class FacebookLoginComponent implements OnInit {
             locale: 'en_US',
             fields: 'first_name,last_name,email,location'
         }, (response: any) => {
-            console.log(response);
-            // TODO:
+            // TODO: Idea is to save FB id as user password
             response.password = response.id;
             this.loginInApp(response);
         });
@@ -92,7 +89,6 @@ export class FacebookLoginComponent implements OnInit {
         this.loading = true;
         FB.login((response: any) => {
             if (response.authResponse) {
-                console.log(response);
                 this.getUserDataOnLogin();
             } else {
                 console.warn('User cancelled login or did not fully authorize.');
@@ -100,6 +96,4 @@ export class FacebookLoginComponent implements OnInit {
             }
         }, { scope: 'email,user_location', return_scopes: true });
     }
-
-    ngOnInit() {}
 }

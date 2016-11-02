@@ -20,14 +20,12 @@ export class WebRegisterFormComponent implements OnInit {
         private alertService: AlertService) { }
 
     ngOnInit() {
-        /* tslint:disable */
         const context = this;
         new (<any>Foundation.Abide)($('form'), {});
 
         $('form').on('formvalid.zf.abide', function() {
             context.register();
         });
-        /* tslint:enable */
     }
 
     register() {

@@ -12,7 +12,15 @@
         <li><a routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</a></li>
         <li><a href="javascript:;">{{'JOIN_US' | translate }}</a></li>
         <li  *ngIf="currentUser">
-          <a href="javascript:;">{{currentUser.firstName}}</a>
+
+          <ul  class="menu">
+            <li>
+              <a href="javascript:;">{{currentUser.firstName}}</a>
+            </li>
+            <li>
+              <a class="tiny button" (click)="logout()">logout</a>
+            </li>
+          </ul>
         </li>
         <li *ngIf="currentUser">
           <a href="javascript:;" routerLink="/admin">

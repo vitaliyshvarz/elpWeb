@@ -39,9 +39,6 @@ export let fakeBackendProvider = {
                     // find if any user matches login credentials
 
                     let filteredUsers = users.filter(user => {
-                        console.log(user.email, params.email)
-                        console.log(user.password, params.password)
-
                         return user.email === params.email && user.password === params.password;
                     });
 
@@ -52,7 +49,7 @@ export let fakeBackendProvider = {
                             status: 200,
                             body: {
                                 id: user.id,
-                                username: user.username,
+                                email: user.email,
                                 firstName: user.firstName,
                                 lastName: user.lastName,
                                 token: 'fake-jwt-token'

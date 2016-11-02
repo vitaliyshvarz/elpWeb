@@ -5,7 +5,6 @@ import { User } from '../../../core/@core';
 import { AuthenticationService } from '../../../core/@core';
 
 import { LoggedService } from '../../../core/@core';
-import { Logged } from '../../../core/@core';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +15,6 @@ import { Logged } from '../../../core/@core';
 
 export class TopMenuComponent implements OnInit {
     public selectedLang: string;
-    private logged: Logged;
     currentUser: User;
 
     constructor(
@@ -24,19 +22,24 @@ export class TopMenuComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private loggedService: LoggedService
     ) {
+        this.getUserFromLS();
+        this.loggedService.getLogged().subscribe(logged => {
+            this.getUserFromLS();
+        });
+    }
+
+    getUserFromLS() {
         const userData: any = localStorage.getItem('currentUser');
         this.currentUser = !!userData ? JSON.parse(userData) : null;
-        this.loggedService.getLogged().subscribe(logged => {
-        console.info('Receiving logged user Component B', logged);
-        this.logged = logged;
-      });
     }
 
     ngOnInit() {
         $(document).foundation();
         this.selectedLang = this._translate.currentLang;
     }
+
     logout() {
+        this.currentUser = null;
         this.authenticationService.logout();
     }
 }
