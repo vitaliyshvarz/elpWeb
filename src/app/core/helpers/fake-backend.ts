@@ -283,7 +283,7 @@ export let fakeBackendProvider = {
                     }
                 }
 
-            }, 500);
+            });
 
         });
 

@@ -101,24 +101,5 @@ export class FacebookLoginComponent implements OnInit {
         }, { scope: 'email,user_location', return_scopes: true });
     }
 
-    statusChangeCallback(resp: any) {
-        if (resp.status === 'connected') {
-            this.getUserDataOnLogin();
-        } else if (resp.status === 'not_authorized') {
-
-        } else {
-
-        }
-    }
-
-    ngOnInit() {
-        try {
-            FB.getLoginStatus((response: any) => {
-                console.log(response);
-                this.statusChangeCallback(response);
-            });
-        } catch (err) {
-            console.warn('err loading Facebook Status', err);
-        }
-    }
+    ngOnInit() {}
 }

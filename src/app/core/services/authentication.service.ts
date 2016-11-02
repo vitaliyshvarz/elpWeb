@@ -1,6 +1,8 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { EventEmitter }   from '@angular/core';
+import { Logged }         from '../definitions/logged';
+import { LoggedService }  from '../services/logged.service';
 
 import 'rxjs/add/operator/map';
 
@@ -8,9 +10,10 @@ declare const FB: any;
 
 @Injectable()
 export class AuthenticationService {
+    private logged: Logged = { email: '' }
     constructor(
         private http: Http,
-        public broadcaster: Broadcaster
+        private loggedService: LoggedService
     ) { }
 
     login(email: string, password: string) {
@@ -21,8 +24,11 @@ export class AuthenticationService {
             // login successful if there's a jwt token in the response
             let user = response.json();
             if (user && user.token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                // store user details and jwt token in local storage
+                // to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
+                this.logged.email = user.email;
+                this.loggedService.setLogged(this.logged);
             }
         });
     }
