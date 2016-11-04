@@ -20,7 +20,7 @@ import { WebRegisterFormComponent } from './web/components/register-form/registe
 import { WebLoginRegisterComponent } from './web/components/login-register/login-register.component';
 import { AlertComponent } from './web/components/alert/alert.component';
 import { FacebookLoginComponent } from './web/components/facebooklogin/facebooklogin.component';
-
+import { GoogleLoginComponent } from './web/components/googlelogin/googlelogin.component';
 
 import { AlertService } from './web/services/alert.service';
 
@@ -65,7 +65,8 @@ import './rxjs-extensions';
         WebRegisterFormComponent,
         WebLoginRegisterComponent,
         AlertComponent,
-        FacebookLoginComponent
+        FacebookLoginComponent,
+        GoogleLoginComponent
     ],
     providers: [
         AuthGuard,

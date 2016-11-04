@@ -1,6 +1,12 @@
-<div  data-abide-error *ngIf="message"
-  [ngClass]="{ 'callout': message,
-               'success': message.type === 'success',
-               'alert': message.type === 'error' }">
-               <p><i class="fi-alert"></i>{{message.text}}</p>
+<div *ngIf="message"
+    class="callout message-block">
+   <p>
+     <span *ngIf="message.type === 'success'"
+            class="success badge"><i class="fi-check"></i>
+    </span>
+     <span *ngIf="message.type === 'error'"
+            class="alert badge"><i class="fi-alert"></i>
+    </span>
+     {{message.text}}
+   </p>
 </div>

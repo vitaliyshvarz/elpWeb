@@ -6,6 +6,7 @@ import { LoggedService }  from '../services/logged.service';
 import 'rxjs/add/operator/map';
 
 declare const FB: any;
+declare const gapi: any;
 
 @Injectable()
 export class AuthenticationService {
@@ -37,9 +38,12 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
+        gapi.auth.signOut();
         localStorage.removeItem('currentUser');
         try {
-            FB.logout();
+            if (FB.getAuthResponse()) {
+                FB.logout();
+            }
         } catch (err) {
             console.warn('FB logout not available');
         }

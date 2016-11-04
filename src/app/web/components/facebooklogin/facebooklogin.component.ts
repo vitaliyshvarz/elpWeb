@@ -61,9 +61,7 @@ export class FacebookLoginComponent {
                 this.loading = false;
             },
             (error: any) => {
-                console.log('LOGINERR', error);
                 this.alertService.error(error);
-                console.log('response.id', response.password);
                 const newUser = {
                     email: response.email,
                     firstName: response.first_name,
