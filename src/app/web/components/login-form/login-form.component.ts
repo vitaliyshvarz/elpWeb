@@ -7,9 +7,8 @@ import { AuthenticationService } from '../../../core/@core';
 @Component({
     moduleId: module.id,
     selector: 'login-form',
-    templateUrl: 'login-form.component.html',
-    styleUrls: ['login-form.component.css']
-})
+    templateUrl: 'login-form.component.html'
+  })
 
 export class WebLoginFormComponent implements OnInit {
     model: any = {};

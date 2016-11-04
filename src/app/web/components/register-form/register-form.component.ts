@@ -7,9 +7,8 @@ import { AlertService } from '../../services/alert.service';
 @Component({
     moduleId: module.id,
     selector: 'register-form',
-    templateUrl: 'register-form.component.html',
-    styleUrls: ['register-form.component.css']
-})
+    templateUrl: 'register-form.component.html'
+  })
 
 export class WebRegisterFormComponent implements OnInit {
     model: any = {};

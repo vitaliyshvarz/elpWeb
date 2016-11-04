@@ -21,6 +21,8 @@ import { WebLoginRegisterComponent } from './web/components/login-register/login
 import { AlertComponent } from './web/components/alert/alert.component';
 import { FacebookLoginComponent } from './web/components/facebooklogin/facebooklogin.component';
 import { GoogleLoginComponent } from './web/components/googlelogin/googlelogin.component';
+import { FooterComponent } from './web/components/footer/footer.component';
+import { QuickContactFormComponent } from './web/components/quick-contact-form/quick-contact-form.component';
 
 import { AlertService } from './web/services/alert.service';
 
@@ -66,7 +68,9 @@ import './rxjs-extensions';
         WebLoginRegisterComponent,
         AlertComponent,
         FacebookLoginComponent,
-        GoogleLoginComponent
+        GoogleLoginComponent,
+        FooterComponent,
+        QuickContactFormComponent
     ],
     providers: [
         AuthGuard,

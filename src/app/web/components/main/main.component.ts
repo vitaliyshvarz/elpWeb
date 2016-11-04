@@ -30,6 +30,9 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         $(document).foundation();
+        $('.off-canvas a').on('click', () => {
+            $('.off-canvas').foundation('close');
+        });
     }
 
     logout() {
