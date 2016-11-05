@@ -15,7 +15,7 @@ declare const gapi: any;
 export class GoogleLoginComponent {
     private showSelf: boolean;
     private auth2: any;
-    loading = false;
+    loginButton: any;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -32,7 +32,7 @@ export class GoogleLoginComponent {
                 'scope': 'profile email'
             });
 
-            this.auth2.attachClickHandler(document.getElementById('google-signin'), {},
+            this.auth2.attachClickHandler('google-signin', {},
                 (googleUser: any) => {
                     const userData = {
                         email: googleUser.getBasicProfile().getEmail(),
@@ -54,12 +54,12 @@ export class GoogleLoginComponent {
             (data: any) => {
                 // set success message and pass true paramater
                 // to persist the message after redirecting to the login page
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
                 this.alertService.success('Registration successful', true);
                 this.loginInApp(response);
             },
             (error: any) => {
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
                 this.alertService.error(error);
             });
     }
@@ -69,7 +69,7 @@ export class GoogleLoginComponent {
             .subscribe(
             (data: any) => {
                 this.alertService.success('Login successful', true);
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
                 this.alertService.error(error);
@@ -77,7 +77,8 @@ export class GoogleLoginComponent {
             });
     }
 
-    onGoogleLoginClick() {
-        this.loading = true;
+    onGoogleLoginClick(event: any) {
+        event.preventDefault();
+        this.loginButton = $('#google-signin').toggleClass('sending');
     }
 }

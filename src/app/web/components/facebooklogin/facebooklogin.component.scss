@@ -6,3 +6,12 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.button {
+    &.sending {
+        &:before {
+            top: 3.5em;
+            left: 40%;
+        }
+    }
+}

@@ -14,7 +14,7 @@ declare const FB: any;
 
 export class FacebookLoginComponent {
     private showSelf: boolean;
-    loading = false;
+    loginButton: any;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -43,12 +43,12 @@ export class FacebookLoginComponent {
             (data: any) => {
                 // set success message and pass true paramater
                 // to persist the message after redirecting to the login page
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
                 this.alertService.success('Registration successful', true);
                 this.loginInApp(response);
             },
             (error: any) => {
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
                 this.alertService.error(error);
             });
     }
@@ -58,7 +58,7 @@ export class FacebookLoginComponent {
             .subscribe(
             (data: any) => {
                 this.alertService.success('Login successful', true);
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
                 this.alertService.error(error);
@@ -83,14 +83,15 @@ export class FacebookLoginComponent {
         });
     }
 
-    onFacebookLoginClick() {
-        this.loading = true;
+    onFacebookLoginClick(event: any) {
+        event.preventDefault();
+        this.loginButton = $('#facebook-login').toggleClass('sending').blur();
         FB.login((response: any) => {
             if (response.authResponse) {
                 this.getUserDataOnLogin();
             } else {
                 console.warn('User cancelled login or did not fully authorize.');
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
             }
         }, { scope: 'email,user_location', return_scopes: true });
     }
