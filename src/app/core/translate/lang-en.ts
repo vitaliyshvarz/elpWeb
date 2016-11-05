@@ -23,5 +23,7 @@ export const LANG_EN_TRANS = {
     'CANCEL': 'Cancel',
     'REPEAT': 'repeat',
     'ADMIN': 'Admin',
-    'HOME': 'Home'
+    'HOME': 'Home',
+    'CONTACT_US_QUICK_MSG': 'Leave your email and we will get back to you as soon as possible.',
+    'GET_IN_TOUCH': 'Get in touch'
 };

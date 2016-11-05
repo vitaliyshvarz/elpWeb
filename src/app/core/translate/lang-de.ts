@@ -23,5 +23,7 @@ export const LANG_ES_TRANS = {
     'CANCEL': 'stornieren',
     'REPEAT': 'wiederholen',
     'ADMIN': 'Admin',
-    'HOME': 'Home'
+    'HOME': 'Home',
+    'CONTACT_US_QUICK_MSG': 'Hinterlassen Sie Ihre E-Mail und wir melden uns umgehend bei Ihnen.',
+    'GET_IN_TOUCH': 'Kontaktiere uns'
 };

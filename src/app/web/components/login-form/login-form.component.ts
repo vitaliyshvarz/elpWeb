@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../../core/@core';
     moduleId: module.id,
     selector: 'login-form',
     templateUrl: 'login-form.component.html'
-  })
+})
 
 export class WebLoginFormComponent implements OnInit {
     model: any = {};
@@ -21,9 +21,9 @@ export class WebLoginFormComponent implements OnInit {
 
     ngOnInit() {
         const context = this;
-        new (<any>Foundation.Abide)($('form'), {});
+        new (<any>Foundation.Abide)($('#login-form'), {});
 
-        $('form').on('formvalid.zf.abide', function() {
+        $('#login-form').on('formvalid.zf.abide', function() {
             context.login();
         });
 

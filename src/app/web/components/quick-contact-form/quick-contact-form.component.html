@@ -1,13 +1,36 @@
-<!-- Footer -->
-<div class="footer">
+<div class="quick-contact">
   <div class="row full-width">
-    <div class="small-12 medium-6 large-6 columns">
-      <i class="fi-telephone"></i>
-      <h3>Call Us</h3>
-    </div>
-    <div class="small-12 medium-6 large-6 columns">
-      <i class="fi-mail"></i>
-        <h3>Email Us</h3>
+    <div class="medium-8 large-8 medium-centered columns">
+      <h3>{{'CONTUCT_US' | translate}}</h3>
+      <p>
+        {{'CONTACT_US_QUICK_MSG' | translate}}
+      </p>
+      <p *ngIf="success">
+        <i class="fi-check"></i> Thank you we Will contact you soon!
+      </p>
+      <p *ngIf="error">
+        <i class="fi-x"></i> Sorry something went wrong
+      </p>
+      <form data-abide novalidate class="input-group" id="quickEmail">
+        <span class="input-group-label">@</span>
+        <input  class="input-group-field"
+                type="email"
+                required
+                placeholder="email"
+                pattern="email"
+                name="email"
+                [(ngModel)]="model.email">
+        <div class="input-group-button">
+          <input type="submit" class="button" [value]="getInTouch">
+        </div>
+      </form>
+      <hr />
+      <p>
+        or
+      </p>
+      <p>
+        Call us: +491778561682
+      </p>
     </div>
   </div>
 </div>

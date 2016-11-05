@@ -4,6 +4,7 @@ export * from './guards/auth.guard';
 // Models
 export * from './models/place';
 export * from './models/user';
+export * from './models/quick-email'
 
 // Services
 export * from './services/authentication.service';
@@ -11,6 +12,7 @@ export * from './services/logged.service';
 export * from './services/user.service';
 export * from './services/place.service';
 export * from './services/place-search.service';
+export * from './services/communication.service';
 
 // Translate
 export * from './translate/index';

@@ -8,7 +8,7 @@ import { AlertService } from '../../services/alert.service';
     moduleId: module.id,
     selector: 'register-form',
     templateUrl: 'register-form.component.html'
-  })
+})
 
 export class WebRegisterFormComponent implements OnInit {
     model: any = {};
@@ -21,9 +21,9 @@ export class WebRegisterFormComponent implements OnInit {
 
     ngOnInit() {
         const context = this;
-        new (<any>Foundation.Abide)($('form'), {});
+        new (<any>Foundation.Abide)($('#register-form'), {});
 
-        $('form').on('formvalid.zf.abide', function() {
+        $('#register-form').on('formvalid.zf.abide', function() {
             context.register();
         });
     }

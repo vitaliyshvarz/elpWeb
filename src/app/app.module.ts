@@ -31,6 +31,8 @@ import { AuthenticationService } from './core/@core';
 import { PlaceService } from './core/@core';
 import { UserService } from './core/@core';
 import { LoggedService } from './core/@core';
+import { CommunicationService } from './core/@core';
+
 
 import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './core/@core';
 import { AppRoutingModule }     from './app-routing.module';
@@ -81,6 +83,7 @@ import './rxjs-extensions';
         AlertService,
         AuthenticationService,
         LoggedService,
+        CommunicationService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,
