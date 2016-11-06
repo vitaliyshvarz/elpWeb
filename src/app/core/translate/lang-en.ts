@@ -26,6 +26,10 @@ export const LANG_EN_TRANS = {
     'HOME': 'Home',
     'CONTACT_US_QUICK_MSG': 'Leave your email and we will get back to you as soon as possible.',
     'GET_IN_TOUCH': 'Get in touch',
-    'THANK_YOU_FOR_REGISTERING': 'Thank you for registering!'
+    'THANK_YOU_FOR_REGISTERING': 'Thank you for registering!',
+    'ADD_NEW_PLACE': 'Add new place',
+    'TO_YOUR_ACC': 'to your account',
+    'TO_GET_STARTED': 'to get started'
+
 
 };

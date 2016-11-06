@@ -47,6 +47,7 @@ export class AuthenticationService {
         } catch (err) {
             console.warn('FB logout not available');
         }
+        this.loggedService.setLogged(this.logged);
     }
 
 }

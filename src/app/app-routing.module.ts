@@ -6,11 +6,13 @@ import { PlaceDetailComponent }       from './admin/components/place/place-detai
 import { MainAdminComponent }         from './admin/components/main/admin-main.component';
 import { WebHomeComponent }           from './web/components/home/home.component';
 import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
+import { JoinUsPageComponent }        from './web/components/join-us-page/join-us-page.component';
 import { AuthGuard }                  from './core/@core';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: WebHomeComponent },
+    { path: 'join-us', component: JoinUsPageComponent }
     { path: 'login-register', component: WebLoginRegisterComponent },
     { path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },

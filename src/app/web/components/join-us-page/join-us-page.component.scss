@@ -1,0 +1,38 @@
+$header-bg: #074E68;
+$subnav-link-padding: 0.9rem;
+$subnav-font-size: 0.75rem;
+$subnav-link-opacity: 0.15;
+$header-height: 2.5rem;
+$transition: all 0.35s ease-in-out;
+
+.header {
+    text-align: center;
+    background: $header-bg;
+    background-image: url("dist/app/web/assets/img/join-us-cover.jpg");
+    background-size: cover;
+    position: relative;
+    overflow: visible;
+    padding-top: $header-height;
+    padding-bottom: 4.9rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .headline {
+        color: #000;
+        text-shadow: 0 1px 0 #fff,1px 0 0 #fff;
+
+        small {
+            color: white;
+            text-shadow: 0 0 4px black, 0 0 2px black;
+        }
+    }
+}
+
+.login-box {
+    text-align: center;
+    padding-top: 1em;
+}
+
+.join-us-container {
+    padding-bottom: 2em;
+}
