@@ -29,7 +29,9 @@ export class TranslationsListComponent implements OnInit {
 
         // set current langage
         this.selectLang('en');
-        this.selectedLang = this._translate.currentLang;
+        this._translate.getCurentLang().subscribe((lang: string) => {
+            this.selectedLang = lang;
+        });
     }
 
     isCurrentLang(lang: string) {
@@ -40,7 +42,6 @@ export class TranslationsListComponent implements OnInit {
     selectLang(lang: string) {
         // set current lang;
         this._translate.use(lang);
-        this.selectedLang = this._translate.currentLang;
     }
 
 }

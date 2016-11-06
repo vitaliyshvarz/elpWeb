@@ -35,7 +35,9 @@ export class TopMenuComponent implements OnInit {
 
     ngOnInit() {
         $(document).foundation();
-        this.selectedLang = this._translate.currentLang;
+        this._translate.getCurentLang().subscribe((lang: string) => {
+            this.selectedLang = lang;
+        });
     }
 
     logout() {
