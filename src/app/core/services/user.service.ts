@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
+    private subject: Subject<{}> = new Subject<{}>();
+
     constructor(private http: Http) { }
 
     public getAll() {
@@ -17,7 +21,16 @@ export class UserService {
 
     public create(user: any) {
         return this.http.post('/api/users', user, this.jwt())
-            .map((response: Response) => response.json());
+            .map((response: Response) => {
+                if (response.status === 200) {
+                    this.subject.next(status);
+                }
+                return response;
+            });
+    }
+
+    public registerationSuccess(): Observable<{}> {
+        return this.subject.asObservable();
     }
 
     public update(user: any) {
