@@ -12,7 +12,7 @@ import { AuthenticationService } from '../../../core/@core';
 
 export class WebLoginFormComponent implements OnInit {
     model: any = {};
-    loading = false;
+    loginButton: any;
 
     constructor(
         private router: Router,
@@ -20,29 +20,23 @@ export class WebLoginFormComponent implements OnInit {
         private alertService: AlertService) { }
 
     ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();
-
         const context = this;
-        new (<any>Foundation.Abide)($('form'), {});
-
-        $('form').on('formvalid.zf.abide', function() {
-            context.login();
-        });
-
+        new (<any>Foundation.Abide)($('#login-form'), {});
+        $('#login-form').on('formvalid.zf.abide', () => context.login());
     }
 
     login() {
-        this.loading = true;
+        this.loginButton = $('#login-form').find('[type="submit"]')
+            .toggleClass('sending').blur();
         this.authenticationService.login(this.model.email, this.model.password)
             .subscribe(
             (data: any) => {
                 this.alertService.success('Login successful', true);
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
                 this.alertService.error(error);
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
             });
     }
 }

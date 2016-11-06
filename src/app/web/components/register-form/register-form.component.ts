@@ -12,7 +12,7 @@ import { AlertService } from '../../services/alert.service';
 
 export class WebRegisterFormComponent implements OnInit {
     model: any = {};
-    loading = false;
+    loginButton: any;
 
     constructor(
         private router: Router,
@@ -20,29 +20,28 @@ export class WebRegisterFormComponent implements OnInit {
         private alertService: AlertService) { }
 
     ngOnInit() {
-        /* tslint:disable */
         const context = this;
-        new (<any>Foundation.Abide)($('form'), {});
+        new (<any>Foundation.Abide)($('#register-form'), {});
 
-        $('form').on('formvalid.zf.abide', function() {
+        $('#register-form').on('formvalid.zf.abide', function() {
             context.register();
         });
-        /* tslint:enable */
     }
 
     register() {
-        this.loading = true;
+        this.loginButton = $('#register-form').find('[type="submit"]')
+            .toggleClass('sending').blur();
         this.userService.create(this.model)
             .subscribe(
             (data: any) => {
                 // set success message and pass true paramater
                 // to persist the message after redirecting to the login page
                 this.alertService.success('Registration successful', true);
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
                 this.alertService.error(error);
-                this.loading = false;
+                this.loginButton.removeClass('sending').blur();
             });
     }
 }

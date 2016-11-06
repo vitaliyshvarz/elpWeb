@@ -4,7 +4,9 @@
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
           <li class="menu-text">
-            <a routerLink="/">{{ 'APP_NAME' | translate }}</a>
+            <a routerLink="/">
+              <img src="dist/app/web/assets/img/foodLogoWhite.png" alt="Food Logo" />
+              {{ 'APP_NAME' | translate }}</a>
           </li>
 
           <li class="has-dropdown">
@@ -25,9 +27,16 @@
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-
           <li class="show-for-medium" >
-            <a href="javascript:;" *ngIf="currentUser">{{currentUser.username}}</a>
+            <a href="javascript:;" *ngIf="currentUser">
+              {{currentUser.firstName}}
+              <span class="label logout-label" (click)="logout()">logout</span>
+            </a>
+          </li>
+          <li class="show-for-medium">
+            <a href="javascript:;" *ngIf="currentUser" routerLink="/admin">
+              {{'ADMIN' | translate }}
+            </a>
           </li>
           <li class="show-for-medium"><a href="javascript:;">{{'THE_APP' | translate }}</a></li>
           <li class="show-for-medium"><a href="javascript:;">{{'CONTUCT_US' | translate }}</a></li>

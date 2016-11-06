@@ -1,0 +1,29 @@
+.full-width {
+    max-width: 1400px;
+}
+
+.quick-contact {
+    background-color: #2980b9;
+    padding: 2rem 4rem;
+    color: #fff;
+    text-align: center;
+
+    a,
+    p {
+        font-weight: 300;
+        font-size: 0.8em;
+        color: #fff;
+    }
+}
+
+.is-invalid-input:not(:focus) {
+    background-color: rgba(236,88,64,.5);
+    border-color: #ec5840;
+}
+
+.quick-contact @media only screen and (min-width:40.063em) {
+    .quick-contact .columns:nth-child(n+2) {
+        border-left: 1px solid #b3b3b3;
+        min-height: 280px;
+    }
+}

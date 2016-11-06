@@ -3,4 +3,8 @@ export class User {
     password: string;
     firstName: string;
     lastName: string;
+    email: string;
+    registrationType: string;
+    registrationTime: string;
+    location: any
 }

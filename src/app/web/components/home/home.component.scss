@@ -1,16 +1,16 @@
 video {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  transform: translateX(-50%) translateY(-50%);
-  background: url('./dist/app/web/assets/img/food_main.jpg') no-repeat;
-  background-size: cover;
-  transition: 1s opacity;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background: url('./dist/app/web/assets/img/food_main.jpg') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
 }
 
 .store-bnt {
@@ -19,11 +19,13 @@ video {
     background-color: transparent;
     color: transparent;
     background-position: center;
+
     &.apple {
-      background-image: url(dist/app/web/assets/img/appStoreLogo.png);
+        background-image: url("dist/app/web/assets/img/appStoreLogo.png");
     }
+
     &.google {
-      background-image: url(dist/app/web/assets/img/playStoreLogo.png);
+        background-image: url("dist/app/web/assets/img/playStoreLogo.png");
     }
 }
 
@@ -32,56 +34,68 @@ video {
     padding: 2.5rem 0 4.5rem;
     text-align: center;
     overflow: visible;
+
     &.sites-large {
-      background-size: cover;
-      padding-top: 180px;
+        background-size: cover;
+        padding-top: 180px;
     }
+
     &.main-header {
-      font-size: 2.875rem;
-      text-align: center;
-      color: #fefefe;
-      margin: 0;
+        font-size: 2.875rem;
+        text-align: center;
+        color: #fefefe;
+        margin: 0;
     }
-    h1, h3, h4 {
-      color: #fff;
+
+    h1,
+    h3,
+    h4 {
+        color: #fff;
     }
+
     h1 {
-      font-size: 3em;
-      line-height: 1.0;
-      font-weight: 500;
+        font-size: 3em;
+        line-height: 1.0;
+        font-weight: 500;
     }
+
     .subheader {
-      position: relative;
+        position: relative;
         color: #fefefe;
         font-size: 1.3125rem;
         font-weight: 200;
     }
-    #stargazers a,  #twitter a {
+
+    #stargazers a,
+    #twitter a {
         color: #fefefe;
-        font-size: .8125rem;
+        font-size: 0.8125rem;
         font-weight: 200;
     }
-    .learn-more {
-      width: 65%;
-      border-radius: 2pt;
-    }
 
+    .learn-more {
+        width: 65%;
+        border-radius: 2pt;
+    }
 }
 
 .social-icons {
-  color: transparent;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  width: 45px;
-  &.facebook {
-    background-image: url(dist/app/web/assets/img/webicon-facebook.png);
-  }
-  &.instagram {
-    background-image: url(dist/app/web/assets/img/webicon-instagram.png);
-  }
-  &.twitter {
-    background-image: url(dist/app/web/assets/img/webicon-twitter.png);
-  }
+    color: transparent;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 45px;
+
+    &.facebook {
+        background-image: url("dist/app/web/assets/img/webicon-facebook.png");
+    }
+
+    &.instagram {
+        background-image: url("dist/app/web/assets/img/webicon-instagram.png");
+    }
+
+    &.twitter {
+        background-image: url("dist/app/web/assets/img/webicon-twitter.png");
+    }
 }

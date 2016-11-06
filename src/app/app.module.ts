@@ -19,6 +19,10 @@ import { WebLoginFormComponent } from './web/components/login-form/login-form.co
 import { WebRegisterFormComponent } from './web/components/register-form/register-form.component';
 import { WebLoginRegisterComponent } from './web/components/login-register/login-register.component';
 import { AlertComponent } from './web/components/alert/alert.component';
+import { FacebookLoginComponent } from './web/components/facebooklogin/facebooklogin.component';
+import { GoogleLoginComponent } from './web/components/googlelogin/googlelogin.component';
+import { FooterComponent } from './web/components/footer/footer.component';
+import { QuickContactFormComponent } from './web/components/quick-contact-form/quick-contact-form.component';
 
 import { AlertService } from './web/services/alert.service';
 
@@ -26,6 +30,10 @@ import { AlertService } from './web/services/alert.service';
 import { AuthenticationService } from './core/@core';
 import { PlaceService } from './core/@core';
 import { UserService } from './core/@core';
+import { LoggedService } from './core/@core';
+import { CommunicationService } from './core/@core';
+
+
 import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './core/@core';
 import { AppRoutingModule }     from './app-routing.module';
 
@@ -60,7 +68,11 @@ import './rxjs-extensions';
         WebLoginFormComponent,
         WebRegisterFormComponent,
         WebLoginRegisterComponent,
-        AlertComponent
+        AlertComponent,
+        FacebookLoginComponent,
+        GoogleLoginComponent,
+        FooterComponent,
+        QuickContactFormComponent
     ],
     providers: [
         AuthGuard,
@@ -70,6 +82,8 @@ import './rxjs-extensions';
         UserService,
         AlertService,
         AuthenticationService,
+        LoggedService,
+        CommunicationService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

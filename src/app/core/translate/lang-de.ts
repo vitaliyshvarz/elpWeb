@@ -21,5 +21,9 @@ export const LANG_ES_TRANS = {
     'LAST_NAME': 'NachName',
     'LASTNAME_REQUIRED': 'NachName erforderlich',
     'CANCEL': 'stornieren',
-    'REPEAT': 'wiederholen'
+    'REPEAT': 'wiederholen',
+    'ADMIN': 'Admin',
+    'HOME': 'Home',
+    'CONTACT_US_QUICK_MSG': 'Hinterlassen Sie Ihre E-Mail und wir melden uns umgehend bei Ihnen.',
+    'GET_IN_TOUCH': 'Kontaktiere uns'
 };

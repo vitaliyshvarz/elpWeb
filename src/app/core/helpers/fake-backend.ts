@@ -37,6 +37,7 @@ export let fakeBackendProvider = {
                     // get parameters from post request
                     let params = JSON.parse(connection.request.getBody());
                     // find if any user matches login credentials
+
                     let filteredUsers = users.filter(user => {
                         return user.email === params.email && user.password === params.password;
                     });
@@ -48,7 +49,7 @@ export let fakeBackendProvider = {
                             status: 200,
                             body: {
                                 id: user.id,
-                                username: user.username,
+                                email: user.email,
                                 firstName: user.firstName,
                                 lastName: user.lastName,
                                 token: 'fake-jwt-token'
@@ -279,7 +280,20 @@ export let fakeBackendProvider = {
                     }
                 }
 
-            }, 500);
+                // send quick email
+                if (connection.request.url.endsWith('/api/quick-email') &&
+                    connection.request.method === RequestMethod.Post) {
+                    let newQuickEmail = JSON.parse(connection.request.getBody());
+
+                    localStorage.setItem('quickemail', JSON.stringify(newQuickEmail));
+
+                    // respond 200 OK
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        status: 200
+                    })));
+                }
+
+            });
 
         });
 
