@@ -43,6 +43,8 @@ export class GoogleLoginComponent {
                     this.loginInApp(userData);
                 }, (error: any) => {
                     console.log('Sign-in error', error);
+                    this.loginButton.removeClass('sending').blur();
+                    this.alertService.error(error);
                 }
             );
         });
