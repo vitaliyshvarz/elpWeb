@@ -26,7 +26,6 @@ export class WebRegisterFormComponent implements OnInit {
     }
 
     register() {
-        console.log('Sdasd')
         this.loginButton = $('#register-form').find('[type="submit"]')
             .toggleClass('sending').blur();
         this.userService.create(this.model)
