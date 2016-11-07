@@ -1,9 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { TRANSLATIONS } from './translations'; // import our opaque token
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TranslateService {
     private _currentLang: string;
+    private subject: Subject<{}> = new Subject<{}>();
 
     public get currentLang() {
         return this._currentLang;
@@ -13,9 +16,14 @@ export class TranslateService {
     constructor( @Inject(TRANSLATIONS) private _translations: any) {
     }
 
+    public getCurentLang() {
+        return this.subject.asObservable();
+    }
+
     public use(lang: string): void {
         // set current language
         this._currentLang = lang;
+        this.subject.next(lang);
     }
 
     private translate(key: string): string {

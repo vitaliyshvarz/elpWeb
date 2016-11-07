@@ -22,13 +22,11 @@ export class WebRegisterFormComponent implements OnInit {
     ngOnInit() {
         const context = this;
         new (<any>Foundation.Abide)($('#register-form'), {});
-
-        $('#register-form').on('formvalid.zf.abide', function() {
-            context.register();
-        });
+        $('#register-form').on('formvalid.zf.abide', () => context.register());
     }
 
     register() {
+        console.log('Sdasd')
         this.loginButton = $('#register-form').find('[type="submit"]')
             .toggleClass('sending').blur();
         this.userService.create(this.model)

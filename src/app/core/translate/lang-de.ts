@@ -25,5 +25,9 @@ export const LANG_ES_TRANS = {
     'ADMIN': 'Admin',
     'HOME': 'Home',
     'CONTACT_US_QUICK_MSG': 'Hinterlassen Sie Ihre E-Mail und wir melden uns umgehend bei Ihnen.',
-    'GET_IN_TOUCH': 'Kontaktiere uns'
+    'GET_IN_TOUCH': 'Kontaktiere uns',
+    'THANK_YOU_FOR_REGISTERING': 'Danke für die Registrierung!',
+    'ADD_NEW_PLACE': 'Neue Lokal hinzufügen',
+    'TO_YOUR_ACC': 'zu deinem Account',
+    'TO_GET_STARTED': 'um zu anfängen'
 };

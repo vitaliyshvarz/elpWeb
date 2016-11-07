@@ -23,6 +23,9 @@ import { FacebookLoginComponent } from './web/components/facebooklogin/facebookl
 import { GoogleLoginComponent } from './web/components/googlelogin/googlelogin.component';
 import { FooterComponent } from './web/components/footer/footer.component';
 import { QuickContactFormComponent } from './web/components/quick-contact-form/quick-contact-form.component';
+import { JoinUsPageComponent } from './web/components/join-us-page/join-us-page.component';
+import { AddPlacePart1Component } from './web/components/add-place/add-place-part1.component';
+
 
 import { AlertService } from './web/services/alert.service';
 
@@ -72,7 +75,9 @@ import './rxjs-extensions';
         FacebookLoginComponent,
         GoogleLoginComponent,
         FooterComponent,
-        QuickContactFormComponent
+        QuickContactFormComponent,
+        JoinUsPageComponent,
+        AddPlacePart1Component
     ],
     providers: [
         AuthGuard,

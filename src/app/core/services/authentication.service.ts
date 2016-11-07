@@ -47,10 +47,7 @@ export class AuthenticationService {
         } catch (err) {
             console.warn('FB logout not available');
         }
-        this.broadCastLogut();
+        this.loggedService.setLogged(this.logged);
     }
 
-    broadCastLogut() {
-
-    }
 }
