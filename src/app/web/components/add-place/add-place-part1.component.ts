@@ -15,6 +15,71 @@ export class AddPlacePart1Component implements OnInit {
     marker: any;
     labels: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     labelIndex: number = 0;
+    places: any;
+    map: any;
+    infoWindow: any;
+    markers: any = [];
+    autocomplete: any;
+    autocompletePlaces: any;
+    countryRestrict: any = { 'country': 'us' };
+    MARKER_PATH: any = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green';
+    hostnameRegexp: any = new RegExp('^https?://.+?/');
+
+    countries: any = {
+        'au': {
+            center: { lat: -25.3, lng: 133.8 },
+            zoom: 4
+        },
+        'br': {
+            center: { lat: -14.2, lng: -51.9 },
+            zoom: 3
+        },
+        'ca': {
+            center: { lat: 62, lng: -110.0 },
+            zoom: 3
+        },
+        'fr': {
+            center: { lat: 46.2, lng: 2.2 },
+            zoom: 5
+        },
+        'de': {
+            center: { lat: 51.2, lng: 10.4 },
+            zoom: 5
+        },
+        'mx': {
+            center: { lat: 23.6, lng: -102.5 },
+            zoom: 4
+        },
+        'nz': {
+            center: { lat: -40.9, lng: 174.9 },
+            zoom: 5
+        },
+        'it': {
+            center: { lat: 41.9, lng: 12.6 },
+            zoom: 5
+        },
+        'za': {
+            center: { lat: -30.6, lng: 22.9 },
+            zoom: 5
+        },
+        'es': {
+            center: { lat: 40.5, lng: -3.7 },
+            zoom: 5
+        },
+        'pt': {
+            center: { lat: 39.4, lng: -8.2 },
+            zoom: 6
+        },
+        'us': {
+            center: { lat: 37.1, lng: -95.7 },
+            zoom: 3
+        },
+        'uk': {
+            center: { lat: 54.8, lng: -4.6 },
+            zoom: 5
+        }
+    };
+
     constructor() { }
 
     ngOnInit() {
@@ -26,6 +91,7 @@ export class AddPlacePart1Component implements OnInit {
         };
 
         const map = new google.maps.Map(document.getElementById("map"), mapProp);
+        this.map = map;
         var infoWindow = new google.maps.InfoWindow({ map: map });
 
         // Try HTML5 geolocation.
@@ -56,6 +122,106 @@ export class AddPlacePart1Component implements OnInit {
         google.maps.event.addListener(map, 'click', (event: any) => {
             this.addMarker(event.latLng, map);
         });
+
+        this.infoWindow = new google.maps.InfoWindow({
+            content: document.getElementById('info-content')
+        });
+        this.autocomplete = new google.maps.places.Autocomplete(
+               /** @type {!HTMLInputElement} */(
+                document.getElementById('autocomplete')), {
+                types: ['(cities)'],
+                componentRestrictions: this.countryRestrict
+            });
+
+        //PLACES_____________________________
+        this.autocompletePlaces = new google.maps.places.Autocomplete(
+          /** @type {!HTMLInputElement} */(document.getElementById('pac-input'))
+        );
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map,
+            anchorPoint: new google.maps.Point(0, -29)
+        });
+
+        this.autocompletePlaces.bindTo('bounds', map);
+        this.autocompletePlaces.addListener('place_changed', () => {
+            infowindow.close();
+            marker.setVisible(false);
+            var place = this.autocompletePlaces.getPlace();
+            if (!place.geometry) {
+                // User entered the name of a Place that was not suggested and
+                // pressed the Enter key, or the Place Details request failed.
+                window.alert("No details available for input: '" + place.name + "'");
+                return;
+            }
+
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);  // Why 17? Because it looks good.
+            }
+            marker.setIcon(/** @type {google.maps.Icon} */({
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+            }));
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+        });
+        //PLACES_____________________________
+
+
+
+
+
+        this.places = new google.maps.places.PlacesService(map);
+
+        this.autocomplete.addListener('place_changed', () => {
+            var place = this.autocomplete.getPlace();
+            if (place.geometry) {
+                this.map.panTo(place.geometry.location);
+                this.map.setZoom(15);
+                //this.search();
+            } else {
+                (<HTMLInputElement>document.getElementById('autocomplete')).placeholder = 'Enter a city';
+            }
+        });
+
+        // Add a DOM event listener to react when the user selects a country.
+        document.getElementById('country').addEventListener(
+            'change', () => {
+                var country = (<HTMLInputElement>document.getElementById('country')).value;
+                if (country == 'all') {
+                    console.log('bla', this.autocomplete)
+                    this.autocomplete.setComponentRestrictions([]);
+                    this.map.setCenter({ lat: 15, lng: 0 });
+                    this.map.setZoom(2);
+                } else {
+                    console.log('bla', this)
+
+                    this.autocomplete.setComponentRestrictions({ 'country': country });
+                    this.map.setCenter(this.countries[country].center);
+                    this.map.setZoom(this.countries[country].zoom);
+                }
+            });
+
     }
     addMarker(latLng: any, map: any) {
         var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
@@ -137,4 +303,5 @@ export class AddPlacePart1Component implements OnInit {
             'Error: Your browser doesn\'t support geolocation.');
 
     }
+
 }
