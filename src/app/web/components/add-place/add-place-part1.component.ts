@@ -21,9 +21,9 @@ export class AddPlacePart1Component implements OnInit {
     markers: any = [];
     autocomplete: any;
     autocompletePlaces: any;
-    countryRestrict: any = { 'country': 'us' };
-    MARKER_PATH: any = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green';
-    hostnameRegexp: any = new RegExp('^https?://.+?/');
+    countryRestrict: any = { 'country': 'de' };
+    defaultCountry: string = 'de';
+    MARKER_PATH: any = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green.png';
 
     countries: any = {
         'au': {
@@ -85,47 +85,49 @@ export class AddPlacePart1Component implements OnInit {
     ngOnInit() {
 
         const mapProp = {
-            center: new google.maps.LatLng(51.508742, -0.120850),
-            zoom: 18,
+            center: this.countries[this.defaultCountry].center,
+            zoom: this.countries[this.defaultCountry].zoom,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        const map = new google.maps.Map(document.getElementById("map"), mapProp);
-        this.map = map;
-        var infoWindow = new google.maps.InfoWindow({ map: map });
+        this.map = new google.maps.Map(document.getElementById('map'), mapProp);
+        this.infoWindow = new google.maps.InfoWindow({ map: this.map });
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position: any) => {
-                var pos = {
+                const pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
 
                 this.marker = new google.maps.Marker({
                     position: pos,
-                    map: map,
+                    map: this.map,
                     draggable: true,
-                    animation: google.maps.Animation.DROP,
-                    title: 'You are here!'
+                    animation: google.maps.Animation.DROP
                 });
-                this.marker.addListener('click', this.toggleBounce);
+                this.marker.addListener('click', () => {
+                    if (this.marker.getAnimation() !== null) {
+                        this.marker.setAnimation(null);
+                    } else {
+                        this.marker.setAnimation(google.maps.Animation.BOUNCE);
+                    }
+                });
 
-                map.setCenter(pos);
+                this.map.setCenter(pos);
             }, () => {
-                this.handleLocationError(true, infoWindow, infoWindow.getCenter());
+                this.handleLocationError(true, this.infoWindow, this.infoWindow.getCenter());
             });
         } else {
             // Browser doesn't support Geolocation
-            this.handleLocationError(false, infoWindow, infoWindow.getCenter());
+            this.handleLocationError(false, this.infoWindow, this.infoWindow.getCenter());
         }
-        google.maps.event.addListener(map, 'click', (event: any) => {
-            this.addMarker(event.latLng, map);
+        google.maps.event.addListener(this.map, 'click', (event: any) => {
+            this.addMarker(event.latLng, this.map);
         });
 
-        this.infoWindow = new google.maps.InfoWindow({
-            content: document.getElementById('info-content')
-        });
+
         this.autocomplete = new google.maps.places.Autocomplete(
                /** @type {!HTMLInputElement} */(
                 document.getElementById('autocomplete')), {
@@ -138,16 +140,16 @@ export class AddPlacePart1Component implements OnInit {
           /** @type {!HTMLInputElement} */(document.getElementById('pac-input'))
         );
 
-        var infowindow = new google.maps.InfoWindow();
-        var marker = new google.maps.Marker({
-            map: map,
+        this.infoWindow = new google.maps.InfoWindow();
+        this.marker = new google.maps.Marker({
+            map: this.map,
             anchorPoint: new google.maps.Point(0, -29)
         });
 
-        this.autocompletePlaces.bindTo('bounds', map);
+        this.autocompletePlaces.bindTo('bounds', this.map);
         this.autocompletePlaces.addListener('place_changed', () => {
-            infowindow.close();
-            marker.setVisible(false);
+            this.infoWindow.close();
+            this.marker.setVisible(false);
             var place = this.autocompletePlaces.getPlace();
             if (!place.geometry) {
                 // User entered the name of a Place that was not suggested and
@@ -158,20 +160,20 @@ export class AddPlacePart1Component implements OnInit {
 
             // If the place has a geometry, then present it on a map.
             if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
+                this.map.fitBounds(place.geometry.viewport);
             } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(17);  // Why 17? Because it looks good.
+                this.map.setCenter(place.geometry.location);
+                this.map.setZoom(17);  // Why 17? Because it looks good.
             }
-            marker.setIcon(/** @type {google.maps.Icon} */({
-                url: place.icon,
+            this.marker.setIcon(/** @type {google.maps.Icon} */({
+                url: this.MARKER_PATH,
                 size: new google.maps.Size(71, 71),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(17, 34),
                 scaledSize: new google.maps.Size(35, 35)
             }));
-            marker.setPosition(place.geometry.location);
-            marker.setVisible(true);
+            this.marker.setPosition(place.geometry.location);
+            this.marker.setVisible(true);
 
             var address = '';
             if (place.address_components) {
@@ -182,8 +184,8 @@ export class AddPlacePart1Component implements OnInit {
                 ].join(' ');
             }
 
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-            infowindow.open(map, marker);
+            this.infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            this.infoWindow.open(this.map, this.marker);
         });
         //PLACES_____________________________
 
@@ -191,7 +193,7 @@ export class AddPlacePart1Component implements OnInit {
 
 
 
-        this.places = new google.maps.places.PlacesService(map);
+        this.places = new google.maps.places.PlacesService(this.map);
 
         this.autocomplete.addListener('place_changed', () => {
             var place = this.autocomplete.getPlace();
@@ -209,13 +211,10 @@ export class AddPlacePart1Component implements OnInit {
             'change', () => {
                 var country = (<HTMLInputElement>document.getElementById('country')).value;
                 if (country == 'all') {
-                    console.log('bla', this.autocomplete)
                     this.autocomplete.setComponentRestrictions([]);
                     this.map.setCenter({ lat: 15, lng: 0 });
                     this.map.setZoom(2);
                 } else {
-                    console.log('bla', this)
-
                     this.autocomplete.setComponentRestrictions({ 'country': country });
                     this.map.setCenter(this.countries[country].center);
                     this.map.setZoom(this.countries[country].zoom);
@@ -288,13 +287,8 @@ export class AddPlacePart1Component implements OnInit {
 
 
     }
-    toggleBounce() {
-        if (this.marker.getAnimation() !== null) {
-            this.marker.setAnimation(null);
-        } else {
-            this.marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-    }
+
+
 
     handleLocationError(browserHasGeolocation: boolean, infoWindow: any, pos: any) {
         infoWindow.setPosition(pos);
