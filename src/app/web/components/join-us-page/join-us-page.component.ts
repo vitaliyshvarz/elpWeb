@@ -21,7 +21,7 @@ export class JoinUsPageComponent implements OnInit {
         this.loggedService.getLogged().subscribe(logged => {
             this.getUserFromLS();
         });
-    });
+    }
 
     getUserFromLS() {
         const userData: any = localStorage.getItem('currentUser');

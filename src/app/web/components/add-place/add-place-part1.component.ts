@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../core/@core';
+import { Component, OnInit }                       from '@angular/core';
+import { UserService }                             from '../../../core/@core';
+import { COUNTRIES, MARKER_PATH, DEFAULT_COUNTRY } from '../../../core/@core';
 
 declare var google: any;
 
@@ -13,8 +14,6 @@ declare var google: any;
 export class AddPlacePart1Component implements OnInit {
 
     marker: any;
-    labels: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    labelIndex: number = 0;
     places: any;
     map: any;
     infoWindow: any;
@@ -22,63 +21,9 @@ export class AddPlacePart1Component implements OnInit {
     autocomplete: any;
     autocompletePlaces: any;
     countryRestrict: any = { 'country': 'de' };
-    defaultCountry: string = 'de';
-    MARKER_PATH: any = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green.png';
-
-    countries: any = {
-        'au': {
-            center: { lat: -25.3, lng: 133.8 },
-            zoom: 4
-        },
-        'br': {
-            center: { lat: -14.2, lng: -51.9 },
-            zoom: 3
-        },
-        'ca': {
-            center: { lat: 62, lng: -110.0 },
-            zoom: 3
-        },
-        'fr': {
-            center: { lat: 46.2, lng: 2.2 },
-            zoom: 5
-        },
-        'de': {
-            center: { lat: 51.2, lng: 10.4 },
-            zoom: 5
-        },
-        'mx': {
-            center: { lat: 23.6, lng: -102.5 },
-            zoom: 4
-        },
-        'nz': {
-            center: { lat: -40.9, lng: 174.9 },
-            zoom: 5
-        },
-        'it': {
-            center: { lat: 41.9, lng: 12.6 },
-            zoom: 5
-        },
-        'za': {
-            center: { lat: -30.6, lng: 22.9 },
-            zoom: 5
-        },
-        'es': {
-            center: { lat: 40.5, lng: -3.7 },
-            zoom: 5
-        },
-        'pt': {
-            center: { lat: 39.4, lng: -8.2 },
-            zoom: 6
-        },
-        'us': {
-            center: { lat: 37.1, lng: -95.7 },
-            zoom: 3
-        },
-        'uk': {
-            center: { lat: 54.8, lng: -4.6 },
-            zoom: 5
-        }
-    };
+    defaultCountry: string = DEFAULT_COUNTRY;
+    MARKER_PATH: any =  MARKER_PATH;
+    countries: any = COUNTRIES;
 
     constructor() { }
 
@@ -92,6 +37,7 @@ export class AddPlacePart1Component implements OnInit {
 
         this.map = new google.maps.Map(document.getElementById('map'), mapProp);
         this.infoWindow = new google.maps.InfoWindow({ map: this.map });
+        this.places = new google.maps.places.PlacesService(this.map);
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -124,7 +70,9 @@ export class AddPlacePart1Component implements OnInit {
             this.handleLocationError(false, this.infoWindow, this.infoWindow.getCenter());
         }
         google.maps.event.addListener(this.map, 'click', (event: any) => {
-            this.addMarker(event.latLng, this.map);
+          this.marker.setPosition(event.latLng);
+          this.marker.setVisible(true);
+            //this.addMarker(event.latLng, this.map);
         });
 
 
@@ -193,14 +141,13 @@ export class AddPlacePart1Component implements OnInit {
 
 
 
-        this.places = new google.maps.places.PlacesService(this.map);
+
 
         this.autocomplete.addListener('place_changed', () => {
             var place = this.autocomplete.getPlace();
             if (place.geometry) {
                 this.map.panTo(place.geometry.location);
                 this.map.setZoom(15);
-                //this.search();
             } else {
                 (<HTMLInputElement>document.getElementById('autocomplete')).placeholder = 'Enter a city';
             }
@@ -210,41 +157,10 @@ export class AddPlacePart1Component implements OnInit {
         document.getElementById('country').addEventListener(
             'change', () => {
                 var country = (<HTMLInputElement>document.getElementById('country')).value;
-                if (country == 'all') {
-                    this.autocomplete.setComponentRestrictions([]);
-                    this.map.setCenter({ lat: 15, lng: 0 });
-                    this.map.setZoom(2);
-                } else {
-                    this.autocomplete.setComponentRestrictions({ 'country': country });
-                    this.map.setCenter(this.countries[country].center);
-                    this.map.setZoom(this.countries[country].zoom);
-                }
+                this.autocomplete.setComponentRestrictions({ 'country': country });
+                this.map.setCenter(this.countries[country].center);
+                this.map.setZoom(this.countries[country].zoom);
             });
-
-    }
-    addMarker(latLng: any, map: any) {
-        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-
-        // Add the marker at the clicked location, and add the next-available label
-        // from the array of alphabetical characters.
-        var marker = new google.maps.Marker({
-            position: {
-                lat: latLng.lat(),
-                lng: latLng.lng()
-            },
-            label: this.labels[this.labelIndex++ % this.labels.length],
-            map: map,
-            icon: image
-
-        });
-
-        var location = {
-            lat: latLng.lat(),
-            lng: latLng.lng()
-        };
-
-        this.getPlacesByLocation(location, map);
-        this.searchPlacesByText('restaurant', map, location);
 
     }
 

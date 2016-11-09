@@ -12,7 +12,7 @@ import { AuthGuard }                  from './core/@core';
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: WebHomeComponent },
-    { path: 'join-us', component: JoinUsPageComponent }
+    { path: 'join-us', component: JoinUsPageComponent },
     { path: 'login-register', component: WebLoginRegisterComponent },
     { path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
