@@ -1,6 +1,12 @@
-import { Component, OnInit }                       from '@angular/core';
+import { Component, OnInit, NgZone }                       from '@angular/core';
 import { UserService }                             from '../../../core/@core';
-import { COUNTRIES, MARKER_PATH, DEFAULT_COUNTRY } from '../../../core/@core';
+import {
+    COUNTRIES,
+    MARKER_PATH,
+    DEFAULT_COUNTRY,
+    COUNTRY_NAMES,
+    PLACE_TYPES
+} from '../../../core/@core';
 
 declare var google: any;
 
@@ -15,25 +21,28 @@ export class AddPlacePart1Component implements OnInit {
 
     marker: any;
     places: any;
+    placeTypes: any = PLACE_TYPES;
     choosenPlace: any;
     placeService: any;
     map: any;
     infoWindow: any;
     markers: any = [];
-    autocomplete: any;
+    autocompleteCities: any;
     autocompletePlaces: any;
-    countryRestrict: any = { 'country': 'de' };
-    defaultCountry: string = DEFAULT_COUNTRY;
+    defaultCountry: any = DEFAULT_COUNTRY;
     MARKER_PATH: any = MARKER_PATH;
     countries: any = COUNTRIES;
+    countryNames: any = COUNTRY_NAMES;
 
-    constructor() { }
+    constructor(
+        private zone: NgZone
+    ) { }
 
     ngOnInit() {
 
         const mapProp = {
-            center: this.countries[this.defaultCountry].center,
-            zoom: this.countries[this.defaultCountry].zoom,
+            center: this.countries[this.defaultCountry.value].center,
+            zoom: this.countries[this.defaultCountry.value].zoom,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -73,15 +82,15 @@ export class AddPlacePart1Component implements OnInit {
 
         });
 
-        this.autocomplete = new google.maps.places.Autocomplete(
+        this.autocompleteCities = new google.maps.places.Autocomplete(
                /** @type {!HTMLInputElement} */(
-                document.getElementById('autocomplete')), {
+                document.getElementById('autocomplete-cities')), {
                 types: ['(cities)'],
-                componentRestrictions: this.countryRestrict
+                componentRestrictions: { 'country': this.defaultCountry.value }
             });
 
         this.autocompletePlaces = new google.maps.places.Autocomplete(
-          /** @type {!HTMLInputElement} */(document.getElementById('pac-input'))
+          /** @type {!HTMLInputElement} */(document.getElementById('autocomplete-places'))
         );
         this.autocompletePlaces.bindTo('bounds', this.map);
 
@@ -92,20 +101,15 @@ export class AddPlacePart1Component implements OnInit {
             this.infoWindow.close()
         });
 
+    }
 
-        // Add a DOM event listener to react when the user selects a country.
-        document.getElementById('country').addEventListener(
-            'change', () => {
-                var country = (<HTMLInputElement>document.getElementById('country')).value;
-                this.autocomplete.setComponentRestrictions({ 'country': country });
-                this.map.setCenter(this.countries[country].center);
-                this.map.setZoom(this.countries[country].zoom);
-            });
-
+    setCountry(country: string) {
+        this.autocompleteCities.setComponentRestrictions({ 'country': country });
+        this.map.setCenter(this.countries[country].center);
+        this.map.setZoom(this.countries[country].zoom);
     }
 
     setPlace(place: any) {
-        console.log(place);
 
         if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
@@ -113,12 +117,11 @@ export class AddPlacePart1Component implements OnInit {
             window.alert("No details available for input: '" + place.name + "'");
             return;
         }
-        this.placeService.getDetails({ placeId: place.id }, (place: any, status: any) => {
+        this.placeService.getDetails(place, (detailedPlace: any, status: any) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-                place = place;
-
-                this.choosenPlace = place;
-                console.log(this.choosenPlace)
+                place = detailedPlace;
+                this.zone.run(() => this.choosenPlace = detailedPlace);
+                console.log(this.choosenPlace);
             }
         });
         // If the place has a geometry, then present it on a map.
@@ -152,11 +155,10 @@ export class AddPlacePart1Component implements OnInit {
         const request = {
             location: location,
             radius: '10',
-            types: ['restaurant', 'cafe', 'bar', 'meal_takeaway', 'meal_delivery']
+            types: this.placeTypes
         };
         let service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results: any, status: any) => {
-            console.log(results);
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 if (results.length) {
                     this.setPlace(results[0]);

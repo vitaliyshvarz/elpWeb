@@ -2,7 +2,7 @@
   <div class="medium-12 large-12 medium-centered columns login-register-container">
     <div class="row">
       <div class="small-12 column text-center">
-        <div class="row">
+        <div class="row header-title">
           <h5>Point your place on the map</h5>
         </div>
         <div class="video-container">
@@ -10,29 +10,23 @@
           <div class="row">
 
             <div class=" small-12 large-4 columns">
-              <select id="country">
-                <option value="au">Australia</option>
-                <option value="br">Brazil</option>
-                <option value="ca">Canada</option>
-                <option value="fr">France</option>
-                <option value="de" selected>Germany</option>
-                <option value="mx">Mexico</option>
-                <option value="nz">New Zealand</option>
-                <option value="it">Italy</option>
-                <option value="za">South Africa</option>
-                <option value="es">Spain</option>
-                <option value="pt">Portugal</option>
-                <option value="us">U.S.A.</option>
-                <option value="uk">United Kingdom</option>
+
+              <select [(ngModel)]="defaultCountry.value" name="name"
+                      (ngModelChange)="setCountry($event)">
+                  <option [ngValue]="country.value"
+                    *ngFor="let country of countryNames">
+                    {{country.name}}
+                  </option>
               </select>
+
             </div>
 
             <div class=" small-12 large-4 columns">
-              <input id="autocomplete" placeholder="Enter a city" type="text" />
+              <input id="autocomplete-cities" placeholder="Enter a city" type="text" />
             </div>
 
             <div class=" small-12 large-4 columns">
-              <input id="pac-input" class="controls" type="text"placeholder="Enter a location"/>
+              <input id="autocomplete-places" type="text"placeholder="Enter a location"/>
             </div>
 
           </div>
@@ -43,15 +37,18 @@
           </div>
 
           <div class="row text-center" *ngIf="choosenPlace">
-            <h4>Your Place:</h4>
-            <p>
-              name: <span>{{ choosenPlace.name }}</span>
-
-              adress: <span>{{ choosenPlace.formatted_address }}</span>
-
-              phone: <span>{{ choosenPlace.international_phone_number }}</span>
-
-            </p>
+            <h4>Your selected Place:</h4>
+              <div class=" small-12 large-12 columns">
+                <input [(ngModel)]="choosenPlace.name" type="text" readonly/>
+              </div>
+              <div class=" small-12 large-12 columns">
+                <input [(ngModel)]="choosenPlace.formatted_address" type="text" readonly/>
+              </div>
+              <div class=" small-12 large-12 columns">
+                <input [(ngModel)]="choosenPlace.international_phone_number" type="text" readonly/>
+              </div>
+              <div class=" small-12 large-12 columns">
+              </div>
           </div>
 
         </div>
