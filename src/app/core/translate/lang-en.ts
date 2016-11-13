@@ -29,7 +29,13 @@ export const LANG_EN_TRANS = {
     'THANK_YOU_FOR_REGISTERING': 'Thank you for registering!',
     'ADD_NEW_PLACE': 'Add new place',
     'TO_YOUR_ACC': 'to your account',
-    'TO_GET_STARTED': 'to get started'
-
+    'TO_GET_STARTED': 'to get started',
+    'FIND_PLACE': 'Search your place or point it on the map',
+    'SELECTED_PLACE': 'Your selected place',
+    'NAME': 'Name',
+    'ADRESS': 'Adress',
+    'PHONE': 'Phone',
+    'WEBSITE': 'Website',
+    'STEP_2': 'Step 2'
 
 };

@@ -1,4 +1,4 @@
-export const MARKER_PATH: string = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green.png';
+export const MARKER_PATH = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green.png';
 export const COUNTRY_NAMES: any = [
     { name: 'Australia', value: 'au' },
     { name: 'Brazil', value: 'br' },
@@ -13,7 +13,7 @@ export const COUNTRY_NAMES: any = [
     { name: 'Portugal', value: 'pt' },
     { name: 'U.S.A.', value: 'us' },
     { name: 'United Kingdom', value: 'uk' },
-]
+];
 export const DEFAULT_COUNTRY: any = { name: 'Germany', value: 'de' };
 export const PLACE_TYPES: any = [
     'restaurant',

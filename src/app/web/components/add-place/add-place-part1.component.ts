@@ -1,5 +1,4 @@
 import { Component, OnInit, NgZone }                       from '@angular/core';
-import { UserService }                             from '../../../core/@core';
 import {
     COUNTRIES,
     MARKER_PATH,
@@ -57,22 +56,15 @@ export class AddPlacePart1Component implements OnInit {
         });
 
         // Try HTML5 geolocation.
-        if (navigator.geolocation) {
+        if (navigator.geolocation && !(localStorage.getItem('currentPlace') || false)) {
             navigator.geolocation.getCurrentPosition((position: any) => {
                 const pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                this.marker.setPosition(pos);
-                this.marker.setVisible(true);
                 this.map.setZoom(17);
                 this.map.setCenter(pos);
-            }, () => {
-                this.handleLocationError(true, this.infoWindow, this.infoWindow.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            this.handleLocationError(false, this.infoWindow, this.infoWindow.getCenter());
+            }, () => console.warn('geolocation is not available'));
         }
         google.maps.event.addListener(this.map, 'click', (event: any) => {
             this.getPlacesByLocation({
@@ -94,13 +86,24 @@ export class AddPlacePart1Component implements OnInit {
         );
         this.autocompletePlaces.bindTo('bounds', this.map);
 
+        this.autocompleteCities.addListener('place_changed', () => {
+            let place = this.autocompleteCities.getPlace();
+            this.map.setCenter(place.geometry.location);
+            this.map.setZoom(17);  // Why 17? Because it looks good.
+        });
+
         this.autocompletePlaces.addListener('place_changed', (place: any) => {
             this.setPlace(this.autocompletePlaces.getPlace());
         });
         google.maps.event.addListener(this.infoWindow, 'closeclick', () => {
-            this.infoWindow.close()
+            this.infoWindow.close();
         });
 
+        this.initSavedPlace();
+    }
+
+    goToStep2() {
+        localStorage.setItem('currentPlace', JSON.stringify(this.choosenPlace));
     }
 
     setCountry(country: string) {
@@ -114,14 +117,13 @@ export class AddPlacePart1Component implements OnInit {
         if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
+            window.alert(`No details available for input: '${place.name}'`);
             return;
         }
         this.placeService.getDetails(place, (detailedPlace: any, status: any) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 place = detailedPlace;
                 this.zone.run(() => this.choosenPlace = detailedPlace);
-                console.log(this.choosenPlace);
             }
         });
         // If the place has a geometry, then present it on a map.
@@ -132,7 +134,7 @@ export class AddPlacePart1Component implements OnInit {
             this.map.setZoom(17);  // Why 17? Because it looks good.
         }
         this.putMarker(place.geometry.location);
-        this.infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.vicinity);
+        this.infoWindow.setContent(`<div><strong>${place.name}</strong><br>${place.vicinity}</div>`);
     }
 
     putMarker(location: any) {
@@ -159,7 +161,7 @@ export class AddPlacePart1Component implements OnInit {
         };
         let service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results: any, status: any) => {
-            if (status == google.maps.places.PlacesServiceStatus.OK) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
                 if (results.length) {
                     this.setPlace(results[0]);
                 }
@@ -167,12 +169,12 @@ export class AddPlacePart1Component implements OnInit {
         });
     }
 
-    handleLocationError(browserHasGeolocation: boolean, infoWindow: any, pos: any) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-
+    initSavedPlace() {
+        const savedPlace: any = localStorage.getItem('currentPlace') || false;
+        if (savedPlace) {
+            this.choosenPlace = JSON.parse(savedPlace);
+            this.setPlace(this.choosenPlace);
+        }
     }
 
 }

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="small-12 column text-center">
         <div class="row header-title">
-          <h5>Point your place on the map</h5>
+          <h5>{{'FIND_PLACE' | translate }}</h5>
         </div>
         <div class="video-container">
 
@@ -37,20 +37,57 @@
           </div>
 
           <div class="row text-center" *ngIf="choosenPlace">
-            <h4>Your selected Place:</h4>
-              <div class=" small-12 large-12 columns">
-                <input [(ngModel)]="choosenPlace.name" type="text" readonly/>
-              </div>
-              <div class=" small-12 large-12 columns">
-                <input [(ngModel)]="choosenPlace.formatted_address" type="text" readonly/>
-              </div>
-              <div class=" small-12 large-12 columns">
-                <input [(ngModel)]="choosenPlace.international_phone_number" type="text" readonly/>
-              </div>
-              <div class=" small-12 large-12 columns">
-              </div>
-          </div>
+            <h4>{{'SELECTED_PLACE' | translate}}</h4>
 
+              <div class="small-12 columns">
+                <div class="small-2 columns">
+                  <label for="place-name" class="text-right middle">
+                    {{'NAME' | translate}}
+                  </label>
+                </div>
+                <div class="small-10 columns">
+                  <input id="place-name" [(ngModel)]="choosenPlace.name" type="text" readonly/>
+                </div>
+              </div>
+
+              <div class="small-12 columns">
+                <div class="small-2 columns">
+                  <label for="place-adress" class="text-right middle">
+                    {{'ADRESS' | translate}}
+                  </label>
+                </div>
+                <div class="small-10 columns">
+                  <input id="place-adress" [(ngModel)]="choosenPlace.formatted_address" type="text" readonly/>
+                </div>
+              </div>
+
+              <div class="small-12 columns">
+                <div class="small-2 columns">
+                  <label for="place-phone" class="text-right middle">
+                    {{'PHONE' | translate}}
+                  </label>
+                </div>
+                <div class="small-10 columns">
+                  <input id="place-phone" [(ngModel)]="choosenPlace.international_phone_number" type="text" readonly/>
+                </div>
+              </div>
+
+              <div class="small-12 columns">
+                <div class="small-2 columns">
+                  <label for="place-site" class="text-right middle">
+                    {{'WEBSITE' | translate}}
+                  </label>
+                </div>
+                <div class="small-10 columns">
+                  <input id="place-site" [(ngModel)]="choosenPlace.website" type="text" readonly/>
+                </div>
+              </div>
+
+              <div class="small-12 columns text-center">
+                <button (click)="goToStep2()" class="button">{{ 'STEP_2' | translate}}</button>
+              </div>
+
+          </div>
         </div>
       </div>
     </div>

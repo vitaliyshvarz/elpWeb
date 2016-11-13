@@ -6,5 +6,5 @@ export class User {
     email: string;
     registrationType: string;
     registrationTime: string;
-    location: any
+    location: any;
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '../../../core/@core';
-import { QuickEmail } from '../../../core/@core';
 import { CommunicationService } from '../../../core/@core';
 
 

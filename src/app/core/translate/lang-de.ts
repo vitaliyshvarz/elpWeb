@@ -29,5 +29,12 @@ export const LANG_ES_TRANS = {
     'THANK_YOU_FOR_REGISTERING': 'Danke für die Registrierung!',
     'ADD_NEW_PLACE': 'Neue Lokal hinzufügen',
     'TO_YOUR_ACC': 'zu deinem Account',
-    'TO_GET_STARTED': 'um zu anfängen'
+    'TO_GET_STARTED': 'um zu anfängen',
+    'FIND_PLACE': 'Suchen Sie Ihren Platz oder zeigen Sie ihn auf der Karte',
+    'SELECTED_PLACE': 'Ihr ausgewählter Ort',
+    'NAME': 'Name',
+    'ADRESS': 'Adresse',
+    'PHONE': 'Telefon',
+    'WEBSITE': 'Webseite',
+    'STEP_2': 'Schritt 2'
 };
