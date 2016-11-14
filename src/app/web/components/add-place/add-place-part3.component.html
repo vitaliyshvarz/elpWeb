@@ -1,0 +1,14 @@
+<div class="row header-title  text-center">
+  <h5>{{'MEALS' | translate }}</h5>
+</div>
+
+<div class="row">
+  <div class="small-6 columns text-center">
+    <button (click)="router.navigate(['/join-us', 'part2'])" class="button warning">
+      {{ 'BACK' | translate}}
+    </button>
+  </div>
+  <div class="small-6 columns text-center">
+    <button (click)="finish()" class="button">{{ 'FINISH_REGISTER' | translate}}</button>
+  </div>
+</div>

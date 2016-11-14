@@ -1,4 +1,6 @@
-import { Component, OnInit, NgZone }                       from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
+
 import {
     COUNTRIES,
     MARKER_PATH,
@@ -34,7 +36,8 @@ export class AddPlacePart1Component implements OnInit {
     countryNames: any = COUNTRY_NAMES;
 
     constructor(
-        private zone: NgZone
+        private zone: NgZone,
+        private router: Router,
     ) { }
 
     ngOnInit() {
@@ -104,6 +107,7 @@ export class AddPlacePart1Component implements OnInit {
 
     goToStep2() {
         localStorage.setItem('currentPlace', JSON.stringify(this.choosenPlace));
+        this.router.navigate(['/join-us', 'part2']);
     }
 
     setCountry(country: string) {

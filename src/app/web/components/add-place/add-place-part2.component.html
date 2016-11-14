@@ -1,0 +1,29 @@
+<div class="row header-title  text-center">
+  <h5>{{'PAYMENT_OPTIONS' | translate }}</h5>
+</div>
+
+<div class="row">
+  <fieldset class="small-3 medium-3 large-3 columns text-center"
+    *ngFor="let option of paymentOptions">
+      <legend>{{option.name}}</legend>
+      <input [attr.id]="option.name" [(ngModel)]="option.selected" type="checkbox">
+      <label [attr.for]="option.name">
+        <img [src]="option.image" />
+      </label>
+    </fieldset>
+</div>
+
+<div class="row header-title  text-center">
+  <h5>{{'WORKING_HOURS' | translate }}</h5>
+</div>
+
+<div class="row">
+  <div class="small-6 columns text-center">
+    <button (click)="router.navigate(['/join-us', 'part1'])" class="button warning">
+      {{ 'BACK' | translate}}
+    </button>
+  </div>
+  <div class="small-6 columns text-center">
+    <button (click)="goToStep3()" class="button">{{ 'STEP_3' | translate}}</button>
+  </div>
+</div>
