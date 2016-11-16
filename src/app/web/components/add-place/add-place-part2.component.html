@@ -13,9 +13,24 @@
     </fieldset>
 </div>
 
-<div class="row header-title  text-center">
+<div class="row header-hours-title  text-center">
   <h5>{{'WORKING_HOURS' | translate }}</h5>
 </div>
+<div *ngFor="let day of workingDays">
+  <div class="row slider-box">
+    <div class="small-2 medium-2 large-2 columns text-center">
+      {{day.name}}
+    </div>
+    <div class="small-1 medium-1 large-1 columns text-center">
+      <input type="checkbox">
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <div [attr.id]="day.name"></div>
+    </div>
+
+  </div>
+</div>
+
 
 <div class="row">
   <div class="small-6 columns text-center">

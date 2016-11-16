@@ -34,6 +34,7 @@
     "foundation-icons": "^1.0.1",
     "foundation-sites": "^6.2.4-rc2",
     "jquery": "^3.1.1",
+    "nouislider": "github:leongersen/noUiSlider",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.39",

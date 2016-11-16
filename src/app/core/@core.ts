@@ -23,6 +23,7 @@ export * from './definitions/logged';
 // Config
 export * from './config/mapConfig';
 export * from './config/paymentConfig';
+export * from './config/workingHoursConfig';
 
 // TODO: remove this when real back end
 export * from './helpers/fake-backend';
