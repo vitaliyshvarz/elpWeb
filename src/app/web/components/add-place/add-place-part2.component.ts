@@ -15,6 +15,7 @@ export class AddPlacePart2Component implements AfterViewInit {
 
     paymentOptions: any = PAYMENT_ONTIONS;
     workingDays: any = WORKING_DAYS;
+    sliders: any = [];
 
     constructor(
         private zone: NgZone,
@@ -22,34 +23,67 @@ export class AddPlacePart2Component implements AfterViewInit {
     ) { }
 
     ngAfterViewInit() {
-
         this.workingDays.forEach((day: any) => {
-            this.createDaySlider(day)
+            this.createDefaultDaySlider(day)
         });
+        this.changeStyles();
     }
 
-    createDaySlider(day: any) {
-        var connectSlider2 = document.getElementById(day.name);
+    changeStyles() {
+      $('.noUi-tooltip').css('font-size', '11px');
+      $('.noUi-tooltip').css('padding', '2px');
+      $('.noUi-handle').addClass( 'elp-tooltip' );
+    }
 
-        noUiSlider.create(connectSlider2, {
-            start: [8, 12, 13, 18],
-            connect: [false, true, false, true, false],
-            tooltips: true,
-            step: 1,
-            margin: 0,
-            range: {
-                'min': 0,
-                'max': 24
-            }
-        });
-        $('.noUi-tooltip').css('font-size', '11px');
-        $('.noUi-tooltip').css('padding', '2px');
-        $('.noUi-handle').css('width', '15px');
-        $('.noUi-handle').css('left', '-6px');
+    toogleBreak(day: any) {
+      let selected = this.sliders.find((slider:any) => slider.name === day.name);
+      selected.slider.noUiSlider.destroy();
+      if(day.hasBreak){
+        this.createDaySliderWithBreak(day);
+      } else {
+        this.createDefaultDaySlider(day);
+      }
+      this.changeStyles();
+    }
 
-        connectSlider2.noUiSlider.on('update', function(values, handle) {
-            console.log(this.target.id, values, handle);
-        });
+    createDefaultDaySlider(day: any) {
+      let slider = (<any>document.getElementById(day.name));
+
+      noUiSlider.create(slider, {
+          start: [8, 18],
+          connect: [false, true, false],
+          tooltips: true,
+          step: 0.5,
+          margin: 0,
+          range: {
+              'min': 0,
+              'max': 24
+          }
+      });
+      slider.noUiSlider.on('update', function(values: any, handle: any) {
+          console.log(this.target.id, values, handle);
+      });
+      this.sliders.push({ name: day.name, slider: slider});
+    }
+
+    createDaySliderWithBreak(day: any) {
+      let slider = (<any>document.getElementById(day.name));
+
+      noUiSlider.create(slider, {
+          start: [8, 12, 13, 18],
+          connect: [false, true, false, true, false],
+          tooltips: true,
+          step: 0.5,
+          margin: 0,
+          range: {
+              'min': 0,
+              'max': 24
+          }
+      });
+      slider.noUiSlider.on('update', function(values: any, handle: any) {
+          console.log(this.target.id, values, handle);
+      });
+      this.sliders.push({ name: day.name, slider: slider});
     }
 
     goToStep3() {

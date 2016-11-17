@@ -22,10 +22,27 @@
       {{day.name}}
     </div>
     <div class="small-1 medium-1 large-1 columns text-center">
-      <input type="checkbox">
+      <input [(ngModel)]="day.selected" type="checkbox">
     </div>
     <div class="small-9 medium-9 large-9 columns">
-      <div [attr.id]="day.name"></div>
+      <div class="small-12 medium-12 large-12 columns">
+        <div [attr.id]="day.name"></div>
+      </div>
+      <div class="small-12 medium-12 large-12 columns">
+
+        <div class="switch tiny">
+          <input class="switch-input"
+                [attr.id]="day.name + day.hasBreak"
+                [(ngModel)]="day.hasBreak"
+                (ngModelChange)="toogleBreak(day)"
+                type="checkbox"
+                name="exampleSwitch">
+          <label class="switch-paddle" [attr.for]="day.name + day.hasBreak">
+            <span class="show-for-sr">Break</span>
+          </label>
+        </div>
+
+      </div>
     </div>
 
   </div>

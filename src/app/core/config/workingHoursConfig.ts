@@ -1,6 +1,7 @@
 export const WORKING_DAYS: any = [
     { name: 'MONDAY',
       selected: true,
+      hasBreak: true,
       business_hours: {
         from: 9.00,
         to: 18.00
@@ -12,6 +13,7 @@ export const WORKING_DAYS: any = [
     },
     { name: 'TUESDAY',
       selected: true,
+      hasBreak: true,
       business_hours: {
         from: 9.00,
         to: 18.00
@@ -23,6 +25,7 @@ export const WORKING_DAYS: any = [
     },
     { name: 'WEDNESDAY',
       selected: true,
+      hasBreak: true,
       business_hours: {
         from: 9.00,
         to: 18.00
@@ -34,6 +37,7 @@ export const WORKING_DAYS: any = [
     },
     { name: 'THURSDAY',
       selected: true,
+      hasBreak: true,
       business_hours: {
         from: 9.00,
         to: 18.00
@@ -45,6 +49,7 @@ export const WORKING_DAYS: any = [
     },
     { name: 'FRIDAY',
       selected: true,
+      hasBreak: true,
       business_hours: {
         from: 9.00,
         to: 18.00
@@ -56,6 +61,7 @@ export const WORKING_DAYS: any = [
     },
     { name: 'SATURDAY',
       selected: false,
+      hasBreak: false,
       business_hours: {
         from: 9.00,
         to: 18.00
@@ -67,6 +73,7 @@ export const WORKING_DAYS: any = [
     },
     { name: 'SUNDAY',
       selected: false,
+      hasBreak: false,
       business_hours: {
         from: 9.00,
         to: 18.00
