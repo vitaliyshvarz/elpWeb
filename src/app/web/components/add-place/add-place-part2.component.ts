@@ -22,27 +22,34 @@ export class AddPlacePart2Component implements AfterViewInit {
     ) { }
 
     ngAfterViewInit() {
-      this.workingDays.forEach((day: any) => this.createDaySlider(day));
+
+        this.workingDays.forEach((day: any) => {
+            this.createDaySlider(day)
+        });
     }
 
-    createDaySlider(day:any) {
-      var connectSlider2 = document.getElementById(day.name);
+    createDaySlider(day: any) {
+        var connectSlider2 = document.getElementById(day.name);
 
-      noUiSlider.create(connectSlider2, {
-      	start: [8, 12, 13, 18],
-      	connect: [false, true, false, true, false],
-        tooltips: true,
-        step: 1,
-        margin: 0,
-      	range: {
-      	  'min': 0,
-      	  'max': 24
-      	},
-        pips: {
-      		mode: 'values',
-      		density: 4
-      	}
-      });
+        noUiSlider.create(connectSlider2, {
+            start: [8, 12, 13, 18],
+            connect: [false, true, false, true, false],
+            tooltips: true,
+            step: 1,
+            margin: 0,
+            range: {
+                'min': 0,
+                'max': 24
+            }
+        });
+        $('.noUi-tooltip').css('font-size', '11px');
+        $('.noUi-tooltip').css('padding', '2px');
+        $('.noUi-handle').css('width', '15px');
+        $('.noUi-handle').css('left', '-6px');
+
+        connectSlider2.noUiSlider.on('update', function(values, handle) {
+            console.log(this.target.id, values, handle);
+        });
     }
 
     goToStep3() {
