@@ -36,6 +36,18 @@ export const LANG_EN_TRANS = {
     'ADRESS': 'Adress',
     'PHONE': 'Phone',
     'WEBSITE': 'Website',
-    'STEP_2': 'Step 2'
+    'STEP_2': 'Step 2',
+    'PAYMENT_OPTIONS': 'Payment options',
+    'WORKING_HOURS': 'Working hours'
+    'BACK': 'Back',
+    'STEP_3': 'Step 3'
+    'BREAK': 'Break',
+    'MONDAY': 'Monday',
+    'TUESDAY': 'Tuesday',
+    'WEDNESDAY': 'Wednesday',
+    'THURSDAY': 'Thursday',
+    'FRIDAY': 'Friday',
+    'SATURDAY': 'Saturday',
+    'SUNDAY': 'Sunday'
 
 };
