@@ -12,15 +12,14 @@ declare var noUiSlider: any;
 })
 
 export class AddPlacePart2Component implements AfterViewInit, OnInit {
-
     paymentOptions: any = PAYMENT_ONTIONS;
     workingDays: any = WORKING_DAYS;
     sliders: any = [];
-    initialStartMinute: number = 480;
-    initialPauseStartMinute: number = 720,
-    initialEndMinute: number = 1020;
-    initialPauseEndMinute: number = 780;
-    step: number = 30;
+    initialStartMinute: number = 480; // equals 8.00
+    initialPauseStartMinute: number = 720, // equals 12.00
+    initialEndMinute: number = 1020; // equals 13.00 morning
+    initialPauseEndMinute: number = 780; // equals 17.00 morning
+    step: number = 15;
 
     constructor(
         private zone: NgZone,
@@ -28,9 +27,12 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
     ) { }
 
     ngOnInit() {
+        // get save data from locale storage if available
         this.initSavedData();
     }
+
     ngAfterViewInit() {
+        // crate sliders for each day
         this.workingDays.forEach((day: any) => {
             if (day.hasBreak) {
                 this.createDaySliderWithBreak(day);
@@ -42,11 +44,15 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
     }
 
     changeStyles() {
+        // change slider elements design
         $('.noUi-tooltip').css('font-size', '11px');
         $('.noUi-tooltip').css('padding', '2px');
         $('.noUi-handle').addClass('elp-tooltip');
     }
 
+    /*
+    * Add or remove break from day, reinit slider for toogled day
+    */
     toogleBreak(day: any) {
         let selected = this.sliders.find((slider: any) => slider.name === day.name);
         selected.slider.noUiSlider.destroy();
@@ -58,6 +64,7 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
         this.changeStyles();
     }
 
+    // Disable, enable day slider
     toogleDayActive(day: any) {
         let selected = this.sliders.find((slider: any) => slider.name === day.name);
         if (!day.selected) {
@@ -67,6 +74,7 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
         }
     }
 
+    // update day values on slider move
     updateDay(dayName: string, values: any) {
         let selectedDay = this.workingDays.find((day: any) => {
             return day.name === dayName
@@ -121,12 +129,10 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
         return value - hour * 60;
     }
 
+    // Conver value from slider to time
     formatHoursAndMinutes(hours: number, minutes: number) {
-        hours = parseInt(hours, 10);
-        minutes = parseInt(minutes, 10);
         if (hours.toString().length == 1) hours = '0' + hours;
         if (minutes.toString().length == 1) minutes = minutes + '0';
-
         return hours + ':' + minutes;
     }
 
@@ -135,7 +141,7 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
         const context = this;
         const businessHoursFrom = +day.business_hours.fromMin || this.initialStartMinute;
         const businessHoursTo = +day.business_hours.toMin || this.initialPauseStartMinute;
-        let slider = (<any>document.getElementById(day.name));
+        const slider = (<any>document.getElementById(day.name));
 
         noUiSlider.create(slider, {
             start: [
@@ -146,12 +152,14 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
             tooltips: [
                 {
                     to: (value: any) => this.formatHoursAndMinutes(
-                        this.convertToHour(value),
-                        this.convertToMinute(value, this.convertToHour(value)))
+                        this.convertToHour(parseInt(value, 10)),
+                        this.convertToMinute(parseInt(value, 10),
+                            this.convertToHour(value)))
                 }, {
                     to: (value: any) => this.formatHoursAndMinutes(
-                        this.convertToHour(value),
-                        this.convertToMinute(value, this.convertToHour(value)))
+                        this.convertToHour(parseInt(value, 10)),
+                        this.convertToMinute(parseInt(value, 10),
+                            this.convertToHour(value)))
                 }],
             step: this.step,
             margin: 0,
@@ -178,7 +186,7 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
         const businessHoursTo = +day.break.fromMin || this.initialPauseStartMinute;
         const breakFrom = +day.break.toMin || this.initialPauseEndMinute;
         const breakTo = +day.business_hours.toMin || this.initialEndMinute;
-        let slider = (<any>document.getElementById(day.name));
+        const slider = (<any>document.getElementById(day.name));
 
         noUiSlider.create(slider, {
             start: [
@@ -191,20 +199,25 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
             tooltips: [
                 {
                     to: (value: any) => this.formatHoursAndMinutes(
-                        this.convertToHour(value),
-                        this.convertToMinute(value, this.convertToHour(value)))
+                        this.convertToHour(parseInt(value, 10)),
+                        this.convertToMinute(parseInt(value, 10),
+                            this.convertToHour(value)))
                 }, {
                     to: (value: any) => this.formatHoursAndMinutes(
-                        this.convertToHour(value),
-                        this.convertToMinute(value, this.convertToHour(value)))
+                        this.convertToHour(parseInt(value, 10)),
+                        this.convertToMinute(parseInt(value, 10),
+                            this.convertToHour(value)))
                 }, {
                     to: (value: any) => this.formatHoursAndMinutes(
-                        this.convertToHour(value),
-                        this.convertToMinute(value, this.convertToHour(value)))
+                        this.convertToHour(parseInt(value, 10)),
+                        this.convertToMinute(parseInt(value, 10),
+                            this.convertToHour(value)))
                 }, {
                     to: (value: any) => this.formatHoursAndMinutes(
-                        this.convertToHour(value),
-                        this.convertToMinute(value, this.convertToHour(value)))
+                        this.convertToHour(parseInt(value, 10)),
+                        this.convertToMinute(parseInt(value, 10),
+                            this.convertToHour(value)))
+
                 }],
             step: this.step,
             margin: 0,
@@ -224,13 +237,17 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
     }
 
     initSavedData() {
+        const savedPayments: any = localStorage.getItem('currentPaymentOptions') || false;
         const savedDays: any = localStorage.getItem('currentWorkingDays') || false;
         if (savedDays) {
             this.workingDays = JSON.parse(savedDays);
         }
+        if (savedPayments) {
+            this.paymentOptions = JSON.parse(savedPayments);
+        }
     }
     goToStep3() {
-
+        localStorage.setItem('currentPaymentOptions', JSON.stringify(this.paymentOptions));
         localStorage.setItem('currentWorkingDays', JSON.stringify(this.workingDays));
         this.router.navigate(['/join-us', 'part3']);
     }

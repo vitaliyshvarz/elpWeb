@@ -9,7 +9,7 @@ export class Place {
     city: string;
     website: string;
     location: any = {
-        lat: '',
-        lng: ''
+        lat: 0,
+        lng: 0
     };
 }
