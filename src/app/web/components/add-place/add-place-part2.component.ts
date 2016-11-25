@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, NgZone } from '@angular/core';
+import { Component, AfterViewInit, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PAYMENT_ONTIONS, WORKING_DAYS } from '../../../core/@core';
 
@@ -11,7 +11,7 @@ declare var noUiSlider: any;
     styleUrls: ['add-place-part2.component.css']
 })
 
-export class AddPlacePart2Component implements AfterViewInit {
+export class AddPlacePart2Component implements AfterViewInit, OnInit {
 
     paymentOptions: any = PAYMENT_ONTIONS;
     workingDays: any = WORKING_DAYS;
@@ -27,8 +27,10 @@ export class AddPlacePart2Component implements AfterViewInit {
         private router: Router
     ) { }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         this.initSavedData();
+    }
+    ngAfterViewInit() {
         this.workingDays.forEach((day: any) => {
             if (day.hasBreak) {
                 this.createDaySliderWithBreak(day);
@@ -128,13 +130,6 @@ export class AddPlacePart2Component implements AfterViewInit {
         return hours + ':' + minutes;
     }
 
-    filterTooltip(value: any) {
-        return this.formatHoursAndMinutes(
-            this.convertToHour(value),
-            this.convertToMinute(value, this.convertToHour(value))
-        )
-    }
-
     createDefaultDaySlider(day: any) {
         const updateDay = this.updateDay;
         const context = this;
@@ -150,9 +145,13 @@ export class AddPlacePart2Component implements AfterViewInit {
             connect: [false, true, false],
             tooltips: [
                 {
-                    to: this.filterTooltip
+                    to: (value: any) => this.formatHoursAndMinutes(
+                        this.convertToHour(value),
+                        this.convertToMinute(value, this.convertToHour(value)))
                 }, {
-                    to: this.filterTooltip
+                    to: (value: any) => this.formatHoursAndMinutes(
+                        this.convertToHour(value),
+                        this.convertToMinute(value, this.convertToHour(value)))
                 }],
             step: this.step,
             margin: 0,
@@ -191,13 +190,21 @@ export class AddPlacePart2Component implements AfterViewInit {
             connect: [false, true, false, true, false],
             tooltips: [
                 {
-                    to: this.filterTooltip
+                    to: (value: any) => this.formatHoursAndMinutes(
+                        this.convertToHour(value),
+                        this.convertToMinute(value, this.convertToHour(value)))
                 }, {
-                    to: this.filterTooltip
+                    to: (value: any) => this.formatHoursAndMinutes(
+                        this.convertToHour(value),
+                        this.convertToMinute(value, this.convertToHour(value)))
                 }, {
-                    to: this.filterTooltip
+                    to: (value: any) => this.formatHoursAndMinutes(
+                        this.convertToHour(value),
+                        this.convertToMinute(value, this.convertToHour(value)))
                 }, {
-                    to: this.filterTooltip
+                    to: (value: any) => this.formatHoursAndMinutes(
+                        this.convertToHour(value),
+                        this.convertToMinute(value, this.convertToHour(value)))
                 }],
             step: this.step,
             margin: 0,
@@ -217,10 +224,9 @@ export class AddPlacePart2Component implements AfterViewInit {
     }
 
     initSavedData() {
-        const savedPlace: any = localStorage.getItem('currentWorkingDays') || false;
-        console.log(JSON.parse(savedPlace));
-        if (savedPlace) {
-            this.workingDays = JSON.parse(savedPlace);
+        const savedDays: any = localStorage.getItem('currentWorkingDays') || false;
+        if (savedDays) {
+            this.workingDays = JSON.parse(savedDays);
         }
     }
     goToStep3() {
