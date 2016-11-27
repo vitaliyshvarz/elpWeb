@@ -25,6 +25,8 @@ import { FooterComponent } from './web/components/footer/footer.component';
 import { QuickContactFormComponent } from './web/components/quick-contact-form/quick-contact-form.component';
 import { JoinUsPageComponent } from './web/components/join-us-page/join-us-page.component';
 import { AddPlacePart1Component } from './web/components/add-place/add-place-part1.component';
+import { AddPlacePart2Component } from './web/components/add-place/add-place-part2.component';
+import { AddPlacePart3Component } from './web/components/add-place/add-place-part3.component';
 
 
 import { AlertService } from './web/services/alert.service';
@@ -77,7 +79,9 @@ import './rxjs-extensions';
         FooterComponent,
         QuickContactFormComponent,
         JoinUsPageComponent,
-        AddPlacePart1Component
+        AddPlacePart1Component,
+        AddPlacePart2Component,
+        AddPlacePart3Component
     ],
     providers: [
         AuthGuard,

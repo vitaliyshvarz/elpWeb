@@ -6,5 +6,8 @@ export class User {
     email: string;
     registrationType: string;
     registrationTime: string;
-    location: any
+    location: any = {
+        lat: 0,
+        lng: 0
+    };
 }

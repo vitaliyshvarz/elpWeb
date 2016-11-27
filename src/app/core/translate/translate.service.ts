@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { TRANSLATIONS } from './translations'; // import our opaque token
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TranslateService {

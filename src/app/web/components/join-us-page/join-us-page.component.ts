@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../core/@core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { LoggedService } from '../../../core/@core';
 
@@ -13,7 +14,9 @@ export class JoinUsPageComponent implements OnInit {
     currentUser: User;
 
     constructor(
-        private loggedService: LoggedService
+        private loggedService: LoggedService,
+        private route: ActivatedRoute,
+        private router: Router,
     ) { }
 
     ngOnInit() {
@@ -21,7 +24,7 @@ export class JoinUsPageComponent implements OnInit {
         this.loggedService.getLogged().subscribe(logged => {
             this.getUserFromLS();
         });
-    });
+    }
 
     getUserFromLS() {
         const userData: any = localStorage.getItem('currentUser');
