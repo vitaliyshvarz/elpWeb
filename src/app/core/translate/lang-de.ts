@@ -48,5 +48,14 @@ export const LANG_ES_TRANS = {
     'THURSDAY': 'Donnerstag',
     'FRIDAY': 'Freitag',
     'SATURDAY': 'Samstag',
-    'SUNDAY': 'Sonntag'
+    'SUNDAY': 'Sonntag',
+    'DISHES': 'Gerichte',
+    'SELECT_CURRENCY': 'Währung wählen',
+    'SELECT_MEALS': 'Geschirr Wählen',
+    'SIZE': 'Grösse',
+    'AVAILABILITY': 'Verfügbarkeit',
+    'DESCRIPTION': 'Beschreibung',
+    'PRICE': 'Preis',
+    'SUBMIT_PLACE': 'Ort eintragen',
+
 };

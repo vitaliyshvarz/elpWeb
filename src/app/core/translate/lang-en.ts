@@ -49,5 +49,12 @@ export const LANG_EN_TRANS = {
     'FRIDAY': 'Friday',
     'SATURDAY': 'Saturday',
     'SUNDAY': 'Sunday'
-
+    'DISHES': 'Dishes',
+    'SELECT_CURRENCY': 'Choose currency',
+    'SELECT_DISHES': 'Select dishes',
+    'SIZE': 'Size',
+    'AVAILABILITY': 'Availability'
+    'DESCRIPTION': 'Description'
+    'PRICE': 'Price',
+    'SUBMIT_PLACE': 'Submit Place'
 };
