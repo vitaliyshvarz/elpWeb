@@ -9,7 +9,7 @@ export const DISHES: any = [
             {
                 id: <number>213,
                 size: <string>'S',
-                slected: <boolean>false,
+                selected: <boolean>true,
                 description: <string>'309 Calories; 28g Protein; 26g Carbs; 11g Fat',
                 price: <number>0.00,
                 weight: <number>250
@@ -17,7 +17,7 @@ export const DISHES: any = [
             {
                 id: <number>324,
                 size: <string>'M',
-                slected: <boolean>false,
+                selected: <boolean>true,
                 description: <string>'513 Calories; 43g Protein; 49g Carbs; 17g Fat',
                 price: <number>0.00,
                 weight: <number>350
@@ -34,7 +34,7 @@ export const DISHES: any = [
             {
                 id: <number>3423,
                 size: <string>'S',
-                slected: <boolean>false,
+                selected: <boolean>true,
                 description: <string>'273 Calories; 28g Protein; 28g Carbs; 6g Fat',
                 price: <number>0.00,
                 weight: <number>250
@@ -42,7 +42,7 @@ export const DISHES: any = [
             {
                 id: <number>425245,
                 size: <string>'M',
-                slected: <boolean>false,
+                selected: <boolean>true,
                 description: <string>'475 Calories; 43g Protein; 56g Carbs; 9g Fat',
                 price: <number>0.00,
                 weight: <number>350
