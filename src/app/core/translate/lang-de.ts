@@ -57,5 +57,7 @@ export const LANG_ES_TRANS = {
     'DESCRIPTION': 'Beschreibung',
     'PRICE': 'Preis',
     'SUBMIT_PLACE': 'Ort eintragen',
+    'DELIVERY_AVAILABLE': 'Lieferung Verfügbar',
+    'TAKEAWAY_AVAILABLE': 'Mitnehmen Verfügbar'
 
 };

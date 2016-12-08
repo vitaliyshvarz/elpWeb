@@ -56,5 +56,9 @@ export const LANG_EN_TRANS = {
     'AVAILABILITY': 'Availability'
     'DESCRIPTION': 'Description'
     'PRICE': 'Price',
-    'SUBMIT_PLACE': 'Submit Place'
+    'SUBMIT_PLACE': 'Submit Place',
+    'DELIVERY_AVAILABLE': 'Delivery Available',
+    'TAKEAWAY_AVAILABLE': 'Take Away Available'
+
+
 };

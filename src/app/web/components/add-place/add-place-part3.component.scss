@@ -10,3 +10,12 @@
 .padding-top {
     padding-top: 10px;
 }
+
+.button {
+    &.sending {
+        &:before {
+            top: 3.5em;
+            left: 40%;
+        }
+    }
+}

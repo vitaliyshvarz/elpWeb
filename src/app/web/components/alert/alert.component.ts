@@ -25,7 +25,7 @@ export class AlertComponent {
                     // clear message in 5 seconds
                     setTimeout(() => {
                         this.message = '';
-                    }, 5000);
+                    }, 10000);
                 });
             });
     }

@@ -1,9 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { DISHES, CURRENCIES } from '../../../core/@core';
+import { PlaceService, DISHES, CURRENCIES } from '../../../core/@core';
 import { AlertService } from '../../services/alert.service';
-
-
 
 @Component({
     moduleId: module.id,
@@ -17,10 +15,14 @@ export class AddPlacePart3Component implements OnInit {
     currentCurrency: any = CURRENCIES[0]; // USD
     currencies: any = CURRENCIES;
     dishes: any = DISHES;
+    deliveryAvailable: boolean = false;
+    takeAwayAvailable: boolean = false;
+
     constructor(
         private zone: NgZone,
         private router: Router,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private placeService: PlaceService
     ) { }
 
     selectCurrency(currency) {
@@ -37,10 +39,11 @@ export class AddPlacePart3Component implements OnInit {
     ngOnInit() { }
 
     finish() {
-        const savedPlace: any = localStorage.getItem('currentPlace') || false;
-        const savedPayments: any = localStorage.getItem('currentPaymentOptions') || false;
-        const savedDays: any = localStorage.getItem('currentWorkingDays') || false;
+        const savedPlace: any = JSON.parse(localStorage.getItem('currentPlace')) || false;
+        const savedPayments: any = JSON.parse(localStorage.getItem('currentPaymentOptions')) || false;
+        const savedDays: any = JSON.parse(localStorage.getItem('currentWorkingDays')) || false;
         const activeMeals = this.dishes.filter(dish => !!dish.selected);
+        const currency = this.currentCurrency;
         let valid: boolean = true;
 
         if (!savedPlace) {
@@ -61,7 +64,34 @@ export class AddPlacePart3Component implements OnInit {
         }
 
         if (valid) {
-            console.log(JSON.parse(savedPlace));
+            this.finishAddPlaceButton = $('#finishAddPlace').toggleClass('sending');
+            this.placeService.create({
+                name: savedPlace.name,
+                id: savedPlace.place_id,
+                location: savedPlace.geometry.location,
+                phone: savedPlace.international_phone_number,
+                elp_opening_hours: savedDays,
+                rating: savedPlace.rating || '',
+                fullAddress: savedPlace.vicinity || '',
+                website: savedPlace.website || '',
+                address_components: savedPlace.address_components,
+                payment_options: savedPayments,
+                meals: activeMeals,
+                currency: currency,
+                deliveryAvailable: this.deliveryAvailable,
+                takeAwayAvailable: this.takeAwayAvailable
+            }).subscribe(
+                (data: any) => {
+                    localStorage.removeItem('currentPlace');
+                    localStorage.removeItem('currentPaymentOptions');
+                    localStorage.removeItem('currentWorkingDays');
+                    this.finishAddPlaceButton.removeClass('sending').blur();
+                    this.alertService.success('Place has been added!', true);
+                },
+                (error: any) => {
+                    this.finishAddPlaceButton.removeClass('sending').blur();
+                    this.alertService.error(error);
+                });
         }
 
     }

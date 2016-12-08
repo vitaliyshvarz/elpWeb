@@ -123,6 +123,34 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="small-6 medium-6 large-6 columns  small-centered  text-center">
+    <h6>{{'DELIVERY_AVAILABLE' | translate}}</h6>
+    <div class="switch tiny">
+      <input class="switch-input"
+            id="deliveryAvailable"
+            [(ngModel)]="deliveryAvailable"
+            type="checkbox"
+            name="deliverySwitch">
+            <label class="switch-paddle success" for="deliveryAvailable">
+              <span class="switch-active" aria-hidden="true">Yes</span>
+              <span class="switch-inactive" aria-hidden="true">No</span>
+            </label>
+    </div>
+    <h6>{{'TAKEAWAY_AVAILABLE' | translate}}</h6>
+    <div class="switch tiny">
+      <input class="switch-input"
+            id="takeAwaySwitch"
+            [(ngModel)]="takeAwayAvailable"
+            type="checkbox"
+            name="takeAwaySwitch">
+            <label class="switch-paddle success" for="takeAwaySwitch">
+              <span class="switch-active" aria-hidden="true">Yes</span>
+              <span class="switch-inactive" aria-hidden="true">No</span>
+            </label>
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="small-6 columns text-center">
@@ -131,6 +159,6 @@
     </button>
   </div>
   <div class="small-6 columns text-center">
-    <button (click)="finish()" class="button">{{ 'SUBMIT_PLACE' | translate}}</button>
+    <button id="finishAddPlace" (click)="finish()" class="button">{{ 'SUBMIT_PLACE' | translate}}</button>
   </div>
 </div>
