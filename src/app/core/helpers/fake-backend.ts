@@ -156,6 +156,7 @@ export let fakeBackendProvider = {
                     // places if valid, this security is implemented server side
                     // in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+
                         connection.mockRespond(new Response(new ResponseOptions({
                             status: 200, body: places
                         })));
@@ -192,14 +193,14 @@ export let fakeBackendProvider = {
                 }
 
                 // get place by id
-                if (connection.request.url.match(/\/api\/places\/\d+$/) &&
+                if (connection.request.url.match(/\/api\/places\/[a-zA-Z0-9_.-]+$/) &&
                     connection.request.method === RequestMethod.Get) {
                     // check for fake auth token in header and return place if valid,
                     // this security is implemented server side in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                         // find place by id in places array
                         let urlParts = connection.request.url.split('/');
-                        let id = parseInt(urlParts[urlParts.length - 1], 10);
+                        let id = urlParts[urlParts.length - 1];
                         let matchedUsers = places.filter(place => { return place.id === id; });
                         let place = matchedUsers.length ? matchedUsers[0] : null;
 
@@ -223,7 +224,6 @@ export let fakeBackendProvider = {
                     // validation
                     let duplicatePlace = places
                         .filter(place => place.id === newPlace.id).length;
-                    console.log(duplicatePlace);
                     if (duplicatePlace) {
                         return connection.mockError(new Error('Place already exists please update it "' +
                             newPlace.name + '" is already taken'));

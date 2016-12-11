@@ -59,6 +59,11 @@ export const LANG_EN_TRANS = {
     'SUBMIT_PLACE': 'Submit Place',
     'DELIVERY_AVAILABLE': 'Delivery Available',
     'TAKEAWAY_AVAILABLE': 'Take Away Available'
+    'PLACE_ADDED': 'Thank you, your place has been added!',
+    'EDIT': 'Edit',
+    'ABOUT_APP': 'About App',
+    'FOR_USERS': 'For Application Users',
+    'FOR_PLACES': 'For Places'
 
 
 };

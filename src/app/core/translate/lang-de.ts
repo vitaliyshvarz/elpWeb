@@ -58,6 +58,11 @@ export const LANG_ES_TRANS = {
     'PRICE': 'Preis',
     'SUBMIT_PLACE': 'Ort eintragen',
     'DELIVERY_AVAILABLE': 'Lieferung Verfügbar',
-    'TAKEAWAY_AVAILABLE': 'Mitnehmen Verfügbar'
+    'TAKEAWAY_AVAILABLE': 'Mitnehmen Verfügbar',
+    'PLACE_ADDED': 'Vielen Dank, Ihr Ort hinzugefügtt',
+    'EDIT': 'Bearbeiten',
+    'ABOUT_APP': 'Über App',
+    'FOR_USERS': 'Für Application Benutzer',
+    'FOR_PLACES': 'Für Orte'
 
 };

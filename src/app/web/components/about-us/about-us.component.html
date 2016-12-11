@@ -1,0 +1,37 @@
+<top-menu></top-menu>
+<header class="header">
+  <h1 class="headline">{{'ABOUT_APP' | translate }}<small> {{ 'APP_NAME' | translate }}</small></h1>
+  <ul class="header-subnav">
+    <li><a href="javascript:;"
+          (click)="users=true; places=false"
+          [ngClass]="{ 'is-active': users }">
+          {{'FOR_USERS'| translate}}
+        </a>
+    </li>
+    <li><a href="javascript:;"
+          (click)="users=false; places=true"
+          [ngClass]="{ 'is-active': places }">
+          {{'FOR_PLACES'| translate}}
+        </a>
+    </li>
+  </ul>
+</header>
+
+<alert></alert>
+
+<div class="row">
+  <div class="medium-12 large-12 medium-centered columns">
+
+    <div *ngIf="users">
+      
+    </div>
+
+    <div *ngIf="places">
+
+    </div>
+
+  </div>
+</div>
+
+<quick-contact-form></quick-contact-form>
+<elp-footer></elp-footer>

@@ -7,11 +7,13 @@ import { MainAdminComponent }         from './admin/components/main/admin-main.c
 import { WebHomeComponent }           from './web/components/home/home.component';
 import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
 import { JoinUsPageComponent }        from './web/components/join-us-page/join-us-page.component';
+import { AboutUsComponent }           from './web/components/about-us/about-us.component';
 import { AuthGuard }                  from './core/@core';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: WebHomeComponent },
+    { path: 'about-us', component: AboutUsComponent }
     { path: 'join-us/:part', component: JoinUsPageComponent },
     { path: 'login-register', component: WebLoginRegisterComponent },
     { path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard] },

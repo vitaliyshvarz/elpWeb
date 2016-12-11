@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PlaceService, DISHES, CURRENCIES } from '../../../core/@core';
 import { AlertService } from '../../services/alert.service';
 
+
 @Component({
     moduleId: module.id,
     selector: 'add-place-part-3',
@@ -17,6 +18,11 @@ export class AddPlacePart3Component implements OnInit {
     dishes: any = DISHES;
     deliveryAvailable: boolean = false;
     takeAwayAvailable: boolean = false;
+    showSaveSucess: boolean = false;
+    savedPlace: any = JSON.parse(localStorage.getItem('currentPlace')) || false;
+    savedPayments: any = JSON.parse(localStorage.getItem('currentPaymentOptions')) || false;
+    savedDays: any = JSON.parse(localStorage.getItem('currentWorkingDays')) || false;
+
 
     constructor(
         private zone: NgZone,
@@ -36,25 +42,28 @@ export class AddPlacePart3Component implements OnInit {
         $(`#${id}details`).slideToggle('slow');
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if (!this.savedPlace) {
+            this.router.navigate(['/join-us', 'part1']);
+        } else if (!this.savedPayments || !this.savedDays) {
+            this.router.navigate(['/join-us', 'part2']);
+        }
+    }
 
     finish() {
-        const savedPlace: any = JSON.parse(localStorage.getItem('currentPlace')) || false;
-        const savedPayments: any = JSON.parse(localStorage.getItem('currentPaymentOptions')) || false;
-        const savedDays: any = JSON.parse(localStorage.getItem('currentWorkingDays')) || false;
         const activeMeals = this.dishes.filter(dish => !!dish.selected);
         const currency = this.currentCurrency;
         let valid: boolean = true;
 
-        if (!savedPlace) {
+        if (!this.savedPlace) {
             this.alertService.error('No Place selected, please select place');
             valid = false;
         }
-        if (!savedPayments) {
+        if (!this.savedPayments) {
             this.alertService.error('No payment options selected, please payment options');
             valid = false;
         }
-        if (!savedDays) {
+        if (!this.savedDays) {
             this.alertService.error('No working hours selected, please select working hours');
             valid = false;
         }
@@ -66,22 +75,23 @@ export class AddPlacePart3Component implements OnInit {
         if (valid) {
             this.finishAddPlaceButton = $('#finishAddPlace').toggleClass('sending');
             this.placeService.create({
-                name: savedPlace.name,
-                id: savedPlace.place_id,
-                location: savedPlace.geometry.location,
-                phone: savedPlace.international_phone_number,
-                elp_opening_hours: savedDays,
-                rating: savedPlace.rating || '',
-                fullAddress: savedPlace.vicinity || '',
-                website: savedPlace.website || '',
-                address_components: savedPlace.address_components,
-                payment_options: savedPayments,
+                name: this.savedPlace.name,
+                id: this.savedPlace.place_id,
+                location: this.savedPlace.geometry.location,
+                phone: this.savedPlace.international_phone_number,
+                elp_opening_hours: this.savedDays,
+                rating: this.savedPlace.rating || '',
+                fullAddress: this.savedPlace.vicinity || '',
+                website: this.savedPlace.website || '',
+                address_components: this.savedPlace.address_components,
+                payment_options: this.savedPayments,
                 meals: activeMeals,
                 currency: currency,
                 deliveryAvailable: this.deliveryAvailable,
                 takeAwayAvailable: this.takeAwayAvailable
             }).subscribe(
                 (data: any) => {
+                    this.showSucessBlock();
                     localStorage.removeItem('currentPlace');
                     localStorage.removeItem('currentPaymentOptions');
                     localStorage.removeItem('currentWorkingDays');
@@ -95,4 +105,15 @@ export class AddPlacePart3Component implements OnInit {
         }
 
     }
+
+    showSucessBlock() {
+        this.saveResultPlace = this.savedPlace;
+        this.showSaveSucess = true;
+    }
+
+    goToEditPlace() {
+        let link = ['/detail', this.saveResultPlace.place_id];
+        this.router.navigate(link);
+    }
+
 }
