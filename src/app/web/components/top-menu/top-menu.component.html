@@ -48,12 +48,16 @@
             </a>
           </li>
           <li class="show-for-large">
-            <a href="javascript:;" *ngIf="currentUser" routerLink="/admin">
+            <a *ngIf="currentUser" routerLink="/admin">
               {{'ADMIN' | translate }}
             </a>
           </li>
-          <li class="show-for-large"><a routerLink="/about-us" >{{'ABOUT_APP' | translate }}</a></li>
-          <li class="show-for-large"><a href="javascript:;">{{'CONTUCT_US' | translate }}</a></li>
+          <li class="show-for-large">
+            <a routerLink="/about-us" >{{'ABOUT_APP' | translate }}</a>
+          </li>
+          <li class="show-for-large">
+            <a routerLink="/contact">{{'CONTUCT_US' | translate }}</a>
+          </li>
           <li class="show-for-large" *ngIf="!currentUser">
             <a routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</a>
           </li>

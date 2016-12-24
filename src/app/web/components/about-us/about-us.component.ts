@@ -14,6 +14,5 @@ export class AboutUsComponent {
 
     ngOnInit() {
         this.users = true;
-
     }
 }

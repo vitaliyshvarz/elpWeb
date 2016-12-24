@@ -8,6 +8,8 @@ import { WebHomeComponent }           from './web/components/home/home.component
 import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
 import { JoinUsPageComponent }        from './web/components/join-us-page/join-us-page.component';
 import { AboutUsComponent }           from './web/components/about-us/about-us.component';
+import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
+
 import { AuthGuard }                  from './core/@core';
 
 const routes: Routes = [
@@ -16,6 +18,7 @@ const routes: Routes = [
     { path: 'about-us', component: AboutUsComponent }
     { path: 'join-us/:part', component: JoinUsPageComponent },
     { path: 'login-register', component: WebLoginRegisterComponent },
+    { path: 'contact', component: ContactPageComponent },
     { path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },

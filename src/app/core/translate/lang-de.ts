@@ -63,6 +63,10 @@ export const LANG_ES_TRANS = {
     'EDIT': 'Bearbeiten',
     'ABOUT_APP': 'Über App',
     'FOR_USERS': 'Für Application Benutzer',
-    'FOR_PLACES': 'Für Orte'
+    'FOR_PLACES': 'Für Orte',
+    'SEND_US_MESSAGE': 'Schick uns eine Nachricht',
+    'FULL_NAME': 'Vollständiger Name',
+    'YOUR_MESSAGE': 'Ihre Nachricht',
+    'SEND_MESSAGE': 'Nachricht Senden'
 
 };

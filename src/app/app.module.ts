@@ -28,6 +28,7 @@ import { AddPlacePart1Component } from './web/components/add-place/add-place-par
 import { AddPlacePart2Component } from './web/components/add-place/add-place-part2.component';
 import { AddPlacePart3Component } from './web/components/add-place/add-place-part3.component';
 import { AboutUsComponent } from './web/components/about-us/about-us.component';
+import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
 
 
 import { AlertService } from './web/services/alert.service';
@@ -83,7 +84,8 @@ import './rxjs-extensions';
         AddPlacePart1Component,
         AddPlacePart2Component,
         AddPlacePart3Component,
-        AboutUsComponent
+        AboutUsComponent,
+        ContactPageComponent
     ],
     providers: [
         AuthGuard,

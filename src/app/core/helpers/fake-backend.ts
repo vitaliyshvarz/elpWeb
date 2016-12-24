@@ -281,6 +281,19 @@ export let fakeBackendProvider = {
                     })));
                 }
 
+                // send  email
+                if (connection.request.url.endsWith('/api/send-email') &&
+                    connection.request.method === RequestMethod.Post) {
+                    let newQuickEmail = JSON.parse(connection.request.getBody());
+
+                    localStorage.setItem('email', JSON.stringify(newQuickEmail));
+
+                    // respond 200 OK
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        status: 200
+                    })));
+                }
+
             });
 
         });
