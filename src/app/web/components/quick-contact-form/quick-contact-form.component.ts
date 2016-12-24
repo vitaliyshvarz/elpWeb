@@ -41,6 +41,4 @@ export class QuickContactFormComponent implements OnInit {
             context.sendEmail();
         });
     }
-
-
 }

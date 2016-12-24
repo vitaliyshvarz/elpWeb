@@ -20,7 +20,7 @@ export class PlaceDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
-            let id = +params['id'];
+            let id = params['id'];
             this.placeService.getById(id)
                 .subscribe((place: Place) => this.place = place);
         });

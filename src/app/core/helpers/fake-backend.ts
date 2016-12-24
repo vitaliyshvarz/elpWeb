@@ -7,23 +7,13 @@ export let fakeBackendProvider = {
     useFactory: (backend: any, options: any) => {
         // array in local storage for registered users
         let users: any[];
-        let places: any[] = [
-            { id: 11, name: 'Mr. Nice' },
-            { id: 12, name: 'Narco' },
-            { id: 13, name: 'Bombasto' },
-            { id: 14, name: 'Celeritas' },
-            { id: 15, name: 'Magneta' },
-            { id: 16, name: 'RubberMan' },
-            { id: 17, name: 'Dynama' },
-            { id: 18, name: 'Dr IQ' },
-            { id: 19, name: 'Magma' },
-            { id: 20, name: 'Tornado' }
-        ];
+        let places: any[];
         try {
+            places = JSON.parse(localStorage.getItem('places')) || [];
             users = JSON.parse(localStorage.getItem('users')) || [];
         } catch (err) {
             users = [];
-            console.log('no users');
+            places = [];
         }
 
         // configure fake backend
@@ -166,6 +156,7 @@ export let fakeBackendProvider = {
                     // places if valid, this security is implemented server side
                     // in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+
                         connection.mockRespond(new Response(new ResponseOptions({
                             status: 200, body: places
                         })));
@@ -202,14 +193,14 @@ export let fakeBackendProvider = {
                 }
 
                 // get place by id
-                if (connection.request.url.match(/\/api\/places\/\d+$/) &&
+                if (connection.request.url.match(/\/api\/places\/[a-zA-Z0-9_.-]+$/) &&
                     connection.request.method === RequestMethod.Get) {
                     // check for fake auth token in header and return place if valid,
                     // this security is implemented server side in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                         // find place by id in places array
                         let urlParts = connection.request.url.split('/');
-                        let id = parseInt(urlParts[urlParts.length - 1], 10);
+                        let id = urlParts[urlParts.length - 1];
                         let matchedUsers = places.filter(place => { return place.id === id; });
                         let place = matchedUsers.length ? matchedUsers[0] : null;
 
@@ -231,22 +222,19 @@ export let fakeBackendProvider = {
                     // get new user object from post body
                     let newPlace = JSON.parse(connection.request.getBody());
                     // validation
-                    let duplicateUser = places.filter(user => {
-                        return user.email === newPlace.email;
-                    }).length;
-                    if (duplicateUser) {
-                        return connection.mockError(new Error('User with email "' +
-                            newPlace.email + '" is already taken'));
+                    let duplicatePlace = places
+                        .filter(place => place.id === newPlace.id).length;
+                    if (duplicatePlace) {
+                        return connection.mockError(new Error('Place already exists please update it "' +
+                            newPlace.name + '" is already taken'));
+
+                    } else {
+                        places.push(newPlace);
+                        localStorage.setItem('places', JSON.stringify(places));
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200
+                        })));
                     }
-
-                    // save new user
-                    newPlace.id = places.length + 1;
-                    places.push(newPlace);
-
-                    // respond 200 OK
-                    connection.mockRespond(new Response(new ResponseOptions({
-                        status: 200
-                    })));
                 }
 
                 // delete place
@@ -286,6 +274,19 @@ export let fakeBackendProvider = {
                     let newQuickEmail = JSON.parse(connection.request.getBody());
 
                     localStorage.setItem('quickemail', JSON.stringify(newQuickEmail));
+
+                    // respond 200 OK
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        status: 200
+                    })));
+                }
+
+                // send  email
+                if (connection.request.url.endsWith('/api/send-email') &&
+                    connection.request.method === RequestMethod.Post) {
+                    let newQuickEmail = JSON.parse(connection.request.getBody());
+
+                    localStorage.setItem('email', JSON.stringify(newQuickEmail));
 
                     // respond 200 OK
                     connection.mockRespond(new Response(new ResponseOptions({

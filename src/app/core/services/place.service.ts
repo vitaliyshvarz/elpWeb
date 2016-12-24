@@ -34,8 +34,8 @@ export class PlaceService {
 
     private jwt() {
         // create authorization header with jwt token
-        const userData: any = localStorage.getItem('currentUser') || {};
-        let currentUser = !!userData.firsName ? JSON.parse(userData) : null;
+        const userData: any = JSON.parse(localStorage.getItem('currentUser')) || {};
+        let currentUser = !!userData.firstName ? userData : null;
         if (currentUser && currentUser.token) {
             let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new RequestOptions({ headers: headers });

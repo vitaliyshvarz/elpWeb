@@ -24,6 +24,10 @@ export * from './definitions/logged';
 export * from './config/mapConfig';
 export * from './config/paymentConfig';
 export * from './config/workingHoursConfig';
+export * from './config/dishesConfig';
+export * from './config/currencyConfig';
+
+
 
 // TODO: remove this when real back end
 export * from './helpers/fake-backend';

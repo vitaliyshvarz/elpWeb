@@ -48,5 +48,25 @@ export const LANG_ES_TRANS = {
     'THURSDAY': 'Donnerstag',
     'FRIDAY': 'Freitag',
     'SATURDAY': 'Samstag',
-    'SUNDAY': 'Sonntag'
+    'SUNDAY': 'Sonntag',
+    'DISHES': 'Gerichte',
+    'SELECT_CURRENCY': 'Währung wählen',
+    'SELECT_MEALS': 'Geschirr Wählen',
+    'SIZE': 'Grösse',
+    'AVAILABILITY': 'Verfügbarkeit',
+    'DESCRIPTION': 'Beschreibung',
+    'PRICE': 'Preis',
+    'SUBMIT_PLACE': 'Ort eintragen',
+    'DELIVERY_AVAILABLE': 'Lieferung Verfügbar',
+    'TAKEAWAY_AVAILABLE': 'Mitnehmen Verfügbar',
+    'PLACE_ADDED': 'Vielen Dank, Ihr Ort hinzugefügtt',
+    'EDIT': 'Bearbeiten',
+    'ABOUT_APP': 'Über App',
+    'FOR_USERS': 'Für Application Benutzer',
+    'FOR_PLACES': 'Für Orte',
+    'SEND_US_MESSAGE': 'Schick uns eine Nachricht',
+    'FULL_NAME': 'Vollständiger Name',
+    'YOUR_MESSAGE': 'Ihre Nachricht',
+    'SEND_MESSAGE': 'Nachricht Senden'
+
 };

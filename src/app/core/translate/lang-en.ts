@@ -49,5 +49,25 @@ export const LANG_EN_TRANS = {
     'FRIDAY': 'Friday',
     'SATURDAY': 'Saturday',
     'SUNDAY': 'Sunday'
+    'DISHES': 'Dishes',
+    'SELECT_CURRENCY': 'Choose currency',
+    'SELECT_DISHES': 'Select dishes',
+    'SIZE': 'Size',
+    'AVAILABILITY': 'Availability'
+    'DESCRIPTION': 'Description'
+    'PRICE': 'Price',
+    'SUBMIT_PLACE': 'Submit Place',
+    'DELIVERY_AVAILABLE': 'Delivery Available',
+    'TAKEAWAY_AVAILABLE': 'Take Away Available'
+    'PLACE_ADDED': 'Thank you, your place has been added!',
+    'EDIT': 'Edit',
+    'ABOUT_APP': 'About App',
+    'FOR_USERS': 'For Application Users',
+    'FOR_PLACES': 'For Places',
+    'SEND_US_MESSAGE': 'Send us a message',
+    'FULL_NAME': 'Full Name',
+    'YOUR_MESSAGE': 'Your Message',
+    'SEND_MESSAGE': 'Send Message'
+
 
 };

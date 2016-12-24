@@ -20,6 +20,7 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
     initialEndMinute: number = 1020; // equals 13.00 morning
     initialPauseEndMinute: number = 780; // equals 17.00 morning
     step: number = 15;
+    savedPlace: any = JSON.parse(localStorage.getItem('currentPlace')) || false;
 
     constructor(
         private zone: NgZone,
@@ -29,6 +30,10 @@ export class AddPlacePart2Component implements AfterViewInit, OnInit {
     ngOnInit() {
         // get save data from locale storage if available
         this.initSavedData();
+
+        if (!this.savedPlace) {
+            this.router.navigate(['/join-us', 'part1']);
+        }
     }
 
     ngAfterViewInit() {

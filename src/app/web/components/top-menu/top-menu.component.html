@@ -3,14 +3,14 @@
     <nav class="row column">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">
+          <li class="menu-text show-for-large">
             <a routerLink="/">
               <img src="dist/app/web/assets/img/foodLogoWhite.png" alt="Food Logo" />
               {{ 'APP_NAME' | translate }}</a>
           </li>
 
           <li class="has-dropdown">
-            <a class="show-for-medium small hollow dropdown button"
+            <a class="show-for-large small hollow dropdown button"
                 type="button" data-toggle="lang_drop_down">
               {{ selectedLang }}
             </a>
@@ -25,32 +25,44 @@
 
         </ul>
       </div>
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="title-bar" class="hide-for-large" data-hide-for="large">
+            <a>
+              <button class="menu-icon" type="button" data-toggle data-open="offCanvasLeft"></button>
+            </a>
+          </li>
+          <li class="hide-for-large">
+            <span class="title-bar-title site-name-mob" data-hide-for="large">
+              {{ 'APP_NAME' | translate }}
+            </span>
+          </li>
+        </ul>
+      </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <li class="show-for-medium" >
+          <li class="show-for-large" >
             <a href="javascript:;" *ngIf="currentUser">
               {{currentUser.firstName}}
               <span class="label logout-label" (click)="logout()">logout</span>
             </a>
           </li>
-          <li class="show-for-medium">
-            <a href="javascript:;" *ngIf="currentUser" routerLink="/admin">
+          <li class="show-for-large">
+            <a *ngIf="currentUser" routerLink="/admin">
               {{'ADMIN' | translate }}
             </a>
           </li>
-          <li class="show-for-medium"><a href="javascript:;">{{'THE_APP' | translate }}</a></li>
-          <li class="show-for-medium"><a href="javascript:;">{{'CONTUCT_US' | translate }}</a></li>
-          <li class="show-for-medium"><a routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</a></li>
-          <li class="show-for-medium"><a class="button" routerLink="/join-us/part1">{{'JOIN_US' | translate }}</a></li>
-          <li class="title-bar" class="hide-for-medium" data-hide-for="medium">
-            <a>
-              <button class="menu-icon" type="button" data-toggle data-open="offCanvasLeft"></button>
-            </a>
+          <li class="show-for-large">
+            <a routerLink="/about-us" >{{'ABOUT_APP' | translate }}</a>
           </li>
-          <li class="hide-for-medium">
-            <span class="title-bar-title site-name-mob" data-hide-for="medium">
-              {{ 'APP_NAME' | translate }}
-            </span>
+          <li class="show-for-large">
+            <a routerLink="/contact">{{'CONTUCT_US' | translate }}</a>
+          </li>
+          <li class="show-for-large" *ngIf="!currentUser">
+            <a routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</a>
+          </li>
+          <li class="show-for-large">
+            <a class="button" routerLink="/join-us/part1">{{'JOIN_US' | translate }}</a>
           </li>
         </ul>
       </div>

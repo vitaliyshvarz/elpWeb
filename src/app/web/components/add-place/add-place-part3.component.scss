@@ -1,3 +1,21 @@
 .header-title {
     padding: 25px 0;
 }
+
+.dishes-block {
+    padding: 10px;
+}
+
+.dish-switch,
+.padding-top {
+    padding-top: 10px;
+}
+
+.button {
+    &.sending {
+        &:before {
+            top: 3.5em;
+            left: 40%;
+        }
+    }
+}
