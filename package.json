@@ -9,9 +9,7 @@
     "start": "concurrently \"npm run gulp\" \"gulp watch\" \"npm run lite\" ",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "postinstall": "typings install"
-  },
+    "tsc:w": "tsc -w"  },
   "repository": {
     "type": "git",
     "url": "git+https://vitaliychorniy@bitbucket.org/ifbbpros/elpweb.git"
