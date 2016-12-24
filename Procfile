@@ -1,1 +1,1 @@
-web: gulp build-prod
+web: gulp start

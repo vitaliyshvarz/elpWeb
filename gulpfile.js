@@ -98,11 +98,6 @@ gulp.task('start', function () {
         'watch');
 });
 
-gulp.task('build-prod', function () {
-    runSequence('develop',
-        'build-third-js',
-        'copy-vid');
-});
 
 gulp.task('develop', function (done) {
     runSequence(
