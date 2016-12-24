@@ -11,7 +11,6 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "preinstall": "npm i typings,concurrently  -g",
     "postinstall": "typings install"
   },
   "repository": {
