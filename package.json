@@ -9,9 +9,7 @@
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings",
-    "preinstall": "npm i typings concurrently gulp -g",
-    "postinstall": "typings install"
+    "typings": "typings"
   },
   "repository": {
     "type": "git",
@@ -38,7 +36,19 @@
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.39",
-    "zone.js": "^0.6.25"
+    "zone.js": "^0.6.25",
+    "typings": "^1.4.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-ext-replace": "^0.2.0",
+    "gulp-git": "^1.11.3",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-postcss": "^6.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tslint": "^6.1.2",
+    "gulp-typescript": "^2.10.0",
+    "gulp-uglify": "^1.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.5",
