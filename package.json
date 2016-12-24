@@ -11,7 +11,8 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "postinstall": "npm install typings --global, typings install"
+    "preinstall": "npm i typings -g",
+    "postinstall": "typings install"
   },
   "repository": {
     "type": "git",
