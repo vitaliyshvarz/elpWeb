@@ -11,7 +11,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "preinstall": "npm i typings -g",
+    "preinstall": "npm i typings,concurrently  -g",
     "postinstall": "typings install"
   },
   "repository": {
@@ -64,7 +64,8 @@
     "run-sequence": "^1.2.2",
     "tslint": "^3.15.1",
     "typescript": "^2.0.3",
-    "typings": "^1.4.0"
+    "typings": "^1.4.0",
+    "concurrently": "^3.10.8"
   },
   "license": "ISC"
 }
