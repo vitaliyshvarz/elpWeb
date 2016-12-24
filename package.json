@@ -10,8 +10,6 @@
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings",
-    "preinstall": "npm i typings -g",
     "postinstall": "typings install"
   },
   "repository": {
