@@ -6,7 +6,6 @@
   "scripts": {
     "lite": "lite-server",
     "gulp": "gulp",
-    "start": "concurrently \"npm run gulp\" \"gulp watch\" \"npm run lite\" ",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
