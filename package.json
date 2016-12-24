@@ -10,7 +10,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "preinstall": "npm i typings concurrently -g",
+    "preinstall": "npm i typings concurrently gulp -g",
     "postinstall": "typings install"
   },
   "repository": {
