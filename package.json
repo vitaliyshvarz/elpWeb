@@ -7,7 +7,7 @@
     "postinstall": "gulp build",
     "lite": "lite-server",
     "gulp": "gulp",
-    "start": "concurrently --kill-others \"gulp watch\" \"lite-server\"",
+    "start": "concurrently --kill-others \"lite-server\"",
     "run": "concurrently \"lite-server\"",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
