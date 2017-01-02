@@ -1,0 +1,92 @@
+$menu-background: lightgray;
+$font-color: black;
+
+.title-bar {
+    background: $menu-background;
+    padding: 0.9rem;
+    z-index: 999;
+}
+
+.top-bar {
+    background: $menu-background;
+
+    .dropdown-pane {
+        padding: 0;
+        width: 6em;
+    }
+
+    .site-name-mob {
+        color: white;
+    }
+
+    .menu-text {
+        a {
+            padding: 0;
+
+            img {
+                width: 24px;
+            }
+        }
+    }
+
+    ul {
+        background: $menu-background;
+
+        li {
+            background: $menu-background;
+            border: none;
+
+            a {
+                color: $font-color;
+
+                .logout-label {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.menu-text {
+    color: $font-color;
+    @media only screen and (max-width: 40em) {
+        display: none !important;
+    }
+}
+@media only screen and (min-width: 40em) {
+    .menu:last-child {
+        border-left: 1px solid #4e4e4e;
+    }
+
+    .menu:first-child {
+        border-left: none;
+    }
+
+    .menu {
+        li:not(:last-child) {
+            border-right: 1px solid #4e4e4e;
+        }
+    }
+}
+
+.dropdown.menu .submenu {
+    border: none;
+}
+
+.dropdown.menu .is-dropdown-submenu-parent.is-right-arrow > a::after {
+    border-color: $font-color transparent transparent;
+}
+
+.is-drilldown-submenu-parent > a::after {
+    border-color: transparent transparent transparent $font-color;
+}
+
+.js-drilldown-back::before {
+    border-color: transparent $font-color transparent transparent;
+}
+
+.button-group.toggle {
+    li:not(first-child) {
+        margin: 0 -0.9rem;
+    }
+}

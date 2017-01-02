@@ -1,7 +1,32 @@
-<h2>{{title}}</h2>
-<nav>
- <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
- <a routerLink="/places" routerLinkActive="active">Places</a>
- <a routerLink="/home" routerLinkActive="active">Home</a>
-</nav>
-<router-outlet>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+      <div class="off-canvas position-left" id="offCanvasAdminLeft" data-off-canvas data-position="left">
+        <button class="close-button" aria-label="Close menu" type="button" data-close="">
+          <span aria-hidden="true">×</span>
+        </button>
+        <ul class="mobile-ofc vertical menu">
+          <li><a routerLink="/home">{{'WEBSITE' | translate }}</a></li>
+          <li><a routerLink="/dashboard">{{'DASHBOARD' | translate }}</a></li>
+          <li><a routerLink="/my-places">{{'MY_PLACES' | translate }}</a></li>
+        </ul>
+        <translations-list
+          [ul-class]="'small expanded button-group mob-lang-menu'"
+          [li-class]="'button expanded hollow'">
+        </translations-list>
+
+      </div>
+
+      <div class="off-canvas-content" data-off-canvas-content>
+
+        <admin-top-menu></admin-top-menu>
+
+        <div class="text-center">
+          <h2>{{title}}</h2>
+        </div>
+        <router-outlet></router-outlet>
+
+      </div>
+
+    </div>
+  </div>

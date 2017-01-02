@@ -1,0 +1,40 @@
+<top-menu></top-menu>
+<header class="header">
+  <h1 class="headline">{{'ADD_NEW_PLACE' | translate }}<small> {{ 'APP_NAME' | translate }}</small></h1>
+</header>
+
+<alert></alert>
+
+<div class="row">
+  <div class="medium-8 large-8 medium-centered columns join-us-container">
+    <div class="row" *ngIf="!currentUser">
+      <div class="small-12 columns text-center">
+        <h5>
+          <a routerLink="/login-register">{{'LOGIN' | translate}}</a>
+          {{'TO_YOUR_ACC' | translate}}
+          <a routerLink="/login-register">{{'REGISTER' | translate}}</a>
+          {{'TO_GET_STARTED' | translate}}
+        </h5>
+      </div>
+      <div class="small-6 columns login-box">
+        <facebook-login></facebook-login>
+      </div>
+      <div class="small-6 columns login-box">
+        <google-login></google-login>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="currentUser">
+      <add-place-part-1 *ngIf="route.snapshot.params['part'] === 'part1'">
+      </add-place-part-1>
+      <add-place-part-2 *ngIf="route.snapshot.params['part'] === 'part2'">
+      </add-place-part-2>
+      <add-place-part-3 *ngIf="route.snapshot.params['part'] === 'part3'">
+      </add-place-part-3>
+    </div>
+
+  </div>
+</div>
+
+<quick-contact-form></quick-contact-form>
+<elp-footer></elp-footer>

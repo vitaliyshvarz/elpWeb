@@ -1,13 +1,5 @@
-<form data-abide novalidate #f="ngForm">
+<form data-abide novalidate #f="ngForm" id="register-form">
   <div class="row">
-    <div class="small-12 columns">
-      <div class="small-6 columns">
-        FB
-      </div>
-      <div class="small-6 columns">
-        GOOGLE
-      </div>
-    </div>
     <div class="small-12 columns">
       <fieldset class="fieldset">
         <legend>{{'EMAIL' | translate}} {{'REGISTER' | translate}}</legend>
@@ -67,7 +59,7 @@
       </fieldset>
     </div>
   </div>
-
+  <div class="g-recaptcha" data-sitekey="6LcuHwsUAAAAAPkMgMzC04hcsS7LQBBd-0k1JOhN"></div>
   <div class="row">
     <div class="small-6 columns">
       <button class="button expanded success" type="submit" value="Submit">

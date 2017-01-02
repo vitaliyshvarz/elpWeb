@@ -1,0 +1,17 @@
+.fb-button {
+    background-size: contain;
+    color: transparent;
+    background-image: url("./app/web/assets/img/facebookLogin.png");
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.button {
+    &.sending {
+        &:before {
+            top: 3.5em;
+            left: 40%;
+        }
+    }
+}

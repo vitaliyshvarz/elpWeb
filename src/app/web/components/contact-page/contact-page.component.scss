@@ -1,0 +1,36 @@
+$header-bg: #074E68;
+$subnav-link-padding: 0.9rem;
+$subnav-font-size: 0.75rem;
+$subnav-link-opacity: 0.15;
+$header-height: 2.5rem;
+$transition: all 0.35s ease-in-out;
+
+.header {
+    text-align: center;
+    background: $header-bg;
+    background-image: url("./app/web/assets/img/contuct-us/contuctUsCover.jpg");
+    background-size: cover;
+    position: relative;
+    overflow: visible;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .headline {
+        color: lightgrey;
+        text-shadow: 0 1px 0 darkgrey,1px 0 0 lightgrey;
+
+        small {
+            color: white;
+            text-shadow: 0 0 4px black, 0 0 2px black;
+        }
+    }
+}
+
+#contactFormCapcha {
+    div {
+        margin: auto;
+    }
+}

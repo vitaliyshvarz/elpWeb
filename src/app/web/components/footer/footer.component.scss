@@ -1,0 +1,115 @@
+.elp-footer-bottom {
+    background: #2c3840;
+    padding: 24px 0 10px;
+
+    .design-border {
+        border-bottom: 1px solid #484848;
+        padding-bottom: 5px;
+        margin-bottom: 25px;
+    }
+
+    .elp-logo {
+        color: #858585;
+        font-weight: normal;
+        padding: 23px 0 0 !important;
+        font-size: em-calc(16px);
+        display: inline-block;
+        width: 75px;
+        margin-bottom: 1em;
+
+        :hover {
+            opacity: 0.8;
+        }
+
+        i {
+            font-size: 5em;
+        }
+    }
+
+    .elp-links {
+        margin: 0;
+        display: inline-block;
+        padding-bottom: 0;
+
+        li {
+            display: block;
+            float: left;
+            margin-left: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        a {
+            color: #666;
+            padding: 3px 6px;
+
+            :hover {
+                color: #777;
+            }
+        }
+    }
+
+    .copyright {
+        margin: 6px 0 0;
+        font-size: 0.75rem;
+        color: #666;
+    }
+
+    .home-social {
+        display: block;
+        float: right;
+        margin-bottom: 8px;
+
+        li {
+            list-style: none;
+            display: block;
+            float: left;
+            margin-left: 10px;
+
+            :first-child {
+                margin-left: 0;
+            }
+
+            a {
+                display: block;
+                height: 50px;
+                width: 50px;
+
+                :hover {
+                    opacity: 0.8;
+                }
+
+                i {
+                    font-size: 3em;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    .elp-footer-bottom {
+        text-align: center;
+
+        .columns {
+            padding: 0;
+        }
+
+        .elp-logo {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .elp-links {
+            margin: 16px 0 10px;
+        }
+
+        .home-social {
+            float: none;
+            margin: 0 0 20px;
+            text-align: center;
+            height: 44px;
+            display: inline-block;
+        }
+    }
+}
