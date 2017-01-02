@@ -16,6 +16,7 @@ import { UserService } from '../../../core/@core';
 
 export class DashboardComponent implements OnInit {
     currentUser: User;
+    userPlaces: any;
     users: User[] = [];
     places: Place[] = [];
 
@@ -31,15 +32,29 @@ export class DashboardComponent implements OnInit {
         this.loadAllPlaces();
     }
 
+    private filterUserPlaces(places) {
+        if (this.currentUser && this.currentUser) {
+            return places.filter(place => {
+                if (place.user && place.user.id &&
+                    this.currentUser && this.currentUser.id) {
+                    return place.user.id === this.currentUser.id;
+                }
+            });
+        }
+    }
+
     // initially get places
     private loadAllPlaces() {
         this.placeService.getAll()
-            .subscribe((places: Place[]) => this.places = places);
+            .subscribe((places: Place[]) => {
+                this.userPlaces = this.filterUserPlaces(places);
+                this.places = places
+            });
     }
     // initially get users
     private loadAllUsers() {
         this.userService.getAll()
-            .subscribe((users: User[]) => { this.users = users; });
+            .subscribe((users: User[]) => this.users = users);
     }
 
     // delete user by id

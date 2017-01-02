@@ -22,7 +22,7 @@ const routes: Routes = [
     { path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
-    { path: 'places', component: PlacesComponent, canActivate: [AuthGuard] },
+    { path: 'my-places', component: PlacesComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

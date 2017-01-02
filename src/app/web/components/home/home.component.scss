@@ -8,7 +8,7 @@ video {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-    background: url('./dist/app/web/assets/img/food_main.jpg') no-repeat;
+    background: url('./app/web/assets/img/food_main.jpg') no-repeat;
     background-size: cover;
     transition: 1s opacity;
 }
@@ -21,11 +21,11 @@ video {
     background-position: center;
 
     &.apple {
-        background-image: url("dist/app/web/assets/img/appStoreLogo.png");
+        background-image: url("./app/web/assets/img/appStoreLogo.png");
     }
 
     &.google {
-        background-image: url("dist/app/web/assets/img/playStoreLogo.png");
+        background-image: url("./app/web/assets/img/playStoreLogo.png");
     }
 }
 
@@ -88,14 +88,14 @@ video {
     width: 45px;
 
     &.facebook {
-        background-image: url("dist/app/web/assets/img/webicon-facebook.png");
+        background-image: url("./app/web/assets/img/webicon-facebook.png");
     }
 
     &.instagram {
-        background-image: url("dist/app/web/assets/img/webicon-instagram.png");
+        background-image: url("./app/web/assets/img/webicon-instagram.png");
     }
 
     &.twitter {
-        background-image: url("dist/app/web/assets/img/webicon-twitter.png");
+        background-image: url("./app/web/assets/img/webicon-twitter.png");
     }
 }

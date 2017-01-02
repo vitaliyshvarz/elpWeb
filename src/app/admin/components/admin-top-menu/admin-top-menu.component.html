@@ -29,7 +29,7 @@
         <ul class="menu">
           <li class="title-bar" class="hide-for-large" data-hide-for="large">
             <a>
-              <button class="menu-icon" type="button" data-toggle data-open="offCanvasLeft"></button>
+              <button class="menu-icon" type="button" data-toggle data-open="offCanvasAdminLeft"></button>
             </a>
           </li>
           <li class="hide-for-large">
@@ -48,21 +48,15 @@
             </a>
           </li>
           <li class="show-for-large">
-            <a *ngIf="currentUser" routerLink="/admin">
-              {{'ADMIN' | translate }}
+            <a *ngIf="currentUser" routerLink="/home">
+              {{'WEBSITE' | translate }}
             </a>
           </li>
           <li class="show-for-large">
-            <a routerLink="/about-us" >{{'ABOUT_APP' | translate }}</a>
+            <a routerLink="/dashboard" >{{'DASHBOARD' | translate }}</a>
           </li>
           <li class="show-for-large">
-            <a routerLink="/contact">{{'CONTUCT_US' | translate }}</a>
-          </li>
-          <li class="show-for-large" *ngIf="!currentUser">
-            <a routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</a>
-          </li>
-          <li class="show-for-large">
-            <a class="button" routerLink="/join-us/part1">{{'JOIN_US' | translate }}</a>
+            <a routerLink="/my-places">{{'MY_PLACES' | translate }}</a>
           </li>
         </ul>
       </div>
