@@ -28,7 +28,7 @@
         <google-login></google-login>
       </div>
     </div>
-    
+
     <login-form *ngIf="login && !register && !showContinueButton"></login-form>
     <register-form *ngIf="register && !login && !showContinueButton"></register-form>
 
@@ -36,7 +36,7 @@
       <div class="small-12 columns text-center centered">
         <hr />
         <h3>{{'THANK_YOU_FOR_REGISTERING' | translate}}</h3>
-        <button class="button warning" routerLink="/join-us">
+        <button class="button warning" routerLink="/join-us/part1">
             Continue <i class="fi-arrow-right"></i>
         </button>
         <hr />

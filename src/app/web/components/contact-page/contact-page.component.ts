@@ -47,7 +47,7 @@ export class ContactPageComponent {
 
     ngOnInit() {
         const context = this;
-        $.get('http://ipinfo.io', (response: any) => {
+        $.get('https://ipinfo.io', (response: any) => {
             this.message.ip = response.ip;
         }, 'jsonp');
 

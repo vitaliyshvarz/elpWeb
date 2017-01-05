@@ -132,7 +132,6 @@ gulp.task('clean', function () {
 
 gulp.task('start', function () {
     runSequence('develop',
-        'serve',
         'watch');
 });
 
@@ -170,15 +169,6 @@ gulp.task('build', function (done) {
         function () {
             done();
         });
-});
-
-gulp.task('open-prod', function () {
-
-});
-
-gulp.task('serve', function () {
-    var server = gls.new('server.js');
-    server.start();
 });
 
 gulp.task('default', [
