@@ -35,14 +35,11 @@ export let fakeBackendProvider = {
                     if (filteredUsers.length) {
                         // if login details are valid return 200 OK with user details and fake jwt token
                         let user = filteredUsers[0];
+                        user.token = 'fake-jwt-token';
                         connection.mockRespond(new Response(new ResponseOptions({
                             status: 200,
                             body: {
-                                id: user.id,
-                                email: user.email,
-                                firstName: user.firstName,
-                                lastName: user.lastName,
-                                token: 'fake-jwt-token'
+                                user: user
                             }
                         })));
                     } else {
@@ -57,6 +54,7 @@ export let fakeBackendProvider = {
                     // check for fake auth token in header and return
                     // users if valid, this security is implemented server side
                     // in a real application
+                    console.log('dfsdf', connection.request.headers.get('Authorization'))
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                         connection.mockRespond(new Response(new ResponseOptions({
                             status: 200, body: users
@@ -155,6 +153,8 @@ export let fakeBackendProvider = {
                     // check for fake auth token in header and return
                     // places if valid, this security is implemented server side
                     // in a real application
+                    console.log('dfsdf', connection.request.headers.get('Authorization'))
+
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
 
                         connection.mockRespond(new Response(new ResponseOptions({

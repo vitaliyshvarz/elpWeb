@@ -10,7 +10,7 @@
         <li><a routerLink="/about-us">{{'ABOUT_APP' | translate }}</a></li>
         <li><a routerLink="/contact">{{'CONTUCT_US' | translate }}</a></li>
         <li>
-          <a href="javascript:;" *ngIf="currentUser" routerLink="/admin">
+          <a *ngIf="currentUser" routerLink="/admin/home">
             {{'ADMIN' | translate }}
           </a>
         </li>
@@ -28,7 +28,7 @@
           </ul>
         </li>
         <li *ngIf="currentUser">
-          <a href="javascript:;" routerLink="/admin">
+          <a routerLink="/admin/home">
             {{'ADMIN' | translate }}
           </a>
         </li>

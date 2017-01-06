@@ -54,7 +54,9 @@ export class DashboardComponent implements OnInit {
     // initially get users
     private loadAllUsers() {
         this.userService.getAll()
-            .subscribe((users: User[]) => this.users = users);
+            .subscribe((users: User[]) => {
+                this.users = users;
+            });
     }
 
     // delete user by id
@@ -70,7 +72,7 @@ export class DashboardComponent implements OnInit {
     * @param place
     */
     gotoDetail(place: Place): void {
-        let link = ['/detail', place.id];
+        let link = ['/admin/detail', place.id];
         this.router.navigate(link);
     }
 }

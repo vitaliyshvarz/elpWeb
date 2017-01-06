@@ -26,6 +26,7 @@ export class WebRegisterFormComponent implements OnInit {
     }
 
     register() {
+        this.model.registrationType = 'email';
         this.loginButton = $('#register-form').find('[type="submit"]')
             .toggleClass('sending').blur();
         this.userService.create(this.model)

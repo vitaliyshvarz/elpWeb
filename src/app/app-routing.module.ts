@@ -19,11 +19,17 @@ const routes: Routes = [
     { path: 'join-us/:part', component: JoinUsPageComponent },
     { path: 'login-register', component: WebLoginRegisterComponent },
     { path: 'contact', component: ContactPageComponent },
-    { path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard] },
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-    { path: 'detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
-    { path: 'my-places', component: PlacesComponent, canActivate: [AuthGuard] },
+    {
+        path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard],
 
+        children: [
+            { path: 'home', component: '' },
+            { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+            { path: 'detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
+            { path: 'my-places', component: PlacesComponent, canActivate: [AuthGuard] }
+        ]
+
+    },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

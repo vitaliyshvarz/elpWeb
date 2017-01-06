@@ -1,5 +1,3 @@
-<admin-top-menu></admin-top-menu>
-
 <div class="row" *ngIf="currentUser.type == 'admin'">
   <div class="small-6 columns">
     <h3>All registered users:</h3>
@@ -14,7 +12,7 @@
     <h3>All Places</h3>
     <ul>
       <li *ngFor="let place of places">
-        {{place.name}
+        {{place.name}}
         - <a (click)="gotoDetail(place)">Open</a>
       </li>
     </ul>
@@ -26,7 +24,7 @@
   <h3>Your Places</h3>
   <ul>
     <li *ngFor="let userPlace of userPlaces">
-      {{userPlace.name}
+      {{userPlace.name}}
       - <a (click)="gotoDetail(userPlace)">Open</a>
     </li>
   </ul>

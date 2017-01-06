@@ -28,7 +28,6 @@ export class FacebookLoginComponent {
             this.appId = '955002201271443';
         }
         try {
-            console.log(window.location.hostname);
             FB.init({
                 appId: this.appId,
                 cookie: false,  // enable cookies to allow the server to access
@@ -44,6 +43,7 @@ export class FacebookLoginComponent {
     }
 
     tryRegisterUser(response: any) {
+        response.registrationType = 'facebook';
         this.userService.create(response)
             .subscribe(
             (data: any) => {

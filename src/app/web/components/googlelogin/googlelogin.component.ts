@@ -51,6 +51,7 @@ export class GoogleLoginComponent {
     }
 
     tryRegisterUser(response: any) {
+        response.registrationType = 'google';
         this.userService.create(response)
             .subscribe(
             (data: any) => {
