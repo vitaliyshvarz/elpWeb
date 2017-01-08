@@ -22,7 +22,7 @@ export class AuthenticationService {
             password: password
         })).map((response: Response) => {
             // login successful if there's a jwt token in the response
-            let user = response.json();
+            let user = response.json().user;
             if (user && user.token) {
                 // store user details and jwt token in local storage
                 // to keep user logged in between page refreshes

@@ -14,17 +14,22 @@ declare const FB: any;
 
 export class FacebookLoginComponent {
     private showSelf: boolean;
-    loginButton: any;
+    private loginButton: any;
+    private appId: string;
 
     constructor(
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
         private userService: UserService
     ) {
+        if (window.location.hostname != 'localhost') {
+            this.appId = '954999384605058';
+        } else {
+            this.appId = '955002201271443';
+        }
         try {
             FB.init({
-                // TODO:  This id is for Test eatlikeproapp, change it on production
-                appId: '955002201271443',
+                appId: this.appId,
                 cookie: false,  // enable cookies to allow the server to access
                 // the session
                 xfbml: true,  // parse social plugins on this page
@@ -38,6 +43,7 @@ export class FacebookLoginComponent {
     }
 
     tryRegisterUser(response: any) {
+        response.registrationType = 'facebook';
         this.userService.create(response)
             .subscribe(
             (data: any) => {

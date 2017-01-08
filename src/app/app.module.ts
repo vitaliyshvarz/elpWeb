@@ -9,6 +9,7 @@ import { PlacesComponent } from './admin/components/places/places.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { PlaceSearchComponent } from './admin/components/place-search/place-search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
+import { AdminTopMenuComponent }  from './admin/components/admin-top-menu/admin-top-menu.component';
 
 // WEB
 import { AppComponent }  from './web/components/main/main.component';
@@ -85,7 +86,8 @@ import './rxjs-extensions';
         AddPlacePart2Component,
         AddPlacePart3Component,
         AboutUsComponent,
-        ContactPageComponent
+        ContactPageComponent,
+        AdminTopMenuComponent
     ],
     providers: [
         AuthGuard,

@@ -35,7 +35,7 @@ export class PlacesComponent implements OnInit {
     }
 
     gotoDetail(place: Place): void {
-        let link = ['/detail', place.id];
+        let link = ['/admin/detail', place.id];
         this.router.navigate(link);
     }
     add(name: string): void {

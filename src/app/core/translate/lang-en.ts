@@ -67,7 +67,9 @@ export const LANG_EN_TRANS = {
     'SEND_US_MESSAGE': 'Send us a message',
     'FULL_NAME': 'Full Name',
     'YOUR_MESSAGE': 'Your Message',
-    'SEND_MESSAGE': 'Send Message'
+    'SEND_MESSAGE': 'Send Message',
+    'DASHBOARD': 'Dashboard',
+    'MY_PLACES': 'My Places'
 
 
 };

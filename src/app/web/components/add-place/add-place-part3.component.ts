@@ -22,7 +22,7 @@ export class AddPlacePart3Component implements OnInit {
     savedPlace: any = JSON.parse(localStorage.getItem('currentPlace')) || false;
     savedPayments: any = JSON.parse(localStorage.getItem('currentPaymentOptions')) || false;
     savedDays: any = JSON.parse(localStorage.getItem('currentWorkingDays')) || false;
-
+    currentUser = JSON.parse(localStorage.getItem('currentUser')) || false;
 
     constructor(
         private zone: NgZone,
@@ -72,9 +72,15 @@ export class AddPlacePart3Component implements OnInit {
             valid = false;
         }
 
+        if (!this.currentUser) {
+            this.alertService.error('Please Log in');
+            valid = false;
+        }
+
         if (valid) {
             this.finishAddPlaceButton = $('#finishAddPlace').toggleClass('sending');
             this.placeService.create({
+                user: this.currentUser,
                 name: this.savedPlace.name,
                 id: this.savedPlace.place_id,
                 location: this.savedPlace.geometry.location,

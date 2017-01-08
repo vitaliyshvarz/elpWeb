@@ -25,12 +25,14 @@
     </div>
 
     <div class="row" *ngIf="currentUser">
-      <add-place-part-1 *ngIf="route.snapshot.params['part'] === 'part1'">
-      </add-place-part-1>
-      <add-place-part-2 *ngIf="route.snapshot.params['part'] === 'part2'">
-      </add-place-part-2>
-      <add-place-part-3 *ngIf="route.snapshot.params['part'] === 'part3'">
-      </add-place-part-3>
+      <div class="small-11 small-centered columns">
+        <add-place-part-1 *ngIf="route.snapshot.params['part'] === 'part1'">
+        </add-place-part-1>
+        <add-place-part-2 *ngIf="route.snapshot.params['part'] === 'part2'">
+        </add-place-part-2>
+        <add-place-part-3 *ngIf="route.snapshot.params['part'] === 'part3'">
+        </add-place-part-3>
+      </div>
     </div>
 
   </div>

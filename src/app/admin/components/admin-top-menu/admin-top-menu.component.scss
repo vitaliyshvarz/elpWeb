@@ -1,5 +1,5 @@
-$menu-background: #333;
-$font-color: #fff;
+$menu-background: lightgray;
+$font-color: black;
 
 .title-bar {
     background: $menu-background;
@@ -34,6 +34,7 @@ $font-color: #fff;
 
         li {
             background: $menu-background;
+            border: none;
 
             a {
                 color: $font-color;
@@ -41,10 +42,6 @@ $font-color: #fff;
                 .logout-label {
                     cursor: pointer;
                 }
-            }
-
-            .dropdown {
-                background: none;
             }
         }
     }

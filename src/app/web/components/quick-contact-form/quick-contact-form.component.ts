@@ -30,7 +30,7 @@ export class QuickContactFormComponent implements OnInit {
             );
     }
     ngOnInit() {
-        $.get('http://ipinfo.io', (response: any) => {
+        $.get('https://ipinfo.io', (response: any) => {
             this.model.ip = response.ip;
         }, 'jsonp');
 
