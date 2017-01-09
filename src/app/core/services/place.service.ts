@@ -31,7 +31,6 @@ export class PlaceService {
     }
 
     // private helper methods
-
     private jwt() {
         // create authorization header with jwt token
         const userData: any = JSON.parse(localStorage.getItem('currentUser')) || {};
