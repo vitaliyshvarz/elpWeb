@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
         this.loadAllPlaces();
     }
 
-    private filterUserPlaces(places) {
+    private filterUserPlaces(places): Place[] {
         if (this.currentUser && this.currentUser) {
             return places.filter(place => {
                 if (place.user && place.user.id &&
@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
     }
 
     // initially get places
-    private loadAllPlaces() {
+    private loadAllPlaces(): void {
         this.placeService.getAll()
             .subscribe((places: Place[]) => {
                 this.userPlaces = this.filterUserPlaces(places);
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
             });
     }
     // initially get users
-    private loadAllUsers() {
+    private loadAllUsers(): void {
         this.userService.getAll()
             .subscribe((users: User[]) => {
                 this.users = users;
@@ -60,19 +60,26 @@ export class DashboardComponent implements OnInit {
     }
 
     // delete user by id
-    deleteUser(id: string) {
+    deleteUser(id: string): void {
         this.userService.delete(id)
             .subscribe(() => {
                 this.loadAllUsers();
             });
     }
 
+    // delete user by id
+    deletePlace(id: string): void {
+        this.placeService.delete(id)
+            .subscribe(() => {
+                this.loadAllPlaces();
+            });
+    }
     /*
     * Go to place detail page
     * @param place
     */
-    gotoDetail(place: Place): void {
-        let link = ['/admin/detail', place.id];
+    gotoDetail(type, item): void {
+        let link = [`/admin/${type}-detail`, item.id];
         this.router.navigate(link);
     }
 }

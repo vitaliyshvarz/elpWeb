@@ -4,6 +4,7 @@
     <ul>
       <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a (click)="gotoDetail('user', user)">Open</a>
         - <a (click)="deleteUser(user.id)">Delete</a>
       </li>
     </ul>
@@ -13,7 +14,8 @@
     <ul>
       <li *ngFor="let place of places">
         {{place.name}}
-        - <a (click)="gotoDetail(place)">Open</a>
+        - <a (click)="gotoDetail('place', place)">Open</a>
+        - <a (click)="deletePlace(place.id)">Delete</a>
       </li>
     </ul>
   </div>
@@ -25,7 +27,7 @@
   <ul>
     <li *ngFor="let userPlace of userPlaces">
       {{userPlace.name}}
-      - <a (click)="gotoDetail(userPlace)">Open</a>
+      - <a (click)="gotoDetail('place', userPlace)">Open</a>
     </li>
   </ul>
   </div>

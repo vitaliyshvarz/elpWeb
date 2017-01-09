@@ -188,11 +188,9 @@ export let fakeBackendProvider = {
                     }
                 }
 
-                console.log('2', connection.request.url.match(/\/api\/search-users\/[\wа-яА-Я_.-?]+$/));
                 // get places by name
                 if (connection.request.url.match(/\/api\/search-users\/[\wа-яА-Я_.-?]+$/) &&
                     connection.request.method === RequestMethod.Get) {
-                    console.log('1');
 
                     // check for fake auth token in header and return place if valid,
                     // this security is implemented server side in a real application
@@ -261,14 +259,14 @@ export let fakeBackendProvider = {
                 }
 
                 // delete place
-                if (connection.request.url.match(/\/api\/places\/\d+$/) &&
+                if (connection.request.url.match(/\/api\/places\/[a-zA-Z0-9_.-]+$/) &&
                     connection.request.method === RequestMethod.Delete) {
                     // check for fake auth token in header and return user if valid,
                     // this security is implemented server side in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                         // find user by id in places array
                         let urlParts = connection.request.url.split('/');
-                        let id = parseInt(urlParts[urlParts.length - 1], 10);
+                        let id = urlParts[urlParts.length - 1];
                         for (let i = 0; i < places.length; i++) {
                             let user = places[i];
                             if (user.id === id) {

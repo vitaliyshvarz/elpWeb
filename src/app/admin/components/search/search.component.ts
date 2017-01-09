@@ -52,8 +52,8 @@ export class SearchComponent implements OnInit {
             });
     }
 
-    gotoDetail(place: Place): void {
-        let link = ['/admin/detail', place.id];
+    gotoDetail(item: Place): void {
+        let link = ['/admin/detail', item.id];
         this.router.navigate(link);
     }
 }

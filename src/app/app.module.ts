@@ -5,6 +5,7 @@ import { HttpModule }    from '@angular/http';
 
 // ADMIN
 import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
+import { UserDetailComponent } from './admin/components/user/user-detail.component';
 import { PlacesComponent } from './admin/components/places/places.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { SearchComponent } from './admin/components/search/search.component';
@@ -68,6 +69,7 @@ import './rxjs-extensions';
         TranslatePipe,
         AppComponent,
         PlaceDetailComponent,
+        UserDetailComponent,
         PlacesComponent,
         DashboardComponent,
         SearchComponent,
