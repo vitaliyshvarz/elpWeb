@@ -1,23 +1,26 @@
 
-<h2>My Places</h2>
-<div>
-  <label>Place name:</label> <input #placeName />
-  <button (click)="add(placeName.value); placeName.value=''">
-    Add
-  </button>
-</div>
-<ul class="places">
-  <li *ngFor="let place of places"
-  (click)="onSelect(place)"
-  [class.selected]="place === selectedPlace">
-    <span class="badge">{{place.id}}</span> {{place.name}}
-    <button class="delete"
-  (click)="delete(place); $event.stopPropagation()">x</button>
-  </li>
-</ul>
-<div *ngIf="selectedPlace">
-  <h2>
-    {{selectedPlace.name | uppercase}} is my place
-  </h2>
-  <button (click)="gotoDetail(selectedPlace)">View Details</button>
+<div class="row">
+  <div class="small=10 columns">
+    <h2>{{'MY_PLACES' | translate }}</h2>
+    <div>
+      <button routerLink="/join-us/part1" class="button">
+        {{ 'ADD_NEW_PLACE' | translate }}
+      </button>
+    </div>
+    <ul class="places">
+      <li *ngFor="let place of places"
+      (click)="onSelect(place)"
+      [class.selected]="place === selectedPlace">
+        <span class="badge">{{place.id}}</span> {{place.name}}
+        <button class="delete"
+      (click)="delete(place); $event.stopPropagation()">x</button>
+      </li>
+    </ul>
+    <div *ngIf="selectedPlace">
+      <h2>
+        {{selectedPlace.name | uppercase}} is my place
+      </h2>
+      <button (click)="gotoDetail(selectedPlace)">View Details</button>
+    </div>
+  </div>
 </div>

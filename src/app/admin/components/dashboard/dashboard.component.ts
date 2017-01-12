@@ -24,12 +24,12 @@ export class DashboardComponent implements OnInit {
         private router: Router,
         private placeService: PlaceService,
         private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit(): void {
         this.loadAllUsers();
         this.loadAllPlaces();
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     private filterUserPlaces(places): Place[] {

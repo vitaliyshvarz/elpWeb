@@ -22,32 +22,36 @@ export class GoogleLoginComponent {
         private alertService: AlertService,
         private userService: UserService
     ) {
-        this.showSelf = true;
-        gapi.load('auth2', () => {
-            // Retrieve the singleton for the GoogleAuth library and set up the client.
-            this.auth2 = gapi.auth2.init({
-                client_id: '1034471759698-p8lgrhmelrqc0v8r3ahukgvgro5ko97t.apps.googleusercontent.com',
-                cookiepolicy: 'single_host_origin',
-                // Request scopes in addition to 'profile' and 'email'
-                'scope': 'profile email'
-            });
+        try {
+            this.showSelf = true;
+            gapi.load('auth2', () => {
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                this.auth2 = gapi.auth2.init({
+                    client_id: '1034471759698-p8lgrhmelrqc0v8r3ahukgvgro5ko97t.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    'scope': 'profile email'
+                });
 
-            this.auth2.attachClickHandler('google-signin', {},
-                (googleUser: any) => {
-                    const userData = {
-                        email: googleUser.getBasicProfile().getEmail(),
-                        firstName: googleUser.getBasicProfile().getGivenName(),
-                        lastName: googleUser.getBasicProfile().getFamilyName(),
-                        password: googleUser.getBasicProfile().getId()
-                    };
-                    this.loginInApp(userData);
-                }, (error: any) => {
-                    console.log('Sign-in error', error);
-                    this.loginButton.removeClass('sending').blur();
-                    this.alertService.error(error);
-                }
-            );
-        });
+                this.auth2.attachClickHandler('google-signin', {},
+                    (googleUser: any) => {
+                        const userData = {
+                            email: googleUser.getBasicProfile().getEmail(),
+                            firstName: googleUser.getBasicProfile().getGivenName(),
+                            lastName: googleUser.getBasicProfile().getFamilyName(),
+                            password: googleUser.getBasicProfile().getId()
+                        };
+                        this.loginInApp(userData);
+                    }, (error: any) => {
+                        console.log('Sign-in error', error);
+                        this.loginButton.removeClass('sending').blur();
+                        this.alertService.error(error);
+                    }
+                );
+            });
+        } catch (err) {
+            console.warn('google login unavailbale', err);
+        }
     }
 
     tryRegisterUser(response: any) {

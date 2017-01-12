@@ -52,7 +52,7 @@
               {{'WEBSITE' | translate }}
             </a>
           </li>
-          <li class="show-for-large">
+          <li *ngIf="currentUser.type == 'admin'" class="show-for-large">
             <a routerLink="/admin/dashboard" >{{'DASHBOARD' | translate }}</a>
           </li>
           <li class="show-for-large">

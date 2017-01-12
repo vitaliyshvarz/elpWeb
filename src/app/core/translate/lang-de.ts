@@ -69,6 +69,7 @@ export const LANG_ES_TRANS = {
     'YOUR_MESSAGE': 'Ihre Nachricht',
     'SEND_MESSAGE': 'Nachricht Senden',
     'DASHBOARD': 'Dashboard',
-    'MY_PLACES': 'Meine Orte'
+    'MY_PLACES': 'Meine Orte',
+    'PLACE': 'Ort'
 
 };

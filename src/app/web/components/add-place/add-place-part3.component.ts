@@ -118,7 +118,7 @@ export class AddPlacePart3Component implements OnInit {
     }
 
     goToEditPlace() {
-        let link = ['/detail', this.saveResultPlace.place_id];
+        let link = ['/place-detail', this.saveResultPlace.place_id];
         this.router.navigate(link);
     }
 

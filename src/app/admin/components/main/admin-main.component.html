@@ -7,7 +7,11 @@
         </button>
         <ul class="mobile-ofc vertical menu">
           <li><a routerLink="/home">{{'WEBSITE' | translate }}</a></li>
-          <li><a routerLink="/admin/dashboard">{{'DASHBOARD' | translate }}</a></li>
+          <li>
+            <a *ngIf="currentUser.type == 'admin'" routerLink="/admin/dashboard">
+              {{'DASHBOARD' | translate }}
+            </a>
+          </li>
           <li><a routerLink="/admin/my-places">{{'MY_PLACES' | translate }}</a></li>
         </ul>
         <translations-list
