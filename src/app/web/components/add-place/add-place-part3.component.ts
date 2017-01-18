@@ -15,7 +15,7 @@ export class AddPlacePart3Component implements OnInit {
 
     currentCurrency: any = CURRENCIES[0]; // USD
     currencies: any = CURRENCIES;
-    dishes: any = DISHES;
+    dishes: any = JSON.parse(JSON.stringify(DISHES));
     deliveryAvailable: boolean = false;
     takeAwayAvailable: boolean = false;
     showSaveSucess: boolean = false;
@@ -103,6 +103,7 @@ export class AddPlacePart3Component implements OnInit {
                     localStorage.removeItem('currentWorkingDays');
                     this.finishAddPlaceButton.removeClass('sending').blur();
                     this.alertService.success('Place has been added!', true);
+                    this.dishes = DISHES;
                 },
                 (error: any) => {
                     this.finishAddPlaceButton.removeClass('sending').blur();
@@ -118,7 +119,7 @@ export class AddPlacePart3Component implements OnInit {
     }
 
     goToEditPlace() {
-        let link = ['/place-detail', this.saveResultPlace.place_id];
+        let link = ['/admin/place-detail', this.saveResultPlace.place_id];
         this.router.navigate(link);
     }
 
