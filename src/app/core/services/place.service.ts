@@ -15,13 +15,13 @@ export class PlaceService {
             .map((response: Response) => response.json());
     }
 
-    public create(user: any) {
-        return this.http.post('/api/places', user, this.jwt())
+    public create(place: any) {
+        return this.http.post('/api/places', place, this.jwt())
             .map((response: Response) => response.json());
     }
 
-    public update(user: any) {
-        return this.http.put('/api/places/' + user.id, user, this.jwt())
+    public update(place: any) {
+        return this.http.put('/api/places/' + place.id, place, this.jwt())
             .map((response: Response) => response.json());
     }
 
@@ -31,7 +31,6 @@ export class PlaceService {
     }
 
     // private helper methods
-
     private jwt() {
         // create authorization header with jwt token
         const userData: any = JSON.parse(localStorage.getItem('currentUser')) || {};

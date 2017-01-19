@@ -38,7 +38,11 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
-        gapi.auth.signOut();
+        try {
+            gapi.auth.signOut();
+        } catch (err) {
+            console.warn('google logout not available', err);
+        }
         localStorage.removeItem('currentUser');
         try {
             if (FB.getAuthResponse()) {

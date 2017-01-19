@@ -1,10 +1,109 @@
-<div *ngIf="place">
-  <h2>{{place.name}} details</h2>
-  <div><label>id: </label>{{place.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="place.name" placeholder="name"/>
+
+<div class="row text-center" *ngIf="place">
+  <div class="small-10 small-centered columns ">
+    <h4>{{place.name}} details</h4>
+    <span><label>id: </label>{{place.id}}</span>
+
+    <hr />
+    <form calss="text-center" *ngIf="place">
+      <div class="row">
+        <div class="small-12 large-8 small-centered">
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="right-label" class="right inline">{{'NAME' | translate}}</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="placeName" [(ngModel)]="place.name" placeholder="name"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="right-label" class="right inline">Owner</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="userFirstName"
+                    [(ngModel)]="place.user.firstName"
+                    disabled
+                    placeholder="first name"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="right-label" class="right inline">Owner email:</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="userEmail" [(ngModel)]="place.user.email" disabled placeholder="email"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="right-label" class="right inline">{{'WEBSITE' | translate}}</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="website" [(ngModel)]="place.website" placeholder="website"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="right-label" class="right inline">  {{'ADRESS' | translate}}</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="fullAddress" [(ngModel)]="place.fullAddress" placeholder="full address"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="right-label" class="right inline">{{'PHONE' | translate}}</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="phoneNumber" [(ngModel)]="place.international_phone_number" placeholder="phone number"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <fieldset class="small-3 columns text-center"
+        *ngFor="let option of place.payment_options">
+          <legend>{{option.name}}</legend>
+          <div class="switch tiny payment-switch">
+            <input class="switch-input"
+                  [attr.id]="option.name"
+                  [(ngModel)]="option.selected"
+                  type="checkbox"
+                  name="paymentSwitch">
+                  <label class="switch-paddle success" [attr.for]="option.name">
+                    <span class="switch-active" aria-hidden="true">Yes</span>
+                    <span class="switch-inactive" aria-hidden="true">No</span>
+                  </label>
+          </div>
+        </fieldset>
+    </div>
+
+    <hr />
+    <button (click)="save()" class="button">Save</button>
+    <button (click)="goBack()" class="button">Back</button>
   </div>
-  <button (click)="save()">Save</button>
-  <button (click)="goBack()">Back</button>
+</div>
+
+<div class="reveal" id="editPlaceResultModal" data-reveal>
+  <h4 *ngIf="place">Place {{place.name}} edited!</h4>
+
+  <button class="close-button"
+          data-close aria-label="Close modal"
+          type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <hr />
+
+  <div class="row text-center">
+    <button class="button small "data-close>Done!</button>
+  </div>
 </div>

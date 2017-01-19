@@ -1,0 +1,16 @@
+<div *ngIf="user" class="row">
+  <div class="small-10 columns">
+    <h2>{{user.firstName}} details</h2>
+    <div><label>id: </label>{{user.id}}</div>
+    <div>
+      <label>name: </label>
+      <input [(ngModel)]="user.firstName"  placeholder="name"/>
+      <input [(ngModel)]="user.lastName"  placeholder="name"/>
+      <label>email: </label>
+      <input [(ngModel)]="user.email" placeholder="name"/>
+    </div>
+    <br />
+    <button (click)="save()" class="button">Save</button>
+    <button (click)="goBack()" class="button">Back</button>
+  </div>
+</div>

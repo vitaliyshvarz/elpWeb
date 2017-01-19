@@ -1,5 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertService } from '../../services/alert.service';
+
 
 import {
     COUNTRIES,
@@ -38,71 +40,77 @@ export class AddPlacePart1Component implements OnInit {
     constructor(
         private zone: NgZone,
         private router: Router,
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
 
-        const mapProp = {
-            center: this.countries[this.defaultCountry.value].center,
-            zoom: this.countries[this.defaultCountry.value].zoom,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+        try {
+            const mapProp = {
+                center: this.countries[this.defaultCountry.value].center,
+                zoom: this.countries[this.defaultCountry.value].zoom,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
 
-        this.map = new google.maps.Map(document.getElementById('map'), mapProp);
-        this.infoWindow = new google.maps.InfoWindow({ map: this.map });
-        this.places = new google.maps.places.PlacesService(this.map);
-        this.placeService = new google.maps.places.PlacesService(this.map);
+            this.map = new google.maps.Map(document.getElementById('map'), mapProp);
+            this.infoWindow = new google.maps.InfoWindow({ map: this.map });
+            this.places = new google.maps.places.PlacesService(this.map);
+            this.placeService = new google.maps.places.PlacesService(this.map);
 
-        this.marker = new google.maps.Marker({
-            map: this.map,
-            anchorPoint: new google.maps.Point(0, -29)
-        });
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation && !(localStorage.getItem('currentPlace') || false)) {
-            navigator.geolocation.getCurrentPosition((position: any) => {
-                const pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                this.map.setZoom(17);
-                this.map.setCenter(pos);
-            }, () => console.warn('geolocation is not available'));
-        }
-        google.maps.event.addListener(this.map, 'click', (event: any) => {
-            this.getPlacesByLocation({
-                lat: event.latLng.lat(),
-                lng: event.latLng.lng()
-            }, this.map);
-
-        });
-
-        this.autocompleteCities = new google.maps.places.Autocomplete(
-               /** @type {!HTMLInputElement} */(
-                document.getElementById('autocomplete-cities')), {
-                types: ['(cities)'],
-                componentRestrictions: { 'country': this.defaultCountry.value }
+            this.marker = new google.maps.Marker({
+                map: this.map,
+                anchorPoint: new google.maps.Point(0, -29)
             });
 
-        this.autocompletePlaces = new google.maps.places.Autocomplete(
+            // Try HTML5 geolocation.
+            if (navigator.geolocation && !(localStorage.getItem('currentPlace') || false)) {
+                navigator.geolocation.getCurrentPosition((position: any) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    this.map.setZoom(17);
+                    this.map.setCenter(pos);
+                }, () => console.warn('geolocation is not available'));
+            }
+            google.maps.event.addListener(this.map, 'click', (event: any) => {
+                this.getPlacesByLocation({
+                    lat: event.latLng.lat(),
+                    lng: event.latLng.lng()
+                }, this.map);
+
+            });
+
+            this.autocompleteCities = new google.maps.places.Autocomplete(
+               /** @type {!HTMLInputElement} */(
+                    document.getElementById('autocomplete-cities')), {
+                    types: ['(cities)'],
+                    componentRestrictions: { 'country': this.defaultCountry.value }
+                });
+
+            this.autocompletePlaces = new google.maps.places.Autocomplete(
           /** @type {!HTMLInputElement} */(document.getElementById('autocomplete-places'))
-        );
-        this.autocompletePlaces.bindTo('bounds', this.map);
+            );
+            this.autocompletePlaces.bindTo('bounds', this.map);
 
-        this.autocompleteCities.addListener('place_changed', () => {
-            let place = this.autocompleteCities.getPlace();
-            this.map.setCenter(place.geometry.location);
-            this.map.setZoom(17);  // Why 17? Because it looks good.
-        });
+            this.autocompleteCities.addListener('place_changed', () => {
+                let place = this.autocompleteCities.getPlace();
+                this.map.setCenter(place.geometry.location);
+                this.map.setZoom(17);  // Why 17? Because it looks good.
+            });
 
-        this.autocompletePlaces.addListener('place_changed', (place: any) => {
-            this.setPlace(this.autocompletePlaces.getPlace());
-        });
-        google.maps.event.addListener(this.infoWindow, 'closeclick', () => {
-            this.infoWindow.close();
-        });
+            this.autocompletePlaces.addListener('place_changed', (place: any) => {
+                this.setPlace(this.autocompletePlaces.getPlace());
+            });
+            google.maps.event.addListener(this.infoWindow, 'closeclick', () => {
+                this.infoWindow.close();
+            });
 
-        this.initSavedPlace();
+            this.initSavedPlace();
+        } catch (err) {
+            console.warn('google is not available, you are offline');
+            this.alertService.error('you are offline', true);
+        }
     }
 
     goToStep2() {

@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Place } from '../../../core/@core';
@@ -15,30 +14,37 @@ import { PlaceService } from '../../../core/@core';
 export class PlacesComponent implements OnInit {
     places: Place[];
     selectedPlace: Place;
+    currentPopUp: any;
 
     constructor(
         private placeService: PlaceService,
         private router: Router
     ) { }
 
-    ngOnInit(): void {
+    private ngOnInit(): void {
         this.getPlaces();
     }
 
-    getPlaces(): void {
+    private getPlaces(): void {
         this.placeService.getAll()
             .subscribe((places: Place[]) => this.places = places);
     }
 
-    onSelect(place: Place): void {
+    private openConfirmPopUp() {
+        this.currentPopUp.open();
+    }
+
+    private onSelect(place: Place): void {
+        this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
         this.selectedPlace = place;
     }
 
-    gotoDetail(place: Place): void {
-        let link = ['/admin/detail', place.id];
+    private gotoDetail(place: Place): void {
+        let link = ['/admin/place-detail', place.id];
         this.router.navigate(link);
     }
-    add(name: string): void {
+
+    private add(name: string): void {
         name = name.trim();
         if (!name) { return; }
         this.placeService.create(name)
@@ -47,7 +53,8 @@ export class PlacesComponent implements OnInit {
                 this.selectedPlace = null;
             });
     }
-    delete(place: Place): void {
+
+    private delete(place: Place): void {
         this.placeService
             .delete(place.id)
             .subscribe(() => {
@@ -55,6 +62,5 @@ export class PlacesComponent implements OnInit {
                 if (this.selectedPlace === place) { this.selectedPlace = null; }
             });
     }
-
 
 }

@@ -83,7 +83,7 @@ export class FacebookLoginComponent {
             locale: 'en_US',
             fields: 'first_name,last_name,email,location'
         }, (response: any) => {
-            // TODO: Idea is to save FB id as user password
+            // Idea is to save FB id as user password
             response.password = response.id;
             this.loginInApp(response);
         });

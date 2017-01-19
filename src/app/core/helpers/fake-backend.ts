@@ -54,7 +54,6 @@ export let fakeBackendProvider = {
                     // check for fake auth token in header and return
                     // users if valid, this security is implemented server side
                     // in a real application
-                    console.log('dfsdf', connection.request.headers.get('Authorization'))
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                         connection.mockRespond(new Response(new ResponseOptions({
                             status: 200, body: users
@@ -153,8 +152,6 @@ export let fakeBackendProvider = {
                     // check for fake auth token in header and return
                     // places if valid, this security is implemented server side
                     // in a real application
-                    console.log('dfsdf', connection.request.headers.get('Authorization'))
-
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
 
                         connection.mockRespond(new Response(new ResponseOptions({
@@ -169,20 +166,44 @@ export let fakeBackendProvider = {
                 }
 
                 // get places by name
-                if (connection.request.url.match(/\/api\/search-places\/\d+$/) &&
+                if (connection.request.url.match(/\/api\/search-places\/[\wа-яА-Я_.-?]+$/) &&
                     connection.request.method === RequestMethod.Get) {
                     // check for fake auth token in header and return place if valid,
                     // this security is implemented server side in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                         // find place by pattern in places array
-                        let urlParts = connection.request.url.split('/');
-                        let pattern = parseInt(urlParts[urlParts.length - 1], 10);
-                        let matchedUsers = places.filter(place => { return place.name.indexOf(pattern); });
-                        let place = matchedUsers.length ? matchedUsers[0] : null;
-
+                        let urlParts = connection.request.url.split('?');
+                        let pattern = urlParts[1].replace('name=', '');
+                        let matchedPlaces = places.filter(place => !!~place.name.indexOf(pattern));
+                        let resultPlaces = matchedPlaces.length ? matchedPlaces : null;
                         // respond 200 OK with place
                         connection.mockRespond(new Response(new ResponseOptions({
-                            status: 200, body: place
+                            status: 200, body: resultPlaces
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // get places by name
+                if (connection.request.url.match(/\/api\/search-users\/[\wа-яА-Я_.-?]+$/) &&
+                    connection.request.method === RequestMethod.Get) {
+
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by pattern in places array
+                        let urlParts = connection.request.url.split('?');
+                        let pattern = urlParts[1].replace('name=', '');
+                        let matchedUsers = users.filter(user =>
+                            !!~user.firstName.indexOf(pattern) || !!~user.lastName.indexOf(pattern));
+                        let resultUsers = matchedUsers.length ? matchedUsers : null;
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: resultUsers
                         })));
                     } else {
                         // return 401 not authorised if token is null or invalid
@@ -201,8 +222,41 @@ export let fakeBackendProvider = {
                         // find place by id in places array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        let matchedUsers = places.filter(place => { return place.id === id; });
-                        let place = matchedUsers.length ? matchedUsers[0] : null;
+                        let matchedPlaces = places.filter(place => { return place.id === id; });
+                        let place = matchedPlaces.length ? matchedPlaces[0] : null;
+
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: place
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // update place by id
+                if (connection.request.url.match(/\/api\/places\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Put) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by id in places array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedPlaces = places.filter(place => { return place.id === id; });
+                        let place = matchedPlaces.length ? matchedPlaces[0] : null;
+
+                        for (var i = 0; i < places.length; i++) {
+                            console.log(places[i])
+                            if (places[i].id === place.id) {
+                                places[i] = place;
+                            }
+                        }
+
+                        localStorage.setItem('places', JSON.stringify(places));
 
                         // respond 200 OK with place
                         connection.mockRespond(new Response(new ResponseOptions({
@@ -238,14 +292,14 @@ export let fakeBackendProvider = {
                 }
 
                 // delete place
-                if (connection.request.url.match(/\/api\/places\/\d+$/) &&
+                if (connection.request.url.match(/\/api\/places\/[a-zA-Z0-9_.-]+$/) &&
                     connection.request.method === RequestMethod.Delete) {
                     // check for fake auth token in header and return user if valid,
                     // this security is implemented server side in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                         // find user by id in places array
                         let urlParts = connection.request.url.split('/');
-                        let id = parseInt(urlParts[urlParts.length - 1], 10);
+                        let id = urlParts[urlParts.length - 1];
                         for (let i = 0; i < places.length; i++) {
                             let user = places[i];
                             if (user.id === id) {

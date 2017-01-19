@@ -1,23 +1,52 @@
 
-<h2>My Places</h2>
-<div>
-  <label>Place name:</label> <input #placeName />
-  <button (click)="add(placeName.value); placeName.value=''">
-    Add
-  </button>
+<div class="row">
+  <div class="small=10 columns">
+    <h2>{{'MY_PLACES' | translate }}
+      <button routerLink="/join-us/part1" class="button small">
+        {{ 'ADD_NEW_PLACE' | translate }}
+      </button>
+    </h2>
+    <div class="row">
+      <div class="small-6 columns">
+        <ol class="places menu vertical">
+          <li *ngFor="let place of places">
+              <a [class.selected]="place === selectedPlace" (click)="onSelect(place)">
+                {{place.name}}
+              </a>
+          </li>
+
+        </ol>
+      </div>
+      <div class="small-6 columns">
+        <div *ngIf="selectedPlace">
+          <h5>Name: {{selectedPlace.name }}</h5>
+          <h6>Owner: {{selectedPlace.user.firstName+' '+selectedPlace.user.lastName}}</h6>
+          <h6>Address: {{selectedPlace.fullAddress}}</h6>
+          <button class="button small" (click)="gotoDetail(selectedPlace)">Edit</button>
+          <span class="delete button alert small" (click)="openConfirmPopUp()">delete</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<ul class="places">
-  <li *ngFor="let place of places"
-  (click)="onSelect(place)"
-  [class.selected]="place === selectedPlace">
-    <span class="badge">{{place.id}}</span> {{place.name}}
-    <button class="delete"
-  (click)="delete(place); $event.stopPropagation()">x</button>
-  </li>
-</ul>
-<div *ngIf="selectedPlace">
-  <h2>
-    {{selectedPlace.name | uppercase}} is my place
-  </h2>
-  <button (click)="gotoDetail(selectedPlace)">View Details</button>
+
+
+<div class="reveal" id="deleteModal" data-reveal>
+  <h3>Delete Place?</h3>
+  <p class="lead" *ngIf="selectedPlace">{{ selectedPlace.name }}</p>
+  <button class="close-button"
+          data-close aria-label="Close modal"
+          type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <div class="row">
+    <div class="small-6 columns text-center">
+      <button class="button small "data-close>cancel</button>
+    </div>
+    <div class="small-6 columns text-center">
+      <button class="button small alert" data-close (click)="delete(selectedPlace)">delete</button>
+    </div>
+  </div>
+
 </div>

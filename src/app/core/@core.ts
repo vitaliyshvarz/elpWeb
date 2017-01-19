@@ -12,6 +12,7 @@ export * from './services/logged.service';
 export * from './services/user.service';
 export * from './services/place.service';
 export * from './services/place-search.service';
+export * from './services/user-search.service';
 export * from './services/communication.service';
 
 // Translate
@@ -26,8 +27,6 @@ export * from './config/paymentConfig';
 export * from './config/workingHoursConfig';
 export * from './config/dishesConfig';
 export * from './config/currencyConfig';
-
-
 
 // TODO: remove this when real back end
 export * from './helpers/fake-backend';
