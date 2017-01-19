@@ -222,8 +222,41 @@ export let fakeBackendProvider = {
                         // find place by id in places array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        let matchedUsers = places.filter(place => { return place.id === id; });
-                        let place = matchedUsers.length ? matchedUsers[0] : null;
+                        let matchedPlaces = places.filter(place => { return place.id === id; });
+                        let place = matchedPlaces.length ? matchedPlaces[0] : null;
+
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: place
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // update place by id
+                if (connection.request.url.match(/\/api\/places\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Put) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by id in places array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedPlaces = places.filter(place => { return place.id === id; });
+                        let place = matchedPlaces.length ? matchedPlaces[0] : null;
+
+                        for (var i = 0; i < places.length; i++) {
+                            console.log(places[i])
+                            if (places[i].id === place.id) {
+                                places[i] = place;
+                            }
+                        }
+
+                        localStorage.setItem('places', JSON.stringify(places));
 
                         // respond 200 OK with place
                         connection.mockRespond(new Response(new ResponseOptions({

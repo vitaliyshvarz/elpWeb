@@ -8,6 +8,7 @@ import { PlaceService }             from '../../../core/@core';
     moduleId: module.id,
     selector: 'my-place-detail',
     templateUrl: 'place-detail.component.html',
+    styleUrls: ['place-detail.component.css']
 })
 export class PlaceDetailComponent implements OnInit {
     place: Place;
@@ -31,7 +32,10 @@ export class PlaceDetailComponent implements OnInit {
 
     save(): void {
         this.placeService.update(this.place)
-            .subscribe(() => this.goBack());
+            .subscribe(() => {
+                let currentPopUp = new Foundation.Reveal($('#editPlaceResultModal'));
+                currentPopUp.open();
+            });
     }
 
 }

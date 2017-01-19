@@ -1,0 +1,38 @@
+.slider-box {
+    padding: 20px;
+}
+
+.elp-tooltip {
+    &:before {
+        left: 4px;
+    }
+
+    &:after {
+        left: 8px;
+    }
+}
+
+.switch-paddle {
+    img {
+        padding-top: 30px;
+    }
+}
+
+.payment-switch,
+.working-day-switch {
+    input:checked~.switch-paddle {
+        background-color: #3adb76;
+    }
+}
+
+.break-label {
+    background-color: #008cba;
+    word-break: keep-all;
+    word-wrap: normal;
+    display: inline-block;
+    padding: 1px 2px;
+    margin: 5px 5px 5px 0;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+}
