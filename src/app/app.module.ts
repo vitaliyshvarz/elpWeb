@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-// ADMIN
+// CORE components
+import { WorkingHoursComponent } from './core/components/working-hours/working-hours.component';
+
+
+// ADMIN components
 import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
 import { UserDetailComponent } from './admin/components/user/user-detail.component';
 import { PlacesComponent } from './admin/components/places/places.component';
@@ -12,7 +16,7 @@ import { SearchComponent } from './admin/components/search/search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 import { AdminTopMenuComponent }  from './admin/components/admin-top-menu/admin-top-menu.component';
 
-// WEB
+// WEB components
 import { AppComponent }  from './web/components/main/main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
 import { TopMenuComponent } from './web/components/top-menu/top-menu.component';
@@ -89,7 +93,8 @@ import './rxjs-extensions';
         AddPlacePart3Component,
         AboutUsComponent,
         ContactPageComponent,
-        AdminTopMenuComponent
+        AdminTopMenuComponent,
+        WorkingHoursComponent
     ],
     providers: [
         AuthGuard,
