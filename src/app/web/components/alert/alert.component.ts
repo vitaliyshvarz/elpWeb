@@ -10,7 +10,8 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class AlertComponent {
-    message: string;
+    private message: string;
+    private time: number = 10000;
 
     constructor(
         private alertService: AlertService,
@@ -23,9 +24,7 @@ export class AlertComponent {
                 this.zone.run(() => {
                     this.message = message;
                     // clear message in 5 seconds
-                    setTimeout(() => {
-                        this.message = '';
-                    }, 10000);
+                    return setTimeout(() => this.message = '', this.time);
                 });
             });
     }
