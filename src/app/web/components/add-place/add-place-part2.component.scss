@@ -19,16 +19,3 @@
         left: 8px;
     }
 }
-
-.switch-paddle {
-    img {
-        padding-top: 30px;
-    }
-}
-
-.payment-switch,
-.working-day-switch {
-    input:checked~.switch-paddle {
-        background-color: #3adb76;
-    }
-}

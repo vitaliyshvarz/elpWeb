@@ -5,7 +5,8 @@ import { HttpModule }    from '@angular/http';
 
 // CORE components
 import { WorkingHoursComponent } from './core/components/working-hours/working-hours.component';
-
+import { PaymentOptionsComponent } from './core/components/payment-options/payment-options.component';
+import { CurrencySelectorComponent } from './core/components/currency-selector/currency-selector.component';
 
 // ADMIN components
 import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
@@ -94,7 +95,9 @@ import './rxjs-extensions';
         AboutUsComponent,
         ContactPageComponent,
         AdminTopMenuComponent,
-        WorkingHoursComponent
+        WorkingHoursComponent,
+        PaymentOptionsComponent,
+        CurrencySelectorComponent
     ],
     providers: [
         AuthGuard,

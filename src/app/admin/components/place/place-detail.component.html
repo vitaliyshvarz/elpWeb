@@ -69,27 +69,19 @@
       </div>
     </form>
 
-    <div class="row">
-      <fieldset class="small-3 columns text-center"
-        *ngFor="let option of place.payment_options">
-          <legend>{{option.name}}</legend>
-          <div class="switch tiny payment-switch">
-            <input class="switch-input"
-                  [attr.id]="option.name"
-                  [(ngModel)]="option.selected"
-                  type="checkbox"
-                  name="paymentSwitch">
-                  <label class="switch-paddle success" [attr.for]="option.name">
-                    <span class="switch-active" aria-hidden="true">Yes</span>
-                    <span class="switch-inactive" aria-hidden="true">No</span>
-                  </label>
-          </div>
-        </fieldset>
-    </div>
+    <hr />
+
+    <payment-options [data]="place.payment_options"></payment-options>
+
+    <br />
+    <hr />
 
     <working-hours [data]="place.elp_opening_hours" ></working-hours>
 
     <hr />
+
+    <currency-selector [data]="place.currency"></currency-selector>
+
     <button (click)="save()" class="button">Save</button>
     <button (click)="goBack()" class="button">Back</button>
   </div>

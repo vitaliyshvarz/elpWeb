@@ -1,27 +1,5 @@
-<div class="row header-title  text-center">
-  <h5>{{'PAYMENT_OPTIONS' | translate }}</h5>
-</div>
 
-<div class="row">
-  <fieldset class="small-3 medium-3 large-3 columns text-center"
-    *ngFor="let option of paymentOptions">
-      <legend>{{option.name}}</legend>
-      <div class="switch tiny payment-switch">
-        <input class="switch-input"
-              [attr.id]="option.name"
-              [(ngModel)]="option.selected"
-              type="checkbox"
-              name="paymentSwitch">
-              <label class="switch-paddle success" [attr.for]="option.name">
-                <img [src]="option.image" />
-                <span class="switch-active" aria-hidden="true">Yes</span>
-                <span class="switch-inactive" aria-hidden="true">No</span>
-              </label>
-      </div>
-
-    </fieldset>
-</div>
-
+<payment-options [data]="paymentOptions"></payment-options>
 <working-hours [data]="workingDays" ></working-hours>
 
 <div class="row">

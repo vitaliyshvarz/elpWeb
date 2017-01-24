@@ -3,19 +3,7 @@
     <h5>{{'DISHES' | translate }}</h5>
   </div>
 
-  <div class="row text-center">
-    <div class="small-6 medium-6 large-6 columns  small-centered ">
-      <h6>{{'SELECT_CURRENCY' | translate}}</h6>
-      <br />
-      <select [(ngModel)]="currentCurrency" name="name"
-              (ngModelChange)="selectCurrency($event)">
-          <option [ngValue]="currency"
-            *ngFor="let currency of currencies">
-            {{ currency.name }}
-          </option>
-      </select>
-    </div>
-  </div>
+  <currency-selector  [data]="currentCurrency"></currency-selector>
 
   <div class="row dishes-block">
     <div class="small-12 medium-12 large-12 columns  small-centered">

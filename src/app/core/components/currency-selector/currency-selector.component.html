@@ -1,0 +1,14 @@
+<div class="row text-center">
+  <div class="small-6 medium-6 large-6 columns  small-centered ">
+    <h6>{{'SELECT_CURRENCY' | translate}}</h6>
+    <br />
+    <select [(ngModel)]="currentCurrency" name="name"
+            (ngModelChange)="selectCurrency($event)">
+        <option
+          [ngValue]="currency"
+          *ngFor="let currency of currencies">
+          {{ currency.name }}
+        </option>
+    </select>
+  </div>
+</div>
