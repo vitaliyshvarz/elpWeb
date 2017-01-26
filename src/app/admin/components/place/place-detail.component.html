@@ -1,6 +1,6 @@
 
 <div class="row text-center" *ngIf="place">
-  <div class="small-10 small-centered columns ">
+  <div class="small-10 large-8 small-centered columns ">
     <h4>{{place.name}} details</h4>
     <span><label>id: </label>{{place.id}}</span>
 
@@ -69,22 +69,46 @@
       </div>
     </form>
 
+    <hr />
+
+    <payment-options [data]="place.payment_options"></payment-options>
+
+    <br />
+    <hr />
+    <working-hours [data]="place.elp_opening_hours" ></working-hours>
+    <hr />
+    <currency-selector [data]="place.currency"></currency-selector>
+    <hr />
+    <dishes-selector [dishes]="place.meals" [currency]=place.currency></dishes-selector>
+    <hr />
+
     <div class="row">
-      <fieldset class="small-3 columns text-center"
-        *ngFor="let option of place.payment_options">
-          <legend>{{option.name}}</legend>
-          <div class="switch tiny payment-switch">
-            <input class="switch-input"
-                  [attr.id]="option.name"
-                  [(ngModel)]="option.selected"
-                  type="checkbox"
-                  name="paymentSwitch">
-                  <label class="switch-paddle success" [attr.for]="option.name">
-                    <span class="switch-active" aria-hidden="true">Yes</span>
-                    <span class="switch-inactive" aria-hidden="true">No</span>
-                  </label>
-          </div>
-        </fieldset>
+      <div class="small-6 medium-6 large-6 columns  small-centered  text-center">
+        <h6>{{'DELIVERY_AVAILABLE' | translate}}</h6>
+        <div class="switch tiny">
+          <input class="switch-input"
+                id="deliveryAvailable"
+                [(ngModel)]="place.deliveryAvailable"
+                type="checkbox"
+                name="deliverySwitch">
+                <label class="switch-paddle success" for="deliveryAvailable">
+                  <span class="switch-active" aria-hidden="true">Yes</span>
+                  <span class="switch-inactive" aria-hidden="true">No</span>
+                </label>
+        </div>
+        <h6>{{'TAKEAWAY_AVAILABLE' | translate}}</h6>
+        <div class="switch tiny">
+          <input class="switch-input"
+                id="takeAwaySwitch"
+                [(ngModel)]="place.takeAwayAvailable"
+                type="checkbox"
+                name="takeAwaySwitch">
+                <label class="switch-paddle success" for="takeAwaySwitch">
+                  <span class="switch-active" aria-hidden="true">Yes</span>
+                  <span class="switch-inactive" aria-hidden="true">No</span>
+                </label>
+        </div>
+      </div>
     </div>
 
     <hr />
@@ -93,7 +117,7 @@
   </div>
 </div>
 
-<div class="reveal" id="editPlaceResultModal" data-reveal>
+<div class="large reveal" id="editPlaceResultModal" data-reveal>
   <h4 *ngIf="place">Place {{place.name}} edited!</h4>
 
   <button class="close-button"

@@ -1,3 +1,11 @@
+.header-title {
+    padding: 25px 0;
+}
+
+.header-hours-title {
+    padding: 40px 0;
+}
+
 .slider-box {
     padding: 20px;
 }
@@ -18,15 +26,10 @@
     }
 }
 
-.payment-switch,
 .working-day-switch {
     input:checked~.switch-paddle {
         background-color: #3adb76;
     }
-}
-
-.reveal-modal {
-    position: fixed;
 }
 
 .break-label {

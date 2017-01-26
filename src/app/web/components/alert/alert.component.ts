@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 
 import { AlertService } from '../../services/alert.service';
 
@@ -9,8 +9,9 @@ import { AlertService } from '../../services/alert.service';
     styleUrls: ['alert.component.css']
 })
 
-export class AlertComponent {
-    message: string;
+export class AlertComponent implements OnInit {
+    private message: string;
+    private time: number = 10000;
 
     constructor(
         private alertService: AlertService,
@@ -23,9 +24,7 @@ export class AlertComponent {
                 this.zone.run(() => {
                     this.message = message;
                     // clear message in 5 seconds
-                    setTimeout(() => {
-                        this.message = '';
-                    }, 10000);
+                    return setTimeout(() => this.message = '', this.time);
                 });
             });
     }

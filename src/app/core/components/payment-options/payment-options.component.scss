@@ -18,15 +18,10 @@
     }
 }
 
-.payment-switch,
 .working-day-switch {
     input:checked~.switch-paddle {
         background-color: #3adb76;
     }
-}
-
-.reveal-modal {
-    position: fixed;
 }
 
 .break-label {
