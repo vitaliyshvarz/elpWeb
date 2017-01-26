@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 
 import { AlertService } from '../../services/alert.service';
 
@@ -9,7 +9,7 @@ import { AlertService } from '../../services/alert.service';
     styleUrls: ['alert.component.css']
 })
 
-export class AlertComponent {
+export class AlertComponent implements OnInit {
     private message: string;
     private time: number = 10000;
 

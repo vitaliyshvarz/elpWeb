@@ -9,13 +9,10 @@ import { DISHES } from '../../../core/@core';
 })
 
 export class DishesSelectorComponent implements OnInit {
-
     private dishes: any;
     private currentCurrency: any;
     @Input('dishes') dishesData: any;
     @Input('currency') currency: any;
-
-    constructor() { }
 
 
     toogleDetails(id) {
