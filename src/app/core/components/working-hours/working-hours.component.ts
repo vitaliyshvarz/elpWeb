@@ -15,7 +15,7 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
     workingDays: any = WORKING_DAYS;
     sliders: any = [];
     initialStartMinute: number = 480; // equals 8.00
-    initialPauseStartMinute: number = 720, // equals 12.00
+    initialPauseStartMinute: number = 720; // equals 12.00
     initialEndMinute: number = 1020; // equals 13.00 morning
     initialPauseEndMinute: number = 780; // equals 17.00 morning
     step: number = 15;
@@ -77,9 +77,7 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
 
     // update day values on slider move
     updateDay(dayName: string, values: any) {
-        let selectedDay = this.workingDays.find((day: any) => {
-            return day.name === dayName
-        });
+        let selectedDay = this.workingDays.find((day: any) => day.name === dayName);
 
         if (values.length === 4) {
             selectedDay.business_hours.fromMin = values[0];
@@ -132,8 +130,12 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
 
     // Conver value from slider to time
     formatHoursAndMinutes(hours: number, minutes: number) {
-        if (hours.toString().length == 1) hours = '0' + hours;
-        if (minutes.toString().length == 1) minutes = minutes + '0';
+        if (hours.toString().length === 1) {
+            hours = '0' + hours;
+        }
+        if (minutes.toString().length === 1) {
+            minutes = minutes + '0';
+        }
         return hours + ':' + minutes;
     }
 
@@ -170,7 +172,7 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
             }
         });
         slider.noUiSlider.on('update', function(values: any, handle: any) {
-            updateDay.call(context, this.target.id, values)
+            updateDay.call(context, this.target.id, values);
         });
 
         if (!day.selected) {

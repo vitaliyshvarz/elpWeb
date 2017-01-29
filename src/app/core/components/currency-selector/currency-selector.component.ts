@@ -29,6 +29,6 @@ export class CurrencySelectorComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.currentCurrency = CURRENCIES.find(cur => cur.name === this.data.name);
+        this.currentCurrency = this.currencies.find(cur => cur.name === this.data.name);
     }
 }

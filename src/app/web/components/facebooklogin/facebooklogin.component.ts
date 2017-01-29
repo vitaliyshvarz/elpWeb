@@ -22,7 +22,7 @@ export class FacebookLoginComponent {
         private alertService: AlertService,
         private userService: UserService
     ) {
-        if (window.location.hostname != 'localhost') {
+        if (window.location.hostname !== 'localhost') {
             this.appId = '954999384605058';
         } else {
             this.appId = '955002201271443';

@@ -21,7 +21,7 @@ export class PlacesComponent implements OnInit {
         private router: Router
     ) { }
 
-    private ngOnInit(): void {
+    ngOnInit(): void {
         this.getPlaces();
     }
 
@@ -30,21 +30,21 @@ export class PlacesComponent implements OnInit {
             .subscribe((places: Place[]) => this.places = places);
     }
 
-    private openConfirmPopUp() {
+    openConfirmPopUp() {
         this.currentPopUp.open();
     }
 
-    private onSelect(place: Place): void {
+    onSelect(place: Place): void {
         this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
         this.selectedPlace = place;
     }
 
-    private gotoDetail(place: Place): void {
+    gotoDetail(place: Place): void {
         let link = ['/admin/place-detail', place.id];
         this.router.navigate(link);
     }
 
-    private add(name: string): void {
+    add(name: string): void {
         name = name.trim();
         if (!name) { return; }
         this.placeService.create(name)
@@ -54,7 +54,7 @@ export class PlacesComponent implements OnInit {
             });
     }
 
-    private delete(place: Place): void {
+    delete(place: Place): void {
         this.placeService
             .delete(place.id)
             .subscribe(() => {

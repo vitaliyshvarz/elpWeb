@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
         this.placeService.getAll()
             .subscribe((places: Place[]) => {
                 this.userPlaces = this.filterUserPlaces(places);
-                this.places = places
+                this.places = places;
             });
     }
     // initially get users
@@ -78,12 +78,12 @@ export class DashboardComponent implements OnInit {
             });
     }
 
-    private deleteItem(id: string) {
-        this.deleteType === 'Place' this.deletePlace(id) : this.deleteUser(id);
+    deleteItem(id: string) {
+        return this.deleteType === 'Place' ? this.deletePlace(id) : this.deleteUser(id);
     }
 
-    private openConfirmPopUp(item: User | Place, type: string) {
-        this.deleteType = type
+    openConfirmPopUp(item: User | Place, type: string) {
+        this.deleteType = type;
         this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
         this.selectedItem = item;
         console.log(this.selectedItem);

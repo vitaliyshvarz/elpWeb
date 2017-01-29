@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.html",
-  "precommit": "lint gulp pre-commit",
   "scripts": {
     "postinstall": "gulp build",
     "lite": "lite-server",
@@ -12,7 +11,8 @@
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "precommit": "lint gulp pre-commit"
+    "validate": "npm ls",
+    "test": "gulp tslint"
   },
   "repository": {
     "type": "git",
@@ -64,11 +64,16 @@
     "motion-ui": "^1.2.2",
     "postcss": "^5.0.13",
     "postcss-scss": "^0.1.3",
+    "precommit-hook": "^3.0.0",
     "precss": "^1.3.0",
     "run-sequence": "^1.2.2",
     "tslint": "^3.15.1",
     "typescript": "^2.0.3",
     "typings": "^1.4.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "pre-commit": [
+    "validate",
+    "test"
+  ]
 }

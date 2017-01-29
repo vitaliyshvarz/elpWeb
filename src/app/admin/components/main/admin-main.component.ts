@@ -10,8 +10,8 @@ import { User }              from '../../../core/@core';
 })
 
 export class MainAdminComponent implements OnInit {
-    private title: string = 'Admin Panel EatLikePro';
     private currentUser: User;
+    title: string = 'Admin Panel EatLikePro';
 
     ngOnInit(): void {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

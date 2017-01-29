@@ -13,8 +13,6 @@ export class ContactPageComponent {
     private message: any = {};
     private sendButton: any = {};
     private sendMessage: string;
-    private success: boolean;
-    private error: boolean;
     private capchaValid: boolean = false;
 
     constructor(
@@ -62,7 +60,6 @@ export class ContactPageComponent {
 
         $('#contactFormCapcha div').css('margin', 'auto');
 
-        const context = this;
         new (<any>Foundation.Abide)($('#contactForm'), {});
         this.sendMessageText = this._translate.instant('SEND_MESSAGE');
         $('#contactForm').on('formvalid.zf.abide', () => this.sendMessage());
