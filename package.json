@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.html",
+  "precommit": "gulp pre-commit",
   "scripts": {
     "postinstall": "gulp build",
     "lite": "lite-server",
@@ -10,7 +11,8 @@
     "start": "concurrently --kill-others \"gulp watch\" \"lite-server  -c bs-config.js\"",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "precommit": "gulp pre-commit"
   },
   "repository": {
     "type": "git",
@@ -45,6 +47,7 @@
     "concurrently": "^2.0.0",
     "cssnano": "^3.4.0",
     "express": "^4.14.0",
+    "git-guppy": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
