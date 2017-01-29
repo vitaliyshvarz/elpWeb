@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.html",
-  "precommit": "gulp pre-commit",
+  "precommit": "lint gulp pre-commit",
   "scripts": {
     "postinstall": "gulp build",
     "lite": "lite-server",
@@ -12,7 +12,7 @@
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "precommit": "gulp pre-commit"
+    "precommit": "lint gulp pre-commit"
   },
   "repository": {
     "type": "git",
