@@ -16,7 +16,7 @@ import { AuthGuard }                  from './core/@core';
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: WebHomeComponent },
-    { path: 'about-us', component: AboutUsComponent }
+    { path: 'about-us', component: AboutUsComponent },
     { path: 'join-us/:part', component: JoinUsPageComponent },
     { path: 'login-register', component: WebLoginRegisterComponent },
     { path: 'contact', component: ContactPageComponent },

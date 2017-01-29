@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CURRENCIES } from '../../@core';
 
 
@@ -13,10 +13,6 @@ export class CurrencySelectorComponent implements OnInit {
     private currentCurrency: any; // USD
     private currencies: any = CURRENCIES;
     @Input('data') data: any;
-
-    constructor(
-        private zone: NgZone;
-    ) { }
 
     selectCurrency(currency) {
         this.data.name = currency.name;

@@ -86,7 +86,6 @@ export class DashboardComponent implements OnInit {
         this.deleteType = type;
         this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
         this.selectedItem = item;
-        console.log(this.selectedItem);
         this.currentPopUp.open();
     }
 

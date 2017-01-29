@@ -45,8 +45,8 @@ export class SearchComponent implements OnInit {
                 ? this.selectedService.search(term)
                 // or the observable of empty items if no search term
 
-                : /* tslint:disable */ Observable.of<this.selectedModel[]>([])) /* tslint:enable */
-
+                : /* tslint:disable */ Observable.of<this.selectedModel[]>([])/* tslint:enable */
+            )
             .catch(error => {
                 // TODO: real error handling
                 console.log(error);
@@ -56,8 +56,9 @@ export class SearchComponent implements OnInit {
             });
     }
 
-    gotoDetail(item: Place): void {
-        let link = ['/admin/detail', item.id];
+    gotoDetail(item: Place | User): void {
+        const type = this.type === 'users' ? 'user' : 'place';
+        const link = [`/admin/${type}-detail`, item.id];
         this.router.navigate(link);
     }
 }
