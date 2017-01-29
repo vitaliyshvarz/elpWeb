@@ -15,10 +15,13 @@ import { UserService } from '../../../core/@core';
 })
 
 export class DashboardComponent implements OnInit {
-    currentUser: User;
-    userPlaces: any;
-    users: User[] = [];
-    places: Place[] = [];
+    private currentUser: User;
+    private userPlaces: any;
+    private users: User[] = [];
+    private places: Place[] = [];
+    private currentPopUp: any;
+    private selectedItem: User | Place;
+
 
     constructor(
         private router: Router,
@@ -60,7 +63,7 @@ export class DashboardComponent implements OnInit {
     }
 
     // delete user by id
-    deleteUser(id: string): void {
+    private deleteUser(id: string): void {
         this.userService.delete(id)
             .subscribe(() => {
                 this.loadAllUsers();
@@ -68,12 +71,26 @@ export class DashboardComponent implements OnInit {
     }
 
     // delete user by id
-    deletePlace(id: string): void {
+    private deletePlace(id: string): void {
         this.placeService.delete(id)
             .subscribe(() => {
                 this.loadAllPlaces();
             });
     }
+
+    private deleteItem(id: string) {
+        this.deleteType === 'Place' this.deletePlace(id) : this.deleteUser(id);
+    }
+
+    private openConfirmPopUp(item: User | Place, type: string) {
+        this.deleteType = type
+        this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
+        this.selectedItem = item;
+        console.log(this.selectedItem);
+        this.currentPopUp.open();
+    }
+
+
     /*
     * Go to place detail page
     * @param place
