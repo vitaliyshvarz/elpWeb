@@ -1,3 +1,5 @@
+/*jshint bitwise: false*/
+
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
@@ -174,7 +176,7 @@ export let fakeBackendProvider = {
                         // find place by pattern in places array
                         let urlParts = connection.request.url.split('?');
                         let pattern = urlParts[1].replace('name=', '');
-                        let matchedPlaces = places.filter(place => !!~place.name.indexOf(pattern));
+                        let matchedPlaces = places.filter(place => place.name.indexOf(pattern) !== -1);
                         let resultPlaces = matchedPlaces.length ? matchedPlaces : null;
                         // respond 200 OK with place
                         connection.mockRespond(new Response(new ResponseOptions({
@@ -199,7 +201,7 @@ export let fakeBackendProvider = {
                         let urlParts = connection.request.url.split('?');
                         let pattern = urlParts[1].replace('name=', '');
                         let matchedUsers = users.filter(user =>
-                            !!~user.firstName.indexOf(pattern) || !!~user.lastName.indexOf(pattern));
+                            user.firstName.indexOf(pattern) !== -1 || user.lastName.indexOf(pattern) !== -1);
                         let resultUsers = matchedUsers.length ? matchedUsers : null;
                         // respond 200 OK with place
                         connection.mockRespond(new Response(new ResponseOptions({
@@ -248,9 +250,9 @@ export let fakeBackendProvider = {
                         let id = urlParts[urlParts.length - 1];
                         let matchedPlaces = places.filter(place => { return place.id === id; });
                         let place = matchedPlaces.length ? matchedPlaces[0] : null;
+                        let i;
 
-                        for (var i = 0; i < places.length; i++) {
-                            console.log(places[i])
+                        for (i = 0; i < places.length; i++) {
                             if (places[i].id === place.id) {
                                 places[i] = place;
                             }
@@ -297,13 +299,14 @@ export let fakeBackendProvider = {
                     // check for fake auth token in header and return user if valid,
                     // this security is implemented server side in a real application
                     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-                        // find user by id in places array
+                        // find place by id in places array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        for (let i = 0; i < places.length; i++) {
+                        let i;
+                        for (i = 0; i < places.length; i++) {
                             let user = places[i];
                             if (user.id === id) {
-                                // delete user
+                                // delete place
                                 places.splice(i, 1);
                                 localStorage.setItem('places', JSON.stringify(places));
                                 break;

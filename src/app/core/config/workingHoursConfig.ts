@@ -90,4 +90,4 @@ export const WORKING_DAYS: any = [
             to: 13.00
         }
     }
-]
+];

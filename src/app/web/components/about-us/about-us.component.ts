@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -6,11 +6,8 @@ import { Component } from '@angular/core';
     styleUrls: ['about-us.component.css']
 })
 
-export class AboutUsComponent {
+export class AboutUsComponent implements OnInit {
     users: boolean;
-
-    constructor(
-    ) { }
 
     ngOnInit() {
         this.users = true;

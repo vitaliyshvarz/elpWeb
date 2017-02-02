@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CURRENCIES } from '../../@core';
 
 
@@ -14,10 +14,6 @@ export class CurrencySelectorComponent implements OnInit {
     private currencies: any = CURRENCIES;
     @Input('data') data: any;
 
-    constructor(
-        private zone: NgZone;
-    ) { }
-
     selectCurrency(currency) {
         this.data.name = currency.name;
         this.data.postfix = currency.postfix;
@@ -29,6 +25,6 @@ export class CurrencySelectorComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.currentCurrency = CURRENCIES.find(cur => cur.name === this.data.name);
+        this.currentCurrency = this.currencies.find(cur => cur.name === this.data.name);
     }
 }

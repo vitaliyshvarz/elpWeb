@@ -44,16 +44,21 @@ export class SearchComponent implements OnInit {
                 // return the http search observable
                 ? this.selectedService.search(term)
                 // or the observable of empty items if no search term
-                : Observable.of<this.selectedModel[]>([]))
+
+                : /* tslint:disable */ Observable.of<this.selectedModel[]>([])/* tslint:enable */
+            )
             .catch(error => {
                 // TODO: real error handling
                 console.log(error);
-                return Observable.of<this.selectedModel[]>([]);
+
+                return /* tslint:disable */Observable.of<this.selectedModel[]>([]); /* tslint:enable */
+
             });
     }
 
-    gotoDetail(item: Place): void {
-        let link = ['/admin/detail', item.id];
+    gotoDetail(item: Place | User): void {
+        const type = this.type === 'users' ? 'user' : 'place';
+        const link = [`/admin/${type}-detail`, item.id];
         this.router.navigate(link);
     }
 }

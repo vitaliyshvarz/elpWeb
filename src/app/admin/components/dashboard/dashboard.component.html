@@ -5,7 +5,7 @@
       <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
         - <a (click)="gotoDetail('user', user)">Open</a>
-        - <a (click)="deleteUser(user.id)">Delete</a>
+        - <a (click)="openConfirmPopUp(user, 'User')">Delete</a>
       </li>
     </ul>
   </div>
@@ -15,7 +15,7 @@
       <li *ngFor="let place of places">
         {{place.name}}
         - <a (click)="gotoDetail('place', place)">Open</a>
-        - <a (click)="deletePlace(place.id)">Delete</a>
+        - <a (click)="openConfirmPopUp(place, 'Place')">Delete</a>
       </li>
     </ul>
   </div>
@@ -40,4 +40,25 @@
   <div class="small-6 columns">
     <search type="places"></search>
   </div>
+</div>
+
+
+<div class="reveal" id="deleteModal" data-reveal>
+  <h3>Delete {{deleteType}}?</h3>
+  <p class="lead" *ngIf="selectedItem">{{ selectedItem.name }}</p>
+  <button class="close-button"
+          data-close aria-label="Close modal"
+          type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <div class="row">
+    <div class="small-6 columns text-center">
+      <button class="button small "data-close>cancel</button>
+    </div>
+    <div class="small-6 columns text-center">
+      <button class="button small alert" data-close (click)="deleteItem(selectedItem.id)">delete</button>
+    </div>
+  </div>
+
 </div>

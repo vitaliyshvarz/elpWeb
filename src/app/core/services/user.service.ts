@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../models/user';
-import { ADMIN_EMAILS } from '../config/admins'
+import { ADMIN_EMAILS } from '../config/admins';
 
 @Injectable()
 export class UserService implements OnInit {
@@ -21,7 +21,7 @@ export class UserService implements OnInit {
     }
 
     private isAdmin(userData: any) {
-        return !!~this.adminEmails.indexOf(userData.email);
+        return this.adminEmails.indexOf(userData.email) !== -1;
     }
 
     public getAll() {

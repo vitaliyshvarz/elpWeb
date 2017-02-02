@@ -38,9 +38,9 @@ export const LANG_EN_TRANS = {
     'WEBSITE': 'Website',
     'STEP_2': 'Step 2',
     'PAYMENT_OPTIONS': 'Payment options',
-    'WORKING_HOURS': 'Working hours'
+    'WORKING_HOURS': 'Working hours',
     'BACK': 'Back',
-    'STEP_3': 'Step 3'
+    'STEP_3': 'Step 3',
     'BREAK': 'Break',
     'MONDAY': 'Monday',
     'TUESDAY': 'Tuesday',
@@ -48,17 +48,17 @@ export const LANG_EN_TRANS = {
     'THURSDAY': 'Thursday',
     'FRIDAY': 'Friday',
     'SATURDAY': 'Saturday',
-    'SUNDAY': 'Sunday'
+    'SUNDAY': 'Sunday',
     'DISHES': 'Dishes',
     'SELECT_CURRENCY': 'Choose currency',
     'SELECT_DISHES': 'Select dishes',
     'SIZE': 'Size',
-    'AVAILABILITY': 'Availability'
-    'DESCRIPTION': 'Description'
+    'AVAILABILITY': 'Availability',
+    'DESCRIPTION': 'Description',
     'PRICE': 'Price',
     'SUBMIT_PLACE': 'Submit Place',
     'DELIVERY_AVAILABLE': 'Delivery Available',
-    'TAKEAWAY_AVAILABLE': 'Take Away Available'
+    'TAKEAWAY_AVAILABLE': 'Take Away Available',
     'PLACE_ADDED': 'Thank you, your place has been added!',
     'EDIT': 'Edit',
     'ABOUT_APP': 'About App',
