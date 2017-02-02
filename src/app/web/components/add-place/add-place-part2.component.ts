@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PAYMENT_ONTIONS, WORKING_DAYS } from '../../../core/@core';
+import { AlertService } from '../../services/alert.service';
 
 declare var noUiSlider: any;
 
@@ -18,10 +19,11 @@ export class AddPlacePart2Component implements OnInit {
 
     constructor(
         private zone: NgZone,
-        private router: Router
+        private router: Router,
+        private alertService: AlertService,
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // get save data from locale storage if available
         this.initSavedData();
 
@@ -30,7 +32,7 @@ export class AddPlacePart2Component implements OnInit {
         }
     }
 
-    initSavedData() {
+    initSavedData(): void {
         const savedPayments: any = localStorage.getItem('currentPaymentOptions') || false;
         const savedDays: any = localStorage.getItem('currentWorkingDays') || false;
         if (savedDays) {
@@ -41,7 +43,17 @@ export class AddPlacePart2Component implements OnInit {
         }
     }
 
-    goToStep3() {
+    private noPaymentsSelected(): boolean {
+        return !!(this.paymentOptions.filter(option => !!option.selected)).length;
+    }
+
+    goToStep3(): void {
+
+        if (!this.noPaymentsSelected()) {
+            this.alertService.error('No payment options selected!');
+            return;
+        }
+
         localStorage.setItem('currentPaymentOptions', JSON.stringify(this.paymentOptions));
         localStorage.setItem('currentWorkingDays', JSON.stringify(this.workingDays));
         this.router.navigate(['/join-us', 'part3']);

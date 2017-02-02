@@ -2,11 +2,12 @@
   <div class="medium-12 large-12 medium-centered columns login-register-container">
     <div class="row">
       <div class="small-12 column text-center">
-        <div class="row header-title">
-          <h5>{{'FIND_PLACE' | translate }}</h5>
-        </div>
-        <div class="video-container">
 
+        <div class="place-search-container">
+
+          <div class="row header-title">
+            <h6>{{'SELECT_COUNTRY_SITY_PLACE' | translate }}</h6>
+          </div>
           <div class="row">
             <div class="small-12 large-4 columns">
                 <select [(ngModel)]="defaultCountry.value" name="name"
@@ -26,6 +27,9 @@
             </div>
           </div>
 
+          <div class="row header-title">
+            <h6>{{'OR_POINT_IT_ON_THE_MAP' | translate }}</h6>
+          </div>
 
           <div class="row">
             <div id="map"></div>

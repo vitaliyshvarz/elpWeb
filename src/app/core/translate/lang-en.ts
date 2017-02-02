@@ -70,7 +70,9 @@ export const LANG_EN_TRANS = {
     'SEND_MESSAGE': 'Send Message',
     'DASHBOARD': 'Dashboard',
     'MY_PLACES': 'My Places',
-    'PLACE': 'Place'
+    'PLACE': 'Place',
+    'SELECT_COUNTRY_SITY_PLACE': 'Select country, city and place name'
+    'OR_POINT_IT_ON_THE_MAP': 'Or point your place on the map'
 
 
 };

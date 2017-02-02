@@ -2,6 +2,50 @@
 <div class="row header-hours-title  text-center">
   <h5>{{'WORKING_HOURS' | translate }}</h5>
 </div>
+
+<div *ngFor="let day of workingDays">
+  <div class="row">
+    <div class="small-2 columns day-block">
+      <div class="switch tiny working-day-switch">
+        <input class="switch-input"
+              [attr.id]="day.name+1"
+              [(ngModel)]="day.selected"
+              (ngModelChange)="toogleDayActive(day)"
+              type="checkbox"
+              name="workingDaySwitch">
+        <label class="switch-paddle" [attr.for]="day.name+1">
+          <span class="show-for-sr"></span>
+        </label>
+      </div>
+    </div>
+    <div class="small-2 columns">
+      <span class="dayName">{{day.name | translate}}</span>
+    </div>
+    <div class="small-8 columns">
+      <div class=" slider-box">
+        <div [attr.id]="day.name"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div *ngFor="let day of workingDays">
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">

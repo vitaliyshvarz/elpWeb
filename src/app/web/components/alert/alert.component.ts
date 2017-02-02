@@ -11,21 +11,29 @@ import { AlertService } from '../../services/alert.service';
 
 export class AlertComponent implements OnInit {
     private message: string;
-    private time: number = 10000;
+    private timeout: any;
 
     constructor(
         private alertService: AlertService,
         private zone: NgZone
     ) { }
 
+    private registerListener(): void {
+        const scope = this;
+        this.timeout = setTimeout(function() {
+            if (scope.message && scope.message.text && scope.message.text.length) {
+                scope.message = '';
+            }
+        }, 10000);
+
+    }
+
     ngOnInit() {
         this.alertService.getMessage()
             .subscribe((message: string) => {
-                this.zone.run(() => {
-                    this.message = message;
-                    // clear message in 5 seconds
-                    return setTimeout(() => this.message = '', this.time);
-                });
+                clearTimeout(this.timeout);
+                this.registerListener();
+                this.zone.run(() => this.message = message);
             });
     }
 }

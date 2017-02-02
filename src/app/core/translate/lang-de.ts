@@ -70,6 +70,8 @@ export const LANG_ES_TRANS = {
     'SEND_MESSAGE': 'Nachricht Senden',
     'DASHBOARD': 'Dashboard',
     'MY_PLACES': 'Meine Orte',
-    'PLACE': 'Ort'
+    'PLACE': 'Ort',
+    'SELECT_COUNTRY_SITY_PLACE': 'Wählen Sie Land und Ort',
+    'OR_POINT_IT_ON_THE_MAP': 'Oder zeigen Sie Ihren Platz auf der Karte'
 
 };
