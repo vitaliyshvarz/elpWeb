@@ -49,7 +49,8 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
         $('.noUi-tooltip').css('font-size', '11px');
         $('.noUi-tooltip').css('padding', '2px');
         $('.noUi-handle').addClass('elp-tooltip');
-        $('.noUi-horizontal').css('height', '6px');
+
+
     }
 
     /*
