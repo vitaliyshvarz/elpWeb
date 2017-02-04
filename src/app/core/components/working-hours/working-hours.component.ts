@@ -49,8 +49,6 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
         $('.noUi-tooltip').css('font-size', '11px');
         $('.noUi-tooltip').css('padding', '2px');
         $('.noUi-handle').addClass('elp-tooltip');
-
-
     }
 
     /*
@@ -59,7 +57,6 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
     toogleBreak(day: any) {
         let selected = this.sliders.find((slider: any) => slider.name === day.name);
         selected.slider.noUiSlider.destroy();
-        console.log(day);
         if (!day.hasBreak) {
             this.createDaySliderWithBreak(day);
         } else {
