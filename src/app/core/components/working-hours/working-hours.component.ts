@@ -59,7 +59,8 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
     toogleBreak(day: any) {
         let selected = this.sliders.find((slider: any) => slider.name === day.name);
         selected.slider.noUiSlider.destroy();
-        if (day.hasBreak) {
+        console.log(day);
+        if (!day.hasBreak) {
             this.createDaySliderWithBreak(day);
         } else {
             this.createDefaultDaySlider(day);
@@ -70,7 +71,7 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
     // Disable, enable day slider
     toogleDayActive(day: any) {
         let selected = this.sliders.find((slider: any) => slider.name === day.name);
-        if (!day.selected) {
+        if (day.selected) {
             selected.slider.setAttribute('disabled', true);
         } else {
             selected.slider.removeAttribute('disabled');

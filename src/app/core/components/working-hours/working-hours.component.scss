@@ -42,12 +42,14 @@
     color: #fff;
     font-size: 12px;
     border-radius: 3px;
+
+    &.warning {
+        background-color: #ffae00;
+    }
 }
 
-.dayName {
-    font-size: 12px;
-}
+.dayName {}
 
 .slider-box {
-    padding-top: 16px;
+    padding-top: 20px;
 }
