@@ -2,56 +2,27 @@
 <div class="row header-hours-title  text-center">
   <h5>{{'WORKING_HOURS' | translate }}</h5>
 </div>
+
 <div *ngFor="let day of workingDays">
   <div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-      <div class="small-4 medium-4 large-4 columns">
-        <p>
-          {{day.name | translate}}
-          <span *ngIf="day.selected"class="break-label">
-            {{day.business_hours.from}}-{{day.business_hours.to}}
-          </span>
-        </p>
-      </div>
-      <div class="small-2 medium-2 large-2 columns">
-        <div class="switch tiny working-day-switch">
-          <input class="switch-input"
-                [attr.id]="day.name+1"
-                [(ngModel)]="day.selected"
-                (ngModelChange)="toogleDayActive(day)"
-                type="checkbox"
-                name="workingDaySwitch">
-          <label class="switch-paddle" [attr.for]="day.name+1">
-            <span class="show-for-sr"></span>
-          </label>
-        </div>
-      </div>
-      <div class="small-4 medium-4 large-4 columns">
-        <p>
-          {{'BREAK' | translate}}
-          <span *ngIf="day.hasBreak"class="break-label">
-            {{day.break.from}}-{{day.break.to}}
-          </span>
-        </p>
-      </div>
-      <div class="small-2 medium-2 large-2 columns">
-        <div class="switch tiny">
-          <input class="switch-input"
-                [attr.id]="day.name + day.hasBreak"
-                [(ngModel)]="day.hasBreak"
-                (ngModelChange)="toogleBreak(day)"
-                type="checkbox"
-                name="breakSwitch">
-          <label class="switch-paddle" [attr.for]="day.name + day.hasBreak">
-            <span class="show-for-sr">Break</span>
-            <span class="switch-active" aria-hidden="true">Yes</span>
-            <span class="switch-inactive" aria-hidden="true">No</span>
-          </label>
-        </div>
-      </div>
+    <div class="small-3 columns day-block">
+      <input [attr.id]="day.name+1" type="checkbox" name="isActive"  (ngModelChange)="toogleDayActive(day)" [(ngModel)]="day.selected">
+      <label [attr.for]="day.name+1">{{day.name | translate}}</label>
+      <span [style.visibility]="!day.selected?'hidden':''" class="break-label">
+        {{day.business_hours.from}}-{{day.business_hours.to}}
+      </span>
     </div>
-    <div class="small-12 medium-12 large-12 slider-box columns">
-      <div [attr.id]="day.name"></div>
+    <div class="small-9 columns">
+      <input [attr.id]="day.name + day.hasBreak" type="checkbox" name="isActive"  (ngModelChange)="toogleBreak(day)" [(ngModel)]="day.hasBreak">
+      <label [attr.for]="day.name+day.hasBreak">{{'BREAK' | translate}}</label>
+
+      <span [style.visibility]="!day.hasBreak?'hidden':''" class="break-label warning">
+        {{day.break.from}}-{{day.break.to}}
+      </span>
+      <div class=" slider-box">
+        <div [attr.id]="day.name"></div>
+      </div>
     </div>
   </div>
+  <br />
 </div>

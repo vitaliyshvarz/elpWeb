@@ -6,8 +6,8 @@
     padding: 40px 0;
 }
 
-.slider-box {
-    padding: 20px;
+.day-block {
+    padding: 10px 0;
 }
 
 .elp-tooltip {
@@ -42,4 +42,12 @@
     color: #fff;
     font-size: 12px;
     border-radius: 3px;
+
+    &.warning {
+        background-color: #ffae00;
+    }
+}
+
+.slider-box {
+    padding-top: 20px;
 }
