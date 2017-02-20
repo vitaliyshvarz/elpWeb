@@ -19,6 +19,16 @@
 <alert></alert>
 
 <div class="row">
+  <div class="small-12 columns">
+    <ul class="breadcrumbs reset-pass-breadcrumbs" *ngIf="showResetPassword">
+       <li><a href="javascript:;" (click)="showResetPassword=false">{{ 'BACK' | translate }}</a></li>
+    </ul>
+  </div>
+</div>
+
+<recover-password *ngIf="showResetPassword"></recover-password>
+
+<div class="row" *ngIf="!showResetPassword">
   <div class="medium-6 large-6 medium-centered columns login-register-container">
     <div class="row">
       <div class="small-6 columns social-login-box">
@@ -31,6 +41,12 @@
 
     <login-form *ngIf="login && !register && !showContinueButton"></login-form>
     <register-form *ngIf="register && !login && !showContinueButton"></register-form>
+
+    <div class="text-center password-recover-link">
+      <a href="javascript:;" (click)="showResetPassword=true">
+        Forgot password?
+      </a>
+    </div>
 
     <div class="row" *ngIf="showContinueButton">
       <div class="small-12 columns text-center centered">

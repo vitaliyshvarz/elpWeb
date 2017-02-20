@@ -37,6 +37,7 @@ import { AddPlacePart2Component } from './web/components/add-place/add-place-par
 import { AddPlacePart3Component } from './web/components/add-place/add-place-part3.component';
 import { AboutUsComponent } from './web/components/about-us/about-us.component';
 import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
+import { RecoverPasswordComponent } from './web/components/recover-password/recover-password.component';
 
 
 import { AlertService } from './web/services/alert.service';
@@ -99,7 +100,8 @@ import './rxjs-extensions';
         WorkingHoursComponent,
         PaymentOptionsComponent,
         CurrencySelectorComponent,
-        DishesSelectorComponent
+        DishesSelectorComponent,
+        RecoverPasswordComponent
     ],
     providers: [
         AuthGuard,

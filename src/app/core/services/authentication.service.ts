@@ -54,4 +54,9 @@ export class AuthenticationService {
         this.loggedService.setLogged(this.logged);
     }
 
+    sendRecoveryPassEmail(email: string) {
+        return this.http.post(`/api/send-recovery-pass-email`, email)
+            .map((response: Response) => response.json());
+    }
+
 }

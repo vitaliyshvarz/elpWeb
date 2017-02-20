@@ -72,7 +72,8 @@ export const LANG_EN_TRANS = {
     'MY_PLACES': 'My Places',
     'PLACE': 'Place',
     'SELECT_COUNTRY_SITY_PLACE': 'Select country, city and place name'
-    'OR_POINT_IT_ON_THE_MAP': 'Or point your place on the map'
+    'OR_POINT_IT_ON_THE_MAP': 'Or point your place on the map',
+    'SEND_PASSWORD_RESET': 'Send password-reset email'
 
 
 };

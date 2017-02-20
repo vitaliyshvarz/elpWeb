@@ -351,6 +351,20 @@ export let fakeBackendProvider = {
                     })));
                 }
 
+                // send  recovery email
+                if (connection.request.url.endsWith('/api/send-recovery-pass-email') &&
+                    connection.request.method === RequestMethod.Post) {
+                    let newRecoveryEmail = connection.request.getBody();
+
+                    // TODO: Find user with email, check if user registered
+                    localStorage.setItem('recoveryPassEmail', newRecoveryEmail);
+
+                    // respond 200 OK
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        status: 200
+                    })));
+                }
+
             });
 
         });

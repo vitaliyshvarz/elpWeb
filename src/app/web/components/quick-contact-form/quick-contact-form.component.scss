@@ -4,7 +4,7 @@
 
 .quick-contact {
     background-color: #2980b9;
-    padding: 2rem 4rem;
+    padding: 2rem 0;
     color: #fff;
     text-align: center;
 
@@ -26,4 +26,8 @@
         border-left: 1px solid #b3b3b3;
         min-height: 280px;
     }
+}
+
+.is-invalid-input {
+    background-color: #fff !important;
 }
