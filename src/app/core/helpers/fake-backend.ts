@@ -355,14 +355,19 @@ export let fakeBackendProvider = {
                 if (connection.request.url.endsWith('/api/send-recovery-pass-email') &&
                     connection.request.method === RequestMethod.Post) {
                     let newRecoveryEmail = connection.request.getBody();
+                    let usersFound = users.filter(user => user.email === newRecoveryEmail);
 
-                    // TODO: Find user with email, check if user registered
                     localStorage.setItem('recoveryPassEmail', newRecoveryEmail);
 
-                    // respond 200 OK
-                    connection.mockRespond(new Response(new ResponseOptions({
-                        status: 200
-                    })));
+                    if (usersFound.length) {
+                        // respond 200 OK
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200
+                        })));
+                    } else {
+                        // return 401 user not found
+                        connection.mockError(new Error('User with this email does not exist'));
+                    }
                 }
 
             });
