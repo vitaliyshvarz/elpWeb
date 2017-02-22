@@ -1,15 +1,29 @@
+<div class="text-center">
+  <h2>Dashboard</h2>
+</div>
+
 <div class="row" *ngIf="currentUser.type == 'admin'">
-  <div class="small-6 columns">
+
+  <ul class="sub-menu menu">
+    <li *ngFor="let tab of tabs">
+      <button [ngClass]="{'hollow' : !tab.active}"
+              class="sub-menu-btn button" (click)="selectTab(tab.name)">{{tab.name}}</button>
+    </li>
+  </ul>
+
+  <div class="small-12 columns" *ngIf="selectedTab === 'Users'">
     <h3>All registered users:</h3>
     <ul>
       <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
         - <a (click)="gotoDetail('user', user)">Open</a>
-        - <a (click)="openConfirmPopUp(user, 'User')">Delete</a>
+        - <a (click)="openConfirmPopUp(user, 'Users')">Delete</a>
       </li>
     </ul>
+    <search type="users"></search>
   </div>
-  <div class="small-6 columns">
+
+  <div class="small-12 columns" *ngIf="selectedTab === 'Places'">
     <h3>All Places</h3>
     <ul>
       <li *ngFor="let place of places">
@@ -18,7 +32,11 @@
         - <a (click)="openConfirmPopUp(place, 'Place')">Delete</a>
       </li>
     </ul>
+    <search type="places"></search>
   </div>
+
+
+
 </div>
 
 <div class="row" *ngIf="currentUser.type == 'default'">
@@ -33,14 +51,6 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="small-6 columns">
-    <search type="users"></search>
-  </div>
-  <div class="small-6 columns">
-    <search type="places"></search>
-  </div>
-</div>
 
 
 <div class="reveal" id="deleteModal" data-reveal>

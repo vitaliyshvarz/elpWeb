@@ -11,7 +11,7 @@ import { UserService } from '../../../core/@core';
     moduleId: module.id,
     selector: 'my-dashboard',
     templateUrl: 'dashboard.component.html',
-
+    styleUrls: ['dashboard.component.css']
 })
 
 export class DashboardComponent implements OnInit {
@@ -21,6 +21,13 @@ export class DashboardComponent implements OnInit {
     private places: Place[] = [];
     private currentPopUp: any;
     private selectedItem: User | Place;
+    private selectedTab: any = 'Users';
+    private tabs: any = [
+        { name: 'Users', active: true },
+        { name: 'Places', active: false },
+        { name: 'Meals', active: false },
+        { name: 'Settings', active: false },
+    ];
 
 
     constructor(
@@ -97,5 +104,17 @@ export class DashboardComponent implements OnInit {
     gotoDetail(type, item): void {
         let link = [`/admin/${type}-detail`, item.id];
         this.router.navigate(link);
+    }
+
+    selectTab(name: string): void {
+
+        this.tabs.forEach(tab => {
+            if (tab.name === name) {
+                tab.active = true;
+                this.selectedTab = tab.name;
+            } else {
+                tab.active = false;
+            }
+        });
     }
 }
