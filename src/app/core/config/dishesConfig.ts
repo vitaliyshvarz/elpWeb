@@ -50,3 +50,5 @@ export const DISHES: any = [
         ]
     }
 ];
+
+localStorage.setItem('meals', JSON.stringify(DISHES));

@@ -11,6 +11,56 @@
     </li>
   </ul>
 
+<br />
+<div class="small-10 medium-8 columns small-centered">
+
+  <div class="small-12 columns" *ngIf="selectedTab === 'Overview'">
+    <div class="row">
+      <div class="small-12 medium-3">
+        <div class="card">
+          <div class="card-section text-center icons-large">
+            <i class="fi-torsos"></i>
+          </div>
+          <div class="card-section text-center">
+            <p>
+              <a href="javascript:;" (click)="selectTab('Users')">
+                {{ 'USERS_REGISTERED' | translate }} - {{users.length}}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 medium-3">
+        <div class="card">
+          <div class="card-section text-center icons-large">
+            <i class="fi-home"></i>
+          </div>
+          <div class="card-section text-center">
+            <p>
+              <a href="javascript:;" (click)="selectTab('Places')">
+                {{ 'PLACES_REGISTERED' | translate }} - {{places.length}}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 medium-3">
+        <div class="card">
+          <div class="card-section text-center icons-large">
+            <i class="fi-social-apple"></i>
+          </div>
+          <div class="card-section text-center">
+            <p>
+              <a href="javascript:;" (click)="selectTab('Meals')">
+                {{ 'TOTAL_MEALS' | translate }} - {{meals.length}}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="small-12 columns" *ngIf="selectedTab === 'Users'">
     <h3>All registered users:</h3>
     <ul>
@@ -34,6 +84,20 @@
     </ul>
     <search type="places"></search>
   </div>
+
+  <div class="small-12 columns" *ngIf="selectedTab === 'Meals'">
+    <h3>All Meals</h3>
+    <ul>
+      <li *ngFor="let meal of meals">
+        {{meal.name}}
+        - <a (click)="gotoDetail('meal', meal)">Open</a>
+        - <a (click)="openConfirmPopUp(meal, 'Meal')">Delete</a>
+      </li>
+    </ul>
+    <search type="meals"></search>
+  </div>
+</div>
+
 
 
 

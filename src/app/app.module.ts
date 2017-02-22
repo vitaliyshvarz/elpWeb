@@ -46,6 +46,7 @@ import { AlertService } from './web/services/alert.service';
 import { AuthenticationService } from './core/@core';
 import { PlaceService } from './core/@core';
 import { UserService } from './core/@core';
+import { MealService } from './core/@core';
 import { LoggedService } from './core/@core';
 import { CommunicationService } from './core/@core';
 
@@ -109,6 +110,7 @@ import './rxjs-extensions';
         TRANSLATION_PROVIDERS,
         TranslateService,
         UserService,
+        MealService,
         AlertService,
         AuthenticationService,
         LoggedService,

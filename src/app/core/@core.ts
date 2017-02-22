@@ -5,6 +5,7 @@ export * from './guards/auth.guard';
 export * from './models/place';
 export * from './models/user';
 export * from './models/quick-email'
+export * from './models/meal'
 
 // Services
 export * from './services/authentication.service';
@@ -13,7 +14,10 @@ export * from './services/user.service';
 export * from './services/place.service';
 export * from './services/place-search.service';
 export * from './services/user-search.service';
+export * from './services/meal-search.service';
 export * from './services/communication.service';
+export * from './services/meal.service';
+
 
 // Translate
 export * from './translate/index';

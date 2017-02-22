@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Place } from '../../../core/@core';
 import { PlaceService } from '../../../core/@core';
 
+import { Meal } from '../../../core/@core';
+import { MealService } from '../../../core/@core';
+
 import { User } from '../../../core/@core';
 import { UserService } from '../../../core/@core';
 
@@ -19,11 +22,13 @@ export class DashboardComponent implements OnInit {
     private userPlaces: any;
     private users: User[] = [];
     private places: Place[] = [];
+    private meals: Meal[] = [];
     private currentPopUp: any;
-    private selectedItem: User | Place;
-    private selectedTab: any = 'Users';
+    private selectedItem: User | Place | Meal;
+    private selectedTab: any = 'Overview';
     private tabs: any = [
-        { name: 'Users', active: true },
+        { name: 'Overview', active: true },
+        { name: 'Users', active: false },
         { name: 'Places', active: false },
         { name: 'Meals', active: false },
         { name: 'Settings', active: false },
@@ -33,10 +38,12 @@ export class DashboardComponent implements OnInit {
     constructor(
         private router: Router,
         private placeService: PlaceService,
+        private mealService: MealService,
         private userService: UserService) {
     }
 
     ngOnInit(): void {
+        this.loadAllMeals();
         this.loadAllUsers();
         this.loadAllPlaces();
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -51,6 +58,14 @@ export class DashboardComponent implements OnInit {
                 }
             });
         }
+    }
+
+    // initially get meals
+    private loadAllMeals(): void {
+        this.mealService.getAll()
+            .subscribe((meals: Meal[]) => {
+                this.meals = meals;
+            });
     }
 
     // initially get places
@@ -78,6 +93,14 @@ export class DashboardComponent implements OnInit {
     }
 
     // delete user by id
+    private deleteMeal(id: string): void {
+        this.mealService.delete(id)
+            .subscribe(() => {
+                this.loadAllMeals();
+            });
+    }
+
+    // delete user by id
     private deletePlace(id: string): void {
         this.placeService.delete(id)
             .subscribe(() => {
@@ -86,10 +109,22 @@ export class DashboardComponent implements OnInit {
     }
 
     deleteItem(id: string) {
-        return this.deleteType === 'Place' ? this.deletePlace(id) : this.deleteUser(id);
+        switch (this.deleteType) {
+            case 'Place':
+                this.deletePlace(id);
+                break;
+            case 'User':
+                this.deleteUser(id);
+                break;
+            case 'Meal':
+                this.deleteMeal(id);
+                break;
+            default:
+                break;
+        }
     }
 
-    openConfirmPopUp(item: User | Place, type: string) {
+    openConfirmPopUp(item: User | Place | Meal, type: string) {
         this.deleteType = type;
         this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
         this.selectedItem = item;

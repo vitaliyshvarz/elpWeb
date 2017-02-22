@@ -73,6 +73,10 @@ export const LANG_ES_TRANS = {
     'PLACE': 'Ort',
     'SELECT_COUNTRY_SITY_PLACE': 'Wählen Sie Land und Ort',
     'OR_POINT_IT_ON_THE_MAP': 'Oder zeigen Sie Ihren Platz auf der Karte',
-    'SEND_PASSWORD_RESET': 'E-Mail zum Zurücksetzen des Passworts senden'
+    'SEND_PASSWORD_RESET': 'E-Mail zum Zurücksetzen des Passworts senden',
+    'MY_ACCOUNT': 'Mein Konto',
+    'USERS_REGISTERED': 'Registriert Benutzer',
+    'PLACES_REGISTERED': 'Registriert Orte',
+    'TOTAL_MEALS': 'Mahlzeiten in Gesamt'
 
 };

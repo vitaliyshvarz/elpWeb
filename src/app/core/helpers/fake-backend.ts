@@ -10,7 +10,9 @@ export let fakeBackendProvider = {
         // array in local storage for registered users
         let users: any[];
         let places: any[];
+        let meals: any[];
         try {
+            meals = JSON.parse(localStorage.getItem('meals')) || [];
             places = JSON.parse(localStorage.getItem('places')) || [];
             users = JSON.parse(localStorage.getItem('users')) || [];
         } catch (err) {
@@ -324,6 +326,184 @@ export let fakeBackendProvider = {
                         })));
                     }
                 }
+
+
+                // get meals
+                if (connection.request.url.endsWith('/api/meals') &&
+                    connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return
+                    // meals if valid, this security is implemented server side
+                    // in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: meals
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // get meals by name
+                if (connection.request.url.match(/\/api\/search-meals\/[\wа-яА-Я_.-?]+$/) &&
+                    connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return meal if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find meal by pattern in meals array
+                        let urlParts = connection.request.url.split('?');
+                        let pattern = urlParts[1].replace('name=', '');
+                        let matchedMeals = meals.filter(meal => meal.name.indexOf(pattern) !== -1);
+                        let resultMeals = matchedMeals.length ? matchedMeals : null;
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: resultMeals
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // get meals by name
+                if (connection.request.url.match(/\/api\/search-users\/[\wа-яА-Я_.-?]+$/) &&
+                    connection.request.method === RequestMethod.Get) {
+
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by pattern in meals array
+                        let urlParts = connection.request.url.split('?');
+                        let pattern = urlParts[1].replace('name=', '');
+                        let matchedMeals = meals.filter(meal => meal.name.indexOf(pattern) !== -1);
+                        let resultMeals = matchedMeals.length ? matchedMeals : null;
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: resultMeals
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // get meal by id
+                if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find meal by id in meals array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedMeals = meals.filter(meal => { return meal.id === id; });
+                        let meal = matchedMeals.length ? matchedMeals[0] : null;
+
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: meal
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // update place by id
+                if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Put) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by id in meals array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedMeals = meals.filter(meal => { return meal.id === id; });
+                        let meal = matchedMeals.length ? matchedMeals[0] : null;
+                        let i;
+
+                        for (i = 0; i < meals.length; i++) {
+                            if (meals[i].id === meal.id) {
+                                meals[i] = meal;
+                            }
+                        }
+
+                        localStorage.setItem('meals', JSON.stringify(meals));
+
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: meal
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // create place
+                if (connection.request.url.endsWith('/api/meals') &&
+                    connection.request.method === RequestMethod.Post) {
+                    // get new user object from post body
+                    let newMeal = JSON.parse(connection.request.getBody());
+                    // validation
+                    let duplicateMeal = meals
+                        .filter(meal => meal.id === newMeal.id).length;
+                    if (duplicateMeal) {
+                        return connection.mockError(new Error('Meal already exists please update it "' +
+                            newMeal.name + '" is already taken'));
+
+                    } else {
+                        meals.push(newMeal);
+                        localStorage.setItem('meals', JSON.stringify(meals));
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200
+                        })));
+                    }
+                }
+
+                // delete place
+                if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Delete) {
+                    // check for fake auth token in header and return user if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by id in meals array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let i;
+                        for (i = 0; i < meals.length; i++) {
+                            let meal = meals[i];
+                            if (meal.id === id) {
+                                // delete meal
+                                meals.splice(i, 1);
+                                localStorage.setItem('meals', JSON.stringify(meals));
+                                break;
+                            }
+                        }
+
+                        // respond 200 OK
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
 
                 // send quick email
                 if (connection.request.url.endsWith('/api/quick-email') &&
