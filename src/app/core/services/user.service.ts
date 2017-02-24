@@ -35,7 +35,6 @@ export class UserService implements OnInit {
     }
 
     public create(userData: any) {
-
         this.user = {
             id: userData.id,
             password: userData.password || '',
@@ -45,6 +44,7 @@ export class UserService implements OnInit {
             email: userData.email,
             registrationType: userData.registrationType,
             registrationTime: new Date(),
+            image: userData.image,
             location: this.coords
         };
 
@@ -61,7 +61,8 @@ export class UserService implements OnInit {
         return this.subject.asObservable();
     }
 
-    public update(user: any) {
+    public update(user: User) {
+        console.log(user);
         return this.http.put('/api/users/' + user.id, user, this.jwt())
             .map((response: Response) => response.json());
     }

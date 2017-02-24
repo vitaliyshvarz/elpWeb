@@ -150,6 +150,39 @@ export let fakeBackendProvider = {
                     }
                 }
 
+                // update user by id
+                if (connection.request.url.match(/\/api\/users\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Put) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find user by id in users array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedUsers = users.filter(user => String(user.id) === String(id));
+                        let user = matchedUsers.length ? matchedUsers[0] : null;
+                        let i;
+
+                        for (i = 0; i < users.length; i++) {
+                            if (users[i].id === user.id) {
+                                users[i] = user;
+                            }
+                        }
+
+                        localStorage.setItem('users', JSON.stringify(users));
+
+                        // respond 200 OK with user
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: user
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
                 // get places
                 if (connection.request.url.endsWith('/api/places') &&
                     connection.request.method === RequestMethod.Get) {
@@ -418,7 +451,7 @@ export let fakeBackendProvider = {
                     }
                 }
 
-                // update place by id
+                // update meal by id
                 if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
                     connection.request.method === RequestMethod.Put) {
                     // check for fake auth token in header and return place if valid,

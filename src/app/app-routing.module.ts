@@ -4,6 +4,7 @@ import { DashboardComponent }         from './admin/components/dashboard/dashboa
 import { PlacesComponent }            from './admin/components/places/places.component';
 import { PlaceDetailComponent }       from './admin/components/place/place-detail.component';
 import { UserDetailComponent }       from './admin/components/user/user-detail.component';
+import { MealDetailComponent }       from './admin/components/meal/meal-detail.component';
 import { MainAdminComponent }         from './admin/components/main/admin-main.component';
 import { WebHomeComponent }           from './web/components/home/home.component';
 import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
             { path: 'home', component: '' },
             { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
             { path: 'place-detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
+            { path: 'meal-detail/:id', component: MealDetailComponent, canActivate: [AuthGuard] },
             { path: 'user-detail/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
             { path: 'my-places', component: PlacesComponent, canActivate: [AuthGuard] }
         ]

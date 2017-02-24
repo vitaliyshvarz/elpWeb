@@ -12,6 +12,7 @@ import { DishesSelectorComponent } from './core/components/dishes-selector/dishe
 // ADMIN components
 import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
 import { UserDetailComponent } from './admin/components/user/user-detail.component';
+import { MealDetailComponent } from './admin/components/meal/meal-detail.component';
 import { PlacesComponent } from './admin/components/places/places.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { SearchComponent } from './admin/components/search/search.component';
@@ -78,6 +79,7 @@ import './rxjs-extensions';
         AppComponent,
         PlaceDetailComponent,
         UserDetailComponent,
+        MealDetailComponent,
         PlacesComponent,
         DashboardComponent,
         SearchComponent,
