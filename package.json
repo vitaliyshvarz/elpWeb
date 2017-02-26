@@ -72,6 +72,7 @@
   },
   "license": "ISC",
   "pre-commit": [
+    "tsc",
     "validate",
     "test"
   ]

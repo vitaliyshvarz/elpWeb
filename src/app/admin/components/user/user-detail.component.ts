@@ -33,8 +33,8 @@ export class UserDetailComponent implements OnInit {
     save(): void {
         this.userService.update(this.user)
             .subscribe(() => {
-              let currentPopUp = new Foundation.Reveal($('#editUserResultModal'));
-              currentPopUp.open();
+                let currentPopUp = new (<any>Foundation.Reveal)($('#editUserResultModal'));
+                currentPopUp.open();
             });
     }
 

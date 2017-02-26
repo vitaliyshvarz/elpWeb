@@ -1,8 +1,7 @@
-import { Component, OnInit }        from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
-import { Meal }                     from '../../../core/@core';
-import { MealService }              from '../../../core/@core';
+import { Component, OnInit }             from '@angular/core';
+import { ActivatedRoute, Params }        from '@angular/router';
+import { Location }                      from '@angular/common';
+import { MealService, UploadService, CURRENCIES, Meal } from '../../../core/@core';
 
 @Component({
     moduleId: module.id,
@@ -12,12 +11,29 @@ import { MealService }              from '../../../core/@core';
 })
 export class MealDetailComponent implements OnInit {
     meal: Meal;
+    currentCurrency: any = CURRENCIES[0]; // USD
 
     constructor(
         private mealService: MealService,
         private route: ActivatedRoute,
-        private location: Location
-    ) { }
+        private location: Location,
+        private uploadService: UploadService
+    ) {
+        this.uploadService.progress$.subscribe(
+            (data: any) => {
+                console.log('progress = ' + data);
+            });
+    }
+
+    onFileChange(event: any) {
+        console.log('onChange');
+        const files = event.srcElement.files;
+        console.log(files);
+        this.uploadService.uploadImage([], files).subscribe(() => {
+            let currentPopUp = new (<any>Foundation.Reveal)($('#uploadImageResultModal'));
+            currentPopUp.open();
+        });
+    }
 
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
@@ -33,7 +49,8 @@ export class MealDetailComponent implements OnInit {
     save(): void {
         this.mealService.update(this.meal)
             .subscribe(() => {
-                let currentPopUp = new Foundation.Reveal($('#editMealResultModal'));
+
+                let currentPopUp = new (<any>Foundation.Reveal)($('#editMealResultModal'));
                 currentPopUp.open();
             });
     }

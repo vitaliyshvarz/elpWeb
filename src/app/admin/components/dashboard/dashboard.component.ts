@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     private currentPopUp: any;
     private selectedItem: User | Place | Meal;
     private selectedTab: any = 'Overview';
+    private deleteType: string;
     private tabs: any = [
         { name: 'Overview', active: true },
         { name: 'Users', active: false },
@@ -49,7 +50,7 @@ export class DashboardComponent implements OnInit {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-    private filterUserPlaces(places): Place[] {
+    private filterUserPlaces(places: Place[]): Place[] {
         if (this.currentUser && this.currentUser) {
             return places.filter(place => {
                 if (place.user && place.user.id &&
@@ -126,7 +127,7 @@ export class DashboardComponent implements OnInit {
 
     openConfirmPopUp(item: User | Place | Meal, type: string) {
         this.deleteType = type;
-        this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
+        this.currentPopUp = Foundation.Reveal($('#deleteModal'));
         this.selectedItem = item;
         this.currentPopUp.open();
     }
@@ -136,14 +137,14 @@ export class DashboardComponent implements OnInit {
     * Go to place detail page
     * @param place
     */
-    gotoDetail(type, item): void {
+    gotoDetail(type: any, item: any): void {
         let link = [`/admin/${type}-detail`, item.id];
         this.router.navigate(link);
     }
 
     selectTab(name: string): void {
 
-        this.tabs.forEach(tab => {
+        this.tabs.forEach((tab: any) => {
             if (tab.name === name) {
                 tab.active = true;
                 this.selectedTab = tab.name;

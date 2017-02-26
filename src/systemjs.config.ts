@@ -1,6 +1,8 @@
 /**
  * System configuration for EatLikePro App
  */
+declare var System: any;
+
 (function(global: any): void {
     System.config({
         paths: {

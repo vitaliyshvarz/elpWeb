@@ -35,7 +35,7 @@ export class PlacesComponent implements OnInit {
     }
 
     onSelect(place: Place): void {
-        this.currentPopUp = new Foundation.Reveal($('#deleteModal'));
+        this.currentPopUp = new (<any>Foundation.Reveal)($('#deleteModal'));
         this.selectedPlace = place;
     }
 

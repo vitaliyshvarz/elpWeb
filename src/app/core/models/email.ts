@@ -1,4 +1,4 @@
-export class QuickEmail {
+export class Email {
     date: Date;
     fullName: string;
     ip: string;

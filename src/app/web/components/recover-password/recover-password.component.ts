@@ -5,7 +5,7 @@ import { AuthenticationService } from '../../../core/@core';
 @Component({
     moduleId: module.id,
     selector: 'recover-password',
-    templateUrl: 'recover-password.component.html'
+    templateUrl: 'recover-password.component.html',
     styleUrls: ['recover-password.component.css']
 
 })

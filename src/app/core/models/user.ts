@@ -6,7 +6,7 @@ export class User {
     type: string;
     email: string;
     registrationType: string;
-    registrationTime: string;
+    registrationTime: Date;
     image: string;
     location: any;
 }

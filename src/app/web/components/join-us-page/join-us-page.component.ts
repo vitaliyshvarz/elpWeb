@@ -16,7 +16,7 @@ export class JoinUsPageComponent implements OnInit {
     constructor(
         private loggedService: LoggedService,
         private route: ActivatedRoute,
-        private router: Router,
+        private router: Router
     ) { }
 
     ngOnInit() {

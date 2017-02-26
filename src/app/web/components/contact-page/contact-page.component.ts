@@ -3,16 +3,19 @@ import { TranslateService } from '../../../core/@core';
 import { CommunicationService } from '../../../core/@core';
 import { AlertService } from '../../services/alert.service';
 
+declare var grecaptcha: any;
+
 @Component({
     moduleId: module.id,
     templateUrl: 'contact-page.component.html',
     styleUrls: ['contact-page.component.css']
 })
 
+
 export class ContactPageComponent {
     private message: any = {};
     private sendButton: any = {};
-    private sendMessage: string;
+    private sendMessageText: string;
     private capchaValid: boolean = false;
 
     constructor(

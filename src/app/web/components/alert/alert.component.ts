@@ -10,7 +10,7 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class AlertComponent implements OnInit {
-    private message: string;
+    private message: any;
     private timeout: any;
 
     constructor(

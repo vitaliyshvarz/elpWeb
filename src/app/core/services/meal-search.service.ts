@@ -11,7 +11,7 @@ export class MealSearchService {
 
     search(term: string): Observable<Meal[]> {
         return this.http.get(`/api/search-meals/?name=${term}`, this.jwt())
-            .map((r: Response) => r.json() as Place[]);
+            .map((r: Response) => r.json() as Meal[]);
     }
 
     private jwt() {

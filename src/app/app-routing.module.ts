@@ -1,5 +1,5 @@
 import { NgModule }                   from '@angular/core';
-import { RouterModule, Routes }       from '@angular/router';
+import { RouterModule }       from '@angular/router';
 import { DashboardComponent }         from './admin/components/dashboard/dashboard.component';
 import { PlacesComponent }            from './admin/components/places/places.component';
 import { PlaceDetailComponent }       from './admin/components/place/place-detail.component';
@@ -14,7 +14,7 @@ import { ContactPageComponent }       from './web/components/contact-page/contac
 
 import { AuthGuard }                  from './core/@core';
 
-const routes: Routes = [
+const routes: any = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: WebHomeComponent },
     { path: 'about-us', component: AboutUsComponent },

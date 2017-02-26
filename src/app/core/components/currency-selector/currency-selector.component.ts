@@ -11,20 +11,20 @@ import { CURRENCIES } from '../../@core';
 
 export class CurrencySelectorComponent implements OnInit {
     private currentCurrency: any; // USD
-    private currencies: any = CURRENCIES;
+    private currencies: any = JSON.parse(JSON.stringify(CURRENCIES));
     @Input('data') data: any;
 
-    selectCurrency(currency) {
+    selectCurrency(currency: any): void {
         this.data.name = currency.name;
         this.data.postfix = currency.postfix;
-
     }
 
-    isCurrentCurrency(currency) {
+    isCurrentCurrency(currency: any) {
         return this.currentCurrency.name === currency.name;
     }
 
     ngOnInit() {
-        this.currentCurrency = this.currencies.find(cur => cur.name === this.data.name);
+        this.currentCurrency = this.currencies.find((cur: any) =>
+            cur.name === this.data.name);
     }
 }

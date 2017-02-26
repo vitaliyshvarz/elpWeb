@@ -129,7 +129,7 @@ export class WorkingHoursComponent implements AfterViewInit, OnInit {
     }
 
     // Conver value from slider to time
-    formatHoursAndMinutes(hours: number, minutes: number) {
+    formatHoursAndMinutes(hours: number |  string, minutes: number | string) {
         if (hours.toString().length === 1) {
             hours = '0' + hours;
         }

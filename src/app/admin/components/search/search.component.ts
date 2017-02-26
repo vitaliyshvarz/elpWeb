@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
     private selectedModel: any;
     private title: string;
     private searchBy: string;
+    private items: any;
 
     @Input('type') type: string;
 
@@ -48,18 +49,18 @@ export class SearchComponent implements OnInit {
                 ? this.selectedService.search(term)
                 // or the observable of empty items if no search term
 
-                : /* tslint:disable */ Observable.of<this.selectedModel[]>([])/* tslint:enable */
+                : /* tslint:disable */ this.selectedModel/* tslint:enable */
             )
             .catch(error => {
                 // TODO: real error handling
                 console.log(error);
 
-                return /* tslint:disable */Observable.of<this.selectedModel[]>([]); /* tslint:enable */
+                return /* tslint:disable */this.selectedModel; /* tslint:enable */
 
             });
     }
 
-    private getModel(type: string): User | Place | Meal {
+    private getModel(type: string): any {
         switch (type) {
             case 'users':
                 return User;
@@ -107,7 +108,7 @@ export class SearchComponent implements OnInit {
         }
     }
     gotoDetail(item: Place | User): void {
-        let type;
+        let type: string;
         switch (this.type) {
             case 'users':
                 type = 'user';

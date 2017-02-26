@@ -161,7 +161,7 @@ export let fakeBackendProvider = {
                         let id = urlParts[urlParts.length - 1];
                         let matchedUsers = users.filter(user => String(user.id) === String(id));
                         let user = matchedUsers.length ? matchedUsers[0] : null;
-                        let i;
+                        let i: number;
 
                         for (i = 0; i < users.length; i++) {
                             if (users[i].id === user.id) {
@@ -285,7 +285,7 @@ export let fakeBackendProvider = {
                         let id = urlParts[urlParts.length - 1];
                         let matchedPlaces = places.filter(place => { return place.id === id; });
                         let place = matchedPlaces.length ? matchedPlaces[0] : null;
-                        let i;
+                        let i: number;
 
                         for (i = 0; i < places.length; i++) {
                             if (places[i].id === place.id) {
@@ -337,7 +337,7 @@ export let fakeBackendProvider = {
                         // find place by id in places array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        let i;
+                        let i: number;
                         for (i = 0; i < places.length; i++) {
                             let user = places[i];
                             if (user.id === id) {
@@ -403,29 +403,6 @@ export let fakeBackendProvider = {
                     }
                 }
 
-                // get meals by name
-                if (connection.request.url.match(/\/api\/search-users\/[\wа-яА-Я_.-?]+$/) &&
-                    connection.request.method === RequestMethod.Get) {
-
-                    // check for fake auth token in header and return place if valid,
-                    // this security is implemented server side in a real application
-                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-                        // find place by pattern in meals array
-                        let urlParts = connection.request.url.split('?');
-                        let pattern = urlParts[1].replace('name=', '');
-                        let matchedMeals = meals.filter(meal => meal.name.indexOf(pattern) !== -1);
-                        let resultMeals = matchedMeals.length ? matchedMeals : null;
-                        // respond 200 OK with place
-                        connection.mockRespond(new Response(new ResponseOptions({
-                            status: 200, body: resultMeals
-                        })));
-                    } else {
-                        // return 401 not authorised if token is null or invalid
-                        connection.mockRespond(new Response(new ResponseOptions({
-                            status: 401
-                        })));
-                    }
-                }
 
                 // get meal by id
                 if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
@@ -436,12 +413,11 @@ export let fakeBackendProvider = {
                         // find meal by id in meals array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        let matchedMeals = meals.filter(meal => { return meal.id === id; });
-                        let meal = matchedMeals.length ? matchedMeals[0] : null;
+                        let matchedMeal = meals.find(meal => String(meal.id) === String(id));
 
                         // respond 200 OK with place
                         connection.mockRespond(new Response(new ResponseOptions({
-                            status: 200, body: meal
+                            status: 200, body: matchedMeal
                         })));
                     } else {
                         // return 401 not authorised if token is null or invalid
@@ -462,7 +438,7 @@ export let fakeBackendProvider = {
                         let id = urlParts[urlParts.length - 1];
                         let matchedMeals = meals.filter(meal => { return meal.id === id; });
                         let meal = matchedMeals.length ? matchedMeals[0] : null;
-                        let i;
+                        let i: number;
 
                         for (i = 0; i < meals.length; i++) {
                             if (meals[i].id === meal.id) {
@@ -514,7 +490,7 @@ export let fakeBackendProvider = {
                         // find place by id in meals array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        let i;
+                        let i: number;
                         for (i = 0; i < meals.length; i++) {
                             let meal = meals[i];
                             if (meal.id === id) {

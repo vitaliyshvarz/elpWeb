@@ -17,6 +17,7 @@ export * from './services/user-search.service';
 export * from './services/meal-search.service';
 export * from './services/communication.service';
 export * from './services/meal.service';
+export * from './services/upload.service';
 
 
 // Translate
