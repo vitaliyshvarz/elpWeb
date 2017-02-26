@@ -9,7 +9,8 @@
         <div class="small-6 medium-6 large-6 columns">
           Image
           <img [src]="meal.imageUrl"/>
-          <div class="text.center">
+          <hr />
+          <div class="text-center">
             <label for="exampleFileUpload" class="button">Upload New Image</label>
             <input type="file" id="exampleFileUpload" class="show-for-sr" (change)="onFileChange($event)">
           </div>
@@ -20,7 +21,7 @@
           </label>
           <label>
             Description
-            <textarea placeholder="Description" rows="5" [(ngModel)]="meal.description"></textarea>
+            <textarea placeholder="Description" rows="10" [(ngModel)]="meal.description"></textarea>
           </label>
         </div>
 
@@ -45,27 +46,45 @@
         <div class="row" *ngFor="let portion of meal.portions">
           <div class="small-2 columns text-center">
             <div class="padding-top">
-              {{portion.size}}
+              <input type="text" maxlength="5" [(ngModel)]="portion.size" placeholder="Size">
+
             </div>
           </div>
 
           <div class="small-6 columns">
-            {{portion.description}}
+            <textarea placeholder="Description" rows="2" [(ngModel)]="portion.description"></textarea>
           </div>
           <div class="small-4 columns">
             <div class="input-group">
               <span class="input-group-label" [innerHtml]="currentCurrency.postfix "></span>
               <input class="input-group-field" [(ngModel)]="portion.price" [disabled]="!portion.selected" type="number"/>
             </div>
-
           </div>
-
           <br />
         </div>
+
+        <button class="button tiny" (click)="addPortion()">Add portion</button>
       </div>
       <br />
-
+      <hr />
+      <button (click)="goBack()" class="button">Back</button>
+      <button (click)="save()" class="button">Save</button>
     </div>
+</div>
+
+<div class="large reveal" id="editMealResultModal" data-reveal>
+  <h4 *ngIf="meal">Meal {{meal.name}} edited!</h4>
+
+  <button class="close-button"
+          data-close aria-label="Close modal"
+          type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <hr />
+
+  <div class="row text-center">
+    <button class="button small "data-close>Done!</button>
+  </div>
 </div>
 
 

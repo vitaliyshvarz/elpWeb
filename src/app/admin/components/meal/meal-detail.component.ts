@@ -49,10 +49,19 @@ export class MealDetailComponent implements OnInit {
     save(): void {
         this.mealService.update(this.meal)
             .subscribe(() => {
-
                 let currentPopUp = new (<any>Foundation.Reveal)($('#editMealResultModal'));
                 currentPopUp.open();
             });
+    }
+
+    addPortion() {
+        this.meal.portions.push({
+            selected: true,
+            size: '',
+            description: '',
+            price: 0,
+            weight: 0
+        });
     }
 
 }

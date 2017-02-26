@@ -2,6 +2,7 @@
 
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { DISHES } from '../config/dishesConfig';
 
 export let fakeBackendProvider = {
     // use fake backend in place of Http service for backend-less development
@@ -18,6 +19,7 @@ export let fakeBackendProvider = {
         } catch (err) {
             users = [];
             places = [];
+            meals = DISHES;
         }
 
         // configure fake backend
@@ -436,13 +438,12 @@ export let fakeBackendProvider = {
                         // find place by id in meals array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        let matchedMeals = meals.filter(meal => { return meal.id === id; });
-                        let meal = matchedMeals.length ? matchedMeals[0] : null;
+                        let matchedMeal = meals.find(meal => String(meal.id) === String(id));
                         let i: number;
 
                         for (i = 0; i < meals.length; i++) {
-                            if (meals[i].id === meal.id) {
-                                meals[i] = meal;
+                            if (meals[i].id === matchedMeal.id) {
+                                meals[i] = matchedMeal;
                             }
                         }
 
@@ -450,7 +451,7 @@ export let fakeBackendProvider = {
 
                         // respond 200 OK with place
                         connection.mockRespond(new Response(new ResponseOptions({
-                            status: 200, body: meal
+                            status: 200, body: matchedMeal
                         })));
                     } else {
                         // return 401 not authorised if token is null or invalid

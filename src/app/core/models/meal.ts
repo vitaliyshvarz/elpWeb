@@ -1,6 +1,5 @@
 
 export class Portion {
-    id: number;
     size: string;
     selected: boolean;
     description: string;
@@ -14,5 +13,5 @@ export class Meal {
     name: string;
     description: string;
     imageUrl: string;
-    postions: Portion[];
+    portions: Portion[];
 }
