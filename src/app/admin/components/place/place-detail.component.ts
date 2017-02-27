@@ -33,7 +33,7 @@ export class PlaceDetailComponent implements OnInit {
     save(): void {
         this.placeService.update(this.place)
             .subscribe(() => {
-                let currentPopUp = new Foundation.Reveal($('#editPlaceResultModal'));
+                let currentPopUp = new (<any>Foundation.Reveal)($('#editPlaceResultModal'));
                 currentPopUp.open();
             });
     }

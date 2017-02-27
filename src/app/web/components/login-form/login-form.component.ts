@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
 
 import { AuthenticationService } from '../../../core/@core';
@@ -15,7 +14,6 @@ export class WebLoginFormComponent implements OnInit {
     loginButton: any;
 
     constructor(
-        private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService) { }
 

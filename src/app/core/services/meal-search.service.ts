@@ -1,17 +1,17 @@
 import { Injectable }                              from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable }                              from 'rxjs';
-import { User }                                    from '../models/user';
+import { Meal }                                   from '../models/meal';
 
 @Injectable()
 
-export class UserSearchService {
+export class MealSearchService {
 
     constructor(private http: Http) { }
 
-    search(term: string): Observable<User[]> {
-        return this.http.get(`/api/search-users/?name=${term}`, this.jwt())
-            .map((r: Response) => r.json() as User[]);
+    search(term: string): Observable<Meal[]> {
+        return this.http.get(`/api/search-meals/?name=${term}`, this.jwt())
+            .map((r: Response) => r.json() as Meal[]);
     }
 
     private jwt() {

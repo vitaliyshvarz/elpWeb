@@ -20,7 +20,7 @@ export class AddPlacePart2Component implements OnInit {
     constructor(
         private zone: NgZone,
         private router: Router,
-        private alertService: AlertService,
+        private alertService: AlertService
     ) { }
 
     ngOnInit(): void {
@@ -44,7 +44,8 @@ export class AddPlacePart2Component implements OnInit {
     }
 
     private noPaymentsSelected(): boolean {
-        return !!(this.paymentOptions.filter(option => !!option.selected)).length;
+        return !!(this.paymentOptions.filter((option: any) =>
+            !!option.selected)).length;
     }
 
     goToStep3(): void {

@@ -8,6 +8,7 @@ import { UserService }              from '../../../core/@core';
     moduleId: module.id,
     selector: 'user-detail',
     templateUrl: 'user-detail.component.html',
+    styleUrls: ['user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
     private user: User;
@@ -31,7 +32,10 @@ export class UserDetailComponent implements OnInit {
 
     save(): void {
         this.userService.update(this.user)
-            .subscribe(() => this.goBack());
+            .subscribe(() => {
+                let currentPopUp = new (<any>Foundation.Reveal)($('#editUserResultModal'));
+                currentPopUp.open();
+            });
     }
 
 }

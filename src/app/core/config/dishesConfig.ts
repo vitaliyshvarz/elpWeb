@@ -5,7 +5,7 @@ export const DISHES: any = [
         name: <string>'ANGUS STEAK MEAL',
         description: <string>'Angus Steak with Peppers, Onions, Mushrooms, and Tomato Sautéed in Soy Sauce on a Bed of Brown Rice',
         imageUrl: './app/web/assets/img/meals/1.jpg',
-        postions: [
+        portions: [
             {
                 id: <number>213,
                 size: <string>'S',
@@ -30,7 +30,7 @@ export const DISHES: any = [
         name: <string>'BEEF BOWL',
         description: <string>'Extra Lean Beef with Brown Rice and Mixed Vegetables Sautéed in Soy Sauce',
         imageUrl: './app/web/assets/img/meals/2.jpg',
-        postions: [
+        portions: [
             {
                 id: <number>3423,
                 size: <string>'S',

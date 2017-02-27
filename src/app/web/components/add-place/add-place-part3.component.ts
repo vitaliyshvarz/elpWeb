@@ -1,6 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlaceService, DISHES, CURRENCIES } from '../../../core/@core';
+import {
+    PlaceService,
+    MealService,
+    CURRENCIES,
+    Meal } from '../../../core/@core';
 import { AlertService } from '../../services/alert.service';
 
 
@@ -12,10 +16,11 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class AddPlacePart3Component implements OnInit {
-
+    saveResultPlace: any;
+    finishAddPlaceButton: any;
     currentCurrency: any = CURRENCIES[0]; // USD
-    currencies: any = CURRENCIES;
-    dishes: any = JSON.parse(JSON.stringify(DISHES));
+    currencies: any = JSON.parse(JSON.stringify(CURRENCIES));
+    dishes: Meal[];
     deliveryAvailable: boolean = false;
     takeAwayAvailable: boolean = false;
     showSaveSucess: boolean = false;
@@ -28,26 +33,29 @@ export class AddPlacePart3Component implements OnInit {
         private zone: NgZone,
         private router: Router,
         private alertService: AlertService,
-        private placeService: PlaceService
+        private placeService: PlaceService,
+        private mealService: MealService
     ) { }
 
-    selectCurrency(currency) {
-        this.currentCurrency = currency;
-    }
-    isCurrentCurrency(currency) {
-        return this.currentCurrency.name === currency.name;
-    }
-
-    toogleDetails(id) {
+    toogleDetails(id: string | number) {
         $(`#${id}details`).slideToggle('slow');
     }
 
     ngOnInit() {
+        this.loadAllMeals();
         if (!this.savedPlace) {
             this.router.navigate(['/join-us', 'part1']);
         } else if (!this.savedPayments || !this.savedDays) {
             this.router.navigate(['/join-us', 'part2']);
         }
+    }
+
+    // initially get meals
+    private loadAllMeals(): void {
+        this.mealService.getAll()
+            .subscribe((meals: Meal[]) => {
+                this.dishes = meals;
+            });
     }
 
     finish() {
@@ -103,7 +111,7 @@ export class AddPlacePart3Component implements OnInit {
                     localStorage.removeItem('currentWorkingDays');
                     this.finishAddPlaceButton.removeClass('sending').blur();
                     this.alertService.success('Place has been added!', true);
-                    this.dishes = DISHES;
+                    this.loadAllMeals();
                 },
                 (error: any) => {
                     this.finishAddPlaceButton.removeClass('sending').blur();

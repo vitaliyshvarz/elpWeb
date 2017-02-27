@@ -72,19 +72,23 @@ export class FacebookLoginComponent {
                     email: response.email,
                     firstName: response.first_name,
                     lastName: response.last_name,
-                    password: response.password
+                    password: response.password,
+                    image: response.image
                 };
                 this.tryRegisterUser(newUser);
             });
     }
 
     getUserDataOnLogin () {
+
         FB.api('/me', {
             locale: 'en_US',
-            fields: 'first_name,last_name,email,location'
+            fields: 'first_name,last_name,email,location,picture'
         }, (response: any) => {
+          console.log(response);
             // Idea is to save FB id as user password
             response.password = response.id;
+            response.image = response.picture.data.url;
             this.loginInApp(response);
         });
     }

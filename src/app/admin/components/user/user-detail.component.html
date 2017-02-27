@@ -1,16 +1,61 @@
 <div *ngIf="user" class="row">
-  <div class="small-10 columns">
-    <h2>{{user.firstName}} details</h2>
-    <div><label>id: </label>{{user.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="user.firstName"  placeholder="name"/>
-      <input [(ngModel)]="user.lastName"  placeholder="name"/>
-      <label>email: </label>
-      <input [(ngModel)]="user.email" placeholder="name"/>
+  <div class="small-10 medium-8 small-centered columns">
+
+    <div class="row">
+      <br />
+      <div class="small-3 columns text-center">
+        <h3>{{user.firstName}} details</h3>
+        <img class="thumbnail" [src]="user.image" alt="User Image">
+      </div>
+      <div class="small-9 columns">
+        <p class="icons-large">Registration Type: <i [ngClass]="{
+          'fi-social-facebook': user.registrationType==='facebook',
+          'fi-social-google-plus': user.registrationType==='google',
+          'fi-mail': user.registrationType==='email'
+        }"></i></p>
+        <label>firstName
+          <input type="text" [(ngModel)]="user.firstName" placeholder="firstName">
+        </label>
+        <label>lastName
+          <input type="text" [(ngModel)]="user.lastName" placeholder="lastName">
+        </label>
+        <label>email
+          <input type="text" [(ngModel)]="user.email" placeholder="email">
+        </label>
+        <label>Registered on
+          <input type="text" [(ngModel)]="user.registrationTime" disabled placeholder="email">
+        </label>
+        <fieldset class="large-6 columns">
+          <legend>Account Type</legend>
+          <input type="radio" name="admin" [(ngModel)]="user.type" id="admin"[checked]="user.type === 'admin'" value="admin">
+          <label for="admin">Admin</label>
+          <input type="radio" name="default" [(ngModel)]="user.type" id="default"[checked]="user.type === 'default'" value="default">
+          <label for="default">Default</label>
+        </fieldset>
+      </div>
     </div>
+
     <br />
-    <button (click)="save()" class="button">Save</button>
-    <button (click)="goBack()" class="button">Back</button>
+    <div class="row text-center">
+      <button (click)="save()" class="button">Save</button>
+      <button (click)="goBack()" class="button">Back</button>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="large reveal" id="editUserResultModal" data-reveal>
+  <h4 *ngIf="user">User {{user.firstName}} edited!</h4>
+
+  <button class="close-button"
+          data-close aria-label="Close modal"
+          type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <hr />
+
+  <div class="row text-center">
+    <button class="button small "data-close>Done!</button>
   </div>
 </div>

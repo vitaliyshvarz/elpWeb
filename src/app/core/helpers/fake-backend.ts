@@ -2,6 +2,7 @@
 
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { DISHES } from '../config/dishesConfig';
 
 export let fakeBackendProvider = {
     // use fake backend in place of Http service for backend-less development
@@ -10,12 +11,15 @@ export let fakeBackendProvider = {
         // array in local storage for registered users
         let users: any[];
         let places: any[];
+        let meals: any[];
         try {
+            meals = JSON.parse(localStorage.getItem('meals')) || [];
             places = JSON.parse(localStorage.getItem('places')) || [];
             users = JSON.parse(localStorage.getItem('users')) || [];
         } catch (err) {
             users = [];
             places = [];
+            meals = DISHES;
         }
 
         // configure fake backend
@@ -148,6 +152,39 @@ export let fakeBackendProvider = {
                     }
                 }
 
+                // update user by id
+                if (connection.request.url.match(/\/api\/users\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Put) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find user by id in users array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedUsers = users.filter(user => String(user.id) === String(id));
+                        let user = matchedUsers.length ? matchedUsers[0] : null;
+                        let i: number;
+
+                        for (i = 0; i < users.length; i++) {
+                            if (users[i].id === user.id) {
+                                users[i] = user;
+                            }
+                        }
+
+                        localStorage.setItem('users', JSON.stringify(users));
+
+                        // respond 200 OK with user
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: user
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
                 // get places
                 if (connection.request.url.endsWith('/api/places') &&
                     connection.request.method === RequestMethod.Get) {
@@ -250,7 +287,7 @@ export let fakeBackendProvider = {
                         let id = urlParts[urlParts.length - 1];
                         let matchedPlaces = places.filter(place => { return place.id === id; });
                         let place = matchedPlaces.length ? matchedPlaces[0] : null;
-                        let i;
+                        let i: number;
 
                         for (i = 0; i < places.length; i++) {
                             if (places[i].id === place.id) {
@@ -302,7 +339,7 @@ export let fakeBackendProvider = {
                         // find place by id in places array
                         let urlParts = connection.request.url.split('/');
                         let id = urlParts[urlParts.length - 1];
-                        let i;
+                        let i: number;
                         for (i = 0; i < places.length; i++) {
                             let user = places[i];
                             if (user.id === id) {
@@ -324,6 +361,159 @@ export let fakeBackendProvider = {
                         })));
                     }
                 }
+
+
+                // get meals
+                if (connection.request.url.endsWith('/api/meals') &&
+                    connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return
+                    // meals if valid, this security is implemented server side
+                    // in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: meals
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // get meals by name
+                if (connection.request.url.match(/\/api\/search-meals\/[\wа-яА-Я_.-?]+$/) &&
+                    connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return meal if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find meal by pattern in meals array
+                        let urlParts = connection.request.url.split('?');
+                        let pattern = urlParts[1].replace('name=', '');
+                        let matchedMeals = meals.filter(meal => meal.name.indexOf(pattern) !== -1);
+                        let resultMeals = matchedMeals.length ? matchedMeals : null;
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: resultMeals
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+
+                // get meal by id
+                if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find meal by id in meals array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedMeal = meals.find(meal => String(meal.id) === String(id));
+
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: matchedMeal
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // update meal by id
+                if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Put) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by id in meals array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let matchedMeal = meals.find(meal => String(meal.id) === String(id));
+                        let i: number;
+
+                        for (i = 0; i < meals.length; i++) {
+                            if (meals[i].id === matchedMeal.id) {
+                                meals[i] = matchedMeal;
+                            }
+                        }
+
+                        localStorage.setItem('meals', JSON.stringify(meals));
+
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: matchedMeal
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // create place
+                if (connection.request.url.endsWith('/api/meals') &&
+                    connection.request.method === RequestMethod.Post) {
+                    // get new user object from post body
+                    let newMeal = JSON.parse(connection.request.getBody());
+                    // validation
+                    let duplicateMeal = meals
+                        .filter(meal => meal.id === newMeal.id).length;
+                    if (duplicateMeal) {
+                        return connection.mockError(new Error('Meal already exists please update it "' +
+                            newMeal.name + '" is already taken'));
+
+                    } else {
+                        meals.push(newMeal);
+                        localStorage.setItem('meals', JSON.stringify(meals));
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200
+                        })));
+                    }
+                }
+
+                // delete place
+                if (connection.request.url.match(/\/api\/meals\/[a-zA-Z0-9_.-]+$/) &&
+                    connection.request.method === RequestMethod.Delete) {
+                    // check for fake auth token in header and return user if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by id in meals array
+                        let urlParts = connection.request.url.split('/');
+                        let id = urlParts[urlParts.length - 1];
+                        let i: number;
+                        for (i = 0; i < meals.length; i++) {
+                            let meal = meals[i];
+                            if (meal.id === id) {
+                                // delete meal
+                                meals.splice(i, 1);
+                                localStorage.setItem('meals', JSON.stringify(meals));
+                                break;
+                            }
+                        }
+
+                        // respond 200 OK
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
 
                 // send quick email
                 if (connection.request.url.endsWith('/api/quick-email') &&
@@ -349,6 +539,25 @@ export let fakeBackendProvider = {
                     connection.mockRespond(new Response(new ResponseOptions({
                         status: 200
                     })));
+                }
+
+                // send  recovery email
+                if (connection.request.url.endsWith('/api/send-recovery-pass-email') &&
+                    connection.request.method === RequestMethod.Post) {
+                    let newRecoveryEmail = connection.request.getBody();
+                    let usersFound = users.filter(user => user.email === newRecoveryEmail);
+
+                    localStorage.setItem('recoveryPassEmail', newRecoveryEmail);
+
+                    if (usersFound.length) {
+                        // respond 200 OK
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200
+                        })));
+                    } else {
+                        // return 401 user not found
+                        connection.mockError(new Error('User with this email does not exist'));
+                    }
                 }
 
             });

@@ -15,7 +15,7 @@ export class DishesSelectorComponent implements OnInit {
     @Input('currency') currency: any;
 
 
-    toogleDetails(id) {
+    toogleDetails(id: string): void {
         $(`#${id}details`).slideToggle('slow');
     }
 

@@ -5,7 +5,7 @@
 
   <currency-selector  [data]="currentCurrency"></currency-selector>
 
-  <dishes-selector [dishes]="dishes" [currency]="currentCurrency"></dishes-selector>
+  <dishes-selector *ngIf="dishes" [dishes]="dishes" [currency]="currentCurrency"></dishes-selector>
 
   <div class="row">
     <div class="small-6 medium-6 large-6 columns  small-centered  text-center">

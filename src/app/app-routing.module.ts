@@ -1,9 +1,10 @@
 import { NgModule }                   from '@angular/core';
-import { RouterModule, Routes }       from '@angular/router';
+import { RouterModule }       from '@angular/router';
 import { DashboardComponent }         from './admin/components/dashboard/dashboard.component';
 import { PlacesComponent }            from './admin/components/places/places.component';
 import { PlaceDetailComponent }       from './admin/components/place/place-detail.component';
 import { UserDetailComponent }       from './admin/components/user/user-detail.component';
+import { MealDetailComponent }       from './admin/components/meal/meal-detail.component';
 import { MainAdminComponent }         from './admin/components/main/admin-main.component';
 import { WebHomeComponent }           from './web/components/home/home.component';
 import { WebLoginRegisterComponent }  from './web/components/login-register/login-register.component';
@@ -13,7 +14,7 @@ import { ContactPageComponent }       from './web/components/contact-page/contac
 
 import { AuthGuard }                  from './core/@core';
 
-const routes: Routes = [
+const routes: any = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: WebHomeComponent },
     { path: 'about-us', component: AboutUsComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
             { path: 'home', component: '' },
             { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
             { path: 'place-detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
+            { path: 'meal-detail/:id', component: MealDetailComponent, canActivate: [AuthGuard] },
             { path: 'user-detail/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
             { path: 'my-places', component: PlacesComponent, canActivate: [AuthGuard] }
         ]

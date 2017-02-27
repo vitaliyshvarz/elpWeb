@@ -1,0 +1,21 @@
+.sub-menu {
+    text-align: center;
+    overflow-x: scroll;
+    white-space: nowrap;
+
+    li {
+        display: inline-block;
+    }
+
+    button {
+        margin-right: 5px;
+    }
+
+    .sub-menu-btn {
+        border-radius: 6px;
+    }
+}
+
+.icons-large i {
+    font-size: 3rem !important;
+}

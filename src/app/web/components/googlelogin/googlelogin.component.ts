@@ -39,7 +39,8 @@ export class GoogleLoginComponent {
                             email: googleUser.getBasicProfile().getEmail(),
                             firstName: googleUser.getBasicProfile().getGivenName(),
                             lastName: googleUser.getBasicProfile().getFamilyName(),
-                            password: googleUser.getBasicProfile().getId()
+                            password: googleUser.getBasicProfile().getId(),
+                            image: googleUser.getBasicProfile().getImageUrl()
                         };
                         this.loginInApp(userData);
                     }, (error: any) => {

@@ -1,3 +1,6 @@
+import { User }  from './user';
+
+
 export class Place {
     id: number;
     googleId: string;
@@ -8,6 +11,7 @@ export class Place {
     country: string;
     city: string;
     website: string;
+    user: User;
     location: any = {
         lat: 0,
         lng: 0

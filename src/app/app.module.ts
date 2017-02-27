@@ -12,6 +12,7 @@ import { DishesSelectorComponent } from './core/components/dishes-selector/dishe
 // ADMIN components
 import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
 import { UserDetailComponent } from './admin/components/user/user-detail.component';
+import { MealDetailComponent } from './admin/components/meal/meal-detail.component';
 import { PlacesComponent } from './admin/components/places/places.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { SearchComponent } from './admin/components/search/search.component';
@@ -37,22 +38,27 @@ import { AddPlacePart2Component } from './web/components/add-place/add-place-par
 import { AddPlacePart3Component } from './web/components/add-place/add-place-part3.component';
 import { AboutUsComponent } from './web/components/about-us/about-us.component';
 import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
+import { RecoverPasswordComponent } from './web/components/recover-password/recover-password.component';
 
 
 import { AlertService } from './web/services/alert.service';
 
 // Shared Modules
-import { AuthenticationService } from './core/@core';
-import { PlaceService } from './core/@core';
-import { UserService } from './core/@core';
-import { LoggedService } from './core/@core';
-import { CommunicationService } from './core/@core';
+import {
+    AuthenticationService,
+    PlaceService,
+    UserService,
+    MealService,
+    LoggedService,
+    CommunicationService,
+    UploadService,
+    TRANSLATION_PROVIDERS,
+    TranslatePipe,
+    TranslateService,
+    AuthGuard } from './core/@core';
 
 
-import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './core/@core';
 import { AppRoutingModule }     from './app-routing.module';
-
-import { AuthGuard } from './core/@core';
 
 // used to create fake backend
 import { fakeBackendProvider } from './core/@core';
@@ -76,6 +82,7 @@ import './rxjs-extensions';
         AppComponent,
         PlaceDetailComponent,
         UserDetailComponent,
+        MealDetailComponent,
         PlacesComponent,
         DashboardComponent,
         SearchComponent,
@@ -99,7 +106,8 @@ import './rxjs-extensions';
         WorkingHoursComponent,
         PaymentOptionsComponent,
         CurrencySelectorComponent,
-        DishesSelectorComponent
+        DishesSelectorComponent,
+        RecoverPasswordComponent
     ],
     providers: [
         AuthGuard,
@@ -107,10 +115,12 @@ import './rxjs-extensions';
         TRANSLATION_PROVIDERS,
         TranslateService,
         UserService,
+        MealService,
         AlertService,
         AuthenticationService,
         LoggedService,
         CommunicationService,
+        UploadService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,
