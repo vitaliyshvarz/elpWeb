@@ -10,6 +10,7 @@ import { CurrencySelectorComponent } from './core/components/currency-selector/c
 import { DishesSelectorComponent } from './core/components/dishes-selector/dishes-selector.component';
 
 // ADMIN components
+import { AdminHomeComponent } from './admin/components/home/admin-home.component';
 import { PlaceDetailComponent } from './admin/components/place/place-detail.component';
 import { UserDetailComponent } from './admin/components/user/user-detail.component';
 import { MealDetailComponent } from './admin/components/meal/meal-detail.component';
@@ -107,7 +108,8 @@ import './rxjs-extensions';
         PaymentOptionsComponent,
         CurrencySelectorComponent,
         DishesSelectorComponent,
-        RecoverPasswordComponent
+        RecoverPasswordComponent,
+        AdminHomeComponent
     ],
     providers: [
         AuthGuard,

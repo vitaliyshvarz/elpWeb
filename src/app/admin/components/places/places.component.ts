@@ -15,6 +15,7 @@ export class PlacesComponent implements OnInit {
     places: Place[];
     selectedPlace: Place;
     currentPopUp: any;
+    currentUser: any;
 
     constructor(
         private placeService: PlaceService,
@@ -22,11 +23,12 @@ export class PlacesComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.getPlaces();
     }
 
     private getPlaces(): void {
-        this.placeService.getAll()
+        this.placeService.getAllForUser(this.currentUser.email)
             .subscribe((places: Place[]) => this.places = places);
     }
 

@@ -48,15 +48,13 @@
             </a>
           </li>
           <li class="show-for-large">
-            <a *ngIf="currentUser" routerLink="/home">
-              {{'WEBSITE' | translate }}
-            </a>
+            <a routerLink="/admin/home" >{{'MY_ACCOUNT' | translate }}</a>
           </li>
           <li *ngIf="currentUser.type == 'admin'" class="show-for-large">
             <a routerLink="/admin/dashboard" >{{'DASHBOARD' | translate }}</a>
           </li>
           <li class="show-for-large">
-            <a routerLink="/admin/my-places">{{'MY_PLACES' | translate }}</a>
+            <a *ngIf="currentUser" routerLink="/admin/my-places">{{'MY_PLACES' | translate }}</a>
           </li>
         </ul>
       </div>

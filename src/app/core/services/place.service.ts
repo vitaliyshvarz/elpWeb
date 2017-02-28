@@ -10,6 +10,10 @@ export class PlaceService {
             .map((response: Response) => response.json());
     }
 
+    public getAllForUser(email: string) {
+        return this.http.get(`/api/place-by-email/?email=${email}`, this.jwt())
+            .map((response: Response) => response.json());
+    }
     public getById(id: any) {
         return this.http.get('/api/places/' + id, this.jwt())
             .map((response: Response) => response.json());

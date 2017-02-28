@@ -11,6 +11,7 @@ import { WebLoginRegisterComponent }  from './web/components/login-register/logi
 import { JoinUsPageComponent }        from './web/components/join-us-page/join-us-page.component';
 import { AboutUsComponent }           from './web/components/about-us/about-us.component';
 import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
+import { AdminHomeComponent }         from './admin/components/home/admin-home.component';
 
 import { AuthGuard }                  from './core/@core';
 
@@ -25,7 +26,7 @@ const routes: any = [
         path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard],
 
         children: [
-            { path: 'home', component: '' },
+            { path: 'home', component: AdminHomeComponent, canActivate: [AuthGuard] },
             { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
             { path: 'place-detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
             { path: 'meal-detail/:id', component: MealDetailComponent, canActivate: [AuthGuard] },
@@ -37,6 +38,8 @@ const routes: any = [
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
+
+
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]

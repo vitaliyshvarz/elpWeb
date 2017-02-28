@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User }              from '../../../core/@core';
 
 @Component({
@@ -11,7 +12,9 @@ import { User }              from '../../../core/@core';
 export class MainAdminComponent implements OnInit {
     private currentUser: User;
     title: string = 'Admin Panel EatLikePro';
-
+    constructor(
+        private router: Router
+    ) { }
     ngOnInit(): void {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
