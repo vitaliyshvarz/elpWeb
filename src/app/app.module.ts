@@ -19,6 +19,8 @@ import { DashboardComponent } from './admin/components/dashboard/dashboard.compo
 import { SearchComponent } from './admin/components/search/search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 import { AdminTopMenuComponent }  from './admin/components/admin-top-menu/admin-top-menu.component';
+import { AddMealComponent } from './admin/components/add-meal/add-meal.component';
+
 
 // WEB components
 import { AppComponent }  from './web/components/main/main.component';
@@ -56,7 +58,8 @@ import {
     TRANSLATION_PROVIDERS,
     TranslatePipe,
     TranslateService,
-    AuthGuard } from './core/@core';
+    AuthGuard,
+    AdminGuard } from './core/@core';
 
 
 import { AppRoutingModule }     from './app-routing.module';
@@ -109,10 +112,12 @@ import './rxjs-extensions';
         CurrencySelectorComponent,
         DishesSelectorComponent,
         RecoverPasswordComponent,
-        AdminHomeComponent
+        AdminHomeComponent,
+        AddMealComponent
     ],
     providers: [
         AuthGuard,
+        AdminGuard,
         PlaceService,
         TRANSLATION_PROVIDERS,
         TranslateService,

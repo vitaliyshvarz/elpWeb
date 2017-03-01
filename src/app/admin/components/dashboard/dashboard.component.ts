@@ -132,6 +132,10 @@ export class DashboardComponent implements OnInit {
         this.currentPopUp.open();
     }
 
+    gotToPage(page: string): void {
+        let link = [`/admin/${page}`];
+        this.router.navigate(link);
+    }
 
     /*
     * Go to place detail page

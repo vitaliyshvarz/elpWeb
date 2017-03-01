@@ -1,5 +1,5 @@
 import { Injectable }                              from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response }                          from '@angular/http';
 import { Observable }                              from 'rxjs/Rx';
 
 
@@ -7,7 +7,7 @@ import { Observable }                              from 'rxjs/Rx';
 
 export class UploadService {
     // TODO: rewrite this awfull service
-    backendUrl: string = 'http://localhost:8182/upload';
+    // backendUrl: string = 'http://localhost:8182/upload';
     progress: any;
     progress$: any;
     progressObserver: any;
@@ -18,33 +18,13 @@ export class UploadService {
     }
 
     uploadImage(params: string[], files: File[]) {
-        return Observable.create((observer: any) => {
-            let formData: FormData = new FormData(),
-                xhr: XMLHttpRequest = new XMLHttpRequest();
+        let formData: FormData = new FormData();
 
-            for (let i = 0; i < files.length; i++) {
-                formData.append('uploads[]', files[i], files[i].name);
-            }
+        for (let i = 0; i < files.length; i++) {
+            formData.append('uploads[]', files[i], files[i].name);
+        }
 
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        observer.next(JSON.parse(xhr.response));
-                        observer.complete();
-                    } else {
-                        observer.error(xhr.response);
-                    }
-                }
-            };
-
-            xhr.upload.onprogress = (event) => {
-                this.progress = Math.round(event.loaded / event.total * 100);
-
-                this.progressObserver.next(this.progress);
-            };
-
-            xhr.open('POST', this.backendUrl, true);
-            xhr.send(formData);
-        });
+        return this.http.post(`/api/upload-file`, formData)
+            .map((response: Response) => response.json());
     }
 }

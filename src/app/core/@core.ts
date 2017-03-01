@@ -1,5 +1,6 @@
 // Guards
 export * from './guards/auth.guard';
+export * from './guards/admin.guard';
 
 // Models
 export * from './models/place';

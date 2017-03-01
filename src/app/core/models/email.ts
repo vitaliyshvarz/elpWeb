@@ -1,7 +1,7 @@
 export class Email {
-    date: Date;
-    fullName: string;
-    ip: string;
-    email: string;
-    message: string;
+    date: Date = new Date();
+    fullName: string = '';
+    ip: string = '';
+    email: string = '';
+    message: string = '';
 }

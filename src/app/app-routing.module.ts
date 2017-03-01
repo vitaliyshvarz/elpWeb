@@ -12,8 +12,10 @@ import { JoinUsPageComponent }        from './web/components/join-us-page/join-u
 import { AboutUsComponent }           from './web/components/about-us/about-us.component';
 import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
 import { AdminHomeComponent }         from './admin/components/home/admin-home.component';
+import { AddMealComponent }        from './admin/components/add-meal/add-meal.component'
 
 import { AuthGuard }                  from './core/@core';
+import { AdminGuard }                  from './core/@core';
 
 const routes: any = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,10 +29,11 @@ const routes: any = [
 
         children: [
             { path: 'home', component: AdminHomeComponent, canActivate: [AuthGuard] },
-            { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+            { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard] },
+            { path: 'add-meal', component: AddMealComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'place-detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
-            { path: 'meal-detail/:id', component: MealDetailComponent, canActivate: [AuthGuard] },
-            { path: 'user-detail/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
+            { path: 'meal-detail/:id', component: MealDetailComponent, canActivate: [AuthGuard, AdminGuard] },
+            { path: 'user-detail/:id', component: UserDetailComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'my-places', component: PlacesComponent, canActivate: [AuthGuard] }
         ]
 

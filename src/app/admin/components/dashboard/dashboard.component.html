@@ -62,7 +62,9 @@
   </div>
 
   <div class="small-12 columns" *ngIf="selectedTab === 'Users'">
-    <h3>All registered users:</h3>
+    <h3>All registered users: 
+      <button class="button tiny vertical-center-button" (click)="gotToPage('add-user')">Add User</button>
+    </h3>
     <ul>
       <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
@@ -74,7 +76,9 @@
   </div>
 
   <div class="small-12 columns" *ngIf="selectedTab === 'Places'">
-    <h3>All Places</h3>
+    <h3>All Places: 
+      <button class="button tiny vertical-center-button" (click)="gotToPage('add-place')">Add Place</button>
+    </h3>
     <ul>
       <li *ngFor="let place of places">
         {{place.name}}
@@ -86,7 +90,9 @@
   </div>
 
   <div class="small-12 columns" *ngIf="selectedTab === 'Meals'">
-    <h3>All Meals</h3>
+    <h3>All Meals:
+      <button class="button tiny vertical-center-button" (click)="gotToPage('add-meal')">Add Place</button>
+    </h3>
     <ul>
       <li *ngFor="let meal of meals">
         {{meal.name}}
