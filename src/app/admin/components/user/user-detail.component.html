@@ -5,7 +5,10 @@
       <br />
       <div class="small-3 columns text-center">
         <h3>{{user.firstName}} details</h3>
-        <img class="thumbnail" [src]="user.image" alt="User Image">
+        <div *ngIf="!user.image" class="text-center no-image-icon">
+          <i class="fi-torso"></i>
+        </div>
+        <img *ngIf="user.image" class="thumbnail" [src]="user.image" alt="User Image">
       </div>
       <div class="small-9 columns">
         <p class="icons-large">Registration Type: <i [ngClass]="{
@@ -25,7 +28,7 @@
         <label>Registered on
           <input type="text" [(ngModel)]="user.registrationTime" disabled placeholder="email">
         </label>
-        <fieldset class="large-6 columns">
+        <fieldset *ngIf="!currentUser"class="large-6 columns">
           <legend>Account Type</legend>
           <input type="radio" name="admin" [(ngModel)]="user.type" id="admin"[checked]="user.type === 'admin'" value="admin">
           <label for="admin">Admin</label>

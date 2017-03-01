@@ -227,7 +227,31 @@ export let fakeBackendProvider = {
                     }
                 }
 
-                // get places by name
+                // get places by email
+                if (connection.request.url.match(/\/api\/place-by-email\/[\wа-яА-Я_.-@?]+$/) &&
+                    connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return place if valid,
+                    // this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        // find place by pattern in places array
+                        let urlParts = connection.request.url.split('?');
+                        let pattern = urlParts[1].replace('email=', '');
+                        console.log(pattern);
+                        let matchedPlaces = places.filter(place => place.user.email.indexOf(pattern) !== -1);
+                        let resultPlaces = matchedPlaces.length ? matchedPlaces : null;
+                        // respond 200 OK with place
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 200, body: resultPlaces
+                        })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({
+                            status: 401
+                        })));
+                    }
+                }
+
+                // get users by name
                 if (connection.request.url.match(/\/api\/search-users\/[\wа-яА-Я_.-?]+$/) &&
                     connection.request.method === RequestMethod.Get) {
 
