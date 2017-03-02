@@ -1,7 +1,5 @@
 import { Component }             from '@angular/core';
-import { AuthenticationService } from '../../../core/@core';
-import { UserService }           from '../../../core/@core';
-import { AlertService }          from '../../services/alert.service';
+import { AuthenticationService, UserService, AlertService } from '../../../core/@core';
 
 declare const gapi: any;
 

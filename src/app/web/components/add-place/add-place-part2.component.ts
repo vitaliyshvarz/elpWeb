@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PAYMENT_ONTIONS, WORKING_DAYS } from '../../../core/@core';
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../../core/@core';
 
 declare var noUiSlider: any;
 

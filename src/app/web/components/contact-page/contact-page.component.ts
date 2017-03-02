@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../core/@core';
 import { CommunicationService } from '../../../core/@core';
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../../core/@core';
 
 declare var grecaptcha: any;
 

@@ -49,13 +49,13 @@ export class SearchComponent implements OnInit {
                 ? this.selectedService.search(term)
                 // or the observable of empty items if no search term
 
-                : /* tslint:disable */ this.selectedModel/* tslint:enable */
+                : /* tslint:disable */ Observable.of<this.selectedModel[]>([])/* tslint:enable */
             )
             .catch(error => {
                 // TODO: real error handling
                 console.log(error);
 
-                return /* tslint:disable */this.selectedModel; /* tslint:enable */
+                return /* tslint:disable */Observable.of<this.selectedModel[]>([]); /* tslint:enable */
 
             });
     }

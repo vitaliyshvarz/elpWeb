@@ -4,9 +4,8 @@ import {
     PlaceService,
     MealService,
     CURRENCIES,
-    Meal } from '../../../core/@core';
-import { AlertService } from '../../services/alert.service';
-
+    Meal,
+    AlertService } from '../../../core/@core';
 
 @Component({
     moduleId: module.id,
