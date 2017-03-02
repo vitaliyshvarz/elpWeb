@@ -14,8 +14,8 @@ export let fakeBackendProvider = {
         let meals: any[];
         try {
             meals = JSON.parse(localStorage.getItem('meals')) || [];
-            if(!meals.length) {
-              meals = DISHES;
+            if (!meals.length) {
+                meals = DISHES;
             }
         } catch (err) {
             meals = DISHES;
@@ -59,12 +59,12 @@ export let fakeBackendProvider = {
                     let pendingUser = JSON.parse(connection.request.getBody());
                     let result = false;
                     let adminUser = users.find(user => {
-                        return user.email === pendingUser.email && 
-                                user.password === pendingUser.password && 
-                                    user.type === pendingUser.type;
+                        return user.email === pendingUser.email &&
+                            user.password === pendingUser.password &&
+                            user.type === pendingUser.type;
                     });
                     result = adminUser ? true : false;
-                   
+
                     // respond 200 OK
                     connection.mockRespond(new Response(new ResponseOptions({
                         status: 200,

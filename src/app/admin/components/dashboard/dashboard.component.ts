@@ -133,7 +133,7 @@ export class DashboardComponent implements OnInit {
     }
 
     gotToPage(page: string): void {
-        let link = [`/admin/${page}`];
+        let link = [`${page}`];
         this.router.navigate(link);
     }
 

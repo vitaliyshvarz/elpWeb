@@ -1,12 +1,12 @@
 import { Component, OnInit }             from '@angular/core';
-import { ActivatedRoute, Params }        from '@angular/router';
+import { ActivatedRoute }        from '@angular/router';
 import { Location }                      from '@angular/common';
-import { 
-	MealService, 
-	UploadService, 
-	CURRENCIES, 
-	Meal, 
-	Portion 
+import {
+    MealService,
+    UploadService,
+    CURRENCIES,
+    Meal,
+    Portion
 } from '../../../core/@core';
 
 @Component({
@@ -24,8 +24,8 @@ export class AddMealComponent implements OnInit {
         private route: ActivatedRoute,
         private location: Location,
         private uploadService: UploadService
-    ) {	
-    		this.meal = new Meal();
+    ) {
+        this.meal = new Meal();
         this.uploadService.progress$.subscribe(
             (data: any) => {
                 console.log('progress = ' + data);

@@ -1,12 +1,12 @@
 import { Component, OnInit }             from '@angular/core';
 import { ActivatedRoute, Params }        from '@angular/router';
 import { Location }                      from '@angular/common';
-import { 
-    MealService, 
-    UploadService, 
-    CURRENCIES, 
-    Meal, 
-    Portion 
+import {
+    MealService,
+    UploadService,
+    CURRENCIES,
+    Meal,
+    Portion
 } from '../../../core/@core';
 
 @Component({
@@ -15,6 +15,7 @@ import {
     templateUrl: 'meal-detail.component.html',
     styleUrls: ['meal-detail.component.css']
 })
+
 export class MealDetailComponent implements OnInit {
     meal: Meal;
     currentCurrency: any = CURRENCIES[0]; // USD

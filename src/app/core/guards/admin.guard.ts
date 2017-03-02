@@ -7,38 +7,38 @@ import { Observable }     from 'rxjs/Rx';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-		private user: User;
+    private user: User;
 
     constructor(
-    	private router: Router,
-    	private authenticationService: AuthenticationService
-    	) { }
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) { }
 
     canActivate() {
-    	try {
-				this.user = JSON.parse(localStorage.getItem('currentUser'));
-    	} catch (err) {
-    		// not logged in so redirect to login page
-			this.router.navigate(['/login-register']);
-			return Observable.of(false);
-    	}
-    	
-    	if (this.user && this.user.type === 'admin') {
-				return this.authenticationService.isAdmin(this.user).map((response: any) => {
-            if (response && response.result === true) {
-                return true;
-            }
+        try {
+            this.user = JSON.parse(localStorage.getItem('currentUser'));
+        } catch (err) {
+            // not logged in so redirect to login page
+            this.router.navigate(['/login-register']);
+            return Observable.of(false);
+        }
+
+        if (this.user && this.user.type === 'admin') {
+            return this.authenticationService.isAdmin(this.user).map((response: any) => {
+                if (response && response.result === true) {
+                    return true;
+                }
             }).catch(() => {
                 this.router.navigate(['/login-register']);
                 return Observable.of(false);
             });
-		} else if(this.user && this.user.type === 'default'){
-			// not logged in so redirect to login page
-			this.router.navigate(['/admin/home']);
-			return Observable.of(false);
-		} else {
-			this.router.navigate(['/login-register']);
-			return Observable.of(false);
-		} 
+        } else if (this.user && this.user.type === 'default') {
+            // not logged in so redirect to login page
+            this.router.navigate(['/admin/home']);
+            return Observable.of(false);
+        } else {
+            this.router.navigate(['/login-register']);
+            return Observable.of(false);
+        }
     }
 }
