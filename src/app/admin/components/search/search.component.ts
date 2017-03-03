@@ -44,14 +44,14 @@ export class SearchComponent implements OnInit {
         this.items = this.searchTerms
             .debounceTime(300)        // wait for 300ms pause in events
             .distinctUntilChanged()   // ignore if next search term is same as previous
-            .switchMap(term => term   // switch to new observable each time
+            .switchMap((term: any) => term   // switch to new observable each time
                 // return the http search observable
                 ? this.selectedService.search(term)
                 // or the observable of empty items if no search term
 
                 : /* tslint:disable */ Observable.of<this.selectedModel[]>([])/* tslint:enable */
             )
-            .catch(error => {
+            .catch((error: any) => {
                 // TODO: real error handling
                 console.log(error);
 

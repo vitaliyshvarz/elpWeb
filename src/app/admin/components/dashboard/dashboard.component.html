@@ -69,7 +69,7 @@
       <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
         - <a (click)="gotoDetail('user', user)">Open</a>
-        - <a (click)="openConfirmPopUp(user, 'Users')">Delete</a>
+        - <a (click)="openConfirmPopUp(user, 'User')">Delete</a>
       </li>
     </ul>
     <search type="users"></search>

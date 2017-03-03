@@ -19,7 +19,7 @@ export class AuthenticationService {
     constructor(
         private http: Http,
         private loggedService: LoggedService,
-        private alertService: AlertService,
+        private alertService: AlertService
     ) { }
 
     login(email: string, password: string) {
