@@ -14,9 +14,9 @@ export class MealSearchService {
     search(term: string): Observable<Meal[]> {
         return this.http.get(`/api/search-meals/?name=${term}`, this.jwt())
             .map((r: Response) => r.json() as Meal[])
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error meal search');
-                return Observable.throw(error || 'Error meal search')
+                return Observable.throw(error || 'Error meal search');
             });
     }
 

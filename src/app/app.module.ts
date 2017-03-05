@@ -21,6 +21,7 @@ import { SearchComponent } from './admin/components/search/search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 import { AdminTopMenuComponent }  from './admin/components/admin-top-menu/admin-top-menu.component';
 import { AddMealComponent } from './admin/components/add-meal/add-meal.component';
+import { AddMealsComponent } from './admin/components/add-meals/add-meals.component';
 import { AddUserComponent }        from './admin/components/add-user/add-user.component';
 
 // WEB components
@@ -112,7 +113,8 @@ import './rxjs-extensions';
         RecoverPasswordComponent,
         AdminHomeComponent,
         AddMealComponent,
-        AddUserComponent
+        AddUserComponent,
+        AddMealsComponent
     ],
     providers: [
         AuthGuard,

@@ -128,7 +128,7 @@ export class DashboardComponent implements OnInit {
 
     openConfirmPopUp(item: User | Place | Meal, type: string) {
         this.deleteType = type;
-        this.currentPopUp = new (<any>Foundation.Reveal)($('#deleteModal')); 
+        this.currentPopUp = new (<any>Foundation.Reveal)($('#deleteModal'));
         this.selectedItem = item;
         this.currentPopUp.open();
     }

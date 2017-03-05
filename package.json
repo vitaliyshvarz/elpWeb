@@ -4,7 +4,6 @@
   "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.html",
   "scripts": {
-    "postinstall": "gulp build",
     "lite": "lite-server",
     "gulp": "gulp",
     "start": "concurrently --kill-others \"gulp watch\" \"lite-server  -c bs-config.js\"",
@@ -37,9 +36,9 @@
     "jquery": "^3.1.1",
     "nouislider": "github:leongersen/noUiSlider",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "^5.0.0-beta.12",
     "systemjs": "0.19.39",
-    "zone.js": "^0.6.25"
+    "zone.js": "^0.7.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.5",

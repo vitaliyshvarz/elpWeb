@@ -17,17 +17,17 @@ export class CommunicationService {
         return this.http.post(`/api/quick-email`, email)
             .map((response: Response) => response.json())
             .catch((error: any) => {
-	            this.alertService.error(error || 'Error sendQuickEmail');
-	            return Observable.throw(error || 'Error sendQuickEmail');
-		        });
+                this.alertService.error(error || 'Error sendQuickEmail');
+                return Observable.throw(error || 'Error sendQuickEmail');
+            });
     }
 
     sendEmail(email: Email): Observable<Email[]> {
         return this.http.post(`/api/send-email`, email)
             .map((response: Response) => response.json())
             .catch((error: any) => {
-	            this.alertService.error(error || 'Error sendEmail');
-	            return Observable.throw(error || 'Error sendEmail');
-		        });
+                this.alertService.error(error || 'Error sendEmail');
+                return Observable.throw(error || 'Error sendEmail');
+            });
     }
 }

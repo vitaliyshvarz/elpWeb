@@ -14,7 +14,7 @@ export class PlaceSearchService {
     search(term: string): Observable<Place[]> {
         return this.http.get(`/api/search-places/?name=${term}`, this.jwt())
             .map((r: Response) => r.json() as Place[])
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error Place search');
                 return Observable.throw(error || 'Error Place search');
             });

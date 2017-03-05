@@ -1,6 +1,6 @@
-import { Component, OnInit }             from '@angular/core';
+import { Component }             from '@angular/core';
 import { ActivatedRoute }        from '@angular/router';
-import { Location }                      from '@angular/common';
+import { Location }              from '@angular/common';
 import {
     MealService,
     UploadService,
@@ -15,7 +15,7 @@ import {
     templateUrl: 'add-meal.component.html',
     styleUrls: ['add-meal.component.css']
 })
-export class AddMealComponent implements OnInit {
+export class AddMealComponent {
     meal: Meal;
     currentCurrency: any = CURRENCIES[0]; // USD
 
@@ -39,10 +39,6 @@ export class AddMealComponent implements OnInit {
             let currentPopUp = new (<any>Foundation.Reveal)($('#uploadImageResultModal'));
             currentPopUp.open();
         });
-    }
-
-    ngOnInit(): void {
-
     }
 
     goBack(): void {

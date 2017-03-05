@@ -29,7 +29,7 @@ export class UserService implements OnInit {
     public getAll() {
         return this.http.get('/api/users', this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error getAll users');
                 return Observable.throw(error || 'Error getAll users');
             });
@@ -38,7 +38,7 @@ export class UserService implements OnInit {
     public getById(id: any) {
         return this.http.get('/api/users/' + id, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error getById users');
                 return Observable.throw(error || 'Error getById users');
             });
@@ -65,7 +65,7 @@ export class UserService implements OnInit {
                 }
                 return response;
             })
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error create users');
                 return Observable.throw(error || 'Error create users');
             });
@@ -78,7 +78,7 @@ export class UserService implements OnInit {
     public update(user: User) {
         return this.http.put('/api/users/' + user.id, user, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error update users');
                 return Observable.throw(error || 'Error update users');
             });
@@ -87,7 +87,7 @@ export class UserService implements OnInit {
     public delete(id: any) {
         return this.http.delete('/api/users/' + id, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error delete users');
                 return Observable.throw(error || 'Error delete users');
             });

@@ -13,7 +13,7 @@ export class UserSearchService {
     search(term: string): Observable<User[]> {
         return this.http.get(`/api/search-users/?name=${term}`, this.jwt())
             .map((r: Response) => r.json() as User[])
-             .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error search users');
                 return Observable.throw(error || 'Error search users');
             });

@@ -26,7 +26,7 @@ export class UploadService {
 
         return this.http.post(`/api/upload-file`, formData)
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error upload-file');
                 return Observable.throw(error || 'Error upload-file');
             });

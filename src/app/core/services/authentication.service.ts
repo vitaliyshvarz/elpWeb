@@ -40,10 +40,10 @@ export class AuthenticationService {
                 this.loggedService.setLogged(this.logged);
             }
         })
-        .catch((error: any) => {
-            this.alertService.error(error || 'Error login');
-            return Observable.throw(error || 'Error login')
-        });
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error login');
+                return Observable.throw(error || 'Error login');
+            });
     }
 
     logout() {
@@ -64,21 +64,21 @@ export class AuthenticationService {
         this.loggedService.setLogged(this.logged);
     }
 
-    isAdmin (user: User): Observable<boolean> {
+    isAdmin(user: User): Observable<boolean> {
         return this.http.post(`/api/is-admin`, user)
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error isAdmin');
-                return Observable.throw(error || 'Error isAdmin')
+                return Observable.throw(error || 'Error isAdmin');
             });
     }
 
     sendRecoveryPassEmail(email: string): Observable<{}> {
         return this.http.post(`/api/send-recovery-pass-email`, email)
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error sending Recovery email');
-                return Observable.throw(error || 'Error sending Recovery email')
+                return Observable.throw(error || 'Error sending Recovery email');
             });
     }
 

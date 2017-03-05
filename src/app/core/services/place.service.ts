@@ -10,7 +10,7 @@ export class PlaceService {
     public getAll() {
         return this.http.get('/api/places', this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error getAll places');
                 return Observable.throw(error || 'Error getAll places');
             });
@@ -19,7 +19,7 @@ export class PlaceService {
     public getAllForUser(email: string) {
         return this.http.get(`/api/place-by-email/?email=${email}`, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error getAllForUser places');
                 return Observable.throw(error || 'Error getAllForUser places');
             });
@@ -27,7 +27,7 @@ export class PlaceService {
     public getById(id: any) {
         return this.http.get('/api/places/' + id, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error getById places');
                 return Observable.throw(error || 'Error getById places');
             });
@@ -36,7 +36,7 @@ export class PlaceService {
     public create(place: any) {
         return this.http.post('/api/places', place, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error create places');
                 return Observable.throw(error || 'Error create places');
             });
@@ -45,7 +45,7 @@ export class PlaceService {
     public update(place: any) {
         return this.http.put('/api/places/' + place.id, place, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error update places');
                 return Observable.throw(error || 'Error update places');
             });
@@ -54,7 +54,7 @@ export class PlaceService {
     public delete(id: any) {
         return this.http.delete('/api/places/' + id, this.jwt())
             .map((response: Response) => response.json())
-            .catch((error:any) => {
+            .catch((error: any) => {
                 this.alertService.error(error || 'Error delete places');
                 return Observable.throw(error || 'Error delete places');
             });

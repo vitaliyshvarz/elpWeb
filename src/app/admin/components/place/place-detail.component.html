@@ -72,14 +72,15 @@
     <hr />
 
     <payment-options [data]="place.payment_options"></payment-options>
-
     <br />
     <hr />
     <working-hours [data]="place.elp_opening_hours" ></working-hours>
     <hr />
     <currency-selector [data]="place.currency"></currency-selector>
     <hr />
-    <dishes-selector [dishes]="place.meals" [currency]=place.currency></dishes-selector>
+    <dishes-selector [dishes]="place.meals" [currency]=place.currency [deleteMeals]="true">
+    </dishes-selector>
+    <add-meals [existingMeals]="place.meals"></add-meals>
     <hr />
 
     <div class="row">
