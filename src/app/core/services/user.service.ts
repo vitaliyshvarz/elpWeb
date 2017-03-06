@@ -2,8 +2,10 @@ import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { AlertService }                            from '../services/alert.service';
 import { User } from '../models/user';
 import { ADMIN_EMAILS } from '../config/admins';
+
 
 @Injectable()
 export class UserService implements OnInit {
@@ -12,7 +14,7 @@ export class UserService implements OnInit {
     private coords: any;
     private adminEmails: any = ADMIN_EMAILS;
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private alertService: AlertService) { }
 
     ngOnInit() {
         window.navigator.geolocation.getCurrentPosition(position => {
@@ -26,12 +28,20 @@ export class UserService implements OnInit {
 
     public getAll() {
         return this.http.get('/api/users', this.jwt())
-            .map((response: Response) => response.json());
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error getAll users');
+                return Observable.throw(error || 'Error getAll users');
+            });
     }
 
     public getById(id: any) {
         return this.http.get('/api/users/' + id, this.jwt())
-            .map((response: Response) => response.json());
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error getById users');
+                return Observable.throw(error || 'Error getById users');
+            });
     }
 
     public create(userData: any) {
@@ -54,6 +64,10 @@ export class UserService implements OnInit {
                     this.subject.next(status);
                 }
                 return response;
+            })
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error create users');
+                return Observable.throw(error || 'Error create users');
             });
     }
 
@@ -62,14 +76,21 @@ export class UserService implements OnInit {
     }
 
     public update(user: User) {
-        console.log(user);
         return this.http.put('/api/users/' + user.id, user, this.jwt())
-            .map((response: Response) => response.json());
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error update users');
+                return Observable.throw(error || 'Error update users');
+            });
     }
 
     public delete(id: any) {
         return this.http.delete('/api/users/' + id, this.jwt())
-            .map((response: Response) => response.json());
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error delete users');
+                return Observable.throw(error || 'Error delete users');
+            });
     }
 
     private jwt() {

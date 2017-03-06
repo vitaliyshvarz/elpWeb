@@ -1,5 +1,6 @@
 // Guards
 export * from './guards/auth.guard';
+export * from './guards/admin.guard';
 
 // Models
 export * from './models/place';
@@ -18,6 +19,7 @@ export * from './services/meal-search.service';
 export * from './services/communication.service';
 export * from './services/meal.service';
 export * from './services/upload.service';
+export * from './services/alert.service';
 
 
 // Translate

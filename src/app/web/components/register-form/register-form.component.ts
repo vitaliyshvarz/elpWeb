@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../../../core/@core';
-import { AlertService } from '../../services/alert.service';
+import { Component, OnInit }                from '@angular/core';
+import { Router }                           from '@angular/router';
+import { UserService, User, AlertService }  from '../../../core/@core';
+import { Location }                         from '@angular/common';
 
 
 @Component({
@@ -11,13 +11,14 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class WebRegisterFormComponent implements OnInit {
-    model: any = {};
+    model: User = new User();
     loginButton: any;
 
     constructor(
         private router: Router,
         private userService: UserService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private location: Location) { }
 
     ngOnInit() {
         const context = this;
@@ -41,5 +42,9 @@ export class WebRegisterFormComponent implements OnInit {
                 this.alertService.error(error);
                 this.loginButton.removeClass('sending').blur();
             });
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }

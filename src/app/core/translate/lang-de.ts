@@ -77,6 +77,7 @@ export const LANG_ES_TRANS = {
     'MY_ACCOUNT': 'Mein Konto',
     'USERS_REGISTERED': 'Registriert Benutzer',
     'PLACES_REGISTERED': 'Registriert Orte',
-    'TOTAL_MEALS': 'Mahlzeiten in Gesamt'
+    'TOTAL_MEALS': 'Mahlzeiten in Gesamt',
+    'ADD_MEALS_FROM_ALL': 'Mahlzeiten von alle verfügbare hinzufügen'
 
 };

@@ -77,6 +77,7 @@ export const LANG_EN_TRANS = {
     'MY_ACCOUNT': 'My Account',
     'USERS_REGISTERED': 'Users Registered',
     'PLACES_REGISTERED': 'Places Registered',
-    'TOTAL_MEALS': 'Meals in total'
+    'TOTAL_MEALS': 'Meals in total',
+    'ADD_MEALS_FROM_ALL': 'Add Meals from all available'
 
 };

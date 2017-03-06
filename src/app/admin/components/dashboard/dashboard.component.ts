@@ -87,6 +87,7 @@ export class DashboardComponent implements OnInit {
 
     // delete user by id
     private deleteUser(id: string): void {
+        console.log(id);
         this.userService.delete(id)
             .subscribe(() => {
                 this.loadAllUsers();
@@ -127,11 +128,15 @@ export class DashboardComponent implements OnInit {
 
     openConfirmPopUp(item: User | Place | Meal, type: string) {
         this.deleteType = type;
-        this.currentPopUp = Foundation.Reveal($('#deleteModal'));
+        this.currentPopUp = new (<any>Foundation.Reveal)($('#deleteModal'));
         this.selectedItem = item;
         this.currentPopUp.open();
     }
 
+    gotToPage(page: string): void {
+        let link = [`${page}`];
+        this.router.navigate(link);
+    }
 
     /*
     * Go to place detail page

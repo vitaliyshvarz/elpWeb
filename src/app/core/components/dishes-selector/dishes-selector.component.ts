@@ -13,7 +13,7 @@ export class DishesSelectorComponent implements OnInit {
     private currentCurrency: any;
     @Input('dishes') dishesData: any;
     @Input('currency') currency: any;
-
+    @Input('deleteMeals') deleteMeals: boolean;
 
     toogleDetails(id: string): void {
         $(`#${id}details`).slideToggle('slow');
@@ -22,6 +22,10 @@ export class DishesSelectorComponent implements OnInit {
     ngOnInit() {
         this.currentCurrency = this.currency;
         this.dishes = this.dishesData || JSON.parse(JSON.stringify(DISHES));
+    }
+
+    removeMeal(id: string | number): void {
+        this.dishes.splice(id, 1);
     }
 
 

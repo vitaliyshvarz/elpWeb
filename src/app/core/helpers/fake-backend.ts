@@ -14,18 +14,65 @@ export let fakeBackendProvider = {
         let meals: any[];
         try {
             meals = JSON.parse(localStorage.getItem('meals')) || [];
-            places = JSON.parse(localStorage.getItem('places')) || [];
+            if (!meals.length) {
+                meals = DISHES;
+            }
+        } catch (err) {
+            meals = DISHES;
+        }
+        try {
             users = JSON.parse(localStorage.getItem('users')) || [];
         } catch (err) {
             users = [];
+        }
+        try {
+            places = JSON.parse(localStorage.getItem('places')) || [];
+        } catch (err) {
             places = [];
-            meals = DISHES;
         }
 
         // configure fake backend
         backend.connections.subscribe((connection: MockConnection) => {
             // wrap in timeout to simulate server api call
             setTimeout(() => {
+
+                // upload file
+                if (connection.request.url.endsWith('/api/upload-file') &&
+                    connection.request.method === RequestMethod.Post) {
+
+                    console.log(connection.request);
+                    // Some upload file magic here;
+
+                    // respond 200 OK
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        status: 200,
+                        body: {
+                            result: {
+                            }
+                        }
+                    })));
+                }
+
+                // is user admin
+                if (connection.request.url.endsWith('/api/is-admin') &&
+                    connection.request.method === RequestMethod.Post) {
+                    let pendingUser = JSON.parse(connection.request.getBody());
+                    let result = false;
+                    let adminUser = users.find(user => {
+                        return user.email === pendingUser.email &&
+                            user.password === pendingUser.password &&
+                            user.type === pendingUser.type;
+                    });
+                    result = adminUser ? true : false;
+
+                    // respond 200 OK
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        status: 200,
+                        body: {
+                            result: result
+                        }
+                    })));
+                }
 
                 // authenticate
                 if (connection.request.url.endsWith('/api/authenticate') &&

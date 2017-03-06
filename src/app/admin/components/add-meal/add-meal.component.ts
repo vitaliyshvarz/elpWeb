@@ -1,6 +1,6 @@
-import { Component, OnInit }             from '@angular/core';
-import { ActivatedRoute, Params }        from '@angular/router';
-import { Location }                      from '@angular/common';
+import { Component }             from '@angular/core';
+import { ActivatedRoute }        from '@angular/router';
+import { Location }              from '@angular/common';
 import {
     MealService,
     UploadService,
@@ -11,12 +11,11 @@ import {
 
 @Component({
     moduleId: module.id,
-    selector: 'my-meal-detail',
-    templateUrl: 'meal-detail.component.html',
-    styleUrls: ['meal-detail.component.css']
+    selector: 'add-meal',
+    templateUrl: 'add-meal.component.html',
+    styleUrls: ['add-meal.component.css']
 })
-
-export class MealDetailComponent implements OnInit {
+export class AddMealComponent {
     meal: Meal;
     currentCurrency: any = CURRENCIES[0]; // USD
 
@@ -26,6 +25,7 @@ export class MealDetailComponent implements OnInit {
         private location: Location,
         private uploadService: UploadService
     ) {
+        this.meal = new Meal();
         this.uploadService.progress$.subscribe(
             (data: any) => {
                 console.log('progress = ' + data);
@@ -35,27 +35,20 @@ export class MealDetailComponent implements OnInit {
     onFileChange(event: any) {
         const files = event.srcElement.files;
 
-        this.uploadService.uploadImage([], files).subscribe(() => {
+        this.uploadService.uploadImage([], files[0]).subscribe(() => {
             let currentPopUp = new (<any>Foundation.Reveal)($('#uploadImageResultModal'));
             currentPopUp.open();
         });
     }
 
-    ngOnInit(): void {
-        this.route.params.forEach((params: Params) => {
-            let id = params['id'];
-            this.mealService.getById(id)
-                .subscribe((meal: Meal) => this.meal = meal);
-        });
-    }
     goBack(): void {
         this.location.back();
     }
 
     save(): void {
-        this.mealService.update(this.meal)
+        this.mealService.create(this.meal)
             .subscribe(() => {
-                let currentPopUp = new (<any>Foundation.Reveal)($('#editMealResultModal'));
+                let currentPopUp = new (<any>Foundation.Reveal)($('#createMealResultModal'));
                 currentPopUp.open();
             });
     }

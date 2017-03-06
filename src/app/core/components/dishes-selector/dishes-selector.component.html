@@ -4,11 +4,13 @@
       <h6>{{'SELECT_DISHES' | translate}}</h6>
     </div>
     <br />
-    <div *ngFor="let dish of dishes">
+    <div *ngFor="let dish of dishes; let i = index">
 
       <div class="row">
         <div class="small-6 medium-6 large-6 columns">
-          <img [src]="dish.imageUrl"/>
+          <img *ngIf="dish.imageUrl" [src]="dish.imageUrl"/>
+          <img *ngIf="!dish.imageUrl" src="./app/web/assets/img/foodLogoBlack.png" alt="Food Logo" />
+
         </div>
         <div class="small-6 medium-6 large-6 columns">
           <div class="text-center">
@@ -35,6 +37,9 @@
                         <span class="switch-inactive" aria-hidden="true">No</span>
                       </label>
               </div>
+              <button *ngIf="deleteMeals" class="button tiny alert" (click)="removeMeal(i)">
+                remove meal
+              </button>
             </div>
           </div>
           <br />

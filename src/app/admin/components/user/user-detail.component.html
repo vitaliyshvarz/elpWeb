@@ -23,9 +23,9 @@
           <input type="text" [(ngModel)]="user.lastName" placeholder="lastName">
         </label>
         <label>email
-          <input type="text" [(ngModel)]="user.email" placeholder="email">
+          <input type="email" [(ngModel)]="user.email" placeholder="email">
         </label>
-        <label>Registered on
+        <label>Regiastered on
           <input type="text" [(ngModel)]="user.registrationTime" disabled placeholder="email">
         </label>
         <fieldset *ngIf="!currentUser"class="large-6 columns">

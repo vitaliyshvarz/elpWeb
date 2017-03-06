@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../../core/@core';
 
 
 import {

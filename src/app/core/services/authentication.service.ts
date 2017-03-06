@@ -1,7 +1,11 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Logged }         from '../definitions/logged';
+import { AlertService }   from '../services/alert.service';
 import { LoggedService }  from '../services/logged.service';
+
+import { User }           from  '../models/user';
+import { Observable }     from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
@@ -9,11 +13,13 @@ declare const FB: any;
 declare const gapi: any;
 
 @Injectable()
+
 export class AuthenticationService {
     private logged: Logged;
     constructor(
         private http: Http,
-        private loggedService: LoggedService
+        private loggedService: LoggedService,
+        private alertService: AlertService
     ) { }
 
     login(email: string, password: string) {
@@ -33,7 +39,11 @@ export class AuthenticationService {
                 };
                 this.loggedService.setLogged(this.logged);
             }
-        });
+        })
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error login');
+                return Observable.throw(error || 'Error login');
+            });
     }
 
     logout() {
@@ -54,9 +64,22 @@ export class AuthenticationService {
         this.loggedService.setLogged(this.logged);
     }
 
-    sendRecoveryPassEmail(email: string) {
+    isAdmin(user: User): Observable<boolean> {
+        return this.http.post(`/api/is-admin`, user)
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error isAdmin');
+                return Observable.throw(error || 'Error isAdmin');
+            });
+    }
+
+    sendRecoveryPassEmail(email: string): Observable<{}> {
         return this.http.post(`/api/send-recovery-pass-email`, email)
-            .map((response: Response) => response.json());
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error sending Recovery email');
+                return Observable.throw(error || 'Error sending Recovery email');
+            });
     }
 
 }

@@ -8,6 +8,7 @@ import { WorkingHoursComponent } from './core/components/working-hours/working-h
 import { PaymentOptionsComponent } from './core/components/payment-options/payment-options.component';
 import { CurrencySelectorComponent } from './core/components/currency-selector/currency-selector.component';
 import { DishesSelectorComponent } from './core/components/dishes-selector/dishes-selector.component';
+import { AlertComponent } from './core/components/alert/alert.component';
 
 // ADMIN components
 import { AdminHomeComponent } from './admin/components/home/admin-home.component';
@@ -19,6 +20,9 @@ import { DashboardComponent } from './admin/components/dashboard/dashboard.compo
 import { SearchComponent } from './admin/components/search/search.component';
 import { MainAdminComponent }  from './admin/components/main/admin-main.component';
 import { AdminTopMenuComponent }  from './admin/components/admin-top-menu/admin-top-menu.component';
+import { AddMealComponent } from './admin/components/add-meal/add-meal.component';
+import { AddMealsComponent } from './admin/components/add-meals/add-meals.component';
+import { AddUserComponent }        from './admin/components/add-user/add-user.component';
 
 // WEB components
 import { AppComponent }  from './web/components/main/main.component';
@@ -28,7 +32,6 @@ import { TranslationsListComponent } from './web/components/translations-list/tr
 import { WebLoginFormComponent } from './web/components/login-form/login-form.component';
 import { WebRegisterFormComponent } from './web/components/register-form/register-form.component';
 import { WebLoginRegisterComponent } from './web/components/login-register/login-register.component';
-import { AlertComponent } from './web/components/alert/alert.component';
 import { FacebookLoginComponent } from './web/components/facebooklogin/facebooklogin.component';
 import { GoogleLoginComponent } from './web/components/googlelogin/googlelogin.component';
 import { FooterComponent } from './web/components/footer/footer.component';
@@ -40,9 +43,6 @@ import { AddPlacePart3Component } from './web/components/add-place/add-place-par
 import { AboutUsComponent } from './web/components/about-us/about-us.component';
 import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
 import { RecoverPasswordComponent } from './web/components/recover-password/recover-password.component';
-
-
-import { AlertService } from './web/services/alert.service';
 
 // Shared Modules
 import {
@@ -56,7 +56,9 @@ import {
     TRANSLATION_PROVIDERS,
     TranslatePipe,
     TranslateService,
-    AuthGuard } from './core/@core';
+    AuthGuard,
+    AdminGuard,
+    AlertService } from './core/@core';
 
 
 import { AppRoutingModule }     from './app-routing.module';
@@ -109,10 +111,14 @@ import './rxjs-extensions';
         CurrencySelectorComponent,
         DishesSelectorComponent,
         RecoverPasswordComponent,
-        AdminHomeComponent
+        AdminHomeComponent,
+        AddMealComponent,
+        AddUserComponent,
+        AddMealsComponent
     ],
     providers: [
         AuthGuard,
+        AdminGuard,
         PlaceService,
         TRANSLATION_PROVIDERS,
         TranslateService,

@@ -6,15 +6,15 @@ import { Logged } from '../definitions/logged';
 @Injectable()
 export class LoggedService {
 
-  private logged: Logged;
-  private subject: Subject<Logged> = new Subject<Logged>();
+    private logged: Logged;
+    private subject: Subject<Logged> = new Subject<Logged>();
 
-  setLogged(logged: Logged): void {
-    this.logged = logged;
-    this.subject.next(logged);
-  }
+    setLogged(logged: Logged): void {
+        this.logged = logged;
+        this.subject.next(logged);
+    }
 
-  getLogged(): Observable<Logged> {
-    return this.subject.asObservable();
-  }
+    getLogged(): Observable<Logged> {
+        return this.subject.asObservable();
+    }
 }

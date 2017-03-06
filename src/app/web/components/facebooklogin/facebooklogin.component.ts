@@ -1,7 +1,7 @@
 import { Component }             from '@angular/core';
 import { AuthenticationService } from '../../../core/@core';
 import { UserService }           from '../../../core/@core';
-import { AlertService }          from '../../services/alert.service';
+import { AlertService }          from '../../../core/@core';
 
 declare const FB: any;
 
