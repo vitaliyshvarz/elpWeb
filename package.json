@@ -4,6 +4,7 @@
   "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.html",
   "scripts": {
+    "postinstall": "gulp build",
     "lite": "lite-server",
     "gulp": "gulp",
     "start": "concurrently --kill-others \"gulp watch\" \"lite-server  -c bs-config.js\"",
