@@ -78,7 +78,7 @@ gulp.task('build-css', function () {
 gulp.task('build-ts', function () {
     return gulp.src([dev + '**/*.ts', 'typings/tsd.d.ts'])
         .pipe(sourcemaps.init())
-        .pipe(typescript(tsProject))
+        .pipe(tsProject())
         .pipe(jsuglify())
         .pipe(sourcemaps.write('../../' + prod))
         .pipe(gulp.dest(prod));
@@ -152,7 +152,7 @@ gulp.task('tslint', function () {
             formatter: 'verbose'
         }))
         .pipe(tslint.report())
-        .pipe(typescript(tsProject));
+        .pipe(tsProject());
 });
 
 gulp.task('build', function (done) {
