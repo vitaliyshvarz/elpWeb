@@ -78,7 +78,7 @@ gulp.task('build-css', function () {
 gulp.task('build-ts', function () {
     return gulp.src([dev + '**/*.ts', 'typings/tsd.d.ts'])
         .pipe(sourcemaps.init())
-        .pipe(tsProject())
+        .pipe(tsProject({noEmitOnError: false}))
         .pipe(jsuglify())
         .pipe(sourcemaps.write('../../' + prod))
         .pipe(gulp.dest(prod));
