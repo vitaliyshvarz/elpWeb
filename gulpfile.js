@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var gls = require('gulp-live-server');
 var concat = require('gulp-concat');
 var tslint = require('gulp-tslint');
+var run = require('gulp-run');
 
 var dev = 'src/';
 var prod = 'dist/';
@@ -130,9 +131,12 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
+gulp.task('start-server', function() {
+    run('npm start').exec();
+})
+
 gulp.task('start', function () {
-    runSequence('develop',
-        'watch');
+    runSequence( 'develop', 'watch', 'start-server');
 });
 
 gulp.task('develop', function (done) {
