@@ -4,11 +4,11 @@
   "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.html",
   "scripts": {
-    "heroku-prebuild": "rm -rf node_modules/",
+    "heroku-prebuild": "rm -rf node_modules/ typings/",
     "heroku-postbuild": "gulp build",
     "lite": "lite-server",
     "gulp": "gulp",
-    "start": "concurrently --kill-others \"gulp watch\" \"lite-server  -c bs-config.js\"",
+    "start": "lite-server  -c bs-config.js",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
