@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var gls = require('gulp-live-server');
 var concat = require('gulp-concat');
 var tslint = require('gulp-tslint');
-var run = require('gulp-run');
+var exec = require('child_process').exec;
 
 var dev = 'src/';
 var prod = 'dist/';
@@ -103,18 +103,17 @@ gulp.task('build-html', function () {
         .pipe(gulp.dest(prod));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function (done) {
     gulp.watch([dev + '**/*.ts',
         dev + '**/*.scss',
-        dev + '**/*.html',
-        dev + '**/*.png',
-        dev + '**/*.jpg'
+        dev + '**/*.html'
     ], [
         'build-ts',
         'build-css',
-        'build-html',
-        'build-img'
+        'build-html'
     ]);
+
+    return done();
 });
 
 gulp.task('clean-all', function () {
@@ -125,14 +124,20 @@ gulp.task('clean-all', function () {
 });
 
 gulp.task('clean', function () {
-    return gulp.src('dist/app', {
+    return gulp.src([
+        'dist/app' + '**/*.ts', 
+        'dist/app' + '**/*.html', 
+        'dist/app' + '**/*.css'
+        ], {
             read: false
         })
         .pipe(clean());
 });
 
-gulp.task('start-server', function() {
-    run('npm start').exec();
+gulp.task('start-server', function(done) {
+    exec('npm start', function (err, stdout, stderr) {
+        done(err);
+    });
 })
 
 gulp.task('start', function () {

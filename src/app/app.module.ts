@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
+
 // CORE components
 import { WorkingHoursComponent } from './core/components/working-hours/working-hours.component';
 import { PaymentOptionsComponent } from './core/components/payment-options/payment-options.component';
