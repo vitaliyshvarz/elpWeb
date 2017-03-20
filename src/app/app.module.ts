@@ -134,8 +134,6 @@ import './rxjs-extensions';
         { provide: BrowserXhr, useClass: CustExtBrowserXhr }
     ],
     bootstrap: [AppComponent]
-});
-
+})
 export class AppModule { }
-
 }
