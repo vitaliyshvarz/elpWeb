@@ -23,7 +23,7 @@ export class AuthenticationService {
     ) { }
 
     login(email: string, password: string) {
-        return this.http.post('/api/authenticate', JSON.stringify({
+        return this.http.post('http://localhost:9999/api/login', JSON.stringify({
             email: email,
             password: password
         })).map((response: Response) => {

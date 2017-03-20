@@ -48,8 +48,7 @@ export class UserService implements OnInit {
         this.user = {
             id: userData.id,
             password: userData.password || '',
-            firstName: userData.firstName || '',
-            lastName: userData.lastName || '',
+            username: userData.firstName + userData.lastName || '',
             type: this.isAdmin(userData) ? 'admin' : 'default',
             email: userData.email,
             registrationType: userData.registrationType,
@@ -58,8 +57,9 @@ export class UserService implements OnInit {
             location: this.coords
         };
 
-        return this.http.post('/api/users', this.user, this.jwt())
+        return this.http.post('http://localhost:9999/api/signup', this.user)
             .map((response: Response) => {
+                console.log(response);
                 if (response.status === 200) {
                     this.subject.next(status);
                 }

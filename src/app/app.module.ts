@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { HttpModule, BrowserXhr }    from '@angular/http';
 
 // CORE components
 import { WorkingHoursComponent } from './core/components/working-hours/working-hours.component';
@@ -58,7 +58,9 @@ import {
     TranslateService,
     AuthGuard,
     AdminGuard,
-    AlertService } from './core/@core';
+    AlertService,
+    CustExtBrowserXhr
+} from './core/@core';
 
 
 import { AppRoutingModule }     from './app-routing.module';
@@ -129,11 +131,11 @@ import './rxjs-extensions';
         LoggedService,
         CommunicationService,
         UploadService,
-        // providers used to create fake backend
-        fakeBackendProvider,
-        MockBackend,
-        BaseRequestOptions
+        { provide: BrowserXhr, useClass: CustExtBrowserXhr }
     ],
     bootstrap: [AppComponent]
-})
+});
+
 export class AppModule { }
+
+}

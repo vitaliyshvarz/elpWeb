@@ -35,5 +35,7 @@ export * from './config/workingHoursConfig';
 export * from './config/dishesConfig';
 export * from './config/currencyConfig';
 
+// Helpers
+export * from './helpers/cust-ext-browser-xhr';
 // TODO: remove this when real back end
 export * from './helpers/fake-backend';
