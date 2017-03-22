@@ -1,6 +1,5 @@
 import { User }  from './user';
 
-
 export class Place {
     id: number;
     googleId: string;

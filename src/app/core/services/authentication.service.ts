@@ -1,11 +1,11 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
 import { Logged }         from '../definitions/logged';
 import { AlertService }   from '../services/alert.service';
 import { LoggedService }  from '../services/logged.service';
-
-import { User }           from  '../models/user';
-import { Observable }     from 'rxjs/Observable';
+import { User }           from '../models/user';
+import { BACKEND_API }    from '../config/backendConfig';
 
 import 'rxjs/add/operator/map';
 
@@ -23,7 +23,7 @@ export class AuthenticationService {
     ) { }
 
     login(email: string, password: string) {
-        return this.http.post('http://localhost:9999/api/login', JSON.stringify({
+        return this.http.post(BACKEND_API.login, JSON.stringify({
             email: email,
             password: password
         })).map((response: Response) => {

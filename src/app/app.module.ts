@@ -64,12 +64,6 @@ import {
 
 
 import { AppRoutingModule }     from './app-routing.module';
-
-// used to create fake backend
-import { fakeBackendProvider } from './core/@core';
-import { MockBackend } from '@angular/http/testing';
-import { BaseRequestOptions } from '@angular/http';
-
 import './rxjs-extensions';
 
 
@@ -131,9 +125,12 @@ import './rxjs-extensions';
         LoggedService,
         CommunicationService,
         UploadService,
-        { provide: BrowserXhr, useClass: CustExtBrowserXhr }
+        {
+          provide: BrowserXhr,
+          useClass: CustExtBrowserXhr
+        }
     ],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }
-}

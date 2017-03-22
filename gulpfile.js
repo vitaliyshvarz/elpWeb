@@ -4,6 +4,7 @@ var gls = require('gulp-live-server');
 var concat = require('gulp-concat');
 var tslint = require('gulp-tslint');
 var exec = require('child_process').exec;
+var fs = require('fs');
 
 var dev = 'src/';
 var prod = 'dist/';
@@ -49,7 +50,7 @@ gulp.task('copy-libs', () => {
             '@angular/**'
         ], {
             cwd: "node_modules/**"
-        }) /* Glob required here. */
+        })
         .pipe(gulp.dest(prod + "/lib"));
 });
 
@@ -125,8 +126,8 @@ gulp.task('clean-all', function () {
 
 gulp.task('clean', function () {
     return gulp.src([
-        'dist/app' + '**/*.ts', 
-        'dist/app' + '**/*.html', 
+        'dist/app' + '**/*.ts',
+        'dist/app' + '**/*.html',
         'dist/app' + '**/*.css'
         ], {
             read: false
@@ -135,7 +136,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('start-server', function(done) {
-    exec('npm start', function (err, stdout, stderr) {
+    exec('npm start', {maxBuffer: 1024 * 5000}, function (err, stdout, stderr) {
         done(err);
     });
 })
@@ -164,6 +165,23 @@ gulp.task('tslint', function () {
         .pipe(tsProject());
 });
 
+gulp.task('build-config', function () {
+  if (process.env.NODE_ENV === 'production') {
+    fs.writeFileSync('dist/app/elpserverconfig.js', `
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.BASE_URL = 'https://TODOURL';
+    `);
+  } else {
+    fs.writeFileSync('dist/app/elpserverconfig.js', `
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.BASE_URL = 'http://localhost:9999/api';
+    `);
+  }
+
+});
+
 gulp.task('build', function (done) {
     runSequence(
         'clean-all',
@@ -175,6 +193,7 @@ gulp.task('build', function (done) {
         'build-css',
         'build-html',
         'build-img',
+        'build-config',
         function () {
             done();
         });

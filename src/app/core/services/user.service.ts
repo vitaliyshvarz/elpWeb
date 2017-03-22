@@ -1,10 +1,11 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
-import { AlertService }                            from '../services/alert.service';
-import { User } from '../models/user';
-import { ADMIN_EMAILS } from '../config/admins';
+import { Injectable, OnInit }                       from '@angular/core';
+import { Http, Headers, RequestOptions, Response }  from '@angular/http';
+import { Subject }                                  from 'rxjs/Subject';
+import { Observable }                               from 'rxjs/Observable';
+import { AlertService }                             from '../services/alert.service';
+import { User }                                     from '../models/user';
+import { ADMIN_EMAILS }                             from '../config/admins';
+import { BACKEND_API }                               from '../config/backendConfig';
 
 
 @Injectable()
@@ -27,7 +28,7 @@ export class UserService implements OnInit {
     }
 
     public getAll() {
-        return this.http.get('/api/users', this.jwt())
+        return this.http.get(BACKEND_API.getAllUsers, this.jwt())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error getAll users');
@@ -45,19 +46,19 @@ export class UserService implements OnInit {
     }
 
     public create(userData: any) {
-        this.user = {
-            id: userData.id,
-            password: userData.password || '',
-            username: userData.firstName + userData.lastName || '',
+        this.user = new User({
+            password: userData.password,
+            firstName: userData.firstName,
+            lastName: userData.lastName,
             type: this.isAdmin(userData) ? 'admin' : 'default',
             email: userData.email,
             registrationType: userData.registrationType,
             registrationTime: new Date(),
             image: userData.image,
             location: this.coords
-        };
+        });
 
-        return this.http.post('http://localhost:9999/api/signup', this.user)
+        return this.http.post(BACKEND_API.signup, this.user)
             .map((response: Response) => {
                 console.log(response);
                 if (response.status === 200) {
