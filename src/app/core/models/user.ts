@@ -10,16 +10,27 @@ export class User {
     image: string = '';
     location: any = { };
 
-    constructor(params: any) {
-      this.id  = params.id;
-      this.password  = params.password;
-      this.firstName  = params.firstName;
-      this.lastName  = params.lastName;
-      this.type  = params.type;
-      this.email  = params.email;
-      this.registrationType  = params.registrationType;
-      this.registrationTime  = params.registrationTime;
-      this.image  = params.image;
-      this.location  = params.location;
+    constructor({
+        id = '',
+        password = '',
+        firstName = '',
+        lastName = '',
+        type = 'default',
+        email = '',
+        registrationType = '',
+        registrationTime = new Date(),
+        image = '',
+        location= { lg:'', lt: ''}
+      } = {}) {
+      this.id  = id;
+      this.password  = password;
+      this.firstName  = firstName;
+      this.lastName  = lastName;
+      this.type  = type;
+      this.email  = email;
+      this.registrationType  = registrationType;
+      this.registrationTime  = registrationTime;
+      this.image  = image;
+      this.location  = location;
     }
 }
