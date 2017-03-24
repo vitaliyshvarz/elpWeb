@@ -87,7 +87,6 @@ export class DashboardComponent implements OnInit {
 
     // delete user by id
     private deleteUser(id: string): void {
-        console.log(id);
         this.userService.delete(id)
             .subscribe(() => {
                 this.loadAllUsers();
@@ -143,12 +142,11 @@ export class DashboardComponent implements OnInit {
     * @param place
     */
     gotoDetail(type: any, item: any): void {
-        let link = [`/admin/${type}-detail`, item.id];
+        let link = [`/admin/${type}-detail`, item._id];
         this.router.navigate(link);
     }
 
     selectTab(name: string): void {
-
         this.tabs.forEach((tab: any) => {
             if (tab.name === name) {
                 tab.active = true;
