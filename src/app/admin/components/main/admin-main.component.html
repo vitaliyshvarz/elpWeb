@@ -8,14 +8,17 @@
         <ul class="mobile-ofc vertical menu">
           <li><a routerLink="/home">{{'WEBSITE' | translate }}</a></li>
           <li>
-            <a routerLink="/admin/dashboard">
+            <a *ngIf="currentUser && currentUser.accountType == 'admin'" routerLink="/admin/dashboard">
               {{'DASHBOARD' | translate }}
             </a>
-            <!-- <a *ngIf="currentUser.type == 'admin'" routerLink="/admin/dashboard">
-              {{'DASHBOARD' | translate }}
-            </a> -->
           </li>
           <li><a routerLink="/admin/my-places">{{'MY_PLACES' | translate }}</a></li>
+          <li>
+            <a href="javascript:;" *ngIf="currentUser">
+              {{currentUser.firstName}}
+              <span class="label logout-label" (click)="logout()">logout</span>
+            </a>
+          </li>
         </ul>
         <translations-list
           [ul-class]="'small expanded button-group mob-lang-menu'"

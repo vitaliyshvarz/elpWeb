@@ -20,7 +20,8 @@ export class AuthenticationService {
     constructor(
         private http: Http,
         private loggedService: LoggedService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private sessionService: SessionService
     ) { }
 
     login(email: string, password: string) {
@@ -34,9 +35,6 @@ export class AuthenticationService {
             if (user && token) {
                 // store user details and jwt token in local storage
                 // to keep user logged in between page refreshes
-                //REMOVE THIS!!!!
-                user.type = 'admin';
-                //=====================
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 localStorage.setItem('sessionToken', JSON.stringify(token));
                 this.logged = {
@@ -69,15 +67,17 @@ export class AuthenticationService {
     }
 
     isAdmin(user: User): Observable<any> {
-      //REMOVE THIS!!!!
-      return Observable.of({result: true});
-      //=====================
-      // return this.http.post(`/api/is-admin`, user)
-      //     .map((response: Response) => response.json())
-      //     .catch((error: any) => {
-      //         this.alertService.error(error || 'Error isAdmin');
-      //         return Observable.throw(error || 'Error isAdmin');
-      //     });
+      return this.http.get(BACKEND_API.getCurrentUser, this.sessionService.addTokenHeader())
+          .map((response: Response) => {
+            const user = response.json()
+            if (user && user.accountType === 'admin') {
+                return true;
+            }
+          })
+          .catch((error: any) => {
+              this.alertService.error(error || 'Error isAdmin');
+              return Observable.throw(error || 'Error isAdmin');
+          });
     }
 
     sendRecoveryPassEmail(email: string): Observable<{}> {

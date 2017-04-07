@@ -34,8 +34,8 @@ export class MealService {
             });
     }
 
-    public update(place: any) {
-        return this.http.put('/api/meals/' + place.id, place, this.jwt())
+    public update(meal: any) {
+        return this.http.put('/api/meals/' + meal.id, meal, this.jwt())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error meal update');

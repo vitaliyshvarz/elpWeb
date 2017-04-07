@@ -6,5 +6,6 @@ export const BACKEND_API: any = {
   'getUserById': `${BASE_URL}/user/`,
   'deleteUser':  `${BASE_URL}/user/`,
   'signup': `${BASE_URL}/signup`,
-  'upload': `${BASE_URL}/upload`
+  'upload': `${BASE_URL}/upload`,
+  'getCurrentUser': `${BASE_URL}/me`,
 };
