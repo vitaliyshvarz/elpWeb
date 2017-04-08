@@ -5,8 +5,10 @@ import { Observable }                               from 'rxjs/Observable';
 import { AlertService }                             from '../services/alert.service';
 import { User }                                     from '../models/user';
 import { ADMIN_EMAILS }                             from '../config/admins';
-import { BACKEND_API }                               from '../config/backendConfig';
-
+import { BACKEND_API }                              from '../config/backendConfig';
+import { LoggedService }                            from '../services/logged.service';
+import { Logged }                                   from '../definitions/logged';
+import { SessionService }                           from '../services/session.service';
 
 @Injectable()
 export class UserService implements OnInit {
@@ -14,8 +16,13 @@ export class UserService implements OnInit {
     private user: User;
     private coords: any;
     private adminEmails: any = ADMIN_EMAILS;
+    private logged: Logged;
 
-    constructor(private http: Http, private alertService: AlertService) { }
+    constructor(
+      private http: Http,
+      private alertService: AlertService,
+      private loggedService: LoggedService,
+      private sessionService: SessionService) { }
 
     ngOnInit() {
         window.navigator.geolocation.getCurrentPosition(position => {
@@ -28,7 +35,7 @@ export class UserService implements OnInit {
     }
 
     public getAll() {
-        return this.http.get(BACKEND_API.getAllUsers, this.jwt())
+        return this.http.get(BACKEND_API.getAllUsers, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error getAll users');
@@ -37,7 +44,7 @@ export class UserService implements OnInit {
     }
 
     public getById(id: any) {
-        return this.http.get('/api/users/' + id, this.jwt())
+        return this.http.get(BACKEND_API.getUserById + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error getById users');
@@ -45,11 +52,20 @@ export class UserService implements OnInit {
             });
     }
 
+    public isRegistered(userData: any) {
+      return this.http.get(BACKEND_API.isRegistered, this.sessionService.addTokenHeader())
+          .map((response: Response) => response.json())
+          .catch((error: any) => {
+              this.alertService.error(error.json().message || 'Error isRegistered');
+              return Observable.throw(error.json().message || 'Error isRegistered');
+          });
+    }
+
     public create(userData: any) {
         this.user = new User({
             password: userData.password,
-            firstName: userData.firstName,
-            lastName: userData.lastName,
+            firstName: userData.firstName || userData.first_name,
+            lastName: userData.lastName || userData.last_name,
             type: this.isAdmin(userData) ? 'admin' : 'default',
             email: userData.email,
             registrationType: userData.registrationType,
@@ -60,15 +76,33 @@ export class UserService implements OnInit {
 
         return this.http.post(BACKEND_API.signup, this.user)
             .map((response: Response) => {
-                console.log(response);
+
                 if (response.status === 200) {
-                    this.subject.next(status);
+                  let user = response.json().user;
+                  let token = response.json().token;
+
+                  if (user && token) {
+                      // store user details and jwt token in local storage
+                      // to keep user logged in between page refreshes
+                      localStorage.setItem('currentUser', JSON.stringify(user));
+                      localStorage.setItem('sessionToken', JSON.stringify(token));
+                      this.logged = {
+                          email: user.email,
+                          firstName: user.firstName
+                      };
+                      this.loggedService.setLogged(this.logged);
+                  }
+
+                  this.subject.next(status);
                 }
                 return response;
+
+
+
             })
             .catch((error: any) => {
-                this.alertService.error(error || 'Error create users');
-                return Observable.throw(error || 'Error create users');
+                this.alertService.error(error.json().message || error.json().errmsg  || 'Error create user');
+                return Observable.throw(error.json().message || error.json().errmsg  || 'Error create user');
             });
     }
 
@@ -77,7 +111,7 @@ export class UserService implements OnInit {
     }
 
     public update(user: User) {
-        return this.http.put('/api/users/' + user.id, user, this.jwt())
+        return this.http.put('/api/users/' + user.id, user, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error update users');
@@ -86,21 +120,11 @@ export class UserService implements OnInit {
     }
 
     public delete(id: any) {
-        return this.http.delete('/api/users/' + id, this.jwt())
+        return this.http.delete(BACKEND_API.deleteUser + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error delete users');
                 return Observable.throw(error || 'Error delete users');
             });
-    }
-
-    private jwt() {
-        // create authorization header with jwt token
-        const userData: any = JSON.parse(localStorage.getItem('currentUser')) || {};
-        let currentUser = !!userData.firstName ? userData : null;
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-            return new RequestOptions({ headers: headers });
-        }
     }
 }

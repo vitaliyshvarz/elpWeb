@@ -40,16 +40,16 @@ export class GoogleLoginComponent {
                             password: googleUser.getBasicProfile().getId(),
                             image: googleUser.getBasicProfile().getImageUrl()
                         };
+
                         this.loginInApp(userData);
                     }, (error: any) => {
-                        console.log('Sign-in error', error);
                         this.loginButton.removeClass('sending').blur();
                         this.alertService.error(error);
                     }
                 );
             });
         } catch (err) {
-            console.warn('google login unavailbale', err);
+          this.alertService.error('google login unavailbale');
         }
     }
 
@@ -62,7 +62,6 @@ export class GoogleLoginComponent {
                 // to persist the message after redirecting to the login page
                 this.loginButton.removeClass('sending').blur();
                 this.alertService.success('Registration successful', true);
-                this.loginInApp(response);
             },
             (error: any) => {
                 this.loginButton.removeClass('sending').blur();
@@ -78,8 +77,12 @@ export class GoogleLoginComponent {
                 this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
-                this.alertService.error(error);
+              if (error.userRegistered) {
+                this.alertService.error('User Already registred with Facebook or Email');
+                this.loginButton.removeClass('sending').blur();
+              } else {
                 this.tryRegisterUser(user);
+              }
             });
     }
 

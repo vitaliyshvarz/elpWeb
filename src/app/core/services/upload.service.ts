@@ -3,7 +3,6 @@ import { Http, Response }                          from '@angular/http';
 import { Observable }                              from 'rxjs/Observable';
 import { AlertService }                            from '../services/alert.service';
 
-
 @Injectable()
 
 export class UploadService {

@@ -59,7 +59,8 @@ import {
     AuthGuard,
     AdminGuard,
     AlertService,
-    CustExtBrowserXhr
+    CustExtBrowserXhr,
+    SessionService
 } from './core/@core';
 
 
@@ -125,6 +126,7 @@ import './rxjs-extensions';
         LoggedService,
         CommunicationService,
         UploadService,
+        SessionService,
         {
           provide: BrowserXhr,
           useClass: CustExtBrowserXhr

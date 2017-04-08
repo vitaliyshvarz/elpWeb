@@ -20,6 +20,7 @@ export * from './services/communication.service';
 export * from './services/meal.service';
 export * from './services/upload.service';
 export * from './services/alert.service';
+export * from './services/session.service';
 
 // Translate
 export * from './translate/index';
@@ -36,4 +37,5 @@ export * from './config/currencyConfig';
 export * from './config/backendConfig';
 
 // Helpers
+
 export * from './helpers/cust-ext-browser-xhr';

@@ -2,7 +2,7 @@
   <h2>Dashboard</h2>
 </div>
 
-<div class="row" *ngIf="currentUser.type == 'admin'">
+<div class="row" *ngIf="currentUser && currentUser.accountType == 'admin'">
 
   <ul class="sub-menu menu">
     <li *ngFor="let tab of tabs">
@@ -109,19 +109,6 @@
 
 </div>
 
-<div class="row" *ngIf="currentUser.type == 'default'">
-  <div class="small-10 columns small-centered">
-  <h3>Your Places</h3>
-  <ul>
-    <li *ngFor="let userPlace of userPlaces">
-      {{userPlace.name}}
-      - <a (click)="gotoDetail('place', userPlace)">Open</a>
-    </li>
-  </ul>
-  </div>
-</div>
-
-
 
 <div class="reveal" id="deleteModal" data-reveal>
   <h3>Delete {{deleteType}}?</h3>
@@ -137,7 +124,7 @@
       <button class="button small "data-close>cancel</button>
     </div>
     <div class="small-6 columns text-center">
-      <button class="button small alert" data-close (click)="deleteItem(selectedItem.id)">delete</button>
+      <button class="button small alert" data-close (click)="deleteItem(selectedItem._id)">delete</button>
     </div>
   </div>
 

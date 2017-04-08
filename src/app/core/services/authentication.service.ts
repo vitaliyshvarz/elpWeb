@@ -6,6 +6,7 @@ import { AlertService }   from '../services/alert.service';
 import { LoggedService }  from '../services/logged.service';
 import { User }           from '../models/user';
 import { BACKEND_API }    from '../config/backendConfig';
+import { SessionService } from '../services/session.service';
 
 import 'rxjs/add/operator/map';
 
@@ -19,20 +20,23 @@ export class AuthenticationService {
     constructor(
         private http: Http,
         private loggedService: LoggedService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private sessionService: SessionService
     ) { }
 
     login(email: string, password: string) {
-        return this.http.post(BACKEND_API.login, JSON.stringify({
+        return this.http.post(BACKEND_API.login, {
             email: email,
             password: password
-        })).map((response: Response) => {
-            // login successful if there's a jwt token in the response
+        }).map((response: Response) => {
             let user = response.json().user;
-            if (user && user.token) {
+            let token = response.json().token;
+
+            if (user && token) {
                 // store user details and jwt token in local storage
                 // to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
+                localStorage.setItem('sessionToken', JSON.stringify(token));
                 this.logged = {
                     email: user.email,
                     firstName: user.firstName
@@ -40,10 +44,7 @@ export class AuthenticationService {
                 this.loggedService.setLogged(this.logged);
             }
         })
-            .catch((error: any) => {
-                this.alertService.error(error || 'Error login');
-                return Observable.throw(error || 'Error login');
-            });
+        .catch((error: any) => Observable.throw(error.json()));
     }
 
     logout() {
@@ -54,6 +55,7 @@ export class AuthenticationService {
             console.warn('google logout not available', err);
         }
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('sessionToken');
         try {
             if (FB.getAuthResponse()) {
                 FB.logout();
@@ -64,13 +66,18 @@ export class AuthenticationService {
         this.loggedService.setLogged(this.logged);
     }
 
-    isAdmin(user: User): Observable<boolean> {
-        return this.http.post(`/api/is-admin`, user)
-            .map((response: Response) => response.json())
-            .catch((error: any) => {
-                this.alertService.error(error || 'Error isAdmin');
-                return Observable.throw(error || 'Error isAdmin');
-            });
+    isAdmin(user: User): Observable<any> {
+      return this.http.get(BACKEND_API.getCurrentUser, this.sessionService.addTokenHeader())
+          .map((response: Response) => {
+            const user = response.json()
+            if (user && user.accountType === 'admin') {
+                return true;
+            }
+          })
+          .catch((error: any) => {
+              this.alertService.error(error || 'Error isAdmin');
+              return Observable.throw(error || 'Error isAdmin');
+          });
     }
 
     sendRecoveryPassEmail(email: string): Observable<{}> {
