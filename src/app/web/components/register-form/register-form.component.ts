@@ -30,18 +30,40 @@ export class WebRegisterFormComponent implements OnInit {
         this.model.registrationType = 'email';
         this.loginButton = $('#register-form').find('[type="submit"]')
             .toggleClass('sending').blur();
-        this.userService.create(this.model)
-            .subscribe(
-            (data: any) => {
-                // set success message and pass true paramater
-                // to persist the message after redirecting to the login page
-                this.alertService.success('Registration successful', true);
-                this.loginButton.removeClass('sending').blur();
-            },
-            (error: any) => {
-                this.alertService.error(error);
-                this.loginButton.removeClass('sending').blur();
-            });
+
+        if (this.adminAddingUser()) {
+            this.userService.create(this.model)
+                .subscribe(
+                (data: any) => {
+                    // set success message and pass true paramater
+                    // to persist the message after redirecting to the login page
+                    this.alertService.success('Registration successful', true);
+                    this.loginButton.removeClass('sending').blur();
+                },
+                (error: any) => {
+                    this.alertService.error(error);
+                    this.loginButton.removeClass('sending').blur();
+                });
+        } else {
+            this.userService.signup(this.model)
+                .subscribe(
+                (data: any) => {
+                    // set success message and pass true paramater
+                    // to persist the message after redirecting to the login page
+                    this.alertService.success('Registration successful', true);
+                    this.loginButton.removeClass('sending').blur();
+                },
+                (error: any) => {
+                    this.alertService.error(error);
+                    this.loginButton.removeClass('sending').blur();
+                });
+        }
+
+    }
+
+    adminAddingUser(): boolean {
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+        return user && user.accountType === 'admin';
     }
 
     goBack(): void {

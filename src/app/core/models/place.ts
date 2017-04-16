@@ -1,7 +1,7 @@
 import { User }  from './user';
 
 export class Place {
-    id: number;
+    _id: number;
     googleId: string;
     name: string;
     email: string;

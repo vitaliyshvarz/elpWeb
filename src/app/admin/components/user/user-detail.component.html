@@ -30,9 +30,9 @@
         </label>
         <fieldset *ngIf="!currentUser"class="large-6 columns">
           <legend>Account Type</legend>
-          <input type="radio" name="admin" [(ngModel)]="user.type" id="admin"[checked]="user.type === 'admin'" value="admin">
+          <input type="radio" name="admin" [(ngModel)]="user.accountType" id="admin"[checked]="user.accountType === 'admin'" value="admin">
           <label for="admin">Admin</label>
-          <input type="radio" name="default" [(ngModel)]="user.type" id="default"[checked]="user.type === 'default'" value="default">
+          <input type="radio" name="default" [(ngModel)]="user.accountType" id="default"[checked]="user.accountType === 'default'" value="default">
           <label for="default">Default</label>
         </fieldset>
       </div>

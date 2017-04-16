@@ -53,9 +53,9 @@ export class DashboardComponent implements OnInit {
     private filterUserPlaces(places: Place[]): Place[] {
         if (this.currentUser && this.currentUser) {
             return places.filter(place => {
-                if (place.user && place.user.id &&
-                    this.currentUser && this.currentUser.id) {
-                    return place.user.id === this.currentUser.id;
+                if (place.user && place.user._id &&
+                    this.currentUser && this.currentUser._id) {
+                    return place.user._id === this.currentUser._id;
                 }
             });
         }

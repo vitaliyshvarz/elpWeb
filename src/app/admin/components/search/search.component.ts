@@ -121,7 +121,7 @@ export class SearchComponent implements OnInit {
                 break;
             default:
         }
-        const link = [`/admin/${type}-detail`, item.id];
+        const link = [`/admin/${type}-detail`, item._id];
         this.router.navigate(link);
     }
 }

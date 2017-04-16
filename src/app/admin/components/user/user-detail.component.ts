@@ -25,7 +25,7 @@ export class UserDetailComponent implements OnInit, OnInit {
             this.route.params.forEach((params: Params) => {
                 let id = params['id'];
                 this.userService.getById(id)
-                    .subscribe((user: User) => this.user = user);
+                    .subscribe((data: any) => this.user = data.user);
             });
         } else {
             this.user = JSON.parse(localStorage.getItem('currentUser'));

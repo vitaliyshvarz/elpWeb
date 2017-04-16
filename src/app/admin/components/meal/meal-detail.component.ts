@@ -45,7 +45,7 @@ export class MealDetailComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let id = params['id'];
             this.mealService.getById(id)
-                .subscribe((meal: Meal) => this.meal = meal);
+                .subscribe((data: any) => this.meal = data.meal);
         });
     }
     goBack(): void {

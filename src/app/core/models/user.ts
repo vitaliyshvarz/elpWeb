@@ -1,36 +1,36 @@
 export class User {
-    id: string = '';
+    _id: string = '';
     password: string = '';
     firstName: string = '';
     lastName: string = '';
-    type: string = '';
+    accountType: string = '';
     email: string = '';
     registrationType: string = '';
     registrationTime: Date = new Date();
     image: string = '';
-    location: any = { };
+    location: any = {};
 
     constructor({
         id = '',
         password = '',
         firstName = '',
         lastName = '',
-        type = 'default',
+        accountType = 'default',
         email = '',
         registrationType = '',
         registrationTime = new Date(),
         image = '',
-        location= { lg:'', lt: ''}
-      } = {}) {
-      this.id  = id;
-      this.password  = password;
-      this.firstName  = firstName;
-      this.lastName  = lastName;
-      this.type  = type;
-      this.email  = email;
-      this.registrationType  = registrationType;
-      this.registrationTime  = registrationTime;
-      this.image  = image;
-      this.location  = location;
+        location = { lg: '', lt: '' }
+    } = {}) {
+        this._id = id;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.accountType = accountType;
+        this.email = email;
+        this.registrationType = registrationType;
+        this.registrationTime = registrationTime;
+        this.image = image;
+        this.location = location;
     }
 }

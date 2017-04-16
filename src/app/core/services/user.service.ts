@@ -19,10 +19,10 @@ export class UserService implements OnInit {
     private logged: Logged;
 
     constructor(
-      private http: Http,
-      private alertService: AlertService,
-      private loggedService: LoggedService,
-      private sessionService: SessionService) { }
+        private http: Http,
+        private alertService: AlertService,
+        private loggedService: LoggedService,
+        private sessionService: SessionService) { }
 
     ngOnInit() {
         window.navigator.geolocation.getCurrentPosition(position => {
@@ -53,20 +53,20 @@ export class UserService implements OnInit {
     }
 
     public isRegistered(userData: any) {
-      return this.http.get(BACKEND_API.isRegistered, this.sessionService.addTokenHeader())
-          .map((response: Response) => response.json())
-          .catch((error: any) => {
-              this.alertService.error(error.json().message || 'Error isRegistered');
-              return Observable.throw(error.json().message || 'Error isRegistered');
-          });
+        return this.http.get(BACKEND_API.isRegistered, this.sessionService.addTokenHeader())
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error.json().message || 'Error isRegistered');
+                return Observable.throw(error.json().message || 'Error isRegistered');
+            });
     }
 
-    public create(userData: any) {
+    public signup(userData: any) {
         this.user = new User({
             password: userData.password,
             firstName: userData.firstName || userData.first_name,
             lastName: userData.lastName || userData.last_name,
-            type: this.isAdmin(userData) ? 'admin' : 'default',
+            accountType: this.isAdmin(userData) ? 'admin' : 'default',
             email: userData.email,
             registrationType: userData.registrationType,
             registrationTime: new Date(),
@@ -78,31 +78,54 @@ export class UserService implements OnInit {
             .map((response: Response) => {
 
                 if (response.status === 200) {
-                  let user = response.json().user;
-                  let token = response.json().token;
+                    let user = response.json().user;
+                    let token = response.json().token;
 
-                  if (user && token) {
-                      // store user details and jwt token in local storage
-                      // to keep user logged in between page refreshes
-                      localStorage.setItem('currentUser', JSON.stringify(user));
-                      localStorage.setItem('sessionToken', JSON.stringify(token));
-                      this.logged = {
-                          email: user.email,
-                          firstName: user.firstName
-                      };
-                      this.loggedService.setLogged(this.logged);
-                  }
+                    if (user && token) {
+                        // store user details and jwt token in local storage
+                        // to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        localStorage.setItem('sessionToken', JSON.stringify(token));
+                        this.logged = {
+                            email: user.email,
+                            firstName: user.firstName
+                        };
+                        this.loggedService.setLogged(this.logged);
+                    }
 
-                  this.subject.next(status);
+                    this.subject.next(status);
                 }
                 return response;
-
-
-
             })
             .catch((error: any) => {
-                this.alertService.error(error.json().message || error.json().errmsg  || 'Error create user');
-                return Observable.throw(error.json().message || error.json().errmsg  || 'Error create user');
+                this.alertService.error(error.json().message || error.json().errmsg || 'Error create user');
+                return Observable.throw(error.json().message || error.json().errmsg || 'Error create user');
+            });
+    }
+
+    public create(userData: any) {
+        this.user = new User({
+            password: userData.password,
+            firstName: userData.firstName || userData.first_name,
+            lastName: userData.lastName || userData.last_name,
+            accountType: 'default',
+            email: userData.email,
+            registrationType: userData.registrationType,
+            registrationTime: new Date(),
+            image: userData.image,
+            location: this.coords
+        });
+
+        return this.http.post(BACKEND_API.addUser, this.user, this.sessionService.addTokenHeader())
+            .map((response: Response) => {
+                if (response.status === 200) {
+                    this.subject.next(status);
+                }
+                return response;
+            })
+            .catch((error: any) => {
+                this.alertService.error(error.json().message || error.json().errmsg || 'Error create user');
+                return Observable.throw(error.json().message || error.json().errmsg || 'Error create user');
             });
     }
 
@@ -111,7 +134,7 @@ export class UserService implements OnInit {
     }
 
     public update(user: User) {
-        return this.http.put('/api/users/' + user.id, user, this.sessionService.addTokenHeader())
+        return this.http.put(BACKEND_API.updateUser + user._id, user, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error update users');

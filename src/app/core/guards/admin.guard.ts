@@ -32,7 +32,7 @@ export class AdminGuard implements CanActivate {
                 this.router.navigate(['/login-register']);
                 return Observable.of(false);
             });
-        } else if (this.user && this.user.type === 'default') {
+        } else if (this.user && this.user.accountType === 'default') {
             // not logged in so redirect to login page
             this.router.navigate(['/admin/home']);
             return Observable.of(false);
