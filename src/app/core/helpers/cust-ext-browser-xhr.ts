@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {BrowserXhr} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {BrowserXhr} from '@angular/http';
 @Injectable()
 
 export class CustExtBrowserXhr extends BrowserXhr {

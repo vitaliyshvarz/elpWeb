@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable }                              from 'rxjs/Observable';
 import { AlertService }                            from '../services/alert.service';
 import { SessionService }                           from '../services/session.service';

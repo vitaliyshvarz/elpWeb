@@ -80,7 +80,9 @@ gulp.task('build-css', function () {
 gulp.task('build-ts', function () {
     return gulp.src([dev + '**/*.ts', 'typings/tsd.d.ts'])
         .pipe(sourcemaps.init())
-        .pipe(tsProject({noEmitOnError: false}))
+        .pipe(tsProject({
+            noEmitOnError: false
+        }))
         .pipe(jsuglify())
         .pipe(sourcemaps.write('../../' + prod))
         .pipe(gulp.dest(prod));
@@ -104,17 +106,42 @@ gulp.task('build-html', function () {
         .pipe(gulp.dest(prod));
 });
 
+
 gulp.task('watch', function (done) {
     gulp.watch([dev + '**/*.ts',
         dev + '**/*.scss',
         dev + '**/*.html'
     ], [
-        'build-ts',
-        'build-css',
-        'build-html'
+        'build-all'
     ]);
 
     return done();
+});
+
+gulp.task('build-all', ['build-ts', 'build-css', 'build-html'], function (done) {
+    if (process.env.NODE_ENV === 'production') {
+        try {
+            fs.writeFileSync('dist/app/elpserverconfig.js', `
+            "use strict";
+            Object.defineProperty(exports, "__esModule", { value: true });
+            exports.BASE_URL = 'https://TODOURL';
+          `);
+        } catch (err) {
+            console.error('Error writing elpserverconfig file', err);
+        }
+
+    } else {
+        try {
+            fs.writeFileSync('dist/app/elpserverconfig.js', `
+            "use strict";
+            Object.defineProperty(exports, "__esModule", { value: true });
+            exports.BASE_URL = 'http://localhost:9999/api';
+          `);
+        } catch (err) {
+            console.error('Error writing elpserverconfig file', err);
+        }
+
+    }
 });
 
 gulp.task('clean-all', function () {
@@ -126,23 +153,25 @@ gulp.task('clean-all', function () {
 
 gulp.task('clean', function () {
     return gulp.src([
-        'dist/app' + '**/*.ts',
-        'dist/app' + '**/*.html',
-        'dist/app' + '**/*.css'
+            'dist/app' + '**/*.ts',
+            'dist/app' + '**/*.html',
+            'dist/app' + '**/*.css'
         ], {
             read: false
         })
         .pipe(clean());
 });
 
-gulp.task('start-server', function(done) {
-    exec('npm start', {maxBuffer: 1024 * 5000}, function (err, stdout, stderr) {
+gulp.task('start-server', function (done) {
+    exec('npm start', {
+        maxBuffer: 1024 * 5000
+    }, function (err, stdout, stderr) {
         done(err);
     });
 })
 
 gulp.task('start', function () {
-    runSequence( 'develop', 'watch', 'start-server');
+    runSequence('develop', 'watch', 'build-config', 'start-server');
 });
 
 gulp.task('develop', function (done) {
@@ -166,20 +195,27 @@ gulp.task('tslint', function () {
 });
 
 gulp.task('build-config', function () {
-  if (process.env.NODE_ENV === 'production') {
-    fs.writeFileSync('dist/app/elpserverconfig.js', `
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.BASE_URL = 'https://TODOURL';
-    `);
-  } else {
-    fs.writeFileSync('dist/app/elpserverconfig.js', `
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.BASE_URL = 'http://localhost:9999/api';
-    `);
-  }
-
+    if (process.env.NODE_ENV === 'production') {
+        try {
+            fs.writeFileSync('dist/app/elpserverconfig.js', `
+              "use strict";
+              Object.defineProperty(exports, "__esModule", { value: true });
+              exports.BASE_URL = 'https://TODOURL';
+            `);
+        } catch (err) {
+            console.error('Error writing elpserverconfig file', err);
+        }
+    } else {
+        try {
+            fs.writeFileSync('dist/app/elpserverconfig.js', `
+              "use strict";
+              Object.defineProperty(exports, "__esModule", { value: true });
+              exports.BASE_URL = 'http://localhost:9999/api';
+            `);
+        } catch (err) {
+            console.error('Error writing elpserverconfig file', err);
+        }
+    }
 });
 
 gulp.task('build', function (done) {

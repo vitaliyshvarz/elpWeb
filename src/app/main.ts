@@ -3,8 +3,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule }              from './app.module';
 import { enableProdMode }         from '@angular/core';
-import { BrowserXhr }             from '@angular/http';
-import { CustExtBrowserXhr }      from './core/@core';
 
 enableProdMode();
 

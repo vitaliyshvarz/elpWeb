@@ -1,7 +1,5 @@
 import { Injectable }                              from '@angular/core';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
-import { Observable }                              from 'rxjs/Observable';
-import { User }                                    from '../models/user';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { AlertService }                            from '../services/alert.service';
 
 @Injectable()
@@ -19,7 +17,7 @@ export class SessionService {
             let headers = new Headers({ 'x-access-token': sessionToken });
             return new RequestOptions({ headers: headers });
         } else {
-          this.alertService.error('No token found!');
+            this.alertService.error('No token found!');
         }
     }
 }

@@ -44,7 +44,7 @@ export class AuthenticationService {
                 this.loggedService.setLogged(this.logged);
             }
         })
-        .catch((error: any) => Observable.throw(error.json()));
+            .catch((error: any) => Observable.throw(error.json()));
     }
 
     logout() {
@@ -67,17 +67,17 @@ export class AuthenticationService {
     }
 
     isAdmin(user: User): Observable<any> {
-      return this.http.get(BACKEND_API.getCurrentUser, this.sessionService.addTokenHeader())
-          .map((response: Response) => {
-            const user = response.json()
-            if (user && user.accountType === 'admin') {
-                return true;
-            }
-          })
-          .catch((error: any) => {
-              this.alertService.error(error || 'Error isAdmin');
-              return Observable.throw(error || 'Error isAdmin');
-          });
+        return this.http.get(BACKEND_API.getCurrentUser, this.sessionService.addTokenHeader())
+            .map((response: Response) => {
+                const resultUser = response.json();
+                if (resultUser && resultUser.accountType === 'admin') {
+                    return true;
+                }
+            })
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error isAdmin');
+                return Observable.throw(error || 'Error isAdmin');
+            });
     }
 
     sendRecoveryPassEmail(email: string): Observable<{}> {
