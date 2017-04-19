@@ -3,29 +3,23 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable }                              from 'rxjs/Observable';
 import { User }                                    from '../models/user';
 import { AlertService }                            from '../services/alert.service';
+import { SessionService }                           from '../services/session.service';
+import { BACKEND_API }                              from '../config/backendConfig';
 
 @Injectable()
 
 export class UserSearchService {
 
-    constructor(private http: Http, private alertService: AlertService) { }
+    constructor(private http: Http,
+                private alertService: AlertService,
+                private sessionService: SessionService) { }
 
     search(term: string): Observable<User[]> {
-        return this.http.get(`/api/search-users/?name=${term}`, this.jwt())
+        return this.http.get(`${BACKEND_API.searchUsers}?name=${term}`, this.sessionService.addTokenHeader())
             .map((r: Response) => r.json() as User[])
             .catch((error: any) => {
                 this.alertService.error(error || 'Error search users');
                 return Observable.throw(error || 'Error search users');
             });
-    }
-
-    private jwt() {
-        // create authorization header with jwt token
-        const userData: any = JSON.parse(localStorage.getItem('currentUser')) || {};
-        let currentUser = !!userData.firstName ? userData : null;
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-            return new RequestOptions({ headers: headers });
-        }
     }
 }

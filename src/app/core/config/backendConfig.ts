@@ -24,5 +24,9 @@ export const BACKEND_API: any = {
     'updatePlace': `${BASE_URL}/place/`,
     'deletePlace': `${BASE_URL}/place/`,
 
+    'searchUsers': `${BASE_URL}/search-users/`,
+    'searchPlaces': `${BASE_URL}/search-places/`,
+    'searchMeals': `${BASE_URL}/search-meals/`,
+
     'getCurrentUser': `${BASE_URL}/me`
 };
