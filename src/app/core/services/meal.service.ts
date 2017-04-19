@@ -31,10 +31,6 @@ export class MealService {
     }
 
     public create(meal: any) {
-        let user = JSON.parse(localStorage.getItem('currentUser'));
-        meal.decoded = {
-            id: user._id
-        };
         return this.http.post(BACKEND_API.addMeal, meal, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {

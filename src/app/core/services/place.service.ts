@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable }                              from 'rxjs/Observable';
 import { AlertService }                            from '../services/alert.service';
+import { SessionService }                          from '../services/session.service';
+import { BACKEND_API }                             from '../config/backendConfig';
 
 @Injectable()
 export class PlaceService {
-    constructor(private http: Http, private alertService: AlertService) { }
+    constructor(private http: Http,
+                private alertService: AlertService,
+                private sessionService: SessionService) { }
 
     public getAll() {
-        return this.http.get('/api/places', this.jwt())
+        return this.http.get(BACKEND_API.getAllPlaces, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error getAll places');
@@ -25,7 +29,7 @@ export class PlaceService {
             });
     }
     public getById(id: any) {
-        return this.http.get('/api/places/' + id, this.jwt())
+        return this.http.get(BACKEND_API.getPlaceById + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error getById places');
@@ -34,7 +38,7 @@ export class PlaceService {
     }
 
     public create(place: any) {
-        return this.http.post('/api/places', place, this.jwt())
+        return this.http.post(BACKEND_API.addPlace, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error create places');
@@ -43,7 +47,7 @@ export class PlaceService {
     }
 
     public update(place: any) {
-        return this.http.put('/api/places/' + place.id, place, this.jwt())
+        return this.http.put(BACKEND_API.updatePlace + place._id, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error update places');
@@ -52,7 +56,7 @@ export class PlaceService {
     }
 
     public delete(id: any) {
-        return this.http.delete('/api/places/' + id, this.jwt())
+        return this.http.delete(BACKEND_API.deletePlace + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error delete places');
