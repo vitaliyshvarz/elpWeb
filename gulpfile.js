@@ -118,30 +118,8 @@ gulp.task('watch', function (done) {
     return done();
 });
 
-gulp.task('build-all', ['build-ts', 'build-css', 'build-html'], function (done) {
-    if (process.env.NODE_ENV === 'production') {
-        try {
-            fs.writeFileSync('dist/app/elpserverconfig.js', `
-            "use strict";
-            Object.defineProperty(exports, "__esModule", { value: true });
-            exports.BASE_URL = 'https://TODOURL';
-          `);
-        } catch (err) {
-            console.error('Error writing elpserverconfig file', err);
-        }
-
-    } else {
-        try {
-            fs.writeFileSync('dist/app/elpserverconfig.js', `
-            "use strict";
-            Object.defineProperty(exports, "__esModule", { value: true });
-            exports.BASE_URL = 'http://localhost:9999/api';
-          `);
-        } catch (err) {
-            console.error('Error writing elpserverconfig file', err);
-        }
-
-    }
+gulp.task('build-all', function (done) {
+    runSequence('build-ts', 'build-css', 'build-html', 'build-config');
 });
 
 gulp.task('clean-all', function () {
