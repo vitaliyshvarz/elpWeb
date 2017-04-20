@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable }                              from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable }                              from 'rxjs/Observable';
 import { AlertService }                            from '../services/alert.service';
@@ -8,8 +8,8 @@ import { BACKEND_API }                             from '../config/backendConfig
 @Injectable()
 export class PlaceService {
     constructor(private http: Http,
-                private alertService: AlertService,
-                private sessionService: SessionService) { }
+        private alertService: AlertService,
+        private sessionService: SessionService) { }
 
     public getAll() {
         return this.http.get(BACKEND_API.getAllPlaces, this.sessionService.addTokenHeader())
@@ -21,7 +21,7 @@ export class PlaceService {
     }
 
     public getAllForUser(email: string) {
-        return this.http.get(`/api/place-by-email/?email=${email}`, this.jwt())
+        return this.http.get(`/api/place-by-email/?email=${email}`, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error getAllForUser places');
@@ -38,6 +38,7 @@ export class PlaceService {
     }
 
     public create(place: any) {
+        console.log(place);
         return this.http.post(BACKEND_API.addPlace, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
@@ -62,16 +63,5 @@ export class PlaceService {
                 this.alertService.error(error || 'Error delete places');
                 return Observable.throw(error || 'Error delete places');
             });
-    }
-
-    // private helper methods
-    private jwt() {
-        // create authorization header with jwt token
-        const userData: any = JSON.parse(localStorage.getItem('currentUser')) || {};
-        let currentUser = !!userData.firstName ? userData : null;
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-            return new RequestOptions({ headers: headers });
-        }
     }
 }

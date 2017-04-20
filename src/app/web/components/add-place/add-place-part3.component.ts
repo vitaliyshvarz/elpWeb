@@ -53,6 +53,7 @@ export class AddPlacePart3Component implements OnInit {
     private loadAllMeals(): void {
         this.mealService.getAll()
             .subscribe((meals: Meal[]) => {
+                console.log(meals);
                 this.dishes = meals;
             });
     }
@@ -87,18 +88,16 @@ export class AddPlacePart3Component implements OnInit {
         if (valid) {
             this.finishAddPlaceButton = $('#finishAddPlace').toggleClass('sending');
             this.placeService.create({
-                user: this.currentUser,
                 name: this.savedPlace.name,
-                id: this.savedPlace.place_id,
+                googleId: this.savedPlace.place_id,
                 location: this.savedPlace.geometry.location,
                 phone: this.savedPlace.international_phone_number,
                 elp_opening_hours: this.savedDays,
                 rating: this.savedPlace.rating || '',
                 fullAddress: this.savedPlace.vicinity || '',
                 website: this.savedPlace.website || '',
-                address_components: this.savedPlace.address_components,
                 payment_options: this.savedPayments,
-                meals: activeMeals,
+                mealIds: this.getMealIds(activeMeals),
                 currency: currency,
                 deliveryAvailable: this.deliveryAvailable,
                 takeAwayAvailable: this.takeAwayAvailable
@@ -118,6 +117,15 @@ export class AddPlacePart3Component implements OnInit {
                 });
         }
 
+    }
+
+    getMealIds(meals: []): [] {
+        let ids = [];
+        meals.forEach(meal => {
+            ids.push(meal.id);
+        });
+
+        return ids;
     }
 
     showSucessBlock() {

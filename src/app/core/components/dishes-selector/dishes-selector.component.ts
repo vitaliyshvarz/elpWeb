@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DISHES } from '../../../core/@core';
 
 @Component({
     moduleId: module.id,
@@ -21,7 +20,7 @@ export class DishesSelectorComponent implements OnInit {
 
     ngOnInit() {
         this.currentCurrency = this.currency;
-        this.dishes = this.dishesData || JSON.parse(JSON.stringify(DISHES));
+        this.dishes = this.dishesData;
     }
 
     removeMeal(id: string | number): void {

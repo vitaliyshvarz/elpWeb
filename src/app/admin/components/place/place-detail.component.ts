@@ -23,7 +23,10 @@ export class PlaceDetailComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let id = params['id'];
             this.placeService.getById(id)
-                .subscribe((place: Place) => this.place = place);
+                .subscribe((data: any) => {
+                    console.log(data.place);
+                    return this.place = data.place;
+                });
         });
     }
     goBack(): void {
