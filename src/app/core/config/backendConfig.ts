@@ -29,5 +29,8 @@ export const BACKEND_API: any = {
     'searchPlaces': `${BASE_URL}/search-places/`,
     'searchMeals': `${BASE_URL}/search-meals/`,
 
+    'sendEmail': `${BASE_URL}/send-email/`,
+    'quickEmail': `${BASE_URL}/quick-email/`,
+
     'getCurrentUser': `${BASE_URL}/me`
 };
