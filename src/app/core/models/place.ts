@@ -12,7 +12,7 @@ export class Place {
         name: string;
         postfix: string;
     };
-    elp_opening_hours: [
+    elpOpeningHours: [
         {
             break: {
                 from: string;
@@ -27,15 +27,15 @@ export class Place {
                 toMin: string;
             },
             hasBreak: boolean;
-            name; string;
+            name: string;
             selected: boolean;
         }
     ];
-    mealIds: [string]
+    mealIds: [string];
     deliveryAvailable: boolean;
     takeAwayAvailable: boolean;
     user: User;
-    location: any = {
+    location: {
         lat: number;
         lng: number;
     };

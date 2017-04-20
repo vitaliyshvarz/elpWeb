@@ -1,10 +1,10 @@
 import { Injectable }                              from '@angular/core';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, Response }                          from '@angular/http';
 import { Observable }                              from 'rxjs/Observable';
 import { Place }                                   from '../models/place';
 import { AlertService }                            from '../services/alert.service';
-import { SessionService }                           from '../services/session.service';
-import { BACKEND_API }                              from '../config/backendConfig';
+import { SessionService }                          from '../services/session.service';
+import { BACKEND_API }                             from '../config/backendConfig';
 
 @Injectable()
 

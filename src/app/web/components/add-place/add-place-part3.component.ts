@@ -92,17 +92,18 @@ export class AddPlacePart3Component implements OnInit {
                 googleId: this.savedPlace.place_id,
                 location: this.savedPlace.geometry.location,
                 phone: this.savedPlace.international_phone_number,
-                elp_opening_hours: this.savedDays,
+                elpOpeningHours: this.savedDays,
                 rating: this.savedPlace.rating || '',
                 fullAddress: this.savedPlace.vicinity || '',
                 website: this.savedPlace.website || '',
-                payment_options: this.savedPayments,
+                paymentOptions: this.savedPayments,
                 mealIds: this.getMealIds(activeMeals),
                 currency: currency,
                 deliveryAvailable: this.deliveryAvailable,
                 takeAwayAvailable: this.takeAwayAvailable
             }).subscribe(
                 (data: any) => {
+                    this.saveResultPlace = data.place;
                     this.showSucessBlock();
                     localStorage.removeItem('currentPlace');
                     localStorage.removeItem('currentPaymentOptions');
@@ -119,22 +120,22 @@ export class AddPlacePart3Component implements OnInit {
 
     }
 
-    getMealIds(meals: []): [] {
-        let ids = [];
+    getMealIds(meals: Meal[]): [string] {
+        let ids: any = [];
+
         meals.forEach(meal => {
-            ids.push(meal.id);
+            ids.push(meal._id);
         });
 
         return ids;
     }
 
     showSucessBlock() {
-        this.saveResultPlace = this.savedPlace;
         this.showSaveSucess = true;
     }
 
     goToEditPlace() {
-        let link = ['/admin/place-detail', this.saveResultPlace.place_id];
+        let link = ['/admin/place-detail', this.saveResultPlace._id];
         this.router.navigate(link);
     }
 

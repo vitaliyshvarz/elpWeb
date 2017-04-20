@@ -30,6 +30,15 @@ export class MealService {
             });
     }
 
+    public getByIds(ids: [String]) {
+        return this.http.get(BACKEND_API.getMealsByIds + ids.join(), this.sessionService.addTokenHeader())
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error || 'Error getById meal');
+                return Observable.throw(error || 'Error getById meal');
+            });
+    }
+
     public create(meal: any) {
         return this.http.post(BACKEND_API.addMeal, meal, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())

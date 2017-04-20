@@ -119,7 +119,10 @@ gulp.task('watch', function (done) {
 });
 
 gulp.task('build-all', function (done) {
-    runSequence('build-ts', 'build-css', 'build-html', 'build-config');
+    runSequence('build-ts', 'build-css', 'build-html', 'build-config',
+      function () {
+          done();
+      });
 });
 
 gulp.task('clean-all', function () {
@@ -149,7 +152,10 @@ gulp.task('start-server', function (done) {
 })
 
 gulp.task('start', function () {
-    runSequence('develop', 'watch', 'build-config', 'start-server');
+    runSequence('develop', 'watch', 'build-config', 'start-server',
+      function () {
+          done();
+      });
 });
 
 gulp.task('develop', function (done) {
@@ -172,7 +178,7 @@ gulp.task('tslint', function () {
         .pipe(tsProject());
 });
 
-gulp.task('build-config', function () {
+gulp.task('build-config', function (done) {
     if (process.env.NODE_ENV === 'production') {
         try {
             fs.writeFileSync('dist/app/elpserverconfig.js', `
@@ -194,6 +200,7 @@ gulp.task('build-config', function () {
             console.error('Error writing elpserverconfig file', err);
         }
     }
+    done();
 });
 
 gulp.task('build', function (done) {
