@@ -28,7 +28,7 @@ export class PlacesComponent implements OnInit {
     }
 
     private getPlaces(): void {
-        this.placeService.getAllForUser(this.currentUser.email)
+        this.placeService.getAllForUser()
             .subscribe((places: Place[]) => this.places = places);
     }
 

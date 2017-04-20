@@ -20,8 +20,8 @@ export class PlaceService {
             });
     }
 
-    public getAllForUser(email: string) {
-        return this.http.get(`/api/place-by-email/?email=${email}`, this.sessionService.addTokenHeader())
+    public getAllForUser() {
+        return this.http.get(BACKEND_API.userPlaces, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error getAllForUser places');
