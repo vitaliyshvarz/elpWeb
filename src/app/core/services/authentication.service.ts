@@ -7,6 +7,7 @@ import { LoggedService }  from '../services/logged.service';
 import { User }           from '../models/user';
 import { BACKEND_API }    from '../config/backendConfig';
 import { SessionService } from '../services/session.service';
+import { Router }         from '@angular/router';
 
 import 'rxjs/add/operator/map';
 
@@ -21,7 +22,8 @@ export class AuthenticationService {
         private http: Http,
         private loggedService: LoggedService,
         private alertService: AlertService,
-        private sessionService: SessionService
+        private sessionService: SessionService,
+        private router: Router
     ) { }
 
     login(email: string, password: string) {
@@ -64,6 +66,7 @@ export class AuthenticationService {
             console.warn('FB logout not available');
         }
         this.loggedService.setLogged(this.logged);
+        this.router.navigate(['/']);
     }
 
     isAdmin(user: User): Observable<any> {

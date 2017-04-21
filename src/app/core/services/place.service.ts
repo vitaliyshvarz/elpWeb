@@ -38,7 +38,6 @@ export class PlaceService {
     }
 
     public create(place: any) {
-        console.log(place);
         return this.http.post(BACKEND_API.addPlace, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
