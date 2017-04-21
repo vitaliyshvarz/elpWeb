@@ -7,7 +7,7 @@
   <ul class="sub-menu menu">
     <li *ngFor="let tab of tabs">
       <button [ngClass]="{'hollow' : !tab.active}"
-              class="sub-menu-btn button" (click)="selectTab(tab.name)">{{tab.name}}</button>
+              class="sub-menu-btn button" (click)="selectTab(tab.name)" [routerLink]="['/admin/dashboard', tab.name]">{{tab.name}}</button>
     </li>
   </ul>
 
@@ -23,7 +23,7 @@
           </div>
           <div class="card-section text-center">
             <p>
-              <a href="javascript:;" (click)="selectTab('Users')">
+              <a routerLink="/admin/dashboard/Users">
                 {{ 'USERS_REGISTERED' | translate }} - {{users.length}}
               </a>
             </p>
@@ -37,7 +37,7 @@
           </div>
           <div class="card-section text-center">
             <p>
-              <a href="javascript:;" (click)="selectTab('Places')">
+              <a routerLink="/admin/dashboard/Places">
                 {{ 'PLACES_REGISTERED' | translate }} - {{places.length}}
               </a>
             </p>
@@ -51,7 +51,7 @@
           </div>
           <div class="card-section text-center">
             <p>
-              <a href="javascript:;" (click)="selectTab('Meals')">
+              <a routerLink="/admin/dashboard/Meals">
                 {{ 'TOTAL_MEALS' | translate }} - {{meals.length}}
               </a>
             </p>

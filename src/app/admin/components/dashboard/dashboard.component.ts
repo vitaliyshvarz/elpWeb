@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit }  from '@angular/core';
+import { Router }             from '@angular/router';
+import { ActivatedRoute }     from '@angular/router';
 
 import { Place } from '../../../core/@core';
 import { PlaceService } from '../../../core/@core';
@@ -28,15 +29,15 @@ export class DashboardComponent implements OnInit {
     private selectedTab: any = 'Overview';
     private deleteType: string;
     private tabs: any = [
-        { name: 'Overview', active: true },
+        { name: 'Overview', active: false },
         { name: 'Users', active: false },
         { name: 'Places', active: false },
         { name: 'Meals', active: false },
         { name: 'Settings', active: false },
     ];
 
-
     constructor(
+        private activatedRoute: ActivatedRoute,
         private router: Router,
         private placeService: PlaceService,
         private mealService: MealService,
@@ -48,6 +49,7 @@ export class DashboardComponent implements OnInit {
         this.loadAllUsers();
         this.loadAllPlaces();
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.activatedRoute.params.subscribe(params => this.selectTab(params['page']));
     }
 
     private filterUserPlaces(places: Place[]): Place[] {
@@ -64,9 +66,7 @@ export class DashboardComponent implements OnInit {
     // initially get meals
     private loadAllMeals(): void {
         this.mealService.getAll()
-            .subscribe((meals: Meal[]) => {
-                this.meals = meals;
-            });
+          .subscribe((meals: Meal[]) => this.meals = meals);
     }
 
     // initially get places
@@ -80,33 +80,25 @@ export class DashboardComponent implements OnInit {
     // initially get users
     private loadAllUsers(): void {
         this.userService.getAll()
-            .subscribe((users: User[]) => {
-                this.users = users;
-            });
+            .subscribe((users: User[]) => this.users = users);
     }
 
     // delete user by id
     private deleteUser(id: string): void {
         this.userService.delete(id)
-            .subscribe(() => {
-                this.loadAllUsers();
-            });
+            .subscribe(() => this.loadAllUsers());
     }
 
     // delete user by id
     private deleteMeal(id: string): void {
         this.mealService.delete(id)
-            .subscribe(() => {
-                this.loadAllMeals();
-            });
+            .subscribe(() => this.loadAllMeals());
     }
 
     // delete user by id
     private deletePlace(id: string): void {
         this.placeService.delete(id)
-            .subscribe(() => {
-                this.loadAllPlaces();
-            });
+            .subscribe(() => this.loadAllPlaces());
     }
 
     deleteItem(id: string) {

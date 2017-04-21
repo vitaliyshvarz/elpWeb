@@ -151,7 +151,7 @@ gulp.task('start-server', function (done) {
     });
 })
 
-gulp.task('start', function () {
+gulp.task('start', function (done) {
     runSequence('develop', 'watch', 'build-config', 'start-server',
       function () {
           done();

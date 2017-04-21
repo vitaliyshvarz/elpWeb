@@ -33,5 +33,7 @@ export const BACKEND_API: any = {
     'sendEmail': `${BASE_URL}/send-email/`,
     'quickEmail': `${BASE_URL}/quick-email/`,
 
-    'getCurrentUser': `${BASE_URL}/me`
+    'getCurrentUser': `${BASE_URL}/me`,
+
+    'uploadImage': `${BASE_URL}/upload`,
 };

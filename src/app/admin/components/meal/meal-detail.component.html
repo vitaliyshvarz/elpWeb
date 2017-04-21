@@ -89,7 +89,8 @@
 
 
 <div class="large reveal" id="uploadImageResultModal" data-reveal>
-  <h4 *ngIf="place">Image uploaded!</h4>
+  <h4 *ngIf="meal">Image uploaded!</h4>
+  <img *ngIf="meal && meal.imageUrl" [src]="meal.imageUrl"/>
 
   <button class="close-button"
           data-close aria-label="Close modal"

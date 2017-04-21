@@ -29,7 +29,7 @@ const routes: any = [
 
         children: [
             { path: 'home', component: AdminHomeComponent, canActivate: [AuthGuard] },
-            { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard] },
+            { path: 'dashboard/:page', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'add-meal', component: AddMealComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'place-detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },
