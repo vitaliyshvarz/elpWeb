@@ -25,9 +25,9 @@ export class PlaceDetailComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let id = params['id'];
             this.placeService.getById(id).subscribe((data: any) => {
-              this.place = data.place;
+                this.place = data.place;
                 this.mealService.getByIds(this.place.mealIds).subscribe((mealData: any) => {
-                    this.meals =  mealData.meals;
+                    this.meals = mealData.meals;
                 });
             });
         });
