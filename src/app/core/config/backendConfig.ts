@@ -36,4 +36,6 @@ export const BACKEND_API: any = {
     'getCurrentUser': `${BASE_URL}/me`,
 
     'uploadImage': `${BASE_URL}/upload`,
+    'sendEmailRecovery': `${BASE_URL}/send-recovery-pass-email`,
+    'changePassword': `${BASE_URL}/change-password`
 };

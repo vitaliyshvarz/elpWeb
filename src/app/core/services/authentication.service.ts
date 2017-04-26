@@ -78,17 +78,26 @@ export class AuthenticationService {
                 }
             })
             .catch((error: any) => {
-                this.alertService.error(error || 'Error isAdmin');
-                return Observable.throw(error || 'Error isAdmin');
+                this.alertService.error(error.json().message || 'Error isAdmin');
+                return Observable.throw(error.json().message || 'Error isAdmin');
             });
     }
 
     sendRecoveryPassEmail(email: string): Observable<{}> {
-        return this.http.post(`/api/send-recovery-pass-email`, email)
+        return this.http.post(BACKEND_API.sendEmailRecovery, { email: email })
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error sending Recovery email');
-                return Observable.throw(error || 'Error sending Recovery email');
+                this.alertService.error(error.json().message || 'Error sending Recovery email');
+                return Observable.throw(error.json().message || 'Error sending Recovery email');
+            });
+    }
+
+    changePassword(params: any): Observable<{}> {
+        return this.http.post(BACKEND_API.changePassword, params, this.sessionService.addTokenHeader())
+            .map((response: Response) => response.json())
+            .catch((error: any) => {
+                this.alertService.error(error.json().message || 'Error sending Recovery email');
+                return Observable.throw(error.json().message || 'Error sending Recovery email');
             });
     }
 

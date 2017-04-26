@@ -78,6 +78,9 @@ export const LANG_ES_TRANS = {
     'USERS_REGISTERED': 'Registriert Benutzer',
     'PLACES_REGISTERED': 'Registriert Orte',
     'TOTAL_MEALS': 'Mahlzeiten in Gesamt',
-    'ADD_MEALS_FROM_ALL': 'Mahlzeiten von alle verfügbare hinzufügen'
+    'ADD_MEALS_FROM_ALL': 'Mahlzeiten von alle verfügbare hinzufügen',
+    'OLD_PASSWORD_REQUIRED': 'Altes Passwort erforderlich',
+    'CHANGE_PASS': 'Passwort ändern',
+    'OLD_PASSWORD': 'Altes Passwort'
 
 };

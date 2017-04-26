@@ -44,7 +44,7 @@ export class FacebookLoginComponent {
 
     tryRegisterUser(response: any) {
         response.registrationType = 'facebook';
-        this.userService.create(response)
+        this.userService.signup(response)
             .subscribe(
             (data: any) => {
                 // set success message and pass true paramater
@@ -66,12 +66,12 @@ export class FacebookLoginComponent {
                 this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
-              if (error.userRegistered) {
-                this.alertService.error('User Already registred with Google or Email');
-                this.loginButton.removeClass('sending').blur();
-              } else {
-                this.tryRegisterUser(user);
-              }
+                if (error.userRegistered) {
+                    this.alertService.error('User Already registred with Google or Email');
+                    this.loginButton.removeClass('sending').blur();
+                } else {
+                    this.tryRegisterUser(user);
+                }
             });
     }
 
