@@ -78,6 +78,9 @@ export const LANG_EN_TRANS = {
     'USERS_REGISTERED': 'Users Registered',
     'PLACES_REGISTERED': 'Places Registered',
     'TOTAL_MEALS': 'Meals in total',
-    'ADD_MEALS_FROM_ALL': 'Add Meals from all available'
+    'ADD_MEALS_FROM_ALL': 'Add Meals from all available',
+    'OLD_PASSWORD_REQUIRED': 'Old Password required',
+    'CHANGE_PASS': 'Change password',
+    'OLD_PASSWORD': 'Old password'
 
 };

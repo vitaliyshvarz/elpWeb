@@ -49,13 +49,13 @@ export class GoogleLoginComponent {
                 );
             });
         } catch (err) {
-          this.alertService.error('google login unavailbale');
+            this.alertService.error('google login unavailbale');
         }
     }
 
     tryRegisterUser(response: any) {
         response.registrationType = 'google';
-        this.userService.create(response)
+        this.userService.signup(response)
             .subscribe(
             (data: any) => {
                 // set success message and pass true paramater
@@ -77,12 +77,12 @@ export class GoogleLoginComponent {
                 this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
-              if (error.userRegistered) {
-                this.alertService.error('User Already registred with Facebook or Email');
-                this.loginButton.removeClass('sending').blur();
-              } else {
-                this.tryRegisterUser(user);
-              }
+                if (error.userRegistered) {
+                    this.alertService.error('User Already registred with Facebook or Email');
+                    this.loginButton.removeClass('sending').blur();
+                } else {
+                    this.tryRegisterUser(user);
+                }
             });
     }
 
