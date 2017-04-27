@@ -184,7 +184,7 @@ gulp.task('build-config', function (done) {
             fs.writeFileSync('dist/app/elpserverconfig.js', `
               "use strict";
               Object.defineProperty(exports, "__esModule", { value: true });
-              exports.BASE_URL = 'https://TODOURL';
+              exports.BASE_URL = 'https://eatlikepro-node.herokuapp.com/api';
             `);
         } catch (err) {
             console.error('Error writing elpserverconfig file', err);
