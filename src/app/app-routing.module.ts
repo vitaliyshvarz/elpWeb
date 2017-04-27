@@ -19,8 +19,7 @@ import { AuthGuard }                  from './core/@core';
 import { AdminGuard }                  from './core/@core';
 
 const routes: any = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: WebHomeComponent },
+    { path: '', component: WebHomeComponent },
     { path: 'about-us', component: AboutUsComponent },
     { path: 'join-us/:part', component: JoinUsPageComponent },
     { path: 'login-register', component: WebLoginRegisterComponent },
@@ -30,7 +29,7 @@ const routes: any = [
 
         children: [
             { path: 'home', component: AdminHomeComponent, canActivate: [AuthGuard] },
-            { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard] },
+            { path: 'dashboard/:page', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'add-meal', component: AddMealComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'place-detail/:id', component: PlaceDetailComponent, canActivate: [AuthGuard] },

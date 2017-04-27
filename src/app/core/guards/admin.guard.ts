@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
-import { User } from '../models/user';
-import { Observable }     from 'rxjs/Rx';
+import { Injectable }             from '@angular/core';
+import { Router, CanActivate }    from '@angular/router';
+import { AuthenticationService }  from '../services/authentication.service';
+import { User }                   from '../models/user';
+import { Observable }             from 'rxjs/Rx';
 
 
 @Injectable()
@@ -23,16 +23,16 @@ export class AdminGuard implements CanActivate {
             return Observable.of(false);
         }
 
-        if (this.user && this.user.type === 'admin') {
-            return this.authenticationService.isAdmin(this.user).map((response: any) => {
-                if (response && response.result === true) {
+        if (this.user) {
+            return this.authenticationService.isAdmin(this.user).map((status: any) => {
+                if (status) {
                     return true;
                 }
-            }).catch(() => {
+            }).catch((err) => {
                 this.router.navigate(['/login-register']);
                 return Observable.of(false);
             });
-        } else if (this.user && this.user.type === 'default') {
+        } else if (this.user && this.user.accountType === 'default') {
             // not logged in so redirect to login page
             this.router.navigate(['/admin/home']);
             return Observable.of(false);

@@ -6,7 +6,8 @@ import {
     UploadService,
     CURRENCIES,
     Meal,
-    Portion
+    Portion,
+    AlertService
 } from '../../../core/@core';
 
 @Component({
@@ -23,7 +24,8 @@ export class AddMealComponent {
         private mealService: MealService,
         private route: ActivatedRoute,
         private location: Location,
-        private uploadService: UploadService
+        private uploadService: UploadService,
+        private alertService: AlertService
     ) {
         this.meal = new Meal();
         this.uploadService.progress$.subscribe(
@@ -35,7 +37,8 @@ export class AddMealComponent {
     onFileChange(event: any) {
         const files = event.srcElement.files;
 
-        this.uploadService.uploadImage([], files[0]).subscribe(() => {
+        this.uploadService.uploadImage([], files).subscribe((data) => {
+            this.meal.imageUrl = data.path;
             let currentPopUp = new (<any>Foundation.Reveal)($('#uploadImageResultModal'));
             currentPopUp.open();
         });
@@ -46,6 +49,28 @@ export class AddMealComponent {
     }
 
     save(): void {
+        if (!this.meal.imageUrl) {
+            this.alertService.error('No Image, please select image');
+            return;
+        }
+        if (!this.meal.name) {
+            this.alertService.error('No name, please enter meal name');
+            return;
+        }
+        if (!this.meal.description) {
+            this.alertService.error('No description, please enter meal description');
+            return;
+        }
+        if (this.meal.portions.length === 0) {
+            this.alertService.error('No portions added, please add portions');
+            return;
+        }
+
+        if (!this.checkPortions()) {
+          this.alertService.error('Description and Size for each portion are mandatory');
+          return;
+        }
+
         this.mealService.create(this.meal)
             .subscribe(() => {
                 let currentPopUp = new (<any>Foundation.Reveal)($('#createMealResultModal'));
@@ -53,7 +78,22 @@ export class AddMealComponent {
             });
     }
 
-    addPortion() {
+    checkPortions(): boolean {
+      let result = true;
+      this.meal.portions.forEach(portion => {
+        if (portion.description.length < 1) {
+          result = false;
+        }
+
+        if (portion.size.length < 1) {
+          result = false;
+        }
+      });
+
+      return result;
+    }
+
+    addPortion(): void {
         this.meal.portions.push(new Portion());
     }
 

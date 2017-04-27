@@ -1,19 +1,50 @@
 import { User }  from './user';
 
-
 export class Place {
-    id: number;
+    _id: number;
     googleId: string;
     name: string;
     email: string;
     phone: string;
-    address: string;
-    country: string;
-    city: string;
+    fullAddress: string;
     website: string;
-    user: User;
-    location: any = {
-        lat: 0,
-        lng: 0
+    currency: {
+        name: string;
+        postfix: string;
     };
+    elpOpeningHours: [
+        {
+            break: {
+                from: string;
+                fromMin: string;
+                to: string;
+                toMin: string;
+            },
+            business_hours: {
+                from: string;
+                fromMin: string;
+                to: string;
+                toMin: string;
+            },
+            hasBreak: boolean;
+            name: string;
+            selected: boolean;
+        }
+    ];
+    mealIds: [string];
+    deliveryAvailable: boolean;
+    takeAwayAvailable: boolean;
+    user: User;
+    location: {
+        lat: number;
+        lng: number;
+    };
+    paymentOptions: [
+        {
+            image: string;
+            name: string;
+            selected: boolean;
+        }
+    ];
+    rating: number;
 }

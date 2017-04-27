@@ -8,7 +8,7 @@ export class Portion {
 }
 
 export class Meal {
-    id: number = 0;
+    _id: number = 0;
     selected: boolean = false;
     name: string = '';
     description: string= '';

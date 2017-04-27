@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit }  from '@angular/core';
+import { Router }             from '@angular/router';
+import { ActivatedRoute }     from '@angular/router';
 
 import { Place } from '../../../core/@core';
 import { PlaceService } from '../../../core/@core';
@@ -28,15 +29,15 @@ export class DashboardComponent implements OnInit {
     private selectedTab: any = 'Overview';
     private deleteType: string;
     private tabs: any = [
-        { name: 'Overview', active: true },
+        { name: 'Overview', active: false },
         { name: 'Users', active: false },
         { name: 'Places', active: false },
         { name: 'Meals', active: false },
         { name: 'Settings', active: false },
     ];
 
-
     constructor(
+        private activatedRoute: ActivatedRoute,
         private router: Router,
         private placeService: PlaceService,
         private mealService: MealService,
@@ -48,14 +49,15 @@ export class DashboardComponent implements OnInit {
         this.loadAllUsers();
         this.loadAllPlaces();
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.activatedRoute.params.subscribe(params => this.selectTab(params['page']));
     }
 
     private filterUserPlaces(places: Place[]): Place[] {
         if (this.currentUser && this.currentUser) {
             return places.filter(place => {
-                if (place.user && place.user.id &&
-                    this.currentUser && this.currentUser.id) {
-                    return place.user.id === this.currentUser.id;
+                if (place.user && place.user._id &&
+                    this.currentUser && this.currentUser._id) {
+                    return place.user._id === this.currentUser._id;
                 }
             });
         }
@@ -64,9 +66,7 @@ export class DashboardComponent implements OnInit {
     // initially get meals
     private loadAllMeals(): void {
         this.mealService.getAll()
-            .subscribe((meals: Meal[]) => {
-                this.meals = meals;
-            });
+          .subscribe((meals: Meal[]) => this.meals = meals);
     }
 
     // initially get places
@@ -80,34 +80,25 @@ export class DashboardComponent implements OnInit {
     // initially get users
     private loadAllUsers(): void {
         this.userService.getAll()
-            .subscribe((users: User[]) => {
-                this.users = users;
-            });
+            .subscribe((users: User[]) => this.users = users);
     }
 
     // delete user by id
     private deleteUser(id: string): void {
-        console.log(id);
         this.userService.delete(id)
-            .subscribe(() => {
-                this.loadAllUsers();
-            });
+            .subscribe(() => this.loadAllUsers());
     }
 
     // delete user by id
     private deleteMeal(id: string): void {
         this.mealService.delete(id)
-            .subscribe(() => {
-                this.loadAllMeals();
-            });
+            .subscribe(() => this.loadAllMeals());
     }
 
     // delete user by id
     private deletePlace(id: string): void {
         this.placeService.delete(id)
-            .subscribe(() => {
-                this.loadAllPlaces();
-            });
+            .subscribe(() => this.loadAllPlaces());
     }
 
     deleteItem(id: string) {
@@ -143,12 +134,11 @@ export class DashboardComponent implements OnInit {
     * @param place
     */
     gotoDetail(type: any, item: any): void {
-        let link = [`/admin/${type}-detail`, item.id];
+        let link = [`/admin/${type}-detail`, item._id];
         this.router.navigate(link);
     }
 
     selectTab(name: string): void {
-
         this.tabs.forEach((tab: any) => {
             if (tab.name === name) {
                 tab.active = true;

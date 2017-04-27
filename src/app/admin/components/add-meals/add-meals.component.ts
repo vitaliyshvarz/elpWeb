@@ -41,7 +41,7 @@ export class AddMealsComponent implements OnInit, DoCheck {
         const filteredMeals: Meal[] = [];
         meals.forEach((meal: Meal) => {
             let existing = this.existingMeals.find((exsMeal: Meal) =>
-                exsMeal.id === meal.id);
+                exsMeal._id === meal._id);
             if (!existing) {
                 filteredMeals.push(meal);
             }

@@ -1,7 +1,7 @@
-<div *ngIf="user" class="row">
-  <div class="small-10 medium-8 small-centered columns">
+<div class="row">
+  <div  class="small-10 medium-8 small-centered columns">
 
-    <div class="row">
+    <div *ngIf="user" class="row">
       <br />
       <div class="small-3 columns text-center">
         <h3>{{user.firstName}} details</h3>
@@ -30,13 +30,72 @@
         </label>
         <fieldset *ngIf="!currentUser"class="large-6 columns">
           <legend>Account Type</legend>
-          <input type="radio" name="admin" [(ngModel)]="user.type" id="admin"[checked]="user.type === 'admin'" value="admin">
+          <input type="radio" name="admin" [(ngModel)]="user.accountType" id="admin"[checked]="user.accountType === 'admin'" value="admin">
           <label for="admin">Admin</label>
-          <input type="radio" name="default" [(ngModel)]="user.type" id="default"[checked]="user.type === 'default'" value="default">
+          <input type="radio" name="default" [(ngModel)]="user.accountType" id="default"[checked]="user.accountType === 'default'" value="default">
           <label for="default">Default</label>
         </fieldset>
+
+        <p><a id="toogleChangePass">Change Password</a></p>
+
+        <form data-abide novalidate #f="ngForm" id="reset-password-form">
+          <div class="row">
+            <div class="small-12 columns">
+              <fieldset class="fieldset">
+
+                  <label for="oldPassword">{{'OLD_PASSWORD' | translate}}
+                    <input type="password"
+                            class="form-control"
+                            name="oldPassword"
+                            [(ngModel)]="resetPass.password"
+                            #username="ngModel"
+                            pattern="alpha_numeric"
+                            required
+                            id="oldPassword"/>
+                    <span class="form-error">
+                      {{'OLD_PASSWORD_REQUIRED' | translate}}
+                    </span>
+                  </label>
+                  <label for="password">{{'PASSWORD' | translate}}
+                    <input type="password"
+                            class="form-control"
+                            name="password"
+                            [(ngModel)]="resetPass.newpass"
+                            #username="ngModel"
+                            pattern="alpha_numeric"
+                            required
+                            id="password"/>
+                    <span class="form-error">
+                      {{'PASSWORD_REQUIRED' | translate}}
+                    </span>
+                  </label>
+                  <label for="passwordConfirm">{{'REPEAT' | translate}} {{'PASSWORD' | translate}}
+                    <input type="password"
+                          name="passwordConfirm"
+                          required
+                          pattern="alpha_numeric"
+                          data-equalto="password">
+                    <span class="form-error">
+                      {{'PASSWORD_MATCH_REQUIRED' | translate}}
+                    </span>
+                  </label>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="text-center">
+              <button class="button small success" type="submit" value="Submit">
+                {{'CHANGE_PASS' | translate}}
+              </button>
+            </div>
+          </div>
+        </form>
+
       </div>
+
     </div>
+
+
 
     <br />
     <div class="row text-center">
@@ -47,9 +106,23 @@
   </div>
 </div>
 
-
 <div class="large reveal" id="editUserResultModal" data-reveal>
   <h4 *ngIf="user">User {{user.firstName}} edited!</h4>
+
+  <button class="close-button"
+          data-close aria-label="Close modal"
+          type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <hr />
+
+  <div class="row text-center">
+    <button class="button small "data-close>Done!</button>
+  </div>
+</div>
+
+<div class="large reveal" id="editPasswordResultModal" data-reveal>
+  <h4 *ngIf="user">Password changed!</h4>
 
   <button class="close-button"
           data-close aria-label="Close modal"

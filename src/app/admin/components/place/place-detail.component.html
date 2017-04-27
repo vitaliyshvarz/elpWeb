@@ -2,7 +2,6 @@
 <div class="row text-center" *ngIf="place">
   <div class="small-10 large-8 small-centered columns ">
     <h4>{{place.name}} details</h4>
-    <span><label>id: </label>{{place.id}}</span>
 
     <hr />
     <form calss="text-center" *ngIf="place">
@@ -24,7 +23,7 @@
             </div>
             <div class="small-9 columns">
               <input type="text" name="userFirstName"
-                    [(ngModel)]="place.user.firstName"
+                    [(ngModel)]="place._creator.firstName"
                     disabled
                     placeholder="first name"/>
             </div>
@@ -35,7 +34,7 @@
               <label for="right-label" class="right inline">Owner email:</label>
             </div>
             <div class="small-9 columns">
-              <input type="text" name="userEmail" [(ngModel)]="place.user.email" disabled placeholder="email"/>
+              <input type="text" name="userEmail" [(ngModel)]="place._creator.email" disabled placeholder="email"/>
             </div>
           </div>
 
@@ -62,7 +61,7 @@
               <label for="right-label" class="right inline">{{'PHONE' | translate}}</label>
             </div>
             <div class="small-9 columns">
-              <input type="text" name="phoneNumber" [(ngModel)]="place.international_phone_number" placeholder="phone number"/>
+              <input type="text" name="phoneNumber" [(ngModel)]="place.phone" placeholder="phone number"/>
             </div>
           </div>
         </div>
@@ -71,16 +70,16 @@
 
     <hr />
 
-    <payment-options [data]="place.payment_options"></payment-options>
+    <payment-options [data]="place.paymentOptions"></payment-options>
     <br />
     <hr />
-    <working-hours [data]="place.elp_opening_hours" ></working-hours>
+    <working-hours [data]="place.elpOpeningHours" ></working-hours>
     <hr />
     <currency-selector [data]="place.currency"></currency-selector>
     <hr />
-    <dishes-selector [dishes]="place.meals" [currency]=place.currency [deleteMeals]="true">
+    <dishes-selector *ngIf="meals" [dishes]="meals" [currency]=place.currency [deleteMeals]="true">
     </dishes-selector>
-    <add-meals [existingMeals]="place.meals"></add-meals>
+    <add-meals *ngIf="meals" [existingMeals]="meals"></add-meals>
     <hr />
 
     <div class="row">

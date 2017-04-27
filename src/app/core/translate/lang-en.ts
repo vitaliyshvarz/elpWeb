@@ -4,8 +4,8 @@ export const LANG_EN_TRANS = {
     'APP_NAME': 'EatLikePro',
     'THE_APP': 'The App',
     'CONTUCT_US': 'Contact us',
-    'LOGIN_SIGNUP': 'Login / Sign up',
-    'JOIN_US': 'Join us',
+    'LOGIN_SIGNUP': 'Sign in',
+    'JOIN_US': 'Add your place',
     'SUBMIT_AND_GET': 'Join us and get more customers',
     'LEARN_MORE': 'Learn more',
     'LOGIN': 'Login',
@@ -78,6 +78,9 @@ export const LANG_EN_TRANS = {
     'USERS_REGISTERED': 'Users Registered',
     'PLACES_REGISTERED': 'Places Registered',
     'TOTAL_MEALS': 'Meals in total',
-    'ADD_MEALS_FROM_ALL': 'Add Meals from all available'
+    'ADD_MEALS_FROM_ALL': 'Add Meals from all available',
+    'OLD_PASSWORD_REQUIRED': 'Old Password required',
+    'CHANGE_PASS': 'Change password',
+    'OLD_PASSWORD': 'Old password'
 
 };

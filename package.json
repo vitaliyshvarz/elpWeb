@@ -4,7 +4,7 @@
   "description": "Typescript and npm has to be installed on your machine!",
   "main": "index.html",
   "scripts": {
-    "heroku-prebuild": "rm -rf node_modules/ typings/",
+    "heroku-prebuild": "heroku config:set NODE_ENV=production && rm -rf node_modules/ typings/",
     "heroku-postbuild": "gulp build",
     "lite": "lite-server",
     "gulp": "gulp",
@@ -74,7 +74,6 @@
   "license": "ISC",
   "pre-commit": [
     "tsc",
-    "validate",
     "test"
   ]
 }

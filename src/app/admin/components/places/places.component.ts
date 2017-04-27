@@ -28,7 +28,7 @@ export class PlacesComponent implements OnInit {
     }
 
     private getPlaces(): void {
-        this.placeService.getAllForUser(this.currentUser.email)
+        this.placeService.getAllForUser()
             .subscribe((places: Place[]) => this.places = places);
     }
 
@@ -42,7 +42,7 @@ export class PlacesComponent implements OnInit {
     }
 
     gotoDetail(place: Place): void {
-        let link = ['/admin/place-detail', place.id];
+        let link = ['/admin/place-detail', place._id];
         this.router.navigate(link);
     }
 
@@ -58,7 +58,7 @@ export class PlacesComponent implements OnInit {
 
     delete(place: Place): void {
         this.placeService
-            .delete(place.id)
+            .delete(place._id)
             .subscribe(() => {
                 this.places = this.places.filter(h => h !== place);
                 if (this.selectedPlace === place) { this.selectedPlace = null; }

@@ -20,8 +20,8 @@
       </div>
       <div class="small-6 columns">
         <div *ngIf="selectedPlace">
-          <h5>Name: {{selectedPlace.name }}</h5>
-          <h6>Owner: {{selectedPlace.user.firstName+' '+selectedPlace.user.lastName}}</h6>
+          <h5>Name: {{selectedPlace.name}}</h5>
+          <h6>Owner: {{selectedPlace._creator.firstName+' '+selectedPlace._creator.lastName}}</h6>
           <h6>Address: {{selectedPlace.fullAddress}}</h6>
           <button class="button small" (click)="gotoDetail(selectedPlace)">Edit</button>
           <span class="delete button alert small" (click)="openConfirmPopUp()">delete</span>

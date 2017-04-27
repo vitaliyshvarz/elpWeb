@@ -1,14 +1,15 @@
 <h4>{{'ADD_MEALS_FROM_ALL' | translate}}</h4>
 
 <ul id="dishesAccordion"class="accordion" data-accordion data-multi-expand="true" *ngIf="meals">
-  <li *ngFor="let meal of meals" class="accordion-item" data-accordion-item [attr.id]="'mealTab'+meal.id">
+  <li *ngFor="let meal of meals" class="accordion-item" data-accordion-item [attr.id]="'mealTab'+meal._id">
      <a href="javascript:;"
-     (click)="toogleItem('meal'+meal.id, 'mealTab'+meal.id)"
+     (click)="toogleItem('meal'+meal._id, 'mealTab'+meal._id)"
      class="accordion-title">{{ meal.name }}</a>
-     <div class="accordion-content" data-tab-content [attr.id]="'meal'+meal.id">
+     <div class="accordion-content" data-tab-content [attr.id]="'meal'+meal._id">
        <div class="row">
          <div class="columns small-3">
-             <img [src]="meal.imageUrl"/>
+             <img *ngIf="meal.imageUrl" [src]="meal.imageUrl"/>
+             <img *ngIf="!meal.imageUrl" src="./app/web/assets/img/foodLogoBlack.png" alt="Food Logo" />
          </div>
          <div class="columns small-9">
            <p>

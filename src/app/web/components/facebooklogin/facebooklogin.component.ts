@@ -44,14 +44,13 @@ export class FacebookLoginComponent {
 
     tryRegisterUser(response: any) {
         response.registrationType = 'facebook';
-        this.userService.create(response)
+        this.userService.signup(response)
             .subscribe(
             (data: any) => {
                 // set success message and pass true paramater
                 // to persist the message after redirecting to the login page
                 this.loginButton.removeClass('sending').blur();
                 this.alertService.success('Registration successful', true);
-                this.loginInApp(response);
             },
             (error: any) => {
                 this.loginButton.removeClass('sending').blur();
@@ -59,33 +58,28 @@ export class FacebookLoginComponent {
             });
     }
 
-    loginInApp(response: any) {
-        this.authenticationService.login(response.email, response.password)
+    loginInApp(user: any) {
+        this.authenticationService.login(user.email, user.password)
             .subscribe(
             (data: any) => {
                 this.alertService.success('Login successful', true);
                 this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
-                this.alertService.error(error);
-                const newUser = {
-                    email: response.email,
-                    firstName: response.first_name,
-                    lastName: response.last_name,
-                    password: response.password,
-                    image: response.image
-                };
-                this.tryRegisterUser(newUser);
+                if (error.userRegistered) {
+                    this.alertService.error('User Already registred with Google or Email');
+                    this.loginButton.removeClass('sending').blur();
+                } else {
+                    this.tryRegisterUser(user);
+                }
             });
     }
 
     getUserDataOnLogin () {
-
         FB.api('/me', {
             locale: 'en_US',
             fields: 'first_name,last_name,email,location,picture'
         }, (response: any) => {
-          console.log(response);
             // Idea is to save FB id as user password
             response.password = response.id;
             response.image = response.picture.data.url;

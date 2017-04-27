@@ -4,7 +4,7 @@ import { QuickEmail }     from '../models/quick-email';
 import { Email }          from '../models/email';
 import { Observable }     from 'rxjs/Observable';
 import { AlertService }   from '../services/alert.service';
-
+import { BACKEND_API }    from '../config/backendConfig';
 
 
 @Injectable()
@@ -14,7 +14,7 @@ export class CommunicationService {
     constructor(private http: Http, private alertService: AlertService) { }
 
     sendQuickEmail(email: QuickEmail): Observable<QuickEmail[]> {
-        return this.http.post(`/api/quick-email`, email)
+        return this.http.post(`${BACKEND_API.quickEmail}`, email)
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error sendQuickEmail');
@@ -23,7 +23,7 @@ export class CommunicationService {
     }
 
     sendEmail(email: Email): Observable<Email[]> {
-        return this.http.post(`/api/send-email`, email)
+        return this.http.post(`${BACKEND_API.sendEmail}`, email)
             .map((response: Response) => response.json())
             .catch((error: any) => {
                 this.alertService.error(error || 'Error sendEmail');

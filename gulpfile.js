@@ -4,6 +4,7 @@ var gls = require('gulp-live-server');
 var concat = require('gulp-concat');
 var tslint = require('gulp-tslint');
 var exec = require('child_process').exec;
+var fs = require('fs');
 
 var dev = 'src/';
 var prod = 'dist/';
@@ -49,7 +50,7 @@ gulp.task('copy-libs', () => {
             '@angular/**'
         ], {
             cwd: "node_modules/**"
-        }) /* Glob required here. */
+        })
         .pipe(gulp.dest(prod + "/lib"));
 });
 
@@ -79,7 +80,9 @@ gulp.task('build-css', function () {
 gulp.task('build-ts', function () {
     return gulp.src([dev + '**/*.ts', 'typings/tsd.d.ts'])
         .pipe(sourcemaps.init())
-        .pipe(tsProject({noEmitOnError: false}))
+        .pipe(tsProject({
+            noEmitOnError: false
+        }))
         .pipe(jsuglify())
         .pipe(sourcemaps.write('../../' + prod))
         .pipe(gulp.dest(prod));
@@ -103,17 +106,23 @@ gulp.task('build-html', function () {
         .pipe(gulp.dest(prod));
 });
 
+
 gulp.task('watch', function (done) {
     gulp.watch([dev + '**/*.ts',
         dev + '**/*.scss',
         dev + '**/*.html'
     ], [
-        'build-ts',
-        'build-css',
-        'build-html'
+        'build-all'
     ]);
 
     return done();
+});
+
+gulp.task('build-all', function (done) {
+    runSequence('build-ts', 'build-css', 'build-html', 'build-config',
+      function () {
+          done();
+      });
 });
 
 gulp.task('clean-all', function () {
@@ -125,23 +134,28 @@ gulp.task('clean-all', function () {
 
 gulp.task('clean', function () {
     return gulp.src([
-        'dist/app' + '**/*.ts', 
-        'dist/app' + '**/*.html', 
-        'dist/app' + '**/*.css'
+            'dist/app' + '**/*.ts',
+            'dist/app' + '**/*.html',
+            'dist/app' + '**/*.css'
         ], {
             read: false
         })
         .pipe(clean());
 });
 
-gulp.task('start-server', function(done) {
-    exec('npm start', function (err, stdout, stderr) {
+gulp.task('start-server', function (done) {
+    exec('npm start', {
+        maxBuffer: 1024 * 5000
+    }, function (err, stdout, stderr) {
         done(err);
     });
 })
 
-gulp.task('start', function () {
-    runSequence( 'develop', 'watch', 'start-server');
+gulp.task('start', function (done) {
+    runSequence('develop', 'watch', 'build-config', 'start-server',
+      function () {
+          done();
+      });
 });
 
 gulp.task('develop', function (done) {
@@ -164,6 +178,31 @@ gulp.task('tslint', function () {
         .pipe(tsProject());
 });
 
+gulp.task('build-config', function (done) {
+    if (process.env.NODE_ENV === 'production') {
+        try {
+            fs.writeFileSync('dist/app/elpserverconfig.js', `
+              "use strict";
+              Object.defineProperty(exports, "__esModule", { value: true });
+              exports.BASE_URL = 'https://eatlikepro-node.herokuapp.com/api';
+            `);
+        } catch (err) {
+            console.error('Error writing elpserverconfig file', err);
+        }
+    } else {
+        try {
+            fs.writeFileSync('dist/app/elpserverconfig.js', `
+              "use strict";
+              Object.defineProperty(exports, "__esModule", { value: true });
+              exports.BASE_URL = 'http://localhost:9999/api';
+            `);
+        } catch (err) {
+            console.error('Error writing elpserverconfig file', err);
+        }
+    }
+    done();
+});
+
 gulp.task('build', function (done) {
     runSequence(
         'clean-all',
@@ -175,6 +214,7 @@ gulp.task('build', function (done) {
         'build-css',
         'build-html',
         'build-img',
+        'build-config',
         function () {
             done();
         });

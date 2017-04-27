@@ -6,7 +6,8 @@ import {
     UploadService,
     CURRENCIES,
     Meal,
-    Portion
+    Portion,
+    AlertService
 } from '../../../core/@core';
 
 @Component({
@@ -24,7 +25,8 @@ export class MealDetailComponent implements OnInit {
         private mealService: MealService,
         private route: ActivatedRoute,
         private location: Location,
-        private uploadService: UploadService
+        private uploadService: UploadService,
+        private alertService: AlertService
     ) {
         this.uploadService.progress$.subscribe(
             (data: any) => {
@@ -35,7 +37,8 @@ export class MealDetailComponent implements OnInit {
     onFileChange(event: any) {
         const files = event.srcElement.files;
 
-        this.uploadService.uploadImage([], files).subscribe(() => {
+        this.uploadService.uploadImage([], files).subscribe(data => {
+            this.meal.imageUrl = data.path;
             let currentPopUp = new (<any>Foundation.Reveal)($('#uploadImageResultModal'));
             currentPopUp.open();
         });
@@ -45,7 +48,7 @@ export class MealDetailComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let id = params['id'];
             this.mealService.getById(id)
-                .subscribe((meal: Meal) => this.meal = meal);
+                .subscribe((data: any) => this.meal = data.meal);
         });
     }
     goBack(): void {
@@ -53,6 +56,29 @@ export class MealDetailComponent implements OnInit {
     }
 
     save(): void {
+
+        if (!this.meal.imageUrl) {
+            this.alertService.error('No Image, please select image');
+            return;
+        }
+        if (!this.meal.name) {
+            this.alertService.error('No name, please enter meal name');
+            return;
+        }
+        if (!this.meal.description) {
+            this.alertService.error('No description, please enter meal description');
+            return;
+        }
+        if (this.meal.portions.length === 0) {
+            this.alertService.error('No portions added, please add portions');
+            return;
+        }
+
+        if (!this.checkPortions() ) {
+          this.alertService.error('Description and Size for each portion are mandatory');
+          return;
+        }
+
         this.mealService.update(this.meal)
             .subscribe(() => {
                 let currentPopUp = new (<any>Foundation.Reveal)($('#editMealResultModal'));
@@ -60,7 +86,22 @@ export class MealDetailComponent implements OnInit {
             });
     }
 
-    addPortion() {
+    checkPortions(): boolean {
+      let result = true;
+      this.meal.portions.forEach(portion => {
+        if (portion.description.length < 1) {
+          result = false;
+        }
+
+        if (portion.size.length < 1) {
+          result = false;
+        }
+      });
+
+      return result;
+    }
+
+    addPortion(): void {
         this.meal.portions.push(new Portion());
     }
 

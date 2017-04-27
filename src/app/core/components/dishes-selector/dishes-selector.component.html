@@ -27,12 +27,12 @@
             <div class="small-6 medium-6 large-6 columns text-center">
               <div class="switch dish-switch">
                 <input class="switch-input"
-                      [attr.id]="dish.id"
+                      [attr.id]="dish._id"
                       [(ngModel)]="dish.selected"
                       (ngModelChange)="toogleDetails(dish.id)"
                       type="checkbox"
                       name="portionSwitch">
-                      <label class="switch-paddle success" [attr.for]="dish.id">
+                      <label class="switch-paddle success" [attr.for]="dish._id">
                         <span class="switch-active" aria-hidden="true">Yes</span>
                         <span class="switch-inactive" aria-hidden="true">No</span>
                       </label>
@@ -53,7 +53,7 @@
       </div>
       <br />
 
-      <div [attr.id]="dish.id + 'details'" [ngStyle]="{'display': dish.selected ? '' : 'none'}">
+      <div [attr.id]="dish._id + 'details'" [ngStyle]="{'display': dish.selected ? '' : 'none'}">
         <div class="row">
           <div class="small-1 medium-1 large-1 columns text-center">
             {{ 'SIZE' | translate }}
@@ -79,12 +79,12 @@
           <div class="small-3 medium-3 large-3 columns text-center">
             <div class="switch tiny dish-switch">
               <input class="switch-input"
-                    [attr.id]="portion.id"
+                    [attr.id]="portion._id"
                     [(ngModel)]="portion.selected"
                     type="checkbox"
                     [disabled]="!dish.selected"
                     name="portionSwitch">
-                    <label class="switch-paddle success" [attr.for]="portion.id">
+                    <label class="switch-paddle success" [attr.for]="portion._id">
                       <span class="switch-active" aria-hidden="true">Yes</span>
                       <span class="switch-inactive" aria-hidden="true">No</span>
                     </label>
