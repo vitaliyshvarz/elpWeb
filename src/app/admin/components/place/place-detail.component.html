@@ -77,9 +77,9 @@
     <hr />
     <currency-selector [data]="place.currency"></currency-selector>
     <hr />
-    <dishes-selector *ngIf="meals" [dishes]="meals" [currency]=place.currency [deleteMeals]="true">
+    <dishes-selector *ngIf="place" [dishes]="place.meals" [currency]=place.currency [deleteMeals]="true">
     </dishes-selector>
-    <add-meals *ngIf="meals" [existingMeals]="meals"></add-meals>
+    <add-meals *ngIf="place" [existingMeals]="place.meals"></add-meals>
     <hr />
 
     <div class="row">

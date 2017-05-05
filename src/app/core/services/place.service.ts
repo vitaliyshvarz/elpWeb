@@ -4,6 +4,7 @@ import { Observable }                              from 'rxjs/Observable';
 import { AlertService }                            from '../services/alert.service';
 import { SessionService }                          from '../services/session.service';
 import { BACKEND_API }                             from '../config/backendConfig';
+import { Place }                                   from '../models/place';
 
 @Injectable()
 export class PlaceService {
@@ -37,7 +38,7 @@ export class PlaceService {
             });
     }
 
-    public create(place: any) {
+    public create(place: Place) {
         return this.http.post(BACKEND_API.addPlace, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
@@ -46,7 +47,7 @@ export class PlaceService {
             });
     }
 
-    public update(place: any) {
+    public update(place: Place) {
         return this.http.put(BACKEND_API.updatePlace + place._id, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {

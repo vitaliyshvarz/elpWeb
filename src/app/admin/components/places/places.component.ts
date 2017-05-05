@@ -46,16 +46,6 @@ export class PlacesComponent implements OnInit {
         this.router.navigate(link);
     }
 
-    add(name: string): void {
-        name = name.trim();
-        if (!name) { return; }
-        this.placeService.create(name)
-            .subscribe((place: Place) => {
-                this.places.push(place);
-                this.selectedPlace = null;
-            });
-    }
-
     delete(place: Place): void {
         this.placeService
             .delete(place._id)

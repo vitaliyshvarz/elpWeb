@@ -97,4 +97,8 @@ export class AddMealComponent {
         this.meal.portions.push(new Portion());
     }
 
+    removePortion(index: number): void {
+      this.meal.portions.splice(index, 1);
+    }
+
 }
