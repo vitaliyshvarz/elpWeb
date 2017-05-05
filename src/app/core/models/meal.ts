@@ -1,5 +1,6 @@
 
 export class Portion {
+    _id: number;
     size: string = '';
     selected: boolean = true;
     description: string = '';

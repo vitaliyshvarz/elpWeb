@@ -38,12 +38,11 @@
             {{ 'DESCRIPTION' | translate }}
           </div>
           <div class="small-4 medium-4 large-4 columns text-center">
-            {{ 'PRICE' | translate }}
           </div>
         </div>
         <br />
 
-        <div class="row" *ngFor="let portion of meal.portions">
+        <div class="row" *ngFor="let portion of meal.portions; let i = index">
           <div class="small-2 columns text-center">
             <div class="padding-top">
               <input type="text" maxlength="5" [(ngModel)]="portion.size" placeholder="Size">
@@ -54,13 +53,11 @@
           <div class="small-6 columns">
             <textarea placeholder="Description" rows="2" [(ngModel)]="portion.description"></textarea>
           </div>
-          <div class="small-4 columns">
-            <div class="input-group">
-              <span class="input-group-label" [innerHtml]="currentCurrency.postfix "></span>
-              <input class="input-group-field" [(ngModel)]="portion.price" [disabled]="!portion.selected" type="number"/>
-            </div>
+          <div class="small-4 columns text-center">
+            <button class="button tiny" (click)="removePortion(i)">Remove portion</button>
           </div>
           <br />
+
         </div>
 
         <button class="button tiny" (click)="addPortion()">Add portion</button>

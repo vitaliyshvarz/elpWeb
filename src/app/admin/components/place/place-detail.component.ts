@@ -24,30 +24,14 @@ export class PlaceDetailComponent implements OnInit {
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
             let id = params['id'];
-            this.placeService.getById(id).subscribe((data: any) => {
-                this.place = data.place;
-                this.mealService.getByIds(this.place.mealIds).subscribe((mealData: any) => {
-                    this.meals = mealData.meals;
-                });
-            });
+            this.placeService.getById(id).subscribe((data: any) => this.place = data.place);
         });
     }
     goBack(): void {
         this.location.back();
     }
 
-    getMealIds(meals: Meal[]): [string] {
-        let ids: any = [];
-
-        meals.forEach(meal => {
-            ids.push(meal._id);
-        });
-
-        return ids;
-    }
-
     save(): void {
-        this.place.mealIds = this.getMealIds(this.meals);
         this.placeService.update(this.place)
             .subscribe(() => {
                 let currentPopUp = new (<any>Foundation.Reveal)($('#editPlaceResultModal'));

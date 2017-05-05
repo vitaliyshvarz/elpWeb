@@ -4,7 +4,7 @@ import {
     PlaceService,
     MealService,
     CURRENCIES,
-    Meal,
+    Meal, Place,
     AlertService } from '../../../core/@core';
 
 @Component({
@@ -19,7 +19,7 @@ export class AddPlacePart3Component implements OnInit {
     finishAddPlaceButton: any;
     currentCurrency: any = CURRENCIES[0]; // USD
     currencies: any = JSON.parse(JSON.stringify(CURRENCIES));
-    dishes: Meal[];
+    meals: Meal[];
     deliveryAvailable: boolean = false;
     takeAwayAvailable: boolean = false;
     showSaveSucess: boolean = false;
@@ -51,15 +51,11 @@ export class AddPlacePart3Component implements OnInit {
 
     // initially get meals
     private loadAllMeals(): void {
-        this.mealService.getAll()
-            .subscribe((meals: Meal[]) => {
-                console.log(meals);
-                this.dishes = meals;
-            });
+        this.mealService.getAll().subscribe((meals: Meal[]) => this.meals = meals);
     }
 
     finish() {
-        const activeMeals = this.dishes.filter(dish => !!dish.selected);
+        const activeMeals = this.meals.filter(dish => !!dish.selected);
         const currency = this.currentCurrency;
         let valid: boolean = true;
 
@@ -87,7 +83,7 @@ export class AddPlacePart3Component implements OnInit {
 
         if (valid) {
             this.finishAddPlaceButton = $('#finishAddPlace').toggleClass('sending');
-            this.placeService.create({
+            this.placeService.create(new Place({
                 name: this.savedPlace.name,
                 googleId: this.savedPlace.place_id,
                 location: this.savedPlace.geometry.location,
@@ -97,11 +93,11 @@ export class AddPlacePart3Component implements OnInit {
                 fullAddress: this.savedPlace.vicinity || '',
                 website: this.savedPlace.website || '',
                 paymentOptions: this.savedPayments,
-                mealIds: this.getMealIds(activeMeals),
+                meals: this.getSelectedMeals(this.meals),
                 currency: currency,
                 deliveryAvailable: this.deliveryAvailable,
-                takeAwayAvailable: this.takeAwayAvailable
-            }).subscribe(
+                takeAwayAvailable: this.takeAwayAvailable,
+            })).subscribe(
                 (data: any) => {
                     this.saveResultPlace = data.place;
                     this.showSucessBlock();
@@ -120,14 +116,11 @@ export class AddPlacePart3Component implements OnInit {
 
     }
 
-    getMealIds(meals: Meal[]): [string] {
-        let ids: any = [];
 
-        meals.forEach(meal => {
-            ids.push(meal._id);
-        });
 
-        return ids;
+    getSelectedMeals(meals: Meal[]): Meal[] {
+      console.log(meals.filter(meal => meal.selected));
+        return meals.filter(meal => meal.selected);
     }
 
     showSucessBlock() {
