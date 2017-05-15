@@ -42,7 +42,7 @@
     <login-form *ngIf="login && !register && !showContinueButton"></login-form>
     <register-form *ngIf="register && !login && !showContinueButton"></register-form>
 
-    <div class="text-center password-recover-link">
+    <div *ngIf="userNotLogedIn" class="text-center password-recover-link">
       <a href="javascript:;" (click)="showResetPassword=true">
         Forgot password?
       </a>
@@ -63,3 +63,20 @@
 </div>
 <quick-contact-form></quick-contact-form>
 <elp-footer></elp-footer>
+
+
+<div class="tiny reveal text-center" id="messageModal" data-reveal>
+  <h4>{{loginRegisterMsg}}</h4>
+  <button class="close-button"
+          data-close aria-label="Close modal"
+          type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <div class="row">
+    <div class="small-12 columns text-center">
+      <button class="button small "data-close>ok</button>
+    </div>
+  </div>
+
+</div>

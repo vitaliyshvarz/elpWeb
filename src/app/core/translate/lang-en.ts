@@ -81,6 +81,7 @@ export const LANG_EN_TRANS = {
     'ADD_MEALS_FROM_ALL': 'Add Meals from all available',
     'OLD_PASSWORD_REQUIRED': 'Old Password required',
     'CHANGE_PASS': 'Change password',
-    'OLD_PASSWORD': 'Old password'
+    'OLD_PASSWORD': 'Old password',
+    'LOGIN_OR_REGISTER': 'Place sign in or register before adding new place'
 
 };
