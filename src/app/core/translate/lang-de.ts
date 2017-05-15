@@ -81,6 +81,7 @@ export const LANG_ES_TRANS = {
     'ADD_MEALS_FROM_ALL': 'Mahlzeiten von alle verfügbare hinzufügen',
     'OLD_PASSWORD_REQUIRED': 'Altes Passwort erforderlich',
     'CHANGE_PASS': 'Passwort ändern',
-    'OLD_PASSWORD': 'Altes Passwort'
+    'OLD_PASSWORD': 'Altes Passwort',
+    'LOGIN_OR_REGISTER': 'Bitte vor dem Sie ein neues Ort hinzufügen loggen Sie sich ein oder registrieren Sie sich '
 
 };

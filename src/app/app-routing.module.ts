@@ -23,6 +23,7 @@ const routes: any = [
     { path: 'about-us', component: AboutUsComponent },
     { path: 'join-us/:part', component: JoinUsPageComponent },
     { path: 'login-register', component: WebLoginRegisterComponent },
+    { path: 'login-register/:add-place', component: WebLoginRegisterComponent },
     { path: 'contact', component: ContactPageComponent },
     {
         path: 'admin', component: MainAdminComponent, canActivate: [AuthGuard],

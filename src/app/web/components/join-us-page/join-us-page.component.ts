@@ -29,5 +29,8 @@ export class JoinUsPageComponent implements OnInit {
     getUserFromLS() {
         const userData: any = localStorage.getItem('currentUser');
         this.currentUser = !!userData ? JSON.parse(userData) : null;
+        if (!this.currentUser) {
+            this.router.navigate(['/login-register', true]);
+        }
     }
 }
