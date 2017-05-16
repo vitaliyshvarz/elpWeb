@@ -121,6 +121,9 @@
         }
     }
 }
+.large.reveal {
+  top: 10% !important;
+}
 @keyframes spin {
     0% {
         transform: rotate(0deg);

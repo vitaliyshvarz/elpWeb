@@ -41,12 +41,6 @@
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <li class="show-for-large" >
-            <a href="javascript:;" *ngIf="currentUser">
-              {{currentUser.firstName}}
-              <span class="label logout-label" (click)="logout()">logout</span>
-            </a>
-          </li>
           <li class="show-for-large">
             <a *ngIf="currentUser" routerLink="/admin/home">
               {{'MY_ACCOUNT' | translate }}
@@ -58,11 +52,17 @@
           <li class="show-for-large">
             <a routerLink="/contact">{{'CONTUCT_US' | translate }}</a>
           </li>
+          <li class="show-for-large">
+            <a class="button" routerLink="/join-us/part1">{{'JOIN_US' | translate }}</a>
+          </li>
           <li class="show-for-large" *ngIf="!currentUser">
             <a routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</a>
           </li>
-          <li class="show-for-large">
-            <a class="button" routerLink="/join-us/part1">{{'JOIN_US' | translate }}</a>
+          <li class="show-for-large text-center" >
+            <a class="name_logout_btn" href="javascript:;" *ngIf="currentUser">
+              <span>{{currentUser.firstName}}</span>
+              <span class="label logout-label" (click)="logout()">logout</span>
+            </a>
           </li>
         </ul>
       </div>

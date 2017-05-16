@@ -9,7 +9,7 @@ $font-color: black;
 
 .top-bar {
     background: $menu-background;
-
+    padding: 0;
     .dropdown-pane {
         padding: 0;
         width: 6em;
@@ -35,7 +35,12 @@ $font-color: black;
         li {
             background: $menu-background;
             border: none;
-
+            padding: 0;
+            &.active {
+              a {
+                color: white;
+              }
+            }
             a {
                 color: $font-color;
 
@@ -65,6 +70,9 @@ $font-color: black;
     .menu {
         li:not(:last-child) {
             border-right: 1px solid #4e4e4e;
+        }
+        .name_logout_btn {
+          padding: 0 15px;
         }
     }
 }

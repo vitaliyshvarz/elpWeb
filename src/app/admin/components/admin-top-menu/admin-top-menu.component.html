@@ -41,20 +41,20 @@
       </div>
       <div class="top-bar-right">
         <ul class="menu">
+          <li [ngClass]="{'active' : router.url === '/admin/home'}" class="show-for-large">
+            <a routerLink="/admin/home" >{{'MY_ACCOUNT' | translate }}</a>
+          </li>
+          <li [ngClass]="{'active' : router.url.indexOf('dashboard') > -1}" *ngIf="currentUser && currentUser.accountType == 'admin'" class="show-for-large">
+            <a routerLink="/admin/dashboard/Overview" >{{'DASHBOARD' | translate }}</a>
+          </li>
+          <li [ngClass]="{'active' : router.url === '/admin/my-places'}" class="show-for-large">
+            <a *ngIf="currentUser" routerLink="/admin/my-places">{{'MY_PLACES' | translate }}</a>
+          </li>
           <li class="show-for-large" >
-            <a href="javascript:;" *ngIf="currentUser">
+            <a class="name_logout_btn" href="javascript:;" *ngIf="currentUser">
               {{currentUser.firstName}}
               <span class="label logout-label" (click)="logout()">logout</span>
             </a>
-          </li>
-          <li class="show-for-large">
-            <a routerLink="/admin/home" >{{'MY_ACCOUNT' | translate }}</a>
-          </li>
-          <li *ngIf="currentUser && currentUser.accountType == 'admin'" class="show-for-large">
-            <a routerLink="/admin/dashboard/Overview" >{{'DASHBOARD' | translate }}</a>
-          </li>
-          <li class="show-for-large">
-            <a *ngIf="currentUser" routerLink="/admin/my-places">{{'MY_PLACES' | translate }}</a>
           </li>
         </ul>
       </div>
