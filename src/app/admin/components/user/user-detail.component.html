@@ -11,32 +11,32 @@
         <img *ngIf="user.image" class="thumbnail" [src]="user.image" alt="User Image">
       </div>
       <div class="small-9 columns">
-        <p class="icons-large">Registration Type: <i [ngClass]="{
+        <p class="icons-large">{{'REGISTERED_WITH' | translate}}: <i [ngClass]="{
           'fi-social-facebook': user.registrationType==='facebook',
           'fi-social-google-plus': user.registrationType==='google',
           'fi-mail': user.registrationType==='email'
         }"></i></p>
-        <label>firstName
+        <label>{{'FIRST_NAME' | translate}}
           <input type="text" [(ngModel)]="user.firstName" placeholder="firstName">
         </label>
-        <label>lastName
+        <label>{{'LAST_NAME' | translate}}
           <input type="text" [(ngModel)]="user.lastName" placeholder="lastName">
         </label>
-        <label>email
+        <label>{{'EMAIL' | translate}}
           <input type="email" [(ngModel)]="user.email" placeholder="email">
         </label>
-        <label>Regiastered on
+        <label>{{'REGISTERED_ON' | translate}}
           <input type="text" [(ngModel)]="user.registrationTime" disabled placeholder="email">
         </label>
         <fieldset *ngIf="!currentUser"class="large-6 columns">
-          <legend>Account Type</legend>
+          <legend>{{'ACCOUNT_TYPE' | translate}}</legend>
           <input type="radio" name="admin" [(ngModel)]="user.accountType" id="admin"[checked]="user.accountType === 'admin'" value="admin">
           <label for="admin">Admin</label>
           <input type="radio" name="default" [(ngModel)]="user.accountType" id="default"[checked]="user.accountType === 'default'" value="default">
           <label for="default">Default</label>
         </fieldset>
 
-        <p><a id="toogleChangePass">Change Password</a></p>
+        <p><a id="toogleChangePass">{{'CHANGE_PASS' | translate}}</a></p>
 
         <form data-abide novalidate #f="ngForm" id="reset-password-form">
           <div class="row">
@@ -99,8 +99,8 @@
 
     <br />
     <div class="row text-center">
-      <button (click)="save()" class="button">Save</button>
-      <button (click)="goBack()" class="button">Back</button>
+      <button (click)="save()" class="button">{{'SAVE' | translate}}</button>
+      <button (click)="goBack()" class="button">{{'BACK' | translate}}</button>
     </div>
 
   </div>

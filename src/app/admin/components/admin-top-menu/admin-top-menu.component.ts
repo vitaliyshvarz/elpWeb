@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }            from '@angular/router';
 
 import {
     User,
@@ -21,7 +22,8 @@ export class AdminTopMenuComponent implements OnInit {
     constructor(
         private _translate: TranslateService,
         private authenticationService: AuthenticationService,
-        private loggedService: LoggedService
+        private loggedService: LoggedService,
+        private router: Router,
     ) {
         this.getUserFromLS();
         this.loggedService.getLogged().subscribe(logged => {

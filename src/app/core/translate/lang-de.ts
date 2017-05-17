@@ -18,6 +18,8 @@ export const LANG_ES_TRANS = {
     'REGISTER': 'Anmeldung',
     'FIRST_NAME': 'Vorname',
     'FIRSTNAME_REQUIRED': 'Vorname erforderlich',
+    'REGISTERED_ON': 'Mitglied seit',
+    'ACCOUNT_TYPE': 'Konto Typ',
     'LAST_NAME': 'NachName',
     'LASTNAME_REQUIRED': 'NachName erforderlich',
     'CANCEL': 'stornieren',
@@ -39,7 +41,8 @@ export const LANG_ES_TRANS = {
     'STEP_2': 'Schritt 2',
     'PAYMENT_OPTIONS': 'Zahlungsmöglichkeiten',
     'WORKING_HOURS': 'Arbeitszeit',
-    'BACK': 'zurück',
+    'BACK': 'Zurück',
+    'SAVE': 'Speichern',
     'STEP_3': 'Schritt 3',
     'BREAK': 'Pause',
     'MONDAY': 'Montag',
@@ -82,6 +85,7 @@ export const LANG_ES_TRANS = {
     'OLD_PASSWORD_REQUIRED': 'Altes Passwort erforderlich',
     'CHANGE_PASS': 'Passwort ändern',
     'OLD_PASSWORD': 'Altes Passwort',
-    'LOGIN_OR_REGISTER': 'Bitte vor dem Sie ein neues Ort hinzufügen loggen Sie sich ein oder registrieren Sie sich '
+    'LOGIN_OR_REGISTER': 'Bitte vor dem Sie ein neues Ort hinzufügen loggen Sie sich ein oder registrieren Sie sich ',
+    'REGISTERED_WITH': 'Registriert mit'
 
 };

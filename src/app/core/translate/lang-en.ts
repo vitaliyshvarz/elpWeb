@@ -19,6 +19,8 @@ export const LANG_EN_TRANS = {
     'FIRST_NAME': 'First name',
     'FIRSTNAME_REQUIRED': 'First name required',
     'LAST_NAME': 'Last name',
+    'REGISTERED_ON': 'Registered on',
+    'ACCOUNT_TYPE': 'Account type',
     'LASTNAME_REQUIRED': 'Last name required',
     'CANCEL': 'Cancel',
     'REPEAT': 'repeat',
@@ -40,6 +42,7 @@ export const LANG_EN_TRANS = {
     'PAYMENT_OPTIONS': 'Payment options',
     'WORKING_HOURS': 'Working hours',
     'BACK': 'Back',
+    'SAVE': 'Save',
     'STEP_3': 'Step 3',
     'BREAK': 'Break',
     'MONDAY': 'Monday',
@@ -82,6 +85,7 @@ export const LANG_EN_TRANS = {
     'OLD_PASSWORD_REQUIRED': 'Old Password required',
     'CHANGE_PASS': 'Change password',
     'OLD_PASSWORD': 'Old password',
-    'LOGIN_OR_REGISTER': 'Place sign in or register before adding new place'
+    'LOGIN_OR_REGISTER': 'Place sign in or register before adding new place',
+    'REGISTERED_WITH': 'Rgistered with'
 
 };
