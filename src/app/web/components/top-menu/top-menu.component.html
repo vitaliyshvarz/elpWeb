@@ -36,9 +36,16 @@
             <span class="title-bar-title site-name-mob" data-hide-for="large">
               {{ 'APP_NAME' | translate }}
             </span>
+
+          </li>
+          <li *ngIf="currentUser" class="hide-for-large user-name-mobile">
+            <span>{{currentUser.firstName}}</span>
           </li>
         </ul>
       </div>
+
+
+
       <div class="top-bar-right">
         <ul class="menu">
           <li class="show-for-large">

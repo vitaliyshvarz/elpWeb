@@ -17,8 +17,8 @@ export class CommunicationService {
         return this.http.post(`${BACKEND_API.quickEmail}`, email)
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error sendQuickEmail');
-                return Observable.throw(error || 'Error sendQuickEmail');
+                this.alertService.error(error.json().message || 'Error sendQuickEmail');
+                return Observable.throw(error.json().message || 'Error sendQuickEmail');
             });
     }
 
@@ -26,8 +26,8 @@ export class CommunicationService {
         return this.http.post(`${BACKEND_API.sendEmail}`, email)
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error sendEmail');
-                return Observable.throw(error || 'Error sendEmail');
+                this.alertService.error(error.json().message || 'Error sendEmail');
+                return Observable.throw(error.json().message || 'Error sendEmail');
             });
     }
 }

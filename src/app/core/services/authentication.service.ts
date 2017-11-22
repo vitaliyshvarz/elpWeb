@@ -49,7 +49,7 @@ export class AuthenticationService {
             .catch((error: any) => Observable.throw(error.json()));
     }
 
-    logout() {
+    logout(navigate = true) {
         // remove user from local storage to log user out
         try {
             gapi.auth.signOut();
@@ -66,7 +66,11 @@ export class AuthenticationService {
             console.warn('FB logout not available');
         }
         this.loggedService.setLogged(this.logged);
-        this.router.navigate(['/']);
+
+        if (navigate) {
+          this.router.navigate(['/']);
+        }
+
     }
 
     isAdmin(user: User): Observable<any> {

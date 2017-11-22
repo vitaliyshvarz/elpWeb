@@ -16,8 +16,8 @@ export class PlaceService {
         return this.http.get(BACKEND_API.getAllPlaces, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getAll places');
-                return Observable.throw(error || 'Error getAll places');
+                this.alertService.error(error.json().message || 'Error getAll places');
+                return Observable.throw(error.json().message || 'Error getAll places');
             });
     }
 
@@ -25,16 +25,16 @@ export class PlaceService {
         return this.http.get(BACKEND_API.userPlaces, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getAllForUser places');
-                return Observable.throw(error || 'Error getAllForUser places');
+                this.alertService.error(error.json().message || 'Error getAllForUser places');
+                return Observable.throw(error.json().message || 'Error getAllForUser places');
             });
     }
     public getById(id: any) {
         return this.http.get(BACKEND_API.getPlaceById + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getById places');
-                return Observable.throw(error || 'Error getById places');
+                this.alertService.error(error.json().message || 'Error getById places');
+                return Observable.throw(error.json().message || 'Error getById places');
             });
     }
 
@@ -42,8 +42,8 @@ export class PlaceService {
         return this.http.post(BACKEND_API.addPlace, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error create places');
-                return Observable.throw(error || 'Error create places');
+                this.alertService.error(error.json().message || 'Error create places');
+                return Observable.throw(error.json().message || 'Error create places');
             });
     }
 
@@ -51,8 +51,8 @@ export class PlaceService {
         return this.http.put(BACKEND_API.updatePlace + place._id, place, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error update places');
-                return Observable.throw(error || 'Error update places');
+                this.alertService.error(error.json().message || 'Error update places');
+                return Observable.throw(error.json().message || 'Error update places');
             });
     }
 
@@ -60,8 +60,8 @@ export class PlaceService {
         return this.http.delete(BACKEND_API.deletePlace + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error delete places');
-                return Observable.throw(error || 'Error delete places');
+                this.alertService.error(error.json().message || 'Error delete places');
+                return Observable.throw(error.json().message || 'Error delete places');
             });
     }
 }

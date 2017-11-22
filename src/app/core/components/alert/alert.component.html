@@ -9,4 +9,8 @@
     </span>
      {{message.text}}
    </p>
+   <div *ngIf="showLogInBnt"
+       class="callout message-block">
+       <button routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</button>
+   </div>
 </div>

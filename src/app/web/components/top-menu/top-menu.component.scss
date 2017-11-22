@@ -23,7 +23,6 @@ $font-color: #fff;
     .menu-text {
         a {
             padding: 0;
-
             img {
                 width: 24px;
             }
@@ -97,4 +96,11 @@ $font-color: #fff;
     li:not(first-child) {
         margin: 0 -0.9rem;
     }
+}
+.user-name-mobile {
+  color: #fff;
+  text-align: right;
+  vertical-align: middle;
+  line-height: 36px;
+  width: 100%;
 }

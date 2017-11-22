@@ -16,8 +16,8 @@ export class MealService {
         return this.http.get(BACKEND_API.getAllMeals, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getAll meals');
-                return Observable.throw(error || 'Error getAll meals');
+                this.alertService.error(error.json().message || 'Error getAll meals');
+                return Observable.throw(error.json().message || 'Error getAll meals');
             });
     }
 
@@ -25,8 +25,8 @@ export class MealService {
         return this.http.get(BACKEND_API.getMealById + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getById meal');
-                return Observable.throw(error || 'Error getById meal');
+                this.alertService.error(error.json().message || 'Error getById meal');
+                return Observable.throw(error.json().message || 'Error getById meal');
             });
     }
 
@@ -34,8 +34,8 @@ export class MealService {
         return this.http.get(BACKEND_API.getMealsByIds + ids.join(), this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getById meal');
-                return Observable.throw(error || 'Error getById meal');
+                this.alertService.error(error.json().message || 'Error getById meal');
+                return Observable.throw(error.json().message || 'Error getById meal');
             });
     }
 
@@ -43,8 +43,8 @@ export class MealService {
         return this.http.post(BACKEND_API.addMeal, meal, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error create meal');
-                return Observable.throw(error || 'Error create meal');
+                this.alertService.error(error.json().message || 'Error create meal');
+                return Observable.throw(error.json().message || 'Error create meal');
             });
     }
 
@@ -52,8 +52,8 @@ export class MealService {
         return this.http.put(BACKEND_API.updateMeal + meal._id, meal, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error meal update');
-                return Observable.throw(error || 'Error meal update');
+                this.alertService.error(error.json().message || 'Error meal update');
+                return Observable.throw(error.json().message || 'Error meal update');
             });
     }
 
@@ -61,8 +61,8 @@ export class MealService {
         return this.http.delete(BACKEND_API.deleteMeal + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error meal delete');
-                return Observable.throw(error || 'Error meal delete');
+                this.alertService.error(error.json().message || 'Error meal delete');
+                return Observable.throw(error.json().message || 'Error meal delete');
             });
     }
 }
