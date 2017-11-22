@@ -18,8 +18,8 @@ export class MealSearchService {
         return this.http.get(`${BACKEND_API.searchMeals}?name=${term}`, this.sessionService.addTokenHeader())
             .map((r: Response) => r.json() as Meal[])
             .catch((error: any) => {
-                this.alertService.error(error || 'Error meal search');
-                return Observable.throw(error || 'Error meal search');
+                this.alertService.error(error.json().message || 'Error meal search');
+                return Observable.throw(error.json().message || 'Error meal search');
             });
     }
 }

@@ -38,8 +38,8 @@ export class UserService implements OnInit {
         return this.http.get(BACKEND_API.getAllUsers, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getAll users');
-                return Observable.throw(error || 'Error getAll users');
+                this.alertService.error(error.json().message || 'Error getAll users');
+                return Observable.throw(error.json().message || 'Error getAll users');
             });
     }
 
@@ -47,8 +47,8 @@ export class UserService implements OnInit {
         return this.http.get(BACKEND_API.getUserById + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error getById users');
-                return Observable.throw(error || 'Error getById users');
+                this.alertService.error(error.json().message || 'Error getById users');
+                return Observable.throw(error.json().message || 'Error getById users');
             });
     }
 
@@ -137,8 +137,8 @@ export class UserService implements OnInit {
         return this.http.put(BACKEND_API.updateUser + user._id, user, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error update users');
-                return Observable.throw(error || 'Error update users');
+                this.alertService.error(error.json().message || 'Error update users');
+                return Observable.throw(error.json().message || 'Error update users');
             });
     }
 
@@ -146,8 +146,8 @@ export class UserService implements OnInit {
         return this.http.delete(BACKEND_API.deleteUser + id, this.sessionService.addTokenHeader())
             .map((response: Response) => response.json())
             .catch((error: any) => {
-                this.alertService.error(error || 'Error delete users');
-                return Observable.throw(error || 'Error delete users');
+                this.alertService.error(error.json().message || 'Error delete users');
+                return Observable.throw(error.json().message || 'Error delete users');
             });
     }
 }

@@ -18,8 +18,8 @@ export class UserSearchService {
         return this.http.get(`${BACKEND_API.searchUsers}?name=${term}`, this.sessionService.addTokenHeader())
             .map((r: Response) => r.json() as User[])
             .catch((error: any) => {
-                this.alertService.error(error || 'Error search users');
-                return Observable.throw(error || 'Error search users');
+                this.alertService.error(error.json().message || 'Error search users');
+                return Observable.throw(error.json().message || 'Error search users');
             });
     }
 }
