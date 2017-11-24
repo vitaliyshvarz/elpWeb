@@ -40,7 +40,6 @@ export class GoogleLoginComponent {
                             password: googleUser.getBasicProfile().getId(),
                             image: googleUser.getBasicProfile().getImageUrl()
                         };
-
                         this.loginInApp(userData);
                     }, (error: any) => {
                         this.loginButton.removeClass('sending').blur();
@@ -78,7 +77,7 @@ export class GoogleLoginComponent {
             },
             (error: any) => {
                 if (error.userRegistered) {
-                    this.alertService.error('User Already registred with Facebook or Email');
+                    this.alertService.error(`User with email ${user.email} already registred with Facebook or Email`);
                     this.loginButton.removeClass('sending').blur();
                 } else {
                     this.tryRegisterUser(user);
