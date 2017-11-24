@@ -119,7 +119,6 @@ export class AddPlacePart3Component implements OnInit {
 
 
     getSelectedMeals(meals: Meal[]): Meal[] {
-      console.log(meals.filter(meal => meal.selected));
         return meals.filter(meal => meal.selected);
     }
 
