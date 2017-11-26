@@ -14,4 +14,13 @@
 
 #offCanvasLeft {
     background: #121212;
+    .close-button {
+      color: #8a8a8a;
+      &:hover {
+        color: white;
+      }
+      &:active {
+        color: white;
+      }
+    }
 }

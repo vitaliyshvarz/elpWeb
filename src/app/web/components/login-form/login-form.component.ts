@@ -31,7 +31,7 @@ export class WebLoginFormComponent implements OnInit {
                 this.loginButton.removeClass('sending').blur();
             },
             (error: any) => {
-                this.alertService.error(error);
+                this.alertService.error(error.message);
                 this.loginButton.removeClass('sending').blur();
             });
     }

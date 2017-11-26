@@ -54,7 +54,7 @@ export class FacebookLoginComponent {
             },
             (error: any) => {
                 this.loginButton.removeClass('sending').blur();
-                this.alertService.error(error);
+                this.alertService.error(error.message);
             });
     }
 

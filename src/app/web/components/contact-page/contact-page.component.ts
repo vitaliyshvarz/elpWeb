@@ -15,7 +15,6 @@ declare var grecaptcha: any;
 export class ContactPageComponent {
     private message: any = {};
     private sendButton: any = {};
-    private sendMessageText: string;
     private capchaValid: boolean = false;
 
     constructor(
@@ -64,7 +63,6 @@ export class ContactPageComponent {
         $('#contactFormCapcha div').css('margin', 'auto');
 
         new (<any>Foundation.Abide)($('#contactForm'), {});
-        this.sendMessageText = this._translate.instant('SEND_MESSAGE');
         $('#contactForm').on('formvalid.zf.abide', () => this.sendMessage());
     }
 }
