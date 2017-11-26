@@ -43,7 +43,7 @@ export class GoogleLoginComponent {
                         this.loginInApp(userData);
                     }, (error: any) => {
                         this.loginButton.removeClass('sending').blur();
-                        this.alertService.error(error);
+                        this.alertService.error(error.error);
                     }
                 );
             });
@@ -64,7 +64,7 @@ export class GoogleLoginComponent {
             },
             (error: any) => {
                 this.loginButton.removeClass('sending').blur();
-                this.alertService.error(error);
+                this.alertService.error(error.message);
             });
     }
 

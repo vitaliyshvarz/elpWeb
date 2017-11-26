@@ -86,6 +86,8 @@ export const LANG_EN_TRANS = {
     'CHANGE_PASS': 'Change password',
     'OLD_PASSWORD': 'Old password',
     'LOGIN_OR_REGISTER': 'Place sign in or register before adding new place',
-    'REGISTERED_WITH': 'Rgistered with'
-
+    'REGISTERED_WITH': 'Rgistered with',
+    'OPENED': 'Opened',
+    'OPENING_HOURS': 'Opening hours',
+    'BREAK_HOURS': 'Break hours'
 };

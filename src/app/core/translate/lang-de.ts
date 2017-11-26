@@ -86,6 +86,8 @@ export const LANG_ES_TRANS = {
     'CHANGE_PASS': 'Passwort ändern',
     'OLD_PASSWORD': 'Altes Passwort',
     'LOGIN_OR_REGISTER': 'Bitte vor dem Sie ein neues Ort hinzufügen loggen Sie sich ein oder registrieren Sie sich ',
-    'REGISTERED_WITH': 'Registriert mit'
-
+    'REGISTERED_WITH': 'Registriert mit',
+    'OPENED': 'geöffnet',
+    'OPENING_HOURS': 'Öffnungszeiten',
+    'BREAK_HOURS': 'Pausezeiten'
 };

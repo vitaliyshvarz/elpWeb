@@ -29,6 +29,17 @@ $transition: all 0.35s ease-in-out;
     }
 }
 
+#contactForm {
+  .button {
+      &.sending {
+          &:before {
+              top: 3.5em;
+              left: 40%;
+          }
+      }
+  }
+}
+
 #contactFormCapcha {
     div {
         margin: auto;
