@@ -220,6 +220,11 @@ gulp.task('build', function (done) {
         });
 });
 
+gulp.task('serve', function() {
+  var server = gls.new('server.js');
+  server.start();
+});
+
 gulp.task('default', [
     'start'
 ]);
