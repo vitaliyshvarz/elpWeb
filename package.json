@@ -9,6 +9,7 @@
     "lite": "lite-server",
     "gulp": "gulp",
     "start": "gulp serve",
+    "start_dev": "lite-server  -c bs-config.js",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "tsc": "tsc",
     "tsc:w": "tsc -w",

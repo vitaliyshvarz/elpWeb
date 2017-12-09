@@ -1,0 +1,41 @@
+.page-not-found-center-block {
+    position: absolute;
+    padding: 2.5rem 0 4.5rem;
+    text-align: center;
+    overflow: visible;
+    width: 100%;
+
+    &.sites-large {
+        background-size: cover;
+        padding-top: 180px;
+    }
+
+    &.main-header {
+        font-size: 2.875rem;
+        text-align: center;
+        color: #fefefe;
+        margin: 0;
+    }
+
+    h1,
+    h3,
+    h4 {
+        color: #fff;
+    }
+
+    h1 {
+        font-size: 3em;
+        line-height: 1.0;
+        font-weight: 500;
+    }
+
+    .subheader {
+        position: relative;
+        color: #fefefe;
+        font-size: 1.3125rem;
+        font-weight: 200;
+    }
+}
+.video-container {
+  height: 100%;
+}

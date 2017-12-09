@@ -1,0 +1,68 @@
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left" data-close>
+      <button class="close-button" aria-label="Close menu" type="button" data-close="">
+        <span aria-hidden="true">×</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+        <li><a routerLink="/home">{{'HOME' | translate }}</a></li>
+        <li><a routerLink="/about-us">{{'ABOUT_APP' | translate }}</a></li>
+        <li><a routerLink="/contact">{{'CONTUCT_US' | translate }}</a></li>
+        <li>
+          <a *ngIf="currentUser" routerLink="/admin/home">
+            {{'MY_ACCOUNT' | translate }}
+          </a>
+        </li>
+        <li><a  *ngIf="!currentUser" routerLink="/login-register">{{'LOGIN_SIGNUP' | translate }}</a></li>
+        <li><a routerLink="/join-us/part1">{{'JOIN_US' | translate }}</a></li>
+        <li  *ngIf="currentUser">
+
+          <ul  class="menu">
+            <li>
+              <a href="javascript:;">{{currentUser.firstName}}</a>
+            </li>
+            <li>
+              <a class="tiny button" (click)="logout()">logout</a>
+            </li>
+          </ul>
+        </li>
+        <li *ngIf="currentUser">
+          <a routerLink="/admin/home">
+            {{'MY_ACCOUNT' | translate }}
+          </a>
+        </li>
+      </ul>
+      <translations-list
+        [ul-class]="'small expanded button-group mob-lang-menu'"
+        [li-class]="'button expanded hollow'">
+      </translations-list>
+
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <div>
+        <top-menu></top-menu>
+
+        <header class="page-not-found-center-block sites-large">
+          <div class="row">
+            <div class="medium-6 medium-centered columns">
+              <h1 class="main-header">{{ 'APP_NAME' | translate }}</h1>
+            </div>
+            <div class="medium-6 medium-centered columns">
+              <h2 class="main-header"> Page Not Found :) </h2>
+            </div>
+          </div>
+        </header>
+
+        <div class="video-container">
+          <video autoplay  poster="./app/web/assets/img/food_main.jpg" id="bgvid" muted loop>
+            <source src="./app/web/assets/vid/food_main.webm" type="video/webm">
+            <source src="./app/web/assets/vid/food_main.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

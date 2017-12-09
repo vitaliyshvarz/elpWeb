@@ -144,7 +144,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('start-server', function (done) {
-    exec('npm start', {
+    exec('npm run start_dev', {
         maxBuffer: 1024 * 5000
     }, function (err, stdout, stderr) {
         done(err);
