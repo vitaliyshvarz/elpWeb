@@ -1,6 +1,7 @@
 // Guards
 export * from './guards/auth.guard';
 export * from './guards/admin.guard';
+export * from './guards/redirect.guard';
 
 // Models
 export * from './models/place';

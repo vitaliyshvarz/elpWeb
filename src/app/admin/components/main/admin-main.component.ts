@@ -1,28 +1,28 @@
-import { Component, OnInit }            from '@angular/core';
-import { Router }                       from '@angular/router';
-import { User, AuthenticationService }  from '../../../core/@core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User, AuthenticationService } from '../../../core/@core';
 
 @Component({
-    moduleId: module.id,
-    selector: 'admin-main',
-    templateUrl: 'admin-main.component.html',
-    styleUrls: ['admin-main.component.css']
+  moduleId: module.id,
+  selector: 'admin-main',
+  templateUrl: 'admin-main.component.html',
+  styleUrls: ['admin-main.component.css']
 })
 
 export class MainAdminComponent implements OnInit {
-    private currentUser: User;
-    title: string = 'Admin Panel EatLikePro';
-    constructor(
-        private router: Router,
-        private authenticationService: AuthenticationService
-    ) { }
+  private currentUser: User;
 
-    ngOnInit(): void {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) { }
 
-    logout() {
-        this.currentUser = null;
-        this.authenticationService.logout();
-    }
+  ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  logout() {
+    this.currentUser = null;
+    this.authenticationService.logout();
+  }
 }

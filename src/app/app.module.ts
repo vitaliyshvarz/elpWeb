@@ -1,7 +1,7 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { HttpModule, BrowserXhr }    from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { HttpModule, BrowserXhr } from '@angular/http';
 
 // CORE components
 import { WorkingHoursComponent } from './core/components/working-hours/working-hours.component';
@@ -18,14 +18,16 @@ import { MealDetailComponent } from './admin/components/meal/meal-detail.compone
 import { PlacesComponent } from './admin/components/places/places.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { SearchComponent } from './admin/components/search/search.component';
-import { MainAdminComponent }  from './admin/components/main/admin-main.component';
-import { AdminTopMenuComponent }  from './admin/components/admin-top-menu/admin-top-menu.component';
+import { MainAdminComponent } from './admin/components/main/admin-main.component';
+import { AdminTopMenuComponent } from './admin/components/admin-top-menu/admin-top-menu.component';
 import { AddMealComponent } from './admin/components/add-meal/add-meal.component';
 import { AddMealsComponent } from './admin/components/add-meals/add-meals.component';
-import { AddUserComponent }        from './admin/components/add-user/add-user.component';
+import { AddUserComponent } from './admin/components/add-user/add-user.component';
+import { PageNotFoundComponent } from './admin/components/page-not-found/page-not-found.component';
+
 
 // WEB components
-import { AppComponent }  from './web/components/main/main.component';
+import { AppComponent } from './web/components/main/main.component';
 import { WebHomeComponent } from './web/components/home/home.component';
 import { TopMenuComponent } from './web/components/top-menu/top-menu.component';
 import { TranslationsListComponent } from './web/components/translations-list/translations-list.component';
@@ -41,98 +43,101 @@ import { AddPlacePart1Component } from './web/components/add-place/add-place-par
 import { AddPlacePart2Component } from './web/components/add-place/add-place-part2.component';
 import { AddPlacePart3Component } from './web/components/add-place/add-place-part3.component';
 import { AboutUsComponent } from './web/components/about-us/about-us.component';
-import { ContactPageComponent }       from './web/components/contact-page/contact-page.component';
+import { ContactPageComponent } from './web/components/contact-page/contact-page.component';
 import { RecoverPasswordComponent } from './web/components/recover-password/recover-password.component';
 
 // Shared Modules
 import {
-    AuthenticationService,
-    PlaceService,
-    UserService,
-    MealService,
-    LoggedService,
-    CommunicationService,
-    UploadService,
-    TRANSLATION_PROVIDERS,
-    TranslatePipe,
-    TranslateService,
-    AuthGuard,
-    AdminGuard,
-    AlertService,
-    CustExtBrowserXhr,
-    SessionService
+  AuthenticationService,
+  PlaceService,
+  UserService,
+  MealService,
+  LoggedService,
+  CommunicationService,
+  UploadService,
+  TRANSLATION_PROVIDERS,
+  TranslatePipe,
+  TranslateService,
+  AuthGuard,
+  AdminGuard,
+  RedirectGuard,
+  AlertService,
+  CustExtBrowserXhr,
+  SessionService
 } from './core/@core';
 
 
-import { AppRoutingModule }     from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import './rxjs-extensions';
 
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        AppRoutingModule,
-        HttpModule
-    ],
-    declarations: [
-        TopMenuComponent,
-        TranslationsListComponent,
-        TranslatePipe,
-        AppComponent,
-        PlaceDetailComponent,
-        UserDetailComponent,
-        MealDetailComponent,
-        PlacesComponent,
-        DashboardComponent,
-        SearchComponent,
-        MainAdminComponent,
-        WebHomeComponent,
-        WebLoginFormComponent,
-        WebRegisterFormComponent,
-        WebLoginRegisterComponent,
-        AlertComponent,
-        FacebookLoginComponent,
-        GoogleLoginComponent,
-        FooterComponent,
-        QuickContactFormComponent,
-        JoinUsPageComponent,
-        AddPlacePart1Component,
-        AddPlacePart2Component,
-        AddPlacePart3Component,
-        AboutUsComponent,
-        ContactPageComponent,
-        AdminTopMenuComponent,
-        WorkingHoursComponent,
-        PaymentOptionsComponent,
-        CurrencySelectorComponent,
-        DishesSelectorComponent,
-        RecoverPasswordComponent,
-        AdminHomeComponent,
-        AddMealComponent,
-        AddUserComponent,
-        AddMealsComponent
-    ],
-    providers: [
-        AuthGuard,
-        AdminGuard,
-        PlaceService,
-        TRANSLATION_PROVIDERS,
-        TranslateService,
-        UserService,
-        MealService,
-        AlertService,
-        AuthenticationService,
-        LoggedService,
-        CommunicationService,
-        UploadService,
-        SessionService,
-        {
-          provide: BrowserXhr,
-          useClass: CustExtBrowserXhr
-        }
-    ],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpModule
+  ],
+  declarations: [
+    TopMenuComponent,
+    TranslationsListComponent,
+    TranslatePipe,
+    AppComponent,
+    PlaceDetailComponent,
+    UserDetailComponent,
+    MealDetailComponent,
+    PlacesComponent,
+    DashboardComponent,
+    SearchComponent,
+    MainAdminComponent,
+    WebHomeComponent,
+    WebLoginFormComponent,
+    WebRegisterFormComponent,
+    WebLoginRegisterComponent,
+    AlertComponent,
+    FacebookLoginComponent,
+    GoogleLoginComponent,
+    FooterComponent,
+    QuickContactFormComponent,
+    JoinUsPageComponent,
+    AddPlacePart1Component,
+    AddPlacePart2Component,
+    AddPlacePart3Component,
+    AboutUsComponent,
+    ContactPageComponent,
+    AdminTopMenuComponent,
+    WorkingHoursComponent,
+    PaymentOptionsComponent,
+    CurrencySelectorComponent,
+    DishesSelectorComponent,
+    RecoverPasswordComponent,
+    AdminHomeComponent,
+    AddMealComponent,
+    AddUserComponent,
+    AddMealsComponent,
+    PageNotFoundComponent
+  ],
+  providers: [
+    AuthGuard,
+    AdminGuard,
+    RedirectGuard,
+    PlaceService,
+    TRANSLATION_PROVIDERS,
+    TranslateService,
+    UserService,
+    MealService,
+    AlertService,
+    AuthenticationService,
+    LoggedService,
+    CommunicationService,
+    UploadService,
+    SessionService,
+    {
+      provide: BrowserXhr,
+      useClass: CustExtBrowserXhr
+    }
+  ],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }
