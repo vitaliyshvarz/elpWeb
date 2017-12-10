@@ -7,14 +7,17 @@
     <div *ngFor="let dish of dishes; let i = index">
 
       <div class="row">
-        <div class="small-6 medium-6 large-6 columns">
+        <div class="text-center show-for-small-only">
+          <h3>{{dish.name}}</h3>
+        </div>
+        <div class="small-12 medium-6 large-6 columns">
           <img *ngIf="dish.imageUrl" [src]="dish.imageUrl"/>
           <img *ngIf="!dish.imageUrl" src="./app/web/assets/img/foodLogoBlack.png" alt="Food Logo" />
 
         </div>
-        <div class="small-6 medium-6 large-6 columns">
-          <div class="text-center">
-            {{dish.name}}
+        <div class="small-12 medium-6 large-6 columns">
+          <div class="text-center show-for-medium">
+            <h3>{{dish.name}}</h3>
           </div>
           <br />
 
