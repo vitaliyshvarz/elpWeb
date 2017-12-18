@@ -13,6 +13,10 @@ video {
     transition: 1s opacity;
 }
 
+.video-cover {
+  display: none;
+}
+
 .store-bnt {
     background-repeat: no-repeat;
     background-size: contain;
@@ -98,4 +102,25 @@ video {
     &.twitter {
         background-image: url("./app/web/assets/img/webicon-twitter.png");
     }
+}
+
+@media (max-width: 767px) {
+  video {
+    display: none;
+  }
+  .video-cover {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background: url(./app/web/assets/img/food_main.jpg) no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+  }
 }
