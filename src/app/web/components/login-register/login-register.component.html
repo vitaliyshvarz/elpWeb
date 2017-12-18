@@ -31,7 +31,7 @@
 <div class="row" *ngIf="!showResetPassword">
   <div class="medium-6 large-6 medium-centered columns login-register-container">
 
-    <div class="row small-up-1 medium-up-2">
+    <div *ngIf="login && !register && !showContinueButton" class="row small-up-1 medium-up-2">
       <div class="column  social-login-box">
         <facebook-login></facebook-login>
       </div>
