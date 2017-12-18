@@ -60,15 +60,18 @@ export class GoogleLoginComponent implements AfterViewInit {
           'scope': 'profile email'
         }).then((GoogleAuth: any) => {
           const googleUser = GoogleAuth.currentUser.get();
-          const userData = {
-            email: googleUser.getBasicProfile().getEmail(),
-            firstName: googleUser.getBasicProfile().getGivenName(),
-            lastName: googleUser.getBasicProfile().getFamilyName(),
-            password: googleUser.getBasicProfile().getId(),
-            image: googleUser.getBasicProfile().getImageUrl()
-          };
+          if (googleUser.getBasicProfile()) {
+            const userData = {
+              email: googleUser.getBasicProfile().getEmail(),
+              firstName: googleUser.getBasicProfile().getGivenName(),
+              lastName: googleUser.getBasicProfile().getFamilyName(),
+              password: googleUser.getBasicProfile().getId(),
+              image: googleUser.getBasicProfile().getImageUrl()
+            };
 
-          scope.loginInApp(userData);
+            scope.loginInApp(userData);
+          }
+
         }, (error: any) => {
           scope.loginButton.removeClass('sending').blur();
           scope.alertService.error(error.error);
