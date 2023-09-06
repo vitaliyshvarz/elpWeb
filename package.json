@@ -38,7 +38,7 @@
     "foundation-icons": "1.0.1",
     "foundation-sites": "6.3.1",
     "gulp-live-server": "0.0.3",
-    "jquery": "3.2.1",
+    "jquery": "3.5.0",
     "nouislider": "9.2.0",
     "path": "0.12.7",
     "reflect-metadata": "0.1.10",
